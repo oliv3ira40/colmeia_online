@@ -96,8 +96,10 @@ python manage.py seed_species
 
 O comando lê o arquivo JSON indicado, cria novas espécies e atualiza registros existentes com o mesmo `nome_cientifico`. Cada item da lista deve informar o campo `grupo`; quando o valor estiver ausente ou inválido, o grupo padrão `sem_ferrao` é utilizado automaticamente.
 
-### Referências
-- [Documentação do django-unfold](https://github.com/unfoldadmin/django-unfold)
+### Tema utilizado no admin
+As páginas criadas devem seguir o tema bootstrap do django-admin-interface, que oferece uma interface mais amigável e moderna para o administrador do Django.
+- [Documentação do django-admin-interface](https://github.com/fabiocaccamo/django-admin-interface?tab=readme-ov-file)
+- Intalação do tema bootstrap do django-admin-interface: python manage.py loaddata admin_interface_theme_bootstrap.json
 
 Clique [aqui](docs/padroes.md) para ver os padrões de desenvolvimento adotados no projeto.
 

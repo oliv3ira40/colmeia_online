@@ -52,15 +52,6 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Application definition
 INSTALLED_APPS = [
-    # "admin_interface",
-    # "unfold",  # before django.contrib.admin
-    # "unfold.contrib.filters",  # optional, if special filters are needed
-    # "unfold.contrib.forms",  # optional, if special form elements are needed
-    # "unfold.contrib.inlines",  # optional, if special inlines are needed
-    # "unfold.contrib.import_export",  # optional, if django-import-export package is used
-    # "unfold.contrib.guardian",  # optional, if django-guardian package is used
-    # "unfold.contrib.simple_history",  # optional, if django-simple-history package is used
-
     "admin_interface",
     "colorfield",
     "accounts",
@@ -166,6 +157,3 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# Django unfold settings
-# from admin_interface.theme_settings import *
