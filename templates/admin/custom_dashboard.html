@@ -26,6 +26,17 @@
         --dashboard-list-hover-border: rgba(14, 116, 144, 0.35);
         --dashboard-list-hover-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
         --dashboard-sidebar-shadow: 0 16px 32px rgba(15, 23, 42, 0.12);
+        --dashboard-page-bg: #eef2ff;
+        --dashboard-page-text: #0f172a;
+        --dashboard-header-bg: rgba(255, 255, 255, 0.92);
+        --dashboard-header-border: rgba(15, 23, 42, 0.08);
+        --dashboard-header-text: #0f172a;
+        --dashboard-header-link: #047857;
+        --dashboard-header-link-hover: #065f46;
+        --dashboard-body-link: #0369a1;
+        --dashboard-body-link-hover: #0e7490;
+        --dashboard-border-color: rgba(148, 163, 184, 0.2);
+        --dashboard-breadcrumb-bg: rgba(248, 250, 252, 0.85);
     }
 
     html[data-theme="dark"],
@@ -53,6 +64,17 @@
         --dashboard-list-hover-border: rgba(45, 212, 191, 0.5);
         --dashboard-list-hover-shadow: 0 18px 40px rgba(15, 118, 110, 0.3);
         --dashboard-sidebar-shadow: 0 18px 40px rgba(2, 6, 23, 0.45);
+        --dashboard-page-bg: #020617;
+        --dashboard-page-text: #e2e8f0;
+        --dashboard-header-bg: rgba(15, 23, 42, 0.85);
+        --dashboard-header-border: rgba(51, 65, 85, 0.65);
+        --dashboard-header-text: #f8fafc;
+        --dashboard-header-link: #34d399;
+        --dashboard-header-link-hover: #10b981;
+        --dashboard-body-link: #38bdf8;
+        --dashboard-body-link-hover: #0ea5e9;
+        --dashboard-border-color: rgba(71, 85, 105, 0.75);
+        --dashboard-breadcrumb-bg: rgba(15, 23, 42, 0.65);
     }
 
     @media (prefers-color-scheme: dark) {
@@ -79,7 +101,90 @@
             --dashboard-list-hover-border: rgba(45, 212, 191, 0.5);
             --dashboard-list-hover-shadow: 0 18px 40px rgba(15, 118, 110, 0.3);
             --dashboard-sidebar-shadow: 0 18px 40px rgba(2, 6, 23, 0.45);
+            --dashboard-page-bg: #020617;
+            --dashboard-page-text: #e2e8f0;
+            --dashboard-header-bg: rgba(15, 23, 42, 0.85);
+            --dashboard-header-border: rgba(51, 65, 85, 0.65);
+            --dashboard-header-text: #f8fafc;
+            --dashboard-header-link: #34d399;
+            --dashboard-header-link-hover: #10b981;
+            --dashboard-body-link: #38bdf8;
+            --dashboard-body-link-hover: #0ea5e9;
+            --dashboard-border-color: rgba(71, 85, 105, 0.75);
+            --dashboard-breadcrumb-bg: rgba(15, 23, 42, 0.65);
         }
+    }
+
+    html,
+    body {
+        background: var(--dashboard-page-bg);
+        color: var(--dashboard-page-text);
+    }
+
+    a {
+        color: var(--dashboard-body-link);
+        transition: color 0.2s ease;
+    }
+
+    a:focus,
+    a:hover {
+        color: var(--dashboard-body-link-hover);
+    }
+
+    #header {
+        background: var(--dashboard-header-bg);
+        border-bottom: 1px solid var(--dashboard-header-border);
+        color: var(--dashboard-header-text);
+        backdrop-filter: blur(10px);
+    }
+
+    #header a,
+    #header a:link,
+    #header a:visited,
+    #user-tools a {
+        color: var(--dashboard-header-link);
+    }
+
+    #header a:focus,
+    #header a:hover,
+    #user-tools a:focus,
+    #user-tools a:hover {
+        color: var(--dashboard-header-link-hover);
+    }
+
+    #branding h1,
+    #user-tools,
+    #user-tools a {
+        color: var(--dashboard-header-text);
+    }
+
+    .breadcrumbs {
+        background: var(--dashboard-breadcrumb-bg);
+        border: 1px solid var(--dashboard-border-color);
+        box-shadow: var(--dashboard-card-shadow);
+        color: var(--dashboard-muted);
+    }
+
+    .breadcrumbs a {
+        color: var(--dashboard-body-link);
+    }
+
+    .breadcrumbs a:hover,
+    .breadcrumbs a:focus {
+        color: var(--dashboard-body-link-hover);
+    }
+
+    .module,
+    .module table,
+    .module caption,
+    .module h2,
+    .module h3,
+    .results,
+    .dashboard .module,
+    .dashboard .module table {
+        background: var(--dashboard-list-item-bg);
+        color: var(--dashboard-page-text);
+        border-color: var(--dashboard-border-color);
     }
 
     .colmeia-dashboard {
