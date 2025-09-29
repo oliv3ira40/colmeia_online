@@ -3,6 +3,32 @@ from django.contrib import admin
 from .models import Apiary, Hive, Revision, RevisionAttachment, Species
 
 
+class OwnerRestrictedAdmin(admin.ModelAdmin):
+    owner_field_name = "owner"
+
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request)
+        if request.user.is_superuser:
+            return queryset
+        return queryset.filter(**{self.owner_field_name: request.user})
+
+    def save_model(self, request, obj, form, change):
+        if not request.user.is_superuser:
+            setattr(obj, self.owner_field_name, request.user)
+        super().save_model(request, obj, form, change)
+
+    def get_form(self, request, obj=None, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+        if not request.user.is_superuser and self.owner_field_name in form.base_fields:
+            field = form.base_fields[self.owner_field_name]
+            if obj is not None:
+                field.initial = getattr(obj, self.owner_field_name)
+            else:
+                field.initial = request.user
+            field.disabled = True
+        return form
+
+
 @admin.register(Species)
 class SpeciesAdmin(admin.ModelAdmin):
     list_display = ("popular_name", "scientific_name", "group")
@@ -10,7 +36,7 @@ class SpeciesAdmin(admin.ModelAdmin):
 
 
 @admin.register(Apiary)
-class ApiaryAdmin(admin.ModelAdmin):
+class ApiaryAdmin(OwnerRestrictedAdmin):
     list_display = ("name", "location", "owner", "hive_count")
     search_fields = ("name", "location", "owner__username")
     list_filter = ("owner",)
@@ -28,7 +54,7 @@ class RevisionInline(admin.TabularInline):
 
 
 @admin.register(Hive)
-class HiveAdmin(admin.ModelAdmin):
+class HiveAdmin(OwnerRestrictedAdmin):
     list_display = (
         "identification_number",
         "popular_name",
@@ -43,6 +69,11 @@ class HiveAdmin(admin.ModelAdmin):
     search_fields = ("identification_number", "popular_name", "origin")
     inlines = [RevisionInline]
 
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "apiary" and not request.user.is_superuser:
+            kwargs["queryset"] = Apiary.objects.owned_by(request.user)
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
 
 @admin.register(Revision)
 class RevisionAdmin(admin.ModelAdmin):
@@ -50,6 +81,17 @@ class RevisionAdmin(admin.ModelAdmin):
     list_filter = ("temperament", "management_performed", "queen_seen")
     search_fields = ("hive__identification_number", "hive__popular_name")
     inlines = [RevisionAttachmentInline]
+
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request)
+        if request.user.is_superuser:
+            return queryset
+        return queryset.filter(hive__owner=request.user)
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "hive" and not request.user.is_superuser:
+            kwargs["queryset"] = Hive.objects.owned_by(request.user)
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
 @admin.register(RevisionAttachment)

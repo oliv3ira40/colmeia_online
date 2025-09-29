@@ -52,18 +52,21 @@ class Species(models.Model):
     ]
 
     group = models.CharField(
+        "Grupo",
         max_length=20,
         choices=SpeciesGroup.choices,
     )
-    scientific_name = models.CharField(max_length=255)
-    popular_name = models.CharField(max_length=255)
-    characteristics = models.TextField(blank=True)
+    scientific_name = models.CharField("Nome científico", max_length=255)
+    popular_name = models.CharField("Nome popular", max_length=255)
+    characteristics = models.TextField("Características", blank=True)
     states = models.JSONField(
+        "UFs",
         default=list,
         blank=True,
         help_text="Lista das UFs onde a espécie é encontrada",
     )
     default_temperament = models.CharField(
+        "Temperamento padrão",
         max_length=255,
         blank=True,
         null=True,
@@ -103,15 +106,18 @@ class ApiaryQuerySet(models.QuerySet):
 
 
 class Apiary(models.Model):
-    name = models.CharField(max_length=255)
-    location = models.CharField(max_length=255)
+    name = models.CharField("Nome", max_length=255)
+    location = models.CharField("Localização (cidade/estado)", max_length=255)
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name="apiaries",
+        verbose_name="Responsável/Proprietário",
     )
-    hive_count = models.PositiveIntegerField(default=0, editable=False)
-    notes = models.TextField(blank=True)
+    hive_count = models.PositiveIntegerField(
+        "Qtd. de colmeias vinculadas", default=0, editable=False
+    )
+    notes = models.TextField("Observações", blank=True)
 
     objects = ApiaryQuerySet.as_manager()
 
@@ -157,24 +163,28 @@ class Hive(models.Model):
         LOST = "perdida", "Perdida"
 
     identification_number = models.CharField(
+        "N. de identificação",
         max_length=20,
         unique=True,
         editable=False,
         default=generate_hive_identifier,
     )
     acquisition_method = models.CharField(
+        "Método de aquisição",
         max_length=20,
         choices=AcquisitionMethod.choices,
     )
-    origin = models.CharField(max_length=255, blank=True)
-    acquisition_date = models.DateField()
+    origin = models.CharField("Origem da colmeia", max_length=255, blank=True)
+    acquisition_date = models.DateField("Data de aquisição")
     species = models.ForeignKey(
         Species,
         on_delete=models.PROTECT,
         related_name="hives",
+        verbose_name="Espécie",
     )
-    popular_name = models.CharField(max_length=255)
+    popular_name = models.CharField("Nome popular", max_length=255)
     status = models.CharField(
+        "Situação",
         max_length=20,
         choices=HiveStatus.choices,
         default=HiveStatus.PRODUCTIVE,
@@ -185,13 +195,17 @@ class Hive(models.Model):
         null=True,
         blank=True,
         related_name="hives",
+        verbose_name="Meliponário/Apiário",
     )
-    last_review_date = models.DateTimeField(null=True, blank=True, editable=False)
-    notes = models.TextField(blank=True)
+    last_review_date = models.DateTimeField(
+        "Data da última revisão", null=True, blank=True, editable=False
+    )
+    notes = models.TextField("Observações", blank=True)
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name="hives",
+        verbose_name="Proprietário",
     )
 
     objects = HiveQuerySet.as_manager()
@@ -256,31 +270,40 @@ class Revision(models.Model):
         Hive,
         on_delete=models.CASCADE,
         related_name="revisions",
+        verbose_name="Colmeia",
     )
-    review_date = models.DateTimeField()
-    queen_seen = models.BooleanField(default=False)
+    review_date = models.DateTimeField("Data da revisão")
+    queen_seen = models.BooleanField("Rainha vista", default=False)
     brood_level = models.PositiveSmallIntegerField(
+        "Cria",
         validators=[MinValueValidator(0), MaxValueValidator(5)],
     )
     food_level = models.PositiveSmallIntegerField(
+        "Alimento/Reservas",
         validators=[MinValueValidator(0), MaxValueValidator(5)],
     )
     colony_strength = models.PositiveSmallIntegerField(
+        "Força da colônia",
         validators=[MinValueValidator(0), MaxValueValidator(5)],
     )
     temperament = models.CharField(
+        "Temperamento",
         max_length=20,
         choices=TemperamentChoices.choices,
     )
     hive_weight = models.DecimalField(
+        "Peso da colmeia",
         max_digits=6,
         decimal_places=2,
         null=True,
         blank=True,
     )
-    notes = models.TextField(blank=True)
-    management_performed = models.BooleanField(default=False)
-    management_description = models.TextField(blank=True)
+    notes = models.TextField("Observações", blank=True)
+    management_performed = models.BooleanField("Houve manejo?", default=False)
+    management_description = models.TextField(
+        "Descrever manejo(s) realizado(s)",
+        blank=True,
+    )
 
     objects = RevisionQuerySet.as_manager()
 
@@ -326,8 +349,9 @@ class RevisionAttachment(models.Model):
         Revision,
         on_delete=models.CASCADE,
         related_name="attachments",
+        verbose_name="Revisão",
     )
-    file = models.FileField(upload_to="revision_attachments/")
+    file = models.FileField("Arquivo", upload_to="revision_attachments/")
 
     class Meta:
         verbose_name = "Anexo da Revisão"
