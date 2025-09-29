@@ -38,6 +38,24 @@ class Command(BaseCommand):
             help="Grupo padrão a ser atribuído às espécies importadas.",
         )
 
+    def _resolve_group(self, raw_group, default_group, scientific_name):
+        if raw_group is None or (isinstance(raw_group, str) and not raw_group.strip()):
+            return default_group
+
+        normalized_group = str(raw_group).strip().lower()
+        valid_groups = {choice[0] for choice in Species.SpeciesGroup.choices}
+
+        if normalized_group in valid_groups:
+            return normalized_group
+
+        self.stderr.write(
+            self.style.WARNING(
+                "Registro '%s': grupo '%s' inválido. Usando grupo padrão '%s'."
+                % (scientific_name, raw_group, default_group)
+            )
+        )
+        return default_group
+
     def handle(self, *args, **options):
         file_path = Path(options["file_path"])
         default_group = options["default_group"]
@@ -57,11 +75,11 @@ class Command(BaseCommand):
         updated_count = 0
 
         for index, entry in enumerate(data, start=1):
-            scientific_name = (entry.get("nome_cientifica") or "").strip()
+            scientific_name = (entry.get("nome_cientifico") or "").strip()
             if not scientific_name:
                 self.stderr.write(
                     self.style.WARNING(
-                        f"Registro #{index} ignorado: 'nome_cientifica' é obrigatório."
+                        f"Registro #{index} ignorado: 'nome_cientifico' é obrigatório."
                     )
                 )
                 continue
@@ -69,6 +87,9 @@ class Command(BaseCommand):
             popular_name = (entry.get("nome_popular") or "").strip()
             if not popular_name:
                 popular_name = scientific_name
+
+            group_value = entry.get("grupo")
+            group = self._resolve_group(group_value, default_group, scientific_name)
 
             try:
                 states = _normalize_states(entry.get("ufs"))
@@ -86,7 +107,7 @@ class Command(BaseCommand):
                 default_temperament = default_temperament.strip() or None
 
             defaults = {
-                "group": default_group,
+                "group": group,
                 "popular_name": popular_name,
                 "states": states,
                 "characteristics": characteristics,

@@ -85,6 +85,20 @@ pip freeze > requirements.txt
 python manage.py collectstatic --noinput
 ```
 
+### Carregar espécies padrão
+
+Para importar ou atualizar as espécies padrão de abelhas sem ferrão use o comando de management `seed_species`.
+
+```bash
+# Carrega espécies a partir de docs/especies.json
+python manage.py seed_species
+
+# Opcional: informar arquivo ou grupo padrão
+python manage.py seed_species --file docs/especies.json --group sem_ferrao
+```
+
+O comando lê o arquivo JSON indicado, cria novas espécies e atualiza registros existentes com o mesmo `nome_cientifico`. Cada item da lista também pode informar o campo `grupo`; quando ausente ou inválido, o valor passado pela opção `--group` é utilizado como padrão.
+
 ### Referências
 - [Documentação do django-unfold](https://github.com/unfoldadmin/django-unfold)
 
