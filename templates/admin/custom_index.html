@@ -1,0 +1,317 @@
+{% extends "admin/base_site.html" %}
+{% load admin_urls log tz %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <style>
+    .dashboard-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .dashboard-main {
+      flex: 1 1 0;
+      min-width: 0;
+      max-width: 80%;
+    }
+
+    .dashboard-aside {
+      flex: 0 0 20%;
+      min-width: 220px;
+    }
+
+    @media (max-width: 1024px) {
+      .dashboard-wrapper {
+        flex-direction: column;
+      }
+
+      .dashboard-main,
+      .dashboard-aside {
+        max-width: 100%;
+        flex: 1 1 auto;
+      }
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card,
+    .list-card,
+    .recent-actions-card {
+      background: var(--card-bg, #fff);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    .stat-card h2 {
+      font-size: 1rem;
+      margin: 0 0 0.5rem;
+      color: #1f2933;
+    }
+
+    .stat-card p {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin: 0;
+      color: #111827;
+    }
+
+    .action-card {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #0f172a;
+      background: #fef3c7;
+      border: 2px solid #f59e0b;
+      transition: background 0.2s ease, transform 0.2s ease;
+      min-height: 100px;
+    }
+
+    .action-card:focus-visible,
+    .action-card:hover {
+      background: #fbbf24;
+      outline: none;
+      transform: translateY(-2px);
+    }
+
+    .list-card h3,
+    .recent-actions-card h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.125rem;
+      color: #0f172a;
+    }
+
+    .item-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .list-item {
+      display: grid;
+      gap: 0.4rem;
+    }
+
+    .list-link {
+      text-decoration: none;
+      color: #0f172a;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .list-link:focus-visible,
+    .list-link:hover {
+      text-decoration: underline;
+      outline: none;
+    }
+
+    .list-meta {
+      color: #4b5563;
+      font-size: 0.9375rem;
+    }
+
+    .list-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+    }
+
+    .list-actions a {
+      color: #1d4ed8;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .list-actions a:focus-visible,
+    .list-actions a:hover {
+      text-decoration: underline;
+      outline: none;
+    }
+
+    .empty-state {
+      color: #6b7280;
+      font-style: italic;
+    }
+
+    .app-list {
+      margin-top: 2rem;
+    }
+
+    .recent-actions-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .recent-actions-card li {
+      font-size: 0.95rem;
+      color: #334155;
+    }
+
+    .recent-actions-card a {
+      color: #1d4ed8;
+      text-decoration: none;
+    }
+
+    .recent-actions-card a:focus-visible,
+    .recent-actions-card a:hover {
+      text-decoration: underline;
+      outline: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --card-bg: #1f2937;
+      }
+
+      body,
+      #container {
+        background: #0b1120;
+        color: #e2e8f0;
+      }
+
+      .stat-card h2,
+      .list-card h3,
+      .recent-actions-card h3 {
+        color: #f8fafc;
+      }
+
+      .stat-card p {
+        color: #f9fafb;
+      }
+
+      .list-meta,
+      .recent-actions-card li {
+        color: #cbd5f5;
+      }
+
+      .action-card {
+        color: #78350f;
+      }
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <div class="dashboard-wrapper">
+    <section class="dashboard-main" aria-label="Painel principal">
+      <div class="card-grid" role="group" aria-label="Indicadores">
+        <article class="stat-card" aria-live="polite">
+          <h2>Meus Meliponários</h2>
+          <p>{{ apiary_count }}</p>
+        </article>
+        <article class="stat-card" aria-live="polite">
+          <h2>Minhas Colmeias</h2>
+          <p>{{ hive_count }}</p>
+        </article>
+        <article class="stat-card" aria-live="polite">
+          <h2>Espécies criadas</h2>
+          <p>{{ species_count }}</p>
+        </article>
+        <a class="stat-card action-card" href="{{ new_revision_url }}">Nova Revisão</a>
+      </div>
+
+      <div class="list-card" aria-labelledby="recent-revisions-heading">
+        <h3 id="recent-revisions-heading">Revisões Recentes</h3>
+        {% if recent_revisions %}
+          <ul class="item-list">
+            {% for revision in recent_revisions %}
+              <li class="list-item">
+                <a class="list-link" href="{{ revision.change_url }}">
+                  <time datetime="{{ revision.review_date|utc|date:'c' }}">
+                    {{ revision.review_date|localtime|date:"d/m/Y H:i" }}
+                  </time>
+                  •
+                  {{ revision.instance.hive.identification_number }}
+                </a>
+                <p class="list-meta">
+                  Colmeia:
+                  <a href="{{ revision.hive_url }}">{{ revision.instance.hive }}</a>
+                  — Espécie: {{ revision.species }}{% if revision.apiary %} — Meliponário: {{ revision.apiary }}{% endif %}
+                </p>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p class="empty-state">Nenhuma revisão encontrada.</p>
+        {% endif %}
+      </div>
+
+      <div class="list-card app-list" aria-labelledby="overdue-hives-heading">
+        <h3 id="overdue-hives-heading">Colmeias sem revisão há 7+ dias</h3>
+        {% if overdue_hives %}
+          <ul class="item-list">
+            {% for hive in overdue_hives %}
+              <li class="list-item">
+                <a class="list-link" href="{{ hive.change_url }}">
+                  {{ hive.instance.identification_number }} • {{ hive.instance.popular_name }}
+                </a>
+                <p class="list-meta">
+                  {% if hive.last_review %}
+                    Última revisão em {{ hive.last_review|localtime|date:"d/m/Y H:i" }}
+                  {% else %}
+                    Nunca revisada
+                  {% endif %}
+                  — Espécie: {{ hive.species }}{% if hive.apiary %} — Meliponário: {{ hive.apiary }}{% endif %}
+                </p>
+                <div class="list-actions">
+                  <a href="{{ hive.add_revision_url }}">+ Revisão</a>
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p class="empty-state">Nenhuma colmeia atrasada encontrada.</p>
+        {% endif %}
+      </div>
+
+      {% if available_apps %}
+        <div class="list-card app-list" aria-label="Modelos disponíveis">
+          {% include "admin/app_list.html" with app_list=available_apps %}
+        </div>
+      {% endif %}
+    </section>
+
+    <aside class="dashboard-aside" aria-label="Ações recentes">
+      <div class="recent-actions-card">
+        <h3>Ações recentes</h3>
+        {% get_admin_log 10 as admin_log for_user user %}
+        {% if admin_log %}
+          <ul>
+            {% for entry in admin_log %}
+              <li>
+                {% if entry.is_deletion or not entry.get_admin_url %}
+                  {{ entry.object_repr }}
+                {% else %}
+                  <a href="{{ entry.get_admin_url }}">{{ entry.object_repr }}</a>
+                {% endif %}
+                — {{ entry.action_time|localtime|date:"d/m/Y H:i" }}
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p class="empty-state">Sem ações registradas.</p>
+        {% endif %}
+      </div>
+    </aside>
+  </div>
+{% endblock %}

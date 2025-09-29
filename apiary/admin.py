@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 from .models import Apiary, Hive, Revision, RevisionAttachment, Species
+from core.admin_site import admin_site
 
 
 class OwnerRestrictedAdmin(admin.ModelAdmin):
@@ -29,13 +30,13 @@ class OwnerRestrictedAdmin(admin.ModelAdmin):
         return form
 
 
-@admin.register(Species)
+@admin_site.register(Species)
 class SpeciesAdmin(admin.ModelAdmin):
     list_display = ("popular_name", "scientific_name", "group")
     search_fields = ("popular_name", "scientific_name")
 
 
-@admin.register(Apiary)
+@admin_site.register(Apiary)
 class ApiaryAdmin(OwnerRestrictedAdmin):
     list_display = ("name", "location", "owner", "hive_count")
     search_fields = ("name", "location", "owner__username")
@@ -53,7 +54,7 @@ class RevisionInline(admin.TabularInline):
     show_change_link = True
 
 
-@admin.register(Hive)
+@admin_site.register(Hive)
 class HiveAdmin(OwnerRestrictedAdmin):
     list_display = (
         "identification_number",
@@ -75,7 +76,7 @@ class HiveAdmin(OwnerRestrictedAdmin):
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
-@admin.register(Revision)
+@admin_site.register(Revision)
 class RevisionAdmin(admin.ModelAdmin):
     list_display = (
         "hive",
@@ -110,7 +111,7 @@ class RevisionAdmin(admin.ModelAdmin):
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
-@admin.register(RevisionAttachment)
+@admin_site.register(RevisionAttachment)
 class RevisionAttachmentAdmin(admin.ModelAdmin):
     list_display = ("revision", "file")
     search_fields = ("revision__hive__identification_number",)
