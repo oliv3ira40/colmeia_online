@@ -89,3 +89,54 @@ python manage.py collectstatic --noinput
 - [Documentação do django-unfold](https://github.com/unfoldadmin/django-unfold)
 
 Clique [aqui](docs/padroes.md) para ver os padrões de desenvolvimento adotados no projeto.
+
+### Modelos
+
+    **Colmeias**
+    - N. de identificação → somente leitura, gerado automaticamente, único
+    - Método de aquisição → escolha entre: Compra, Troca, Divisão, Captura, Doação
+    - Origem da colmeia → texto (opcional)
+    - Data de aquisição → data
+    - Espécie → referência ao modelo Espécies
+    - Nome Popular → texto
+    - Situação → escolha entre:
+        - Em produção (colônia saudável/ativa)
+        - Em observação (fraca, recém-capturada, em adaptação)
+        - Órfã (sem rainha)
+        - Morta
+        - Doada/Vendida
+        - Perdida (desaparecida, roubada)
+    - Meliponário / Apiário → referência (opcional) a um meliponário ou apiário cadastrado
+    - Data da última revisão → preenchido automaticamente
+    - Observações → texto livre
+    - Revisões → relação com o modelo Revisões
+
+    **Revisões**
+    - Colmeia → referência à colmeia
+    - Data da revisão → data/hora
+    - Rainha vista → booleano
+    - Cria → escolher entre: Nenhuma, Pouca, Moderada, Abundante
+    - Alimento/Reservas → escolher entre: Nenhum, Pouco, Moderado, Abundante
+    - Pólen → escolher entre: Nenhum, Pouco, Moderado, Abundante
+    - Força da colônia → escolher entre: Fraca, Média, Forte
+    - Temperamento → escolha entre: Muito mansa, Mansa, Média, Arisca, Agressiva
+    - Peso da colmeia (opcional) → número
+    - Observações → texto livre
+    - Arquivos/Fotos → múltiplos anexos relacionados
+    - Houve manejo? → booleano (Excluir campo, não é mais necessário)
+    - Descreva manejo(s) realizado(s) -> texto livre
+
+    **Espécies**
+    - Grupo → Apis mellifera ou Sem ferrão
+    - Nome científico → texto
+    - Nome popular → texto
+    - Características → texto livre
+    - UF → escolha múltipla entre as unidades federativas do Brasil
+    - Temperamento padrão (opcional) → texto
+
+    **Meliponários/Apiários**
+    - Nome → texto
+    - Localização (cidade/estado) → texto
+    - Responsável/Proprietário -> usuário que cadastrou o meliponário/apiário
+    - QTD de colmeias vinculadas → número, preenchido automaticamente com a contagem de colmeias associadas
+    - Observações → texto livre
