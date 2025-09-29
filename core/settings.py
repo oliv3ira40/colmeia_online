@@ -1,7 +1,13 @@
 from pathlib import Path
 import os
 from dotenv import load_dotenv
-from distutils.util import strtobool
+def strtobool(value: str) -> bool:
+    value = value.strip().lower()
+    if value in {"y", "yes", "t", "true", "on", "1"}:
+        return True
+    if value in {"n", "no", "f", "false", "off", "0"}:
+        return False
+    raise ValueError(f"Valor booleano inválido: {value}")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -58,6 +64,7 @@ INSTALLED_APPS = [
     "admin_interface",
     "colorfield",
     "accounts",
+    "apiary",
 
     'django.contrib.admin',
     'django.contrib.auth',

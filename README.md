@@ -1,112 +1,88 @@
-### Esboço do projeto:
+# Colmeia Online
 
-### Comandos úteis
+Sistema web para controle de colmeias de abelhas, com suporte a múltiplos usuários. Cada pessoa cadastrada pode registrar seus próprios meliponários/apiários, colmeias, espécies manejadas e revisões periódicas. Superusuários têm acesso a todos os dados do sistema.
+
+## Funcionalidades
+
+- Cadastro de espécies com características, comportamento padrão e UFs de ocorrência.
+- Registro de meliponários/apiários vinculados ao usuário, com contagem automática de colmeias associadas.
+- Gerenciamento completo das colmeias, incluindo histórico de aquisição, situação atual e observações.
+- Registro de revisões com notas sobre rainha, cria, alimento, força da colônia, temperamento, peso e manejos executados.
+- Upload de anexos (fotos/documentos) relacionados às revisões.
+- Separação de dados por usuário (multi-tenant). Usuários comuns visualizam apenas seus próprios cadastros; superusuários têm visão global.
+
+## Modelos principais
+
+### Espécies
+- Grupo (Apis mellifera ou Sem ferrão)
+- Nome científico e nome popular
+- Características gerais
+- UFs onde ocorre (seleção múltipla)
+- Temperamento padrão (opcional)
+
+### Meliponários/Apiários
+- Nome e localização
+- Proprietário (usuário que cadastrou)
+- Contador automático de colmeias associadas
+- Observações
+
+### Colmeias
+- Número de identificação automático e único
+- Método de aquisição (Compra, Troca, Divisão, Captura ou Doação)
+- Origem (opcional) e data de aquisição
+- Espécie e nome popular
+- Situação da colmeia (produção, observação, órfã, morta, doada/vendida ou perdida)
+- Relacionamento opcional com meliponário/apiário do mesmo usuário
+- Data da última revisão (atualizada automaticamente)
+- Observações
+
+### Revisões
+- Colmeia, data/hora da revisão e indicador se a rainha foi vista
+- Escalas de 0 a 5 para cria, alimento e força
+- Temperamento (Muito mansa, Mansa, Média, Arisca ou Agressiva)
+- Peso da colmeia (opcional)
+- Observações e registro de manejo (condicional)
+- Anexos de arquivos/fotos
+
+## Configuração do projeto
 
 ```bash
-
 # Criar a env
-$ python -m venv venv
+python -m venv venv
 
 # Gerar nova secret key
-$ python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
 # Colar no arquivo .env
 
 # Ativar a env
-$ source {nome da env}/bin/activate
+source {nome da env}/bin/activate
 
 # Desativar a env
-$ deactivate
-
-# Iniciar o projeto
-$ python manage.py runserver
-
-# Criar o banco de dados
-$ python manage.py migrate
-
-# Criar um super usuário
-$ python manage.py createsuperuser
-
-# Compilar as mensagens
-$ python manage.py compilemessages
-
-# Criar arquivo requirements.txt
-$ pip freeze > requirements.txt
-
-# Mandar dependências para o arquivo requirements.txt
-$ pip freeze > requirements.txt
+deactivate
 
 # Instalar as dependências
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 
-# Link para a documentação do unfold:
-[Git Django Unfold](https://github.com/unfoldadmin/django-unfold)
+# Criar o banco de dados
+python manage.py migrate
 
-# Reiniciar o gunicorn e o nginx
-sudo systemctl restart gunicorn
-sudo systemctl restart nginx
+# Criar um superusuário
+python manage.py createsuperuser
 
-# Coletar arquivos estáticos
+# Iniciar o projeto
+python manage.py runserver
+
+# Compilar mensagens de tradução
+python manage.py compilemessages
+
+# Atualizar o requirements.txt
+pip freeze > requirements.txt
+
+# Coletar arquivos estáticos (produção)
 python manage.py collectstatic --noinput
-
 ```
 
-<!-- django-admin makemessages -l pt_BR -d django -->
+### Referências
+- [Documentação do django-unfold](https://github.com/unfoldadmin/django-unfold)
 
-### Padrões de desenvolvimento
-Clique [aqui](docs/padroes.md) para ver os padrões de desenvolvimento utilizados neste projeto.
-
-
-
-<!--
-    Trata-se de um sistema para gerenciar colmeias de abelhas, 
-    com funcionalidades para cadastrar, editar e visualizar informações sobre as colmeias, 
-    bem como registrar inspeções/revisões e tratamentos realizados.
-
-    ### Modelos
-
-    Colmeias
-        N. de identificação -> somente leitura, gera o número automaticamente, precisa ser único
-        Método de aquisição -> escolha entre: Compra, Troca, Divisão e Captura, Doação
-        Data de aquisição -> data
-        Espécie -> escolha entre: Apis mellifera, Lista de espécies sem ferrão
-        Nome Popular -> texto
-        Situação -> escolha entre:
-            - Em produção (colônia saudável/ativa)
-            - Em observação (fraca, recém-capturada, em adaptação)
-            - Órfã (sem rainha)
-            - Morta
-            - Doada/Vendida
-            - Perdida (desaparecida, roubada)
-        Meliponário / Apiário -> referência (opcional) a um meliponário ou apiário cadastrado
-        Observações -> texto livre
-        Revisões -> relação com o modelo Revisões
-
-    Revisões
-        Colmeia -> referência à colmeia
-        Data da revisão -> data/hora
-        Rainha vista -> booleano
-        Cria -> escala 0 a 5 (nível de criação presente)
-        Alimento/Reservas -> escala 0 a 5
-        Força da colônia -> escala 0 a 5
-        Temperamento -> escolha entre: Muito mansa, Mansa, Média, Arisca, Agressiva
-        Observações -> texto livre
-        Arquivos/Fotos -> múltiplos anexos relacionados
-        Houve manejo? -> booleano
-            Se sim exibir campo: Descrever manejo(s) realizado(s)
-
-    Espécies
-        Grupo -> Apis mellifera ou Sem ferrão
-        Nome científico -> texto
-        Nome popular -> texto
-        Características -> texto livre
-        UF -> escolha múltipla entre as unidades federativas do Brasil
-
-    Meliponários/Apiários
-        Nome -> texto
-        QTD de colmeias vinculadas -> número, preenchido automaticamente com a contagem de colmeias associadas
--->
-
-
-<!-- documentação tema django-admin-interface -->
-<!-- https://github.com/fabiocaccamo/django-admin-interface?tab=readme-ov-file -->
-<!-- python manage.py loaddata admin_interface_theme_bootstrap.json -->
+Clique [aqui](docs/padroes.md) para ver os padrões de desenvolvimento adotados no projeto.
