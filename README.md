@@ -7,7 +7,7 @@ Sistema web para controle de colmeias de abelhas, com suporte a múltiplos usuá
 - Cadastro de espécies com características, comportamento padrão e UFs de ocorrência.
 - Registro de meliponários/apiários vinculados ao usuário, com contagem automática de colmeias associadas.
 - Gerenciamento completo das colmeias, incluindo histórico de aquisição, situação atual e observações.
-- Registro de revisões com notas sobre rainha, cria, alimento, força da colônia, temperamento, peso e manejos executados.
+- Registro de revisões com notas sobre rainha, cria, alimento, pólen, força da colônia, temperamento, peso e manejos executados.
 - Upload de anexos (fotos/documentos) relacionados às revisões.
 - Separação de dados por usuário (multi-tenant). Usuários comuns visualizam apenas seus próprios cadastros; superusuários têm visão global.
 
@@ -38,10 +38,13 @@ Sistema web para controle de colmeias de abelhas, com suporte a múltiplos usuá
 
 ### Revisões
 - Colmeia, data/hora da revisão e indicador se a rainha foi vista
-- Escalas de 0 a 5 para cria, alimento e força
+- Cria (Nenhuma, Pouca, Moderada ou Abundante)
+- Alimento/Reservas (Nenhum, Pouco, Moderado ou Abundante)
+- Pólen (Nenhum, Pouco, Moderado ou Abundante)
+- Força da colônia (Fraca, Média ou Forte)
 - Temperamento (Muito mansa, Mansa, Média, Arisca ou Agressiva)
 - Peso da colmeia (opcional)
-- Observações e registro de manejo (condicional)
+- Observações e descrição livre de manejos realizados
 - Anexos de arquivos/fotos
 
 ## Configuração do projeto

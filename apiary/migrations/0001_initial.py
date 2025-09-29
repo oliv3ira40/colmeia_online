@@ -1,7 +1,6 @@
 # Generated manually because automated migrations are unavailable in the execution environment.
 from django.conf import settings
 from django.db import migrations, models
-import django.core.validators
 import django.db.models.deletion
 import apiary.models
 
@@ -117,29 +116,53 @@ class Migration(migrations.Migration):
                 ("queen_seen", models.BooleanField(default=False)),
                 (
                     "brood_level",
-                    models.PositiveSmallIntegerField(
-                        validators=[
-                            django.core.validators.MinValueValidator(0),
-                            django.core.validators.MaxValueValidator(5),
-                        ]
+                    models.CharField(
+                        choices=[
+                            ("nenhuma", "Nenhuma"),
+                            ("pouca", "Pouca"),
+                            ("moderada", "Moderada"),
+                            ("abundante", "Abundante"),
+                        ],
+                        max_length=20,
+                        verbose_name="Cria",
                     ),
                 ),
                 (
                     "food_level",
-                    models.PositiveSmallIntegerField(
-                        validators=[
-                            django.core.validators.MinValueValidator(0),
-                            django.core.validators.MaxValueValidator(5),
-                        ]
+                    models.CharField(
+                        choices=[
+                            ("nenhum", "Nenhum"),
+                            ("pouco", "Pouco"),
+                            ("moderado", "Moderado"),
+                            ("abundante", "Abundante"),
+                        ],
+                        max_length=20,
+                        verbose_name="Alimento/Reservas",
+                    ),
+                ),
+                (
+                    "pollen_level",
+                    models.CharField(
+                        choices=[
+                            ("nenhum", "Nenhum"),
+                            ("pouco", "Pouco"),
+                            ("moderado", "Moderado"),
+                            ("abundante", "Abundante"),
+                        ],
+                        max_length=20,
+                        verbose_name="Pólen",
                     ),
                 ),
                 (
                     "colony_strength",
-                    models.PositiveSmallIntegerField(
-                        validators=[
-                            django.core.validators.MinValueValidator(0),
-                            django.core.validators.MaxValueValidator(5),
-                        ]
+                    models.CharField(
+                        choices=[
+                            ("fraca", "Fraca"),
+                            ("media", "Média"),
+                            ("forte", "Forte"),
+                        ],
+                        max_length=20,
+                        verbose_name="Força da colônia",
                     ),
                 ),
                 (
@@ -157,8 +180,10 @@ class Migration(migrations.Migration):
                 ),
                 ("hive_weight", models.DecimalField(blank=True, decimal_places=2, max_digits=6, null=True)),
                 ("notes", models.TextField(blank=True)),
-                ("management_performed", models.BooleanField(default=False)),
-                ("management_description", models.TextField(blank=True)),
+                (
+                    "management_description",
+                    models.TextField(blank=True, verbose_name="Descreva manejo(s) realizado(s)"),
+                ),
                 (
                     "hive",
                     models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name="revisions", to="apiary.hive"),

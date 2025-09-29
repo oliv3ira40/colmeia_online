@@ -3,7 +3,6 @@ from __future__ import annotations
 import uuid
 from django.conf import settings
 from django.core.exceptions import ValidationError
-from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 
@@ -266,6 +265,23 @@ class Revision(models.Model):
         SKITTISH = "arisca", "Arisca"
         AGGRESSIVE = "agressiva", "Agressiva"
 
+    class BroodLevel(models.TextChoices):
+        NONE = "nenhuma", "Nenhuma"
+        LOW = "pouca", "Pouca"
+        MODERATE = "moderada", "Moderada"
+        ABUNDANT = "abundante", "Abundante"
+
+    class ResourceLevel(models.TextChoices):
+        NONE = "nenhum", "Nenhum"
+        LOW = "pouco", "Pouco"
+        MODERATE = "moderado", "Moderado"
+        ABUNDANT = "abundante", "Abundante"
+
+    class ColonyStrength(models.TextChoices):
+        WEAK = "fraca", "Fraca"
+        MEDIUM = "media", "Média"
+        STRONG = "forte", "Forte"
+
     hive = models.ForeignKey(
         Hive,
         on_delete=models.CASCADE,
@@ -274,17 +290,25 @@ class Revision(models.Model):
     )
     review_date = models.DateTimeField("Data da revisão")
     queen_seen = models.BooleanField("Rainha vista", default=False)
-    brood_level = models.PositiveSmallIntegerField(
+    brood_level = models.CharField(
         "Cria",
-        validators=[MinValueValidator(0), MaxValueValidator(5)],
+        max_length=20,
+        choices=BroodLevel.choices,
     )
-    food_level = models.PositiveSmallIntegerField(
+    food_level = models.CharField(
         "Alimento/Reservas",
-        validators=[MinValueValidator(0), MaxValueValidator(5)],
+        max_length=20,
+        choices=ResourceLevel.choices,
     )
-    colony_strength = models.PositiveSmallIntegerField(
+    pollen_level = models.CharField(
+        "Pólen",
+        max_length=20,
+        choices=ResourceLevel.choices,
+    )
+    colony_strength = models.CharField(
         "Força da colônia",
-        validators=[MinValueValidator(0), MaxValueValidator(5)],
+        max_length=20,
+        choices=ColonyStrength.choices,
     )
     temperament = models.CharField(
         "Temperamento",
@@ -299,9 +323,8 @@ class Revision(models.Model):
         blank=True,
     )
     notes = models.TextField("Observações", blank=True)
-    management_performed = models.BooleanField("Houve manejo?", default=False)
     management_description = models.TextField(
-        "Descrever manejo(s) realizado(s)",
+        "Descreva manejo(s) realizado(s)",
         blank=True,
     )
 
@@ -317,18 +340,7 @@ class Revision(models.Model):
 
     def clean(self) -> None:
         super().clean()
-        if self.management_performed and not self.management_description:
-            raise ValidationError(
-                {
-                    "management_description": "Descreva o manejo realizado quando a opção 'Houve manejo?' estiver marcada.",
-                }
-            )
-        if not self.management_performed and self.management_description:
-            raise ValidationError(
-                {
-                    "management_description": "Informe um manejo apenas quando a opção 'Houve manejo?' estiver marcada.",
-                }
-            )
+        return None
 
     def save(self, *args, **kwargs):
         self.full_clean()

@@ -77,8 +77,24 @@ class HiveAdmin(OwnerRestrictedAdmin):
 
 @admin.register(Revision)
 class RevisionAdmin(admin.ModelAdmin):
-    list_display = ("hive", "review_date", "temperament", "queen_seen", "management_performed")
-    list_filter = ("temperament", "management_performed", "queen_seen")
+    list_display = (
+        "hive",
+        "review_date",
+        "queen_seen",
+        "temperament",
+        "brood_level",
+        "food_level",
+        "pollen_level",
+        "colony_strength",
+    )
+    list_filter = (
+        "queen_seen",
+        "temperament",
+        "brood_level",
+        "food_level",
+        "pollen_level",
+        "colony_strength",
+    )
     search_fields = ("hive__identification_number", "hive__popular_name")
     inlines = [RevisionAttachmentInline]
 
