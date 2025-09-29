@@ -6,6 +6,16 @@ Guia para **agentes/contêineres** (ex.: Codex) prepararem, validarem e executar
 
 ---
 
+## 🆕 Convenções do código em vigor
+- A **home pública** fica em `templates/home.html` e é entregue pela `TemplateView` registrada em `core/urls.py`. Ela precisa permanecer disponível na raiz `/` exibindo somente o `<h1>Comeias Online` centralizado.
+- O **dashboard do admin** é configurado em `core/admin_dashboard.py`. O módulo injeta um índice customizado para usuários que não são superusuários e prepara o contexto para `templates/admin/custom_dashboard.html`.
+  - Cards obrigatórios: “Meus Meliponários”, “Minhas Colmeias”, “Espécies criadas” e o botão “Nova Revisão”.
+  - Listas obrigatórias: “Revisões Recentes” (10 itens) e “Colmeias sem revisão há 7+ dias” (até 50 itens, incluindo nunca revisadas).
+  - A coluna de “Ações recentes” ocupa 20% do grid e usa o log padrão do Django Admin.
+  - Todas as consultas do dashboard filtram os dados pelo usuário autenticado e respeitam o fuso `America/Sao_Paulo`.
+- Layouts customizados do admin ficam em `templates/admin/` e precisam manter compatibilidade com o tema `django-admin-interface`.
+---
+
 ## ✅ Objetivo
 Padronizar o _setup_ do ambiente de execução (com internet habilitada) e os comandos de verificação para que `python manage.py check` e o servidor funcionem sem erros.
 

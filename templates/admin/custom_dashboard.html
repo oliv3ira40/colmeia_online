@@ -1,0 +1,377 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static admin_urls log tz %}
+
+{% block extrastyle %}
+{{ block.super }}
+<style>
+    :root {
+        --dashboard-gap: 1.5rem;
+        --dashboard-card-bg: rgba(255, 255, 255, 0.9);
+        --dashboard-card-border: rgba(15, 23, 42, 0.08);
+        --dashboard-card-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+        --dashboard-accent: #047857;
+        --dashboard-accent-hover: #065f46;
+        --dashboard-muted: #475569;
+        --dashboard-surface: #f8fafc;
+    }
+
+    .colmeia-dashboard {
+        display: flex;
+        gap: var(--dashboard-gap);
+        width: 100%;
+        margin-top: 1.5rem;
+        align-items: flex-start;
+    }
+
+    .colmeia-dashboard__main {
+        flex: 0 1 80%;
+        max-width: 80%;
+        display: flex;
+        flex-direction: column;
+        gap: var(--dashboard-gap);
+    }
+
+    .colmeia-dashboard__sidebar {
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+
+    .dashboard-cards {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: var(--dashboard-gap);
+    }
+
+    .dashboard-card {
+        border-radius: 1rem;
+        padding: 1.5rem;
+        background: var(--dashboard-card-bg);
+        border: 1px solid var(--dashboard-card-border);
+        box-shadow: var(--dashboard-card-shadow);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.75rem;
+        position: relative;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .dashboard-card:focus-visible,
+    .dashboard-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+    }
+
+    .dashboard-card__title {
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        color: var(--dashboard-muted);
+        text-transform: uppercase;
+    }
+
+    .dashboard-card__value {
+        font-size: clamp(1.75rem, 3vw, 2.5rem);
+        font-weight: 700;
+        color: #0f172a;
+    }
+
+    .dashboard-card--cta {
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: #f8fafc;
+        text-decoration: none;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .dashboard-card--cta .dashboard-card__title {
+        color: rgba(255, 255, 255, 0.85);
+        text-transform: none;
+        font-size: 1.15rem;
+        text-align: center;
+    }
+
+    .dashboard-card--cta:focus-visible,
+    .dashboard-card--cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 18px 40px rgba(5, 150, 105, 0.35);
+        background: linear-gradient(135deg, #0f9f74, #047857);
+    }
+
+    .dashboard-panel {
+        background: var(--dashboard-surface);
+        border-radius: 1rem;
+        border: 1px solid var(--dashboard-card-border);
+        box-shadow: 0 16px 40px rgba(15, 23, 42, 0.1);
+        padding: 1.25rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .dashboard-panel__header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    .dashboard-panel__title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin: 0;
+        color: #0f172a;
+    }
+
+    .dashboard-panel__subtitle {
+        font-size: 0.9rem;
+        color: var(--dashboard-muted);
+        margin: 0;
+    }
+
+    .dashboard-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .dashboard-list__item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        border-radius: 0.85rem;
+        padding: 0.9rem 1rem;
+        background: rgba(255, 255, 255, 0.85);
+        border: 1px solid rgba(148, 163, 184, 0.3);
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .dashboard-list__item:focus-within,
+    .dashboard-list__item:hover {
+        border-color: rgba(14, 116, 144, 0.35);
+        box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+    }
+
+    .dashboard-item__primary {
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+    }
+
+    .dashboard-item__title {
+        font-weight: 600;
+        font-size: 1rem;
+        color: #0f172a;
+    }
+
+    .dashboard-item__subtitle,
+    .dashboard-item__meta {
+        font-size: 0.9rem;
+        color: var(--dashboard-muted);
+    }
+
+    .dashboard-item__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .dashboard-action-link {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--dashboard-accent);
+        text-decoration: none;
+    }
+
+    .dashboard-action-link:focus-visible,
+    .dashboard-action-link:hover {
+        color: var(--dashboard-accent-hover);
+        text-decoration: underline;
+    }
+
+    .dashboard-empty {
+        font-size: 0.95rem;
+        color: var(--dashboard-muted);
+        margin: 0;
+    }
+
+    .dashboard-sidebar-panel {
+        background: var(--dashboard-surface);
+        border-radius: 1rem;
+        border: 1px solid var(--dashboard-card-border);
+        box-shadow: 0 16px 32px rgba(15, 23, 42, 0.12);
+        padding: 1.25rem 1.2rem;
+    }
+
+    .dashboard-sidebar-panel h2 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin: 0 0 1rem;
+        color: #0f172a;
+    }
+
+    .dashboard-sidebar-panel .actionlist {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .dashboard-sidebar-panel .actionlist li {
+        font-size: 0.9rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .dashboard-sidebar-panel .actionlist a {
+        color: var(--dashboard-accent);
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .dashboard-sidebar-panel .actionlist a:focus-visible,
+    .dashboard-sidebar-panel .actionlist a:hover {
+        color: var(--dashboard-accent-hover);
+        text-decoration: underline;
+    }
+
+    .dashboard-sidebar-panel .actionlist .quiet {
+        color: var(--dashboard-muted);
+        font-size: 0.8rem;
+    }
+
+    @media (max-width: 1280px) {
+        .dashboard-cards {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .colmeia-dashboard {
+            flex-direction: column;
+        }
+
+        .colmeia-dashboard__main,
+        .colmeia-dashboard__sidebar {
+            max-width: 100%;
+            flex-basis: 100%;
+        }
+
+        .colmeia-dashboard__sidebar {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .dashboard-cards {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="colmeia-dashboard" role="main">
+    <div class="colmeia-dashboard__main">
+        <div class="dashboard-cards" role="list" aria-label="Resumo geral">
+            <article class="dashboard-card" role="listitem" tabindex="0">
+                <span class="dashboard-card__title">Meus Meliponários</span>
+                <span class="dashboard-card__value">{{ cards.apiaries }}</span>
+            </article>
+            <article class="dashboard-card" role="listitem" tabindex="0">
+                <span class="dashboard-card__title">Minhas Colmeias</span>
+                <span class="dashboard-card__value">{{ cards.hives }}</span>
+            </article>
+            <article class="dashboard-card" role="listitem" tabindex="0">
+                <span class="dashboard-card__title">Espécies criadas</span>
+                <span class="dashboard-card__value">{{ cards.species }}</span>
+            </article>
+            <a class="dashboard-card dashboard-card--cta" href="{{ create_revision_url }}" role="listitem">
+                <span class="dashboard-card__title">Nova Revisão</span>
+            </a>
+        </div>
+
+        <section class="dashboard-panel" aria-labelledby="recent-revisions-heading">
+            <div class="dashboard-panel__header">
+                <h2 class="dashboard-panel__title" id="recent-revisions-heading">Revisões Recentes</h2>
+                <p class="dashboard-panel__subtitle">Últimas 10 revisões cadastradas</p>
+            </div>
+            {% if recent_revisions %}
+                <ul class="dashboard-list">
+                    {% for revision in recent_revisions %}
+                        <li class="dashboard-list__item">
+                            <a class="dashboard-item__primary" href="{{ revision.change_url }}">
+                                <span class="dashboard-item__title"><time datetime="{{ revision.review_time_iso }}">{{ revision.review_date_display }}</time></span>
+                                <span class="dashboard-item__subtitle">{{ revision.hive_name }} · {{ revision.species_name }}{% if revision.apiary_name %} · {{ revision.apiary_name }}{% endif %}</span>
+                            </a>
+                            <div class="dashboard-item__actions">
+                                <a class="dashboard-action-link" href="{{ revision.hive_url }}">Ver colmeia</a>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="dashboard-empty">Nenhuma revisão registrada.</p>
+            {% endif %}
+        </section>
+
+        <section class="dashboard-panel" aria-labelledby="overdue-hives-heading">
+            <div class="dashboard-panel__header">
+                <h2 class="dashboard-panel__title" id="overdue-hives-heading">Colmeias sem revisão há 7+ dias</h2>
+                <p class="dashboard-panel__subtitle">Inclui colmeias nunca revisadas ou com última revisão anterior ao limite</p>
+            </div>
+            {% if overdue_hives %}
+                <ul class="dashboard-list">
+                    {% for hive in overdue_hives %}
+                        <li class="dashboard-list__item">
+                            <a class="dashboard-item__primary" href="{{ hive.change_url }}">
+                                <span class="dashboard-item__title">{{ hive.name }}</span>
+                                <span class="dashboard-item__subtitle">{{ hive.species_name }}{% if hive.apiary_name %} · {{ hive.apiary_name }}{% endif %}</span>
+                                <span class="dashboard-item__meta">{{ hive.status_display }}</span>
+                            </a>
+                            <div class="dashboard-item__actions">
+                                <a class="dashboard-action-link" href="{{ hive.add_revision_url }}">+ Revisão</a>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="dashboard-empty">Nenhuma colmeia está sem revisão há 7 dias ou mais.</p>
+            {% endif %}
+        </section>
+    </div>
+
+    <aside class="colmeia-dashboard__sidebar" aria-labelledby="recent-actions-heading">
+        <section class="dashboard-sidebar-panel">
+            <h2 id="recent-actions-heading">Ações recentes</h2>
+            {% get_admin_log 10 as admin_log for_user user %}
+            {% if admin_log %}
+                <ul class="actionlist">
+                    {% for entry in admin_log %}
+                        <li class="{% if entry.is_addition %}addlink {% endif %}{% if entry.is_change %}changelink {% endif %}{% if entry.is_deletion %}deletelink{% endif %}">
+                            {% if entry.is_deletion or not entry.get_admin_url %}
+                                {{ entry.object_repr }}
+                            {% else %}
+                                <a href="{{ entry.get_admin_url }}">{{ entry.object_repr }}</a>
+                            {% endif %}
+                            <span class="quiet">
+                                {{ entry.action_time|localtime|date:"d/m/Y H:i" }}
+                            </span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="dashboard-empty">Sem ações recentes registradas.</p>
+            {% endif %}
+        </section>
+    </aside>
+</div>
+{% endblock %}
