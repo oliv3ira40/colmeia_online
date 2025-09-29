@@ -1,0 +1,74 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-26 18:05-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: person/admin.py:20
+msgid "Login"
+msgstr ""
+
+#: person/admin.py:26
+msgid "Personal info"
+msgstr ""
+
+#: person/admin.py:32
+msgid "Permissions"
+msgstr ""
+
+#: person/admin.py:38
+msgid "Important dates"
+msgstr ""
+
+msgid "Type to search"
+msgstr "Digite para buscar"
+
+msgid "Select action"
+msgstr "Selecione a ação"
+
+msgid "Filters"
+msgstr "Filtros"
+
+msgid "Select value"
+msgstr "Selecione o valor"
+
+msgid "Run"
+msgstr "Executar"
+
+msgid "Dark"
+msgstr "Escuro"
+
+msgid "Light"
+msgstr "Claro"
+
+msgid "System"
+msgstr "Sistema"
+
+msgid "Welcome back to"
+msgstr "Bem vindo(a) de volta"
+
+msgid "Return to site"
+msgstr "Retornar ao site"
+
+msgid "You have been successfully logged out from the administration"
+msgstr "Você foi desconectado com sucesso da administração"
+
+msgid "Filter results"
+msgstr "Filtrar resultados"
+
+msgid "Raw passwords are not stored, so there is no way to see this user’s password, but you can change the password using <a href=\"{}\" class=\"text-primary-600 dark:text-primary-500\">this form</a>."
+msgstr "Senhas em texto não são armazenadas, então não há como ver a senha deste usuário, mas você pode alterá-la usando <a href=\"{}\" class=\"text-primary-600 dark:text-primary-500\">este formulário</a>."
