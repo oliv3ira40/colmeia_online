@@ -8,6 +8,11 @@ from core import admin_dashboard  # noqa: F401  # Importa para aplicar o dashboa
 
 urlpatterns = [
     path("", TemplateView.as_view(template_name="home.html"), name="home"),
+    path(
+        "sobre-o-sistema/",
+        TemplateView.as_view(template_name="system_overview.html"),
+        name="system_overview",
+    ),
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls', namespace='accounts')),
 ]
