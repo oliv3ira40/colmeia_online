@@ -1,6 +1,5 @@
 [
   {
-    "nome_cientifica": "Aparatrigona impunctata",
     "nome_popular": "",
     "ufs": [
       "AC",
@@ -10,53 +9,59 @@
       "PA",
       "RO",
       "RR"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Aparatrigona impunctata"
   },
   {
-    "nome_cientifica": "Camargoia camargoi",
     "nome_popular": "",
     "ufs": [
       "AP",
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Camargoia camargoi"
   },
   {
-    "nome_cientifica": "Camargoia nordestina",
     "nome_popular": "",
     "ufs": [
       "BA",
       "CE",
       "PI",
       "TO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Camargoia nordestina"
   },
   {
-    "nome_cientifica": "Camargoia pilicornis",
     "nome_popular": "",
     "ufs": [
       "MA",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Camargoia pilicornis"
   },
   {
-    "nome_cientifica": "Celetrigona euclydiana",
     "nome_popular": "",
     "ufs": [
       "AC"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Celetrigona euclydiana"
   },
   {
-    "nome_cientifica": "Celetrigona hirsuticornis",
     "nome_popular": "",
     "ufs": [
       "AC",
       "AM",
       "MT",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Celetrigona hirsuticornis"
   },
   {
-    "nome_cientifica": "Celetrigona longicornis",
     "nome_popular": "",
     "ufs": [
       "AM",
@@ -65,19 +70,21 @@
       "MT",
       "PA",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Celetrigona longicornis"
   },
   {
-    "nome_cientifica": "Celetrigona manauara",
     "nome_popular": "",
     "ufs": [
       "AP",
       "AM",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Celetrigona manauara"
   },
   {
-    "nome_cientifica": "Cephalotrigona capitata",
     "nome_popular": "Mombucão",
     "ufs": [
       "AP",
@@ -89,10 +96,11 @@
       "PR",
       "SC",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Cephalotrigona capitata"
   },
   {
-    "nome_cientifica": "Cephalotrigona femorata",
     "nome_popular": "",
     "ufs": [
       "AP",
@@ -100,28 +108,31 @@
       "MA",
       "PA",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Cephalotrigona femorata"
   },
   {
-    "nome_cientifica": "Dolichotrigona browni",
     "nome_popular": "",
     "ufs": [
       "AC",
       "MT",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Dolichotrigona browni"
   },
   {
-    "nome_cientifica": "Dolichotrigona clavicornis",
     "nome_popular": "",
     "ufs": [
       "AC",
       "AM",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Dolichotrigona clavicornis"
   },
   {
-    "nome_cientifica": "Dolichotrigona longitarsis",
     "nome_popular": "",
     "ufs": [
       "AC",
@@ -130,42 +141,47 @@
       "MT",
       "PA",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Dolichotrigona longitarsis"
   },
   {
-    "nome_cientifica": "Dolichotrigona mendersoni",
     "nome_popular": "",
     "ufs": [
       "AC",
       "AM",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Dolichotrigona mendersoni"
   },
   {
-    "nome_cientifica": "Dolichotrigona moratoi",
     "nome_popular": "",
     "ufs": [
       "AC",
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Dolichotrigona moratoi"
   },
   {
-    "nome_cientifica": "Dolichotrigona rondoni",
     "nome_popular": "",
     "ufs": [
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Dolichotrigona rondoni"
   },
   {
-    "nome_cientifica": "Dolichotrigona tavaresi",
     "nome_popular": "",
     "ufs": [
       "AC",
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Dolichotrigona tavaresi"
   },
   {
-    "nome_cientifica": "Duckeola ghiliani",
     "nome_popular": "",
     "ufs": [
       "AP",
@@ -173,37 +189,41 @@
       "MT",
       "PA",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Duckeola ghiliani"
   },
   {
-    "nome_cientifica": "Duckeola pavani",
     "nome_popular": "",
     "ufs": [
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Duckeola pavani"
   },
   {
-    "nome_cientifica": "Friesella schrottkyi",
     "nome_popular": "",
     "ufs": [
       "ES",
       "MG",
       "PR",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Friesella schrottkyi"
   },
   {
-    "nome_cientifica": "Frieseomelitta dispar",
     "nome_popular": "",
     "ufs": [
       "BA",
       "ES",
       "MG",
       "PB"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Frieseomelitta dispar"
   },
   {
-    "nome_cientifica": "Frieseomelitta doederleini",
     "nome_popular": "",
     "ufs": [
       "BA",
@@ -215,20 +235,22 @@
       "PE",
       "PI",
       "RN"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Frieseomelitta doederleini"
   },
   {
-    "nome_cientifica": "Frieseomelitta flavicornis",
     "nome_popular": "",
     "ufs": [
       "AP",
       "AM",
       "PA",
       "RR"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Frieseomelitta flavicornis"
   },
   {
-    "nome_cientifica": "Frieseomelitta francoi",
     "nome_popular": "",
     "ufs": [
       "BA",
@@ -236,72 +258,81 @@
       "PB",
       "PE",
       "SE"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Frieseomelitta francoi"
   },
   {
-    "nome_cientifica": "Frieseomelitta freiremaiai",
     "nome_popular": "",
     "ufs": [
       "BA",
       "ES"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Frieseomelitta freiremaiai"
   },
   {
-    "nome_cientifica": "Frieseomelitta languida",
     "nome_popular": "",
     "ufs": [
       "BA",
       "GO",
       "MG",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Frieseomelitta languida"
   },
   {
-    "nome_cientifica": "Frieseomelitta longipes",
     "nome_popular": "",
     "ufs": [
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Frieseomelitta longipes"
   },
   {
-    "nome_cientifica": "Frieseomelitta meadewaldoi",
     "nome_popular": "",
-    "ufs": []
+    "ufs": [],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Frieseomelitta meadewaldoi"
   },
   {
-    "nome_cientifica": "Frieseomelitta paranigra",
     "nome_popular": "",
     "ufs": [
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Frieseomelitta paranigra"
   },
   {
-    "nome_cientifica": "Frieseomelitta portoi",
     "nome_popular": "",
     "ufs": [
       "AM",
       "MA",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Frieseomelitta portoi"
   },
   {
-    "nome_cientifica": "Frieseomelitta silvestrii",
     "nome_popular": "",
     "ufs": [
       "MT"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Frieseomelitta silvestrii"
   },
   {
-    "nome_cientifica": "Frieseomelitta trichocerata",
     "nome_popular": "",
     "ufs": [
       "AP",
       "AM",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Frieseomelitta trichocerata"
   },
   {
-    "nome_cientifica": "Frieseomelitta varia",
     "nome_popular": "marmelada-amarela",
     "ufs": [
       "BA",
@@ -310,44 +341,49 @@
       "MG",
       "SP",
       "TO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Frieseomelitta varia"
   },
   {
-    "nome_cientifica": "Geotrigona aequinoctialis",
     "nome_popular": "",
     "ufs": [
       "CE",
       "MA",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Geotrigona aequinoctialis"
   },
   {
-    "nome_cientifica": "Geotrigona fulvohirta",
     "nome_popular": "",
     "ufs": [
       "AC",
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Geotrigona fulvohirta"
   },
   {
-    "nome_cientifica": "Geotrigona kwyrakai",
     "nome_popular": "",
     "ufs": [
       "PA",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Geotrigona kwyrakai"
   },
   {
-    "nome_cientifica": "Geotrigona mattogrossensis",
     "nome_popular": "",
     "ufs": [
       "MT",
       "PA",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Geotrigona mattogrossensis"
   },
   {
-    "nome_cientifica": "Geotrigona mombuca",
     "nome_popular": "",
     "ufs": [
       "BA",
@@ -360,58 +396,65 @@
       "PI",
       "SP",
       "TO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Geotrigona mombuca"
   },
   {
-    "nome_cientifica": "Geotrigona subfulva",
     "nome_popular": "",
     "ufs": [
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Geotrigona subfulva"
   },
   {
-    "nome_cientifica": "Geotrigona subgrisea",
     "nome_popular": "",
     "ufs": [
       "RR"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Geotrigona subgrisea"
   },
   {
-    "nome_cientifica": "Geotrigona subnigra",
     "nome_popular": "",
     "ufs": [
       "AP",
       "AM",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Geotrigona subnigra"
   },
   {
-    "nome_cientifica": "Geotrigona subterranea",
     "nome_popular": "",
     "ufs": [
       "BA",
       "MG",
       "PR",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Geotrigona subterranea"
   },
   {
-    "nome_cientifica": "Geotrigona xanthopoda",
     "nome_popular": "",
     "ufs": [
       "PB",
       "PE"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Geotrigona xanthopoda"
   },
   {
-    "nome_cientifica": "Lestrimelitta ciliata",
     "nome_popular": "",
     "ufs": [
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Lestrimelitta ciliata"
   },
   {
-    "nome_cientifica": "Lestrimelitta ehrhardti",
     "nome_popular": "",
     "ufs": [
       "AL",
@@ -421,29 +464,32 @@
       "RJ",
       "SC",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Lestrimelitta ehrhardti"
   },
   {
-    "nome_cientifica": "Lestrimelitta glaberrima",
     "nome_popular": "",
     "ufs": [
       "AP",
       "AM",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Lestrimelitta glaberrima"
   },
   {
-    "nome_cientifica": "Lestrimelitta glabrata",
     "nome_popular": "",
     "ufs": [
       "AC",
       "AM",
       "MT",
       "RR"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Lestrimelitta glabrata"
   },
   {
-    "nome_cientifica": "Lestrimelitta limao",
     "nome_popular": "canudo, iraxim, limão",
     "ufs": [
       "BA",
@@ -454,46 +500,51 @@
       "MG",
       "RO",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Lestrimelitta limao"
   },
   {
-    "nome_cientifica": "Lestrimelitta maracaia",
     "nome_popular": "",
     "ufs": [
       "AM",
       "RO",
       "RR"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Lestrimelitta maracaia"
   },
   {
-    "nome_cientifica": "Lestrimelitta monodonta",
     "nome_popular": "",
     "ufs": [
       "AM",
       "MA",
       "PA",
       "RR"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Lestrimelitta monodonta"
   },
   {
-    "nome_cientifica": "Lestrimelitta nana",
     "nome_popular": "",
     "ufs": [
       "AP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Lestrimelitta nana"
   },
   {
-    "nome_cientifica": "Lestrimelitta rufa",
     "nome_popular": "",
     "ufs": [
       "AM",
       "MT",
       "PA",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Lestrimelitta rufa"
   },
   {
-    "nome_cientifica": "Lestrimelitta rufipes",
     "nome_popular": "",
     "ufs": [
       "AM",
@@ -513,51 +564,57 @@
       "SC",
       "SP",
       "TO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Lestrimelitta rufipes"
   },
   {
-    "nome_cientifica": "Lestrimelitta similis",
     "nome_popular": "",
     "ufs": [
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Lestrimelitta similis"
   },
   {
-    "nome_cientifica": "Lestrimelitta spinosa",
     "nome_popular": "",
     "ufs": [
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Lestrimelitta spinosa"
   },
   {
-    "nome_cientifica": "Lestrimelitta sulina",
     "nome_popular": "",
     "ufs": [
       "PR",
       "RS",
       "SC"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Lestrimelitta sulina"
   },
   {
-    "nome_cientifica": "Lestrimelitta tropica",
     "nome_popular": "",
     "ufs": [
       "BA",
       "CE",
       "RJ"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Lestrimelitta tropica"
   },
   {
-    "nome_cientifica": "Leurotrigona gracilis",
     "nome_popular": "",
     "ufs": [
       "AC",
       "AM",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Leurotrigona gracilis"
   },
   {
-    "nome_cientifica": "Leurotrigona muelleri",
     "nome_popular": "lambe-olhos",
     "ufs": [
       "BA",
@@ -572,19 +629,21 @@
       "RO",
       "SC",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Leurotrigona muelleri"
   },
   {
-    "nome_cientifica": "Leurotrigona pusilla",
     "nome_popular": "",
     "ufs": [
       "AP",
       "AM",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Leurotrigona pusilla"
   },
   {
-    "nome_cientifica": "Melipona amazonica",
     "nome_popular": "",
     "ufs": [
       "AC",
@@ -592,10 +651,11 @@
       "AM",
       "PA",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona amazonica"
   },
   {
-    "nome_cientifica": "Melipona asilvai",
     "nome_popular": "",
     "ufs": [
       "AL",
@@ -607,10 +667,11 @@
       "PI",
       "RN",
       "SE"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona asilvai"
   },
   {
-    "nome_cientifica": "Melipona bicolor",
     "nome_popular": "guaraipo",
     "ufs": [
       "BA",
@@ -621,10 +682,11 @@
       "RS",
       "SC",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona bicolor"
   },
   {
-    "nome_cientifica": "Melipona bradley",
     "nome_popular": "",
     "ufs": [
       "AP",
@@ -633,18 +695,20 @@
       "PA",
       "RO",
       "RR"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona bradley"
   },
   {
-    "nome_cientifica": "Melipona illustris",
     "nome_popular": "",
     "ufs": [
       "PA",
       "MT"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona illustris"
   },
   {
-    "nome_cientifica": "Melipona marginata",
     "nome_popular": "",
     "ufs": [
       "BA",
@@ -654,29 +718,32 @@
       "MG",
       "RJ",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona marginata"
   },
   {
-    "nome_cientifica": "Melipona ogilviei",
     "nome_popular": "",
     "ufs": [
       "AP",
       "AM",
       "PA",
       "TO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona ogilviei"
   },
   {
-    "nome_cientifica": "Melipona puncticollis",
     "nome_popular": "",
     "ufs": [
       "AM",
       "MA",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona puncticollis"
   },
   {
-    "nome_cientifica": "Melipona torrida",
     "nome_popular": "",
     "ufs": [
       "MT",
@@ -684,26 +751,29 @@
       "RS",
       "SC",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona torrida"
   },
   {
-    "nome_cientifica": "Melipona tumupasae",
     "nome_popular": "",
     "ufs": [
       "AC"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona tumupasae"
   },
   {
-    "nome_cientifica": "Melipona compressipes",
     "nome_popular": "tiúba",
     "ufs": [
       "AP",
       "AM",
       "RR"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona compressipes"
   },
   {
-    "nome_cientifica": "Melipona fasciculata",
     "nome_popular": "",
     "ufs": [
       "MA",
@@ -711,29 +781,32 @@
       "PA",
       "PI",
       "TO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona fasciculata"
   },
   {
-    "nome_cientifica": "Melipona grandis",
     "nome_popular": "",
     "ufs": [
       "AC",
       "AM",
       "MT",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona grandis"
   },
   {
-    "nome_cientifica": "Melipona interrupta",
     "nome_popular": "",
     "ufs": [
       "AP",
       "AM",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona interrupta"
   },
   {
-    "nome_cientifica": "Melipona quinquefasciata",
     "nome_popular": "",
     "ufs": [
       "CE",
@@ -749,17 +822,19 @@
       "RO",
       "SC",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona quinquefasciata"
   },
   {
-    "nome_cientifica": "Melipona favosa",
     "nome_popular": "",
     "ufs": [
       "RR"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona favosa"
   },
   {
-    "nome_cientifica": "Melipona mandacaia",
     "nome_popular": "",
     "ufs": [
       "AL",
@@ -770,18 +845,20 @@
       "PI",
       "RN",
       "SE"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona mandacaia"
   },
   {
-    "nome_cientifica": "Melipona orbignyi",
     "nome_popular": "",
     "ufs": [
       "MT",
       "MS"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona orbignyi"
   },
   {
-    "nome_cientifica": "Melipona quadrifasciata",
     "nome_popular": "",
     "ufs": [
       "AL",
@@ -798,10 +875,11 @@
       "SC",
       "SP",
       "SE"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona quadrifasciata"
   },
   {
-    "nome_cientifica": "Melipona subnitida",
     "nome_popular": "",
     "ufs": [
       "AL",
@@ -813,76 +891,85 @@
       "PI",
       "RN",
       "SE"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona subnitida"
   },
   {
-    "nome_cientifica": "Melipona brachychaeta",
     "nome_popular": "",
     "ufs": [
       "MT",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona brachychaeta"
   },
   {
-    "nome_cientifica": "Melipona captiosa",
     "nome_popular": "",
     "ufs": [
       "AP",
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona captiosa"
   },
   {
-    "nome_cientifica": "Melipona capixaba",
     "nome_popular": "",
     "ufs": [
       "ES"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona capixaba"
   },
   {
-    "nome_cientifica": "Melipona cramptoni",
     "nome_popular": "",
     "ufs": [
       "RR"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona cramptoni"
   },
   {
-    "nome_cientifica": "Melipona crinita",
     "nome_popular": "",
     "ufs": [
       "AC",
       "AM",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona crinita"
   },
   {
-    "nome_cientifica": "Melipona dubia",
     "nome_popular": "",
     "ufs": [
       "AC",
       "AM",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona dubia"
   },
   {
-    "nome_cientifica": "Melipona eburnea",
     "nome_popular": "",
     "ufs": [
       "AC",
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona eburnea"
   },
   {
-    "nome_cientifica": "Melipona flavolineata",
     "nome_popular": "",
     "ufs": [
       "CE",
       "MA",
       "PA",
       "TO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona flavolineata"
   },
   {
-    "nome_cientifica": "Melipona fuliginosa",
     "nome_popular": "",
     "ufs": [
       "AC",
@@ -893,38 +980,42 @@
       "PA",
       "PI",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona fuliginosa"
   },
   {
-    "nome_cientifica": "Melipona fulva",
     "nome_popular": "",
     "ufs": [
       "AP",
       "AM",
       "PA",
       "RR"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona fulva"
   },
   {
-    "nome_cientifica": "Melipona fuscopilosa",
     "nome_popular": "",
     "ufs": [
       "AC",
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona fuscopilosa"
   },
   {
-    "nome_cientifica": "Melipona lateralis",
     "nome_popular": "",
     "ufs": [
       "AP",
       "AM",
       "PA",
       "RR"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona lateralis"
   },
   {
-    "nome_cientifica": "Melipona melanoventer",
     "nome_popular": "",
     "ufs": [
       "AM",
@@ -932,10 +1023,11 @@
       "MT",
       "PA",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona melanoventer"
   },
   {
-    "nome_cientifica": "Melipona mondury",
     "nome_popular": "",
     "ufs": [
       "BA",
@@ -946,28 +1038,31 @@
       "RS",
       "SC",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona mondury"
   },
   {
-    "nome_cientifica": "Melipona nebulosa",
     "nome_popular": "",
     "ufs": [
       "AC",
       "AM",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona nebulosa"
   },
   {
-    "nome_cientifica": "Melipona paraensis",
     "nome_popular": "",
     "ufs": [
       "AP",
       "AM",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona paraensis"
   },
   {
-    "nome_cientifica": "Melipona rufiventris",
     "nome_popular": "tujuba",
     "ufs": [
       "BA",
@@ -977,10 +1072,11 @@
       "MG",
       "PI",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona rufiventris"
   },
   {
-    "nome_cientifica": "Melipona scutellaris",
     "nome_popular": "",
     "ufs": [
       "AL",
@@ -990,10 +1086,11 @@
       "PE",
       "RN",
       "SE"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona scutellaris"
   },
   {
-    "nome_cientifica": "Melipona seminigra",
     "nome_popular": "",
     "ufs": [
       "AC",
@@ -1004,73 +1101,82 @@
       "RO",
       "RR",
       "TO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona seminigra"
   },
   {
-    "nome_cientifica": "Melipona titania",
     "nome_popular": "",
     "ufs": [
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Melipona titania"
   },
   {
-    "nome_cientifica": "Mourella caerulea",
     "nome_popular": "",
     "ufs": [
       "PR",
       "RS",
       "SC"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Mourella caerulea"
   },
   {
-    "nome_cientifica": "Nannotrigona chapadana",
     "nome_popular": "",
     "ufs": [
       "GO",
       "MT"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Nannotrigona chapadana"
   },
   {
-    "nome_cientifica": "Nannotrigona dutrae",
     "nome_popular": "",
     "ufs": [
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Nannotrigona dutrae"
   },
   {
-    "nome_cientifica": "Nannotrigona melanocera",
     "nome_popular": "",
     "ufs": [
       "AC",
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Nannotrigona melanocera"
   },
   {
-    "nome_cientifica": "Nannotrigona minuta",
     "nome_popular": "",
     "ufs": [
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Nannotrigona minuta"
   },
   {
-    "nome_cientifica": "Nannotrigona punctata",
     "nome_popular": "",
     "ufs": [
       "AP",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Nannotrigona punctata"
   },
   {
-    "nome_cientifica": "Nannotrigona schultzei",
     "nome_popular": "",
     "ufs": [
       "AP",
       "AM",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Nannotrigona schultzei"
   },
   {
-    "nome_cientifica": "Nannotrigona testaceicornis",
     "nome_popular": "",
     "ufs": [
       "BA",
@@ -1083,49 +1189,55 @@
       "RS",
       "SC",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Nannotrigona testaceicornis"
   },
   {
-    "nome_cientifica": "Nogueirapis butteli",
     "nome_popular": "",
     "ufs": [
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Nogueirapis butteli"
   },
   {
-    "nome_cientifica": "Nogueirapis minor",
     "nome_popular": "",
     "ufs": [
       "AP",
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Nogueirapis minor"
   },
   {
-    "nome_cientifica": "Oxytrigona flaveola",
     "nome_popular": "",
     "ufs": [
       "ES"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Oxytrigona flaveola"
   },
   {
-    "nome_cientifica": "Oxytrigona ignis",
     "nome_popular": "",
     "ufs": [
       "AM",
       "MA",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Oxytrigona ignis"
   },
   {
-    "nome_cientifica": "Oxytrigona mulfordi",
     "nome_popular": "",
     "ufs": [
       "AC",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Oxytrigona mulfordi"
   },
   {
-    "nome_cientifica": "Oxytrigona obscura",
     "nome_popular": "",
     "ufs": [
       "AP",
@@ -1133,10 +1245,11 @@
       "MT",
       "PA",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Oxytrigona obscura"
   },
   {
-    "nome_cientifica": "Oxytrigona tataira",
     "nome_popular": "tataíra",
     "ufs": [
       "BA",
@@ -1147,63 +1260,71 @@
       "RJ",
       "SC",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Oxytrigona tataira"
   },
   {
-    "nome_cientifica": "Paratrigona catabolonota",
     "nome_popular": "",
     "ufs": [
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Paratrigona catabolonota"
   },
   {
-    "nome_cientifica": "Paratrigona compsa",
     "nome_popular": "",
     "ufs": [
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Paratrigona compsa"
   },
   {
-    "nome_cientifica": "Paratrigona crassicornis",
     "nome_popular": "",
     "ufs": [
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Paratrigona crassicornis"
   },
   {
-    "nome_cientifica": "Paratrigona euxanthospila",
     "nome_popular": "",
     "ufs": [
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Paratrigona euxanthospila"
   },
   {
-    "nome_cientifica": "Paratrigona femoralis",
     "nome_popular": "",
     "ufs": [
       "AP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Paratrigona femoralis"
   },
   {
-    "nome_cientifica": "Paratrigona haeckeli",
     "nome_popular": "",
     "ufs": [
       "MT",
       "PA",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Paratrigona haeckeli"
   },
   {
-    "nome_cientifica": "Paratrigona incerta",
     "nome_popular": "",
     "ufs": [
       "BA",
       "MG",
       "PB"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Paratrigona incerta"
   },
   {
-    "nome_cientifica": "Paratrigona lineata",
     "nome_popular": "",
     "ufs": [
       "BA",
@@ -1219,74 +1340,83 @@
       "PI",
       "SP",
       "TO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Paratrigona lineata"
   },
   {
-    "nome_cientifica": "Paratrigona lineatifrons",
     "nome_popular": "",
     "ufs": [
       "AM",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Paratrigona lineatifrons"
   },
   {
-    "nome_cientifica": "Paratrigona melanaspis",
     "nome_popular": "",
     "ufs": [
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Paratrigona melanaspis"
   },
   {
-    "nome_cientifica": "Paratrigona nuda",
     "nome_popular": "",
     "ufs": [
       "AC"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Paratrigona nuda"
   },
   {
-    "nome_cientifica": "Paratrigona myrmecophila",
     "nome_popular": "",
     "ufs": [
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Paratrigona myrmecophila"
   },
   {
-    "nome_cientifica": "Paratrigona pacifica",
     "nome_popular": "",
     "ufs": [
       "AC",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Paratrigona pacifica"
   },
   {
-    "nome_cientifica": "Paratrigona pannosa",
     "nome_popular": "",
     "ufs": [
       "AP",
       "AM",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Paratrigona pannosa"
   },
   {
-    "nome_cientifica": "Paratrigona peltata",
     "nome_popular": "",
     "ufs": [
       "MA",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Paratrigona peltata"
   },
   {
-    "nome_cientifica": "Paratrigona prosopiformis",
     "nome_popular": "",
     "ufs": [
       "AC",
       "AM",
       "PA",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Paratrigona prosopiformis"
   },
   {
-    "nome_cientifica": "Paratrigona subnuda",
     "nome_popular": "",
     "ufs": [
       "BA",
@@ -1297,10 +1427,11 @@
       "RS",
       "SC",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Paratrigona subnuda"
   },
   {
-    "nome_cientifica": "Partamona ailyae",
     "nome_popular": "",
     "ufs": [
       "AC",
@@ -1316,27 +1447,30 @@
       "RO",
       "SP",
       "TO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Partamona ailyae"
   },
   {
-    "nome_cientifica": "Partamona auripennis",
     "nome_popular": "",
     "ufs": [
       "AP",
       "AM",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Partamona auripennis"
   },
   {
-    "nome_cientifica": "Partamona batesi",
     "nome_popular": "",
     "ufs": [
       "AC",
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Partamona batesi"
   },
   {
-    "nome_cientifica": "Partamona chapadicola",
     "nome_popular": "",
     "ufs": [
       "MA",
@@ -1344,10 +1478,11 @@
       "PE",
       "PI",
       "TO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Partamona chapadicola"
   },
   {
-    "nome_cientifica": "Partamona combinata",
     "nome_popular": "",
     "ufs": [
       "AC",
@@ -1361,20 +1496,22 @@
       "RO",
       "SP",
       "TO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Partamona combinata"
   },
   {
-    "nome_cientifica": "Partamona criptica",
     "nome_popular": "",
     "ufs": [
       "ES",
       "MG",
       "RJ",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Partamona criptica"
   },
   {
-    "nome_cientifica": "Partamona cupira",
     "nome_popular": "",
     "ufs": [
       "DF",
@@ -1382,36 +1519,40 @@
       "MS",
       "MG",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Partamona cupira"
   },
   {
-    "nome_cientifica": "Partamona epiphytophila",
     "nome_popular": "",
     "ufs": [
       "AC",
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Partamona epiphytophila"
   },
   {
-    "nome_cientifica": "Partamona ferreirai",
     "nome_popular": "",
     "ufs": [
       "AP",
       "AM",
       "PA",
       "RR"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Partamona ferreirai"
   },
   {
-    "nome_cientifica": "Partamona gregaria",
     "nome_popular": "",
     "ufs": [
       "AM",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Partamona gregaria"
   },
   {
-    "nome_cientifica": "Partamona helleri",
     "nome_popular": "",
     "ufs": [
       "BA",
@@ -1421,35 +1562,39 @@
       "RJ",
       "SC",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Partamona helleri"
   },
   {
-    "nome_cientifica": "Partamona littoralis",
     "nome_popular": "",
     "ufs": [
       "PB",
       "RN"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Partamona littoralis"
   },
   {
-    "nome_cientifica": "Partamona mourei",
     "nome_popular": "",
     "ufs": [
       "AM",
       "PA",
       "RR"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Partamona mourei"
   },
   {
-    "nome_cientifica": "Partamona mulata",
     "nome_popular": "",
     "ufs": [
       "MT",
       "MS"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Partamona mulata"
   },
   {
-    "nome_cientifica": "Partamona nhambiquara",
     "nome_popular": "",
     "ufs": [
       "GO",
@@ -1457,35 +1602,39 @@
       "MS",
       "PA",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Partamona nhambiquara"
   },
   {
-    "nome_cientifica": "Partamona nigrior",
     "nome_popular": "",
     "ufs": [
       "RR"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Partamona nigrior"
   },
   {
-    "nome_cientifica": "Partamona pearsoni",
     "nome_popular": "",
     "ufs": [
       "AP",
       "AM",
       "MA",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Partamona pearsoni"
   },
   {
-    "nome_cientifica": "Partamona rustica",
     "nome_popular": "",
     "ufs": [
       "BA",
       "MG"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Partamona rustica"
   },
   {
-    "nome_cientifica": "Partamona seridoensis",
     "nome_popular": "",
     "ufs": [
       "CE",
@@ -1493,25 +1642,28 @@
       "PB",
       "PE",
       "RN"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Partamona seridoensis"
   },
   {
-    "nome_cientifica": "Partamona sooretamae",
     "nome_popular": "",
     "ufs": [
       "BA",
       "ES"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Partamona sooretamae"
   },
   {
-    "nome_cientifica": "Partamona subtilis",
     "nome_popular": "",
     "ufs": [
       "AC"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Partamona subtilis"
   },
   {
-    "nome_cientifica": "Partamona testacea",
     "nome_popular": "",
     "ufs": [
       "AC",
@@ -1521,10 +1673,11 @@
       "MA",
       "PA",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Partamona testacea"
   },
   {
-    "nome_cientifica": "Partamona vicina",
     "nome_popular": "",
     "ufs": [
       "AC",
@@ -1534,28 +1687,31 @@
       "PA",
       "RO",
       "RR"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Partamona vicina"
   },
   {
-    "nome_cientifica": "Plebeia alvarengai",
     "nome_popular": "",
     "ufs": [
       "AM",
       "MT",
       "PA",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Plebeia alvarengai"
   },
   {
-    "nome_cientifica": "Plebeia catamarcensis",
     "nome_popular": "",
     "ufs": [
       "MS",
       "RS"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Plebeia catamarcensis"
   },
   {
-    "nome_cientifica": "Plebeia droryana",
     "nome_popular": "",
     "ufs": [
       "BA",
@@ -1567,71 +1723,79 @@
       "RS",
       "SC",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Plebeia droryana"
   },
   {
-    "nome_cientifica": "Plebeia emerina",
     "nome_popular": "",
     "ufs": [
       "PR",
       "RS",
       "SC",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Plebeia emerina"
   },
   {
-    "nome_cientifica": "Plebeia flavocincta",
     "nome_popular": "",
     "ufs": [
       "BA",
       "PB",
       "PE",
       "PI"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Plebeia flavocincta"
   },
   {
-    "nome_cientifica": "Plebeia grapiuna",
     "nome_popular": "",
     "ufs": [
       "BA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Plebeia grapiuna"
   },
   {
-    "nome_cientifica": "Plebeia julianii",
     "nome_popular": "",
     "ufs": [
       "PR"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Plebeia julianii"
   },
   {
-    "nome_cientifica": "Plebeia lucii",
     "nome_popular": "",
     "ufs": [
       "ES",
       "MG"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Plebeia lucii"
   },
   {
-    "nome_cientifica": "Plebeia margaritae",
     "nome_popular": "",
     "ufs": [
       "AM",
       "MT",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Plebeia margaritae"
   },
   {
-    "nome_cientifica": "Plebeia meridionalis",
     "nome_popular": "",
     "ufs": [
       "ES",
       "MG",
       "PR",
       "RJ"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Plebeia meridionalis"
   },
   {
-    "nome_cientifica": "Plebeia minima",
     "nome_popular": "",
     "ufs": [
       "AC",
@@ -1640,44 +1804,49 @@
       "MA",
       "MT",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Plebeia minima"
   },
   {
-    "nome_cientifica": "Plebeia mosquito",
     "nome_popular": "",
     "ufs": [
       "MG",
       "RJ"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Plebeia mosquito"
   },
   {
-    "nome_cientifica": "Plebeia nigriceps",
     "nome_popular": "",
     "ufs": [
       "PR",
       "RS",
       "SC",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Plebeia nigriceps"
   },
   {
-    "nome_cientifica": "Plebeia phrynostoma",
     "nome_popular": "",
     "ufs": [
       "ES",
       "MG"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Plebeia phrynostoma"
   },
   {
-    "nome_cientifica": "Plebeia poecilochroa",
     "nome_popular": "",
     "ufs": [
       "ES",
       "MG"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Plebeia poecilochroa"
   },
   {
-    "nome_cientifica": "Plebeia remota",
     "nome_popular": "",
     "ufs": [
       "ES",
@@ -1686,10 +1855,11 @@
       "RS",
       "SC",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Plebeia remota"
   },
   {
-    "nome_cientifica": "Plebeia saiqui",
     "nome_popular": "",
     "ufs": [
       "MG",
@@ -1697,26 +1867,29 @@
       "RS",
       "SC",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Plebeia saiqui"
   },
   {
-    "nome_cientifica": "Plebeia variicolor",
     "nome_popular": "",
     "ufs": [
       "AM",
       "PA",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Plebeia variicolor"
   },
   {
-    "nome_cientifica": "Plebeia wittmanni",
     "nome_popular": "",
     "ufs": [
       "RS"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Plebeia wittmanni"
   },
   {
-    "nome_cientifica": "Ptilotrigona lurida",
     "nome_popular": "",
     "ufs": [
       "AC",
@@ -1727,26 +1900,29 @@
       "PA",
       "RO",
       "RR"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Ptilotrigona lurida"
   },
   {
-    "nome_cientifica": "Ptilotrigona pereneae",
     "nome_popular": "",
     "ufs": [
       "AC",
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Ptilotrigona pereneae"
   },
   {
-    "nome_cientifica": "Scaptotrigona affabra",
     "nome_popular": "",
     "ufs": [
       "PA",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Scaptotrigona affabra"
   },
   {
-    "nome_cientifica": "Scaptotrigona bipunctata",
     "nome_popular": "tubuna",
     "ufs": [
       "AC",
@@ -1758,10 +1934,11 @@
       "RJ",
       "RS",
       "SC"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Scaptotrigona bipunctata"
   },
   {
-    "nome_cientifica": "Scaptotrigona depilis",
     "nome_popular": "",
     "ufs": [
       "MS",
@@ -1769,18 +1946,20 @@
       "PR",
       "RS",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Scaptotrigona depilis"
   },
   {
-    "nome_cientifica": "Scaptotrigona fulvicutis",
     "nome_popular": "",
     "ufs": [
       "AP",
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Scaptotrigona fulvicutis"
   },
   {
-    "nome_cientifica": "Scaptotrigona polysticta",
     "nome_popular": "bijuí",
     "ufs": [
       "AC",
@@ -1793,36 +1972,40 @@
       "RO",
       "SP",
       "TO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Scaptotrigona polysticta"
   },
   {
-    "nome_cientifica": "Scaptotrigona postica",
     "nome_popular": "mandaguari",
     "ufs": [
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Scaptotrigona postica"
   },
   {
-    "nome_cientifica": "Scaptotrigona tricolorata",
     "nome_popular": "",
     "ufs": [
       "AM",
       "MT",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Scaptotrigona tricolorata"
   },
   {
-    "nome_cientifica": "Scaptotrigona tubiba",
     "nome_popular": "",
     "ufs": [
       "ES",
       "MG",
       "RJ",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Scaptotrigona tubiba"
   },
   {
-    "nome_cientifica": "Scaptotrigona xanthotricha",
     "nome_popular": "",
     "ufs": [
       "BA",
@@ -1832,19 +2015,21 @@
       "RJ",
       "SC",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Scaptotrigona xanthotricha"
   },
   {
-    "nome_cientifica": "Scaura atlantica",
     "nome_popular": "",
     "ufs": [
       "BA",
       "ES",
       "MG"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Scaura atlantica"
   },
   {
-    "nome_cientifica": "Scaura latitarsis",
     "nome_popular": "",
     "ufs": [
       "AC",
@@ -1856,10 +2041,11 @@
       "RJ",
       "RO",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Scaura latitarsis"
   },
   {
-    "nome_cientifica": "Scaura longula",
     "nome_popular": "",
     "ufs": [
       "AP",
@@ -1871,29 +2057,32 @@
       "MG",
       "PA",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Scaura longula"
   },
   {
-    "nome_cientifica": "Scaura tenuis",
     "nome_popular": "",
     "ufs": [
       "AM",
       "MT",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Scaura tenuis"
   },
   {
-    "nome_cientifica": "Schwarziana mourei",
     "nome_popular": "",
     "ufs": [
       "GO",
       "MS",
       "MG",
       "TO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Schwarziana mourei"
   },
   {
-    "nome_cientifica": "Schwarziana quadripunctata",
     "nome_popular": "uruçu",
     "ufs": [
       "BA",
@@ -1905,19 +2094,21 @@
       "RS",
       "SC",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Schwarziana quadripunctata"
   },
   {
-    "nome_cientifica": "Schwarzula coccidophila",
     "nome_popular": "",
     "ufs": [
       "AC",
       "AM",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Schwarzula coccidophila"
   },
   {
-    "nome_cientifica": "Schwarzula timida",
     "nome_popular": "",
     "ufs": [
       "AC",
@@ -1928,25 +2119,28 @@
       "PA",
       "RO",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Schwarzula timida"
   },
   {
-    "nome_cientifica": "Tetragona beebei",
     "nome_popular": "",
     "ufs": [
       "AM",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Tetragona beebei"
   },
   {
-    "nome_cientifica": "Tetragona clavipes",
     "nome_popular": "borá",
     "ufs": [
       "RR"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Tetragona clavipes"
   },
   {
-    "nome_cientifica": "Tetragona dorsalis",
     "nome_popular": "",
     "ufs": [
       "AP",
@@ -1955,26 +2149,29 @@
       "MA",
       "PA",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Tetragona dorsalis"
   },
   {
-    "nome_cientifica": "Tetragona elongata",
     "nome_popular": "",
     "ufs": [
       "SP",
       "MG"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Tetragona elongata"
   },
   {
-    "nome_cientifica": "Tetragona essequiboensis",
     "nome_popular": "",
     "ufs": [
       "AM",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Tetragona essequiboensis"
   },
   {
-    "nome_cientifica": "Tetragona goettei",
     "nome_popular": "",
     "ufs": [
       "AC",
@@ -1982,28 +2179,31 @@
       "MT",
       "PA",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Tetragona goettei"
   },
   {
-    "nome_cientifica": "Tetragona handlirschii",
     "nome_popular": "",
     "ufs": [
       "AP",
       "AM",
       "PA",
       "RR"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Tetragona handlirschii"
   },
   {
-    "nome_cientifica": "Tetragona kaieteurensis",
     "nome_popular": "",
     "ufs": [
       "AM",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Tetragona kaieteurensis"
   },
   {
-    "nome_cientifica": "Tetragona quadrangula",
     "nome_popular": "",
     "ufs": [
       "GO",
@@ -2013,10 +2213,11 @@
       "PA",
       "SP",
       "TO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Tetragona quadrangula"
   },
   {
-    "nome_cientifica": "Tetragona truncata",
     "nome_popular": "",
     "ufs": [
       "AM",
@@ -2025,15 +2226,17 @@
       "MT",
       "PA",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Tetragona truncata"
   },
   {
-    "nome_cientifica": "Tetragonisca angustula",
     "nome_popular": "jataí, jatí",
-    "ufs": []
+    "ufs": [],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Tetragonisca angustula"
   },
   {
-    "nome_cientifica": "Tetragonisca fiebrigi",
     "nome_popular": "",
     "ufs": [
       "MT",
@@ -2041,26 +2244,29 @@
       "PR",
       "RS",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Tetragonisca fiebrigi"
   },
   {
-    "nome_cientifica": "Tetragonisca weyrauchi",
     "nome_popular": "",
     "ufs": [
       "AC",
       "MT",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Tetragonisca weyrauchi"
   },
   {
-    "nome_cientifica": "Trichotrigona extranea",
     "nome_popular": "",
     "ufs": [
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trichotrigona extranea"
   },
   {
-    "nome_cientifica": "Trigona albipennis",
     "nome_popular": "",
     "ufs": [
       "AC",
@@ -2068,19 +2274,21 @@
       "MT",
       "PA",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigona albipennis"
   },
   {
-    "nome_cientifica": "Trigona amalthea",
     "nome_popular": "",
     "ufs": [
       "AM",
       "MT",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigona amalthea"
   },
   {
-    "nome_cientifica": "Trigona amazonensis",
     "nome_popular": "",
     "ufs": [
       "AC",
@@ -2089,10 +2297,11 @@
       "PA",
       "RO",
       "TO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigona amazonensis"
   },
   {
-    "nome_cientifica": "Trigona branneri",
     "nome_popular": "",
     "ufs": [
       "AM",
@@ -2102,10 +2311,11 @@
       "PA",
       "RO",
       "TO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigona branneri"
   },
   {
-    "nome_cientifica": "Trigona braueri",
     "nome_popular": "",
     "ufs": [
       "BA",
@@ -2113,15 +2323,17 @@
       "PR",
       "RJ",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigona braueri"
   },
   {
-    "nome_cientifica": "Trigona chanchamayoensis",
     "nome_popular": "",
-    "ufs": []
+    "ufs": [],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigona chanchamayoensis"
   },
   {
-    "nome_cientifica": "Trigona cilipes",
     "nome_popular": "",
     "ufs": [
       "AC",
@@ -2134,20 +2346,22 @@
       "RO",
       "RR",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigona cilipes"
   },
   {
-    "nome_cientifica": "Trigona crassipes",
     "nome_popular": "",
     "ufs": [
       "AP",
       "AM",
       "MT",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigona crassipes"
   },
   {
-    "nome_cientifica": "Trigona dallatorreana",
     "nome_popular": "",
     "ufs": [
       "AP",
@@ -2157,20 +2371,22 @@
       "PA",
       "RO",
       "TO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigona dallatorreana"
   },
   {
-    "nome_cientifica": "Trigona dimidiata",
     "nome_popular": "",
     "ufs": [
       "AM",
       "MT",
       "PA",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigona dimidiata"
   },
   {
-    "nome_cientifica": "Trigona guianae",
     "nome_popular": "",
     "ufs": [
       "AC",
@@ -2182,10 +2398,11 @@
       "PB",
       "RO",
       "TO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigona guianae"
   },
   {
-    "nome_cientifica": "Trigona hyalinata",
     "nome_popular": "",
     "ufs": [
       "BA",
@@ -2199,10 +2416,11 @@
       "PI",
       "SP",
       "TO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigona hyalinata"
   },
   {
-    "nome_cientifica": "Trigona hypogea",
     "nome_popular": "",
     "ufs": [
       "AM",
@@ -2210,10 +2428,11 @@
       "MT",
       "PA",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigona hypogea"
   },
   {
-    "nome_cientifica": "Trigona lacteipennis",
     "nome_popular": "",
     "ufs": [
       "AC",
@@ -2223,10 +2442,11 @@
       "PA",
       "RO",
       "RR"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigona lacteipennis"
   },
   {
-    "nome_cientifica": "Trigona pallens",
     "nome_popular": "",
     "ufs": [
       "AC",
@@ -2238,19 +2458,21 @@
       "RO",
       "RR",
       "TO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigona pallens"
   },
   {
-    "nome_cientifica": "Trigona pellucida",
     "nome_popular": "",
     "ufs": [
       "MT",
       "PA",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigona pellucida"
   },
   {
-    "nome_cientifica": "Trigona recursa",
     "nome_popular": "",
     "ufs": [
       "AC",
@@ -2265,17 +2487,19 @@
       "RO",
       "SP",
       "TO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigona recursa"
   },
   {
-    "nome_cientifica": "Trigona sesquipedalis",
     "nome_popular": "",
     "ufs": [
       "AP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigona sesquipedalis"
   },
   {
-    "nome_cientifica": "Trigona spinipes",
     "nome_popular": "irapuá, arapuá",
     "ufs": [
       "AL",
@@ -2299,10 +2523,11 @@
       "SP",
       "SE",
       "TO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigona spinipes"
   },
   {
-    "nome_cientifica": "Trigona truculenta",
     "nome_popular": "",
     "ufs": [
       "AC",
@@ -2317,10 +2542,11 @@
       "PA",
       "RO",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigona truculenta"
   },
   {
-    "nome_cientifica": "Trigona williana",
     "nome_popular": "",
     "ufs": [
       "AC",
@@ -2331,32 +2557,36 @@
       "PA",
       "RO",
       "RR"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigona williana"
   },
   {
-    "nome_cientifica": "Trigonisca bidentata",
     "nome_popular": "",
     "ufs": [
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigonisca bidentata"
   },
   {
-    "nome_cientifica": "Trigonisca ceophloei",
     "nome_popular": "",
     "ufs": [
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigonisca ceophloei"
   },
   {
-    "nome_cientifica": "Trigonisca dobzhanskyi",
     "nome_popular": "",
     "ufs": [
       "AM",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigonisca dobzhanskyi"
   },
   {
-    "nome_cientifica": "Trigonisca duckei",
     "nome_popular": "",
     "ufs": [
       "AM",
@@ -2365,48 +2595,54 @@
       "MT",
       "PA",
       "RR"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigonisca duckei"
   },
   {
-    "nome_cientifica": "Trigonisca extrema",
     "nome_popular": "",
     "ufs": [
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigonisca extrema"
   },
   {
-    "nome_cientifica": "Trigonisca flavicans",
     "nome_popular": "",
     "ufs": [
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigonisca flavicans"
   },
   {
-    "nome_cientifica": "Trigonisca fraissei",
     "nome_popular": "",
     "ufs": [
       "AM",
       "MT",
       "PA",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigonisca fraissei"
   },
   {
-    "nome_cientifica": "Trigonisca graeffei",
     "nome_popular": "",
     "ufs": [
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigonisca graeffei"
   },
   {
-    "nome_cientifica": "Trigonisca hirticornis",
     "nome_popular": "",
     "ufs": [
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigonisca hirticornis"
   },
   {
-    "nome_cientifica": "Trigonisca intermedia",
     "nome_popular": "",
     "ufs": [
       "BA",
@@ -2414,10 +2650,11 @@
       "MT",
       "MG",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigonisca intermedia"
   },
   {
-    "nome_cientifica": "Trigonisca meridionalis",
     "nome_popular": "",
     "ufs": [
       "MA",
@@ -2425,50 +2662,57 @@
       "MG",
       "PA",
       "SP"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigonisca meridionalis"
   },
   {
-    "nome_cientifica": "Trigonisca nataliae",
     "nome_popular": "",
     "ufs": [
       "MA",
       "MT",
       "PA",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigonisca nataliae"
   },
   {
-    "nome_cientifica": "Trigonisca pediculana",
     "nome_popular": "",
     "ufs": [
       "BA",
       "CE",
       "MA",
       "PB"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigonisca pediculana"
   },
   {
-    "nome_cientifica": "Trigonisca unidentata",
     "nome_popular": "",
     "ufs": [
       "AM"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigonisca unidentata"
   },
   {
-    "nome_cientifica": "Trigonisca variegatifrons",
     "nome_popular": "",
     "ufs": [
       "MT",
       "PA",
       "RO"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigonisca variegatifrons"
   },
   {
-    "nome_cientifica": "Trigonisca vitrifrons",
     "nome_popular": "",
     "ufs": [
       "AM",
       "PA"
-    ]
+    ],
+    "grupo": "sem_ferrao",
+    "nome_cientifico": "Trigonisca vitrifrons"
   }
 ]
