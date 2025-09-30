@@ -1,0 +1,86 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block title %}{% if title %}{{ title }} | {% endif %}{{ site_title|default:_("Django site admin") }}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_("Django administration") }}</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <style>
+        .mobile-menu {
+            display: none;
+        }
+
+        @media (max-width: 450px) {
+            .mobile-menu {
+                display: block;
+                position: fixed;
+                left: 10px;
+                bottom: 10px;
+                z-index: 99;
+                padding: 4px 10px;
+                border: none;
+                border-radius: 5px;
+                background: #febe35;
+                color: #ffffff;
+                font-size: 15px;
+                font-weight: 600;
+                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+                cursor: pointer;
+            }
+
+            .mobile-menu:focus-visible,
+            .mobile-menu:hover {
+                background: #f6a509;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block footer %}
+    {{ block.super }}
+    <button type="button" class="mobile-menu" aria-controls="nav-sidebar" aria-expanded="true">
+        Menu
+    </button>
+    <script>
+        (function () {
+            const button = document.querySelector('.mobile-menu');
+            const sidebar = document.getElementById('nav-sidebar');
+
+            if (!button || !sidebar) {
+                if (button) {
+                    button.remove();
+                }
+                return;
+            }
+
+            const toggleSidebar = () => {
+                const isVisible = sidebar.style.display !== 'none' && window.getComputedStyle(sidebar).display !== 'none';
+                if (isVisible) {
+                    sidebar.style.display = 'none';
+                    button.setAttribute('aria-expanded', 'false');
+                } else {
+                    sidebar.style.display = 'block';
+                    button.setAttribute('aria-expanded', 'true');
+                }
+            };
+
+            button.addEventListener('click', toggleSidebar);
+
+            const handleResize = () => {
+                if (window.innerWidth > 450) {
+                    sidebar.style.display = '';
+                    button.setAttribute('aria-expanded', 'true');
+                }
+            };
+
+            window.addEventListener('resize', handleResize);
+            handleResize();
+        })();
+    </script>
+{% endblock %}
