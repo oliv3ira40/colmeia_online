@@ -106,13 +106,23 @@ def _build_overdue_hives(user) -> List[HiveEntry]:
     return entries
 
 
-def _build_cards(user) -> Dict[str, int]:
+def _build_cards(user) -> Dict[str, Dict[str, int | str]]:
     apiaries = Apiary.objects.owned_by(user)
     hives = Hive.objects.owned_by(user)
+    species_count = hives.values_list("species_id", flat=True).distinct().count()
     return {
-        "apiaries": apiaries.count(),
-        "hives": hives.count(),
-        "species": hives.values_list("species_id", flat=True).distinct().count(),
+        "apiaries": {
+            "count": apiaries.count(),
+            "url": reverse("admin:apiary_apiary_changelist"),
+        },
+        "hives": {
+            "count": hives.count(),
+            "url": reverse("admin:apiary_hive_changelist"),
+        },
+        "species": {
+            "count": species_count,
+            "url": reverse("admin:apiary_species_changelist"),
+        },
     }
 
 

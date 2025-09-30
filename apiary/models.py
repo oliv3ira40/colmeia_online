@@ -294,26 +294,31 @@ class Revision(models.Model):
         "Cria",
         max_length=20,
         choices=BroodLevel.choices,
+        blank=True,
     )
     food_level = models.CharField(
         "Alimento/Reservas",
         max_length=20,
         choices=ResourceLevel.choices,
+        blank=True,
     )
     pollen_level = models.CharField(
         "Pólen",
         max_length=20,
         choices=ResourceLevel.choices,
+        blank=True,
     )
     colony_strength = models.CharField(
         "Força da colônia",
         max_length=20,
         choices=ColonyStrength.choices,
+        blank=True,
     )
     temperament = models.CharField(
         "Temperamento",
         max_length=20,
         choices=TemperamentChoices.choices,
+        blank=True,
     )
     hive_weight = models.DecimalField(
         "Peso da colmeia",
