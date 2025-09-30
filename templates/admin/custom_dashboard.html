@@ -308,7 +308,42 @@
 {% endblock %}
 
 {% block content %}
-<button class="sticky toggle-nav-sidebar" id="toggle-nav-sidebar" aria-label="Alternar navegação"></button>
+
+<!-- Preciso que isso fique disponivel em todas as telas do admin, nao apenas no dashboard -->
+<style>
+    .mobile-menu {
+        display: none;
+    }
+
+    @media (max-width: 450px) {
+        .mobile-menu {
+            display: block;
+            background: #febe35;
+            border: unset;
+            border-radius: 5px;
+            padding: 4px 8px;
+            position: fixed;
+            z-index: 99;
+            left: 10px;
+            bottom: 10px;
+            color: white;
+            font-size: 15px;
+        }
+    }
+</style>
+<button class="mobile-menu">Menu</button>
+<script>
+    // ao clicar no mobile menu, alternar a visibilidade da sidebar #nav-sidebar
+    document.querySelector('.mobile-menu').addEventListener('click', function() {
+        const sidebar = document.getElementById('nav-sidebar');
+        if (sidebar.style.display === 'block') {
+            sidebar.style.display = 'none';
+        } else {
+            sidebar.style.display = 'block';
+        }
+    });
+</script>
+
 <div class="colmeia-dashboard" role="main">
     <div class="colmeia-dashboard__main">
         <div class="dashboard-cards" role="list" aria-label="Resumo geral">
