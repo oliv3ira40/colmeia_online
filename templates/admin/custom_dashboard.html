@@ -277,6 +277,33 @@
             grid-template-columns: 1fr;
         }
     }
+    
+    @media (max-width: 450px) {
+        .dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 por linha */
+            column-gap: 0.5rem;
+            row-gap: 0.7rem;
+        }
+
+        .card-mobile {
+            padding: 4px 10px;
+            text-align: center;
+            box-sizing: border-box; /* evita estouro por causa do padding */
+        }
+
+        .dashboard-card { gap: 0.2rem; }
+        .dashboard-card__title { font-size: 14px; }
+        .dashboard-card__value { font-size: 20px; }
+
+        .dashboard-panel__header {
+            display: inline-block;
+        }
+
+        .dashboard-panel__title {
+            font-size: 17px;
+        }
+    }
 </style>
 {% endblock %}
 
@@ -285,19 +312,19 @@
 <div class="colmeia-dashboard" role="main">
     <div class="colmeia-dashboard__main">
         <div class="dashboard-cards" role="list" aria-label="Resumo geral">
-            <a class="dashboard-card" role="listitem" href="{{ cards.apiaries.url }}">
+            <a class="dashboard-card card-mobile" role="listitem" href="{{ cards.apiaries.url }}">
                 <span class="dashboard-card__title">Meus Meliponários</span>
                 <span class="dashboard-card__value">{{ cards.apiaries.count }}</span>
             </a>
-            <a class="dashboard-card" role="listitem" href="{{ cards.hives.url }}">
+            <a class="dashboard-card card-mobile" role="listitem" href="{{ cards.hives.url }}">
                 <span class="dashboard-card__title">Minhas Colmeias</span>
                 <span class="dashboard-card__value">{{ cards.hives.count }}</span>
             </a>
-            <a class="dashboard-card" role="listitem" href="{{ cards.species.url }}">
+            <a class="dashboard-card card-mobile" role="listitem" href="{{ cards.species.url }}">
                 <span class="dashboard-card__title">Espécies criadas</span>
                 <span class="dashboard-card__value">{{ cards.species.count }}</span>
             </a>
-            <a class="dashboard-card dashboard-card--cta" href="{{ create_revision_url }}" role="listitem">
+            <a class="dashboard-card dashboard-card--cta card-mobile" href="{{ create_revision_url }}" role="listitem">
                 <span class="dashboard-card__title">Nova Revisão</span>
             </a>
         </div>
