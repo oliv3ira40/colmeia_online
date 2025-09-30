@@ -25,10 +25,13 @@ if SITE_HOST and SITE_HOST not in ALLOWED_HOSTS:
     ALLOWED_HOSTS.append(SITE_HOST)
 
 SCHEME = 'https' if IS_HTTPS else 'http'
-CSRF_TRUSTED_ORIGINS = [f'{SCHEME}://{SITE_HOST}']
 
-CSRF_COOKIE_SECURE = IS_HTTPS
-SESSION_COOKIE_SECURE = IS_HTTPS
+# em vez de apenas [f'{SCHEME}://{SITE_HOST}'], use:
+CSRF_TRUSTED_ORIGINS = list({
+    f'http://{SITE_HOST}',
+    f'https://{SITE_HOST}',
+})
+
 USE_X_FORWARDED_HOST = True
 if IS_HTTPS:
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -69,6 +72,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+SESSION_COOKIE_PATH = "/colmeia-online"
+CSRF_COOKIE_PATH    = "/colmeia-online"
+
+SESSION_COOKIE_NAME = "colmeia_sessionid"
+CSRF_COOKIE_NAME    = "colmeia_csrftoken"
+
+SESSION_COOKIE_SECURE = False  # mude p/ True quando usar HTTPS
+CSRF_COOKIE_SECURE    = False
+SESSION_COOKIE_SAMESITE = "Lax"
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 SILENCED_SYSTEM_CHECKS = ["security.W019"]
