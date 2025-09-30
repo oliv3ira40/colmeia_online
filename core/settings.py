@@ -106,7 +106,15 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / f"{os.getenv('DB_NAME')}.sqlite3",
-    }
+    },
+    # "default": {
+    #     "ENGINE": "django.db.backends.postgresql",
+    #     "NAME": "colmeia_db",
+    #     "USER": "colmeia_user",
+    #     "PASSWORD": "troque-essa-senha",
+    #     "HOST": "127.0.0.1",
+    #     "PORT": "5432",
+    # }
 }
 
 # Password validation
@@ -144,10 +152,21 @@ USE_TZ = True
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Arquivos estáticos (CSS/JS)
+# EM DEV
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'   # para produção (collectstatic)
 STATICFILES_DIRS = [BASE_DIR / 'static'] # opcional, se você tiver uma pasta "static" de projeto
+# EM DEV
+
+# EM PROD
+# FORCE_SCRIPT_NAME = "/colmeia-online"
+# STATIC_URL = f"{FORCE_SCRIPT_NAME}/static/"
+# MEDIA_URL  = f"{FORCE_SCRIPT_NAME}/media/"
+# from pathlib import Path
+# BASE_DIR = Path(__file__).resolve().parent.parent
+# STATIC_ROOT = BASE_DIR / "static"
+# MEDIA_ROOT  = BASE_DIR / "media"
+# EM PROD
 
 # Arquivos de mídia (uploads)
 MEDIA_URL = '/media/'
