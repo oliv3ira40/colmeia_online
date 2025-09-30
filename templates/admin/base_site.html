@@ -1,13 +1,5 @@
-{% extends "admin/base.html" %}
+{% extends "admin_interface/admin/base_site.html" %}
 {% load i18n %}
-
-{% block title %}{% if title %}{{ title }} | {% endif %}{{ site_title|default:_("Django site admin") }}{% endblock %}
-
-{% block branding %}
-<h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_("Django administration") }}</a></h1>
-{% endblock %}
-
-{% block nav-global %}{% endblock %}
 
 {% block extrahead %}
     {{ block.super }}
@@ -45,7 +37,7 @@
 {% block footer %}
     {{ block.super }}
     <button type="button" class="mobile-menu" aria-controls="nav-sidebar" aria-expanded="true">
-        Menu
+        {% trans "Menu" %}
     </button>
     <script>
         (function () {
@@ -60,7 +52,8 @@
             }
 
             const toggleSidebar = () => {
-                const isVisible = sidebar.style.display !== 'none' && window.getComputedStyle(sidebar).display !== 'none';
+                const computedStyle = window.getComputedStyle(sidebar);
+                const isVisible = sidebar.style.display !== 'none' && computedStyle.display !== 'none';
                 if (isVisible) {
                     sidebar.style.display = 'none';
                     button.setAttribute('aria-expanded', 'false');
