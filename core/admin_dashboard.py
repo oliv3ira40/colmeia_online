@@ -64,6 +64,8 @@ def _build_recent_revisions(user) -> List[RevisionEntry]:
                 hive_name=str(hive),
                 hive_url=reverse("admin:apiary_hive_change", args=[hive.pk]),
                 species_name=hive.species.popular_name,
+                # TODO: Dando erro aqui: unexpected keyword argument 'species_scientific_name'
+                species_scientific_name=hive.species.scientific_name,
                 apiary_name=apiary.name if apiary else None,
                 apiary_url=reverse("admin:apiary_apiary_change", args=[apiary.pk]) if apiary else None,
                 review_date_display=formatted_datetime,

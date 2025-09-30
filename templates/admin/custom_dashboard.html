@@ -100,6 +100,15 @@
         background: linear-gradient(135deg, #0f9f74, #047857);
     }
 
+    .row {
+        display: flex;
+        gap: var(--dashboard-gap);
+    }
+
+    .w-100 {
+        width: 100%;
+    }
+
     .dashboard-panel {
         background: var(--dashboard-surface);
         border-radius: 1rem;
@@ -303,13 +312,21 @@
         .dashboard-panel__title {
             font-size: 17px;
         }
+
+        .row {
+            flex-direction: column;
+        }
+
+        .w-100 {
+            width: auto;
+        }
     }
 </style>
 {% endblock %}
 
 {% block content %}
 
-<!-- Preciso que isso fique disponivel em todas as telas do admin, nao apenas no dashboard -->
+<!-- TODO: Preciso que isso fique disponivel em todas as telas do admin, nao apenas no dashboard -->
 <style>
     .mobile-menu {
         display: none;
@@ -364,54 +381,56 @@
             </a>
         </div>
 
-        <section class="dashboard-panel" aria-labelledby="recent-revisions-heading">
-            <div class="dashboard-panel__header">
-                <h2 class="dashboard-panel__title" id="recent-revisions-heading">Revisões Recentes</h2>
-                <p class="dashboard-panel__subtitle">Últimas 10 revisões cadastradas</p>
-            </div>
-            {% if recent_revisions %}
-                <ul class="dashboard-list">
-                    {% for revision in recent_revisions %}
-                        <li class="dashboard-list__item">
-                            <a class="dashboard-item__primary" href="{{ revision.change_url }}">
-                                <span class="dashboard-item__title"><time datetime="{{ revision.review_time_iso }}">{{ revision.review_date_display }}</time></span>
-                                <span class="dashboard-item__subtitle">{{ revision.hive_name }} · {{ revision.species_name }}{% if revision.apiary_name %} · {{ revision.apiary_name }}{% endif %}</span>
-                            </a>
-                            <div class="dashboard-item__actions">
-                                <a class="dashboard-action-link" href="{{ revision.hive_url }}">Ver colmeia</a>
-                            </div>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p class="dashboard-empty">Nenhuma revisão registrada.</p>
-            {% endif %}
-        </section>
-
-        <section class="dashboard-panel" aria-labelledby="overdue-hives-heading">
-            <div class="dashboard-panel__header">
-                <h2 class="dashboard-panel__title" id="overdue-hives-heading">Colmeias sem revisão há 7+ dias</h2>
-                <p class="dashboard-panel__subtitle">Inclui colmeias nunca revisadas ou com última revisão anterior ao limite</p>
-            </div>
-            {% if overdue_hives %}
-                <ul class="dashboard-list">
-                    {% for hive in overdue_hives %}
-                        <li class="dashboard-list__item">
-                            <a class="dashboard-item__primary" href="{{ hive.change_url }}">
-                                <span class="dashboard-item__title">{{ hive.name }}</span>
-                                <span class="dashboard-item__subtitle">{{ hive.species_name }}{% if hive.apiary_name %} · {{ hive.apiary_name }}{% endif %}</span>
-                                <span class="dashboard-item__meta">{{ hive.status_display }}</span>
-                            </a>
-                            <div class="dashboard-item__actions">
-                                <a class="dashboard-action-link" href="{{ hive.add_revision_url }}">+ Revisão</a>
-                            </div>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p class="dashboard-empty">Nenhuma colmeia está sem revisão há 7 dias ou mais.</p>
-            {% endif %}
-        </section>
+        <div class="row">
+            <section class="dashboard-panel w-100" aria-labelledby="recent-revisions-heading">
+                <div class="dashboard-panel__header">
+                    <h2 class="dashboard-panel__title" id="recent-revisions-heading">Revisões Recentes</h2>
+                    <p class="dashboard-panel__subtitle">Últimas 10 revisões cadastradas</p>
+                </div>
+                {% if recent_revisions %}
+                    <ul class="dashboard-list">
+                        {% for revision in recent_revisions %}
+                            <li class="dashboard-list__item">
+                                <a class="dashboard-item__primary" href="{{ revision.change_url }}">
+                                    <span class="dashboard-item__title"><time datetime="{{ revision.review_time_iso }}">{{ revision.review_date_display }}</time></span>
+                                    <span class="dashboard-item__subtitle">{{ revision.hive_name }} · {{ revision.species_name }}{% if revision.scientific_name %}{% endif %}</span>
+                                </a>
+                                <div class="dashboard-item__actions">
+                                    <a class="dashboard-action-link" href="{{ revision.hive_url }}">Ver colmeia</a>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="dashboard-empty">Nenhuma revisão registrada.</p>
+                {% endif %}
+            </section>
+    
+            <section class="dashboard-panel w-100" aria-labelledby="overdue-hives-heading">
+                <div class="dashboard-panel__header">
+                    <h2 class="dashboard-panel__title" id="overdue-hives-heading">Colmeias sem revisão há 7+ dias</h2>
+                    <p class="dashboard-panel__subtitle">Inclui colmeias nunca revisadas ou com última revisão anterior ao limite</p>
+                </div>
+                {% if overdue_hives %}
+                    <ul class="dashboard-list">
+                        {% for hive in overdue_hives %}
+                            <li class="dashboard-list__item">
+                                <a class="dashboard-item__primary" href="{{ hive.change_url }}">
+                                    <span class="dashboard-item__title">{{ hive.name }}</span>
+                                    <span class="dashboard-item__subtitle">{{ hive.species_name }}{% if hive.apiary_name %} · {{ hive.apiary_name }}{% endif %}</span>
+                                    <span class="dashboard-item__meta">{{ hive.status_display }}</span>
+                                </a>
+                                <div class="dashboard-item__actions">
+                                    <a class="dashboard-action-link" href="{{ hive.add_revision_url }}">+ Revisão</a>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="dashboard-empty">Nenhuma colmeia está sem revisão há 7 dias ou mais.</p>
+                {% endif %}
+            </section>
+        </div>
     </div>
 
     <aside class="colmeia-dashboard__sidebar" aria-labelledby="recent-actions-heading">
