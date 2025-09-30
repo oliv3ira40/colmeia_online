@@ -73,15 +73,16 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-SESSION_COOKIE_PATH = "/colmeia-online"
-CSRF_COOKIE_PATH    = "/colmeia-online"
+if PRODUCTION:
+    SESSION_COOKIE_PATH = "/colmeia-online"
+    CSRF_COOKIE_PATH    = "/colmeia-online"
 
-SESSION_COOKIE_NAME = "colmeia_sessionid"
-CSRF_COOKIE_NAME    = "colmeia_csrftoken"
+    SESSION_COOKIE_NAME = "colmeia_sessionid"
+    CSRF_COOKIE_NAME    = "colmeia_csrftoken"
 
-SESSION_COOKIE_SECURE = False  # mude p/ True quando usar HTTPS
-CSRF_COOKIE_SECURE    = False
-SESSION_COOKIE_SAMESITE = "Lax"
+    SESSION_COOKIE_SECURE = False  # mude p/ True quando usar HTTPS
+    CSRF_COOKIE_SECURE    = False
+    SESSION_COOKIE_SAMESITE = "Lax"
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 SILENCED_SYSTEM_CHECKS = ["security.W019"]
