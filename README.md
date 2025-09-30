@@ -100,6 +100,7 @@ O comando lê o arquivo JSON indicado, cria novas espécies e atualiza registros
 As páginas criadas devem seguir o tema bootstrap do django-admin-interface, que oferece uma interface mais amigável e moderna para o administrador do Django.
 - [Documentação do django-admin-interface](https://github.com/fabiocaccamo/django-admin-interface?tab=readme-ov-file)
 - Intalação do tema bootstrap do django-admin-interface: python manage.py loaddata admin_interface_theme_bootstrap.json
+- Para customizar templates do admin, é necessário consultar a documentação/arquivos do template, por exemplo: https://github.com/fabiocaccamo/django-admin-interface/blob/main/admin_interface/templates/admin/base_site.html
 
 Clique [aqui](docs/padroes.md) para ver os padrões de desenvolvimento adotados no projeto.
 

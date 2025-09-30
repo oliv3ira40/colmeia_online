@@ -186,6 +186,10 @@
         color: var(--dashboard-muted);
     }
 
+    .dashboard-item__scientific {
+        font-style: italic;
+    }
+
     .dashboard-item__actions {
         display: flex;
         flex-wrap: wrap;
@@ -325,42 +329,6 @@
 {% endblock %}
 
 {% block content %}
-
-<!-- TODO: Preciso que isso fique disponivel em todas as telas do admin, nao apenas no dashboard -->
-<style>
-    .mobile-menu {
-        display: none;
-    }
-
-    @media (max-width: 450px) {
-        .mobile-menu {
-            display: block;
-            background: #febe35;
-            border: unset;
-            border-radius: 5px;
-            padding: 4px 8px;
-            position: fixed;
-            z-index: 99;
-            left: 10px;
-            bottom: 10px;
-            color: white;
-            font-size: 15px;
-        }
-    }
-</style>
-<button class="mobile-menu">Menu</button>
-<script>
-    // ao clicar no mobile menu, alternar a visibilidade da sidebar #nav-sidebar
-    document.querySelector('.mobile-menu').addEventListener('click', function() {
-        const sidebar = document.getElementById('nav-sidebar');
-        if (sidebar.style.display === 'block') {
-            sidebar.style.display = 'none';
-        } else {
-            sidebar.style.display = 'block';
-        }
-    });
-</script>
-
 <div class="colmeia-dashboard" role="main">
     <div class="colmeia-dashboard__main">
         <div class="dashboard-cards" role="list" aria-label="Resumo geral">
@@ -393,7 +361,12 @@
                             <li class="dashboard-list__item">
                                 <a class="dashboard-item__primary" href="{{ revision.change_url }}">
                                     <span class="dashboard-item__title"><time datetime="{{ revision.review_time_iso }}">{{ revision.review_date_display }}</time></span>
-                                    <span class="dashboard-item__subtitle">{{ revision.hive_name }} · {{ revision.species_name }}{% if revision.scientific_name %}{% endif %}</span>
+                                    <span class="dashboard-item__subtitle">
+                                        {{ revision.hive_name }} · {{ revision.species_name }}
+                                        {% if revision.species_scientific_name %}
+                                            <span class="dashboard-item__scientific">({{ revision.species_scientific_name }})</span>
+                                        {% endif %}
+                                    </span>
                                 </a>
                                 <div class="dashboard-item__actions">
                                     <a class="dashboard-action-link" href="{{ revision.hive_url }}">Ver colmeia</a>
