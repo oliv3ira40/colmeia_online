@@ -1,54 +1,59 @@
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+
 def strtobool(value: str) -> bool:
-    value = value.strip().lower()
-    if value in {"y", "yes", "t", "true", "on", "1"}:
-        return True
-    if value in {"n", "no", "f", "false", "off", "0"}:
-        return False
+    v = value.strip().lower()
+    if v in {"y","yes","t","true","on","1"}: return True
+    if v in {"n","no","f","false","off","0"}: return False
     raise ValueError(f"Valor booleano inválido: {value}")
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(os.path.join(BASE_DIR, '.env'))
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
-
-# Caminho para o arquivo .env (geralmente na raiz do projeto)
-dotenv_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env')
-load_dotenv(dotenv_path)
-
-# SECURITY WARNING: keep the secret key used in production secret!
+# ===== Ambiente / Segurança =====
 SECRET_KEY = os.getenv('SECRET_KEY')
+DEBUG      = strtobool(os.getenv('DEBUG', 'False'))
+PRODUCTION = strtobool(os.getenv('PRODUCTION', 'False'))
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = strtobool(os.getenv('DEBUG', 'False'))
+SITE_HOST   = os.getenv('SITE_HOST', '127.0.0.1').strip()      # ex.: 147.79.82.119
+IS_HTTPS    = strtobool(os.getenv('IS_HTTPS', 'False'))        # False por enquanto
+SITE_PREFIX = os.getenv('SITE_PREFIX', '').rstrip('/')         # "" no dev, "/colmeia-online" no prod
 
-# Ativa a Sentry apenas em produção
-# production = strtobool(os.getenv('PRODUCTION', 'False'))
-# if production:
-#     import sentry_sdk
-#     sentry_sdk.init(
-#         dsn="https://74a13cc1100353ca54fa4319d88967ec@o4508072935292928.ingest.us.sentry.io/4508072939880448",
-#         traces_sample_rate=1.0,
-#         environment="prod",
-#         profiles_sample_rate=1.0,
-#     )
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+if SITE_HOST and SITE_HOST not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append(SITE_HOST)
 
-# ALLOWED_HOSTS = ['127.0.0.1', 'flexibook.com.br', 'www.flexibook.com.br']
-ALLOWED_HOSTS = ['127.0.0.1']
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SCHEME = 'https' if IS_HTTPS else 'http'
+CSRF_TRUSTED_ORIGINS = [f'{SCHEME}://{SITE_HOST}']
 
-# Para permitir cookies seguros e compatibilidade com proxies
-# CSRF_TRUSTED_ORIGINS = ['https://flexibook.com.br']
+CSRF_COOKIE_SECURE = IS_HTTPS
+SESSION_COOKIE_SECURE = IS_HTTPS
+USE_X_FORWARDED_HOST = True
+if IS_HTTPS:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-# Se você estiver usando SSL
-# CSRF_COOKIE_SECURE = True
-# SESSION_COOKIE_SECURE = True
-
-# Para o uso de proxies reversos como Nginx ou Cloudflare
-# USE_X_FORWARDED_HOST = True
+# ===== Banco (SQLite em DEV, Postgres em PROD) =====
+if PRODUCTION:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": os.getenv("PG_NAME", "colmeia_db"),
+            "USER": os.getenv("PG_USER", "colmeia_user"),
+            "PASSWORD": os.getenv("PG_PASSWORD", ""),
+            "HOST": os.getenv("PG_HOST", "127.0.0.1"),
+            "PORT": os.getenv("PG_PORT", "5432"),
+        }
+    }
+else:
+    # Em dev, use SQLite; você pode manter DB_NAME no .env, senão cai no 'db.sqlite3'
+    sqlite_name = os.getenv('DB_NAME', 'db') + '.sqlite3'
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / sqlite_name,
+        }
+    }
 
 # Application definition
 INSTALLED_APPS = [
@@ -99,24 +104,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'core.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / f"{os.getenv('DB_NAME')}.sqlite3",
-    },
-    # "default": {
-    #     "ENGINE": "django.db.backends.postgresql",
-    #     "NAME": "colmeia_db",
-    #     "USER": "colmeia_user",
-    #     "PASSWORD": "troque-essa-senha",
-    #     "HOST": "127.0.0.1",
-    #     "PORT": "5432",
-    # }
-}
-
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -136,43 +123,32 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/4.2/topics/i18n/
-
+# ===== Locale/Timezone =====
 LANGUAGE_CODE = 'pt-BR'
 LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
-
 TIME_ZONE = 'America/Sao_Paulo'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
+# ===== Subcaminho e arquivos estáticos/mídia =====
+# Em prod, teremos SITE_PREFIX="/colmeia-online"; no dev fica vazio.
+FORCE_SCRIPT_NAME = SITE_PREFIX if SITE_PREFIX else None
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+def _url_with_prefix(suffix: str) -> str:
+    prefix = SITE_PREFIX if SITE_PREFIX else ''
+    return f"{prefix}{suffix}"
 
-# EM DEV
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'   # para produção (collectstatic)
-STATICFILES_DIRS = [BASE_DIR / 'static'] # opcional, se você tiver uma pasta "static" de projeto
-# EM DEV
+STATIC_URL = _url_with_prefix('/static/')
+MEDIA_URL  = _url_with_prefix('/media/')
 
-# EM PROD
-# FORCE_SCRIPT_NAME = "/colmeia-online"
-# STATIC_URL = f"{FORCE_SCRIPT_NAME}/static/"
-# MEDIA_URL  = f"{FORCE_SCRIPT_NAME}/media/"
-# from pathlib import Path
-# BASE_DIR = Path(__file__).resolve().parent.parent
-# STATIC_ROOT = BASE_DIR / "static"
-# MEDIA_ROOT  = BASE_DIR / "media"
-# EM PROD
+# Onde o collectstatic deposita os arquivos para o Nginx em PROD
+STATIC_ROOT = BASE_DIR / 'static'
+MEDIA_ROOT  = BASE_DIR / 'media'
 
-# Arquivos de mídia (uploads)
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+# Em DEV, se você tem uma pasta-fonte de estáticos do projeto, declare aqui:
+if DEBUG:
+    # use "static_src" como origem (evita conflito com STATIC_ROOT)
+    STATICFILES_DIRS = [BASE_DIR / 'static_src'] if (BASE_DIR / 'static_src').exists() else []
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
