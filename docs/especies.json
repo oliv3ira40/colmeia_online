@@ -11,7 +11,8 @@
       "RR"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Aparatrigona impunctata"
+    "nome_cientifico": "Aparatrigona impunctata",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -20,7 +21,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Camargoia camargoi"
+    "nome_cientifico": "Camargoia camargoi",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -31,7 +33,8 @@
       "TO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Camargoia nordestina"
+    "nome_cientifico": "Camargoia nordestina",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -40,7 +43,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Camargoia pilicornis"
+    "nome_cientifico": "Camargoia pilicornis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -48,7 +52,8 @@
       "AC"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Celetrigona euclydiana"
+    "nome_cientifico": "Celetrigona euclydiana",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -59,7 +64,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Celetrigona hirsuticornis"
+    "nome_cientifico": "Celetrigona hirsuticornis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -72,7 +78,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Celetrigona longicornis"
+    "nome_cientifico": "Celetrigona longicornis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -82,7 +89,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Celetrigona manauara"
+    "nome_cientifico": "Celetrigona manauara",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "Mombucão",
@@ -98,7 +106,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Cephalotrigona capitata"
+    "nome_cientifico": "Cephalotrigona capitata",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -110,7 +119,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Cephalotrigona femorata"
+    "nome_cientifico": "Cephalotrigona femorata",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -120,7 +130,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Dolichotrigona browni"
+    "nome_cientifico": "Dolichotrigona browni",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -130,7 +141,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Dolichotrigona clavicornis"
+    "nome_cientifico": "Dolichotrigona clavicornis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -143,7 +155,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Dolichotrigona longitarsis"
+    "nome_cientifico": "Dolichotrigona longitarsis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -153,7 +166,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Dolichotrigona mendersoni"
+    "nome_cientifico": "Dolichotrigona mendersoni",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -162,7 +176,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Dolichotrigona moratoi"
+    "nome_cientifico": "Dolichotrigona moratoi",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -170,7 +185,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Dolichotrigona rondoni"
+    "nome_cientifico": "Dolichotrigona rondoni",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -179,7 +195,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Dolichotrigona tavaresi"
+    "nome_cientifico": "Dolichotrigona tavaresi",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -191,7 +208,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Duckeola ghiliani"
+    "nome_cientifico": "Duckeola ghiliani",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -199,7 +217,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Duckeola pavani"
+    "nome_cientifico": "Duckeola pavani",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -210,7 +229,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Friesella schrottkyi"
+    "nome_cientifico": "Friesella schrottkyi",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -221,7 +241,8 @@
       "PB"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Frieseomelitta dispar"
+    "nome_cientifico": "Frieseomelitta dispar",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -237,7 +258,8 @@
       "RN"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Frieseomelitta doederleini"
+    "nome_cientifico": "Frieseomelitta doederleini",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -248,7 +270,8 @@
       "RR"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Frieseomelitta flavicornis"
+    "nome_cientifico": "Frieseomelitta flavicornis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -260,7 +283,8 @@
       "SE"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Frieseomelitta francoi"
+    "nome_cientifico": "Frieseomelitta francoi",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -269,7 +293,8 @@
       "ES"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Frieseomelitta freiremaiai"
+    "nome_cientifico": "Frieseomelitta freiremaiai",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -280,7 +305,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Frieseomelitta languida"
+    "nome_cientifico": "Frieseomelitta languida",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -288,13 +314,15 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Frieseomelitta longipes"
+    "nome_cientifico": "Frieseomelitta longipes",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
     "ufs": [],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Frieseomelitta meadewaldoi"
+    "nome_cientifico": "Frieseomelitta meadewaldoi",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -302,7 +330,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Frieseomelitta paranigra"
+    "nome_cientifico": "Frieseomelitta paranigra",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -312,7 +341,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Frieseomelitta portoi"
+    "nome_cientifico": "Frieseomelitta portoi",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -320,7 +350,8 @@
       "MT"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Frieseomelitta silvestrii"
+    "nome_cientifico": "Frieseomelitta silvestrii",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -330,7 +361,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Frieseomelitta trichocerata"
+    "nome_cientifico": "Frieseomelitta trichocerata",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "marmelada-amarela",
@@ -343,7 +375,8 @@
       "TO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Frieseomelitta varia"
+    "nome_cientifico": "Frieseomelitta varia",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -353,7 +386,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Geotrigona aequinoctialis"
+    "nome_cientifico": "Geotrigona aequinoctialis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -362,7 +396,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Geotrigona fulvohirta"
+    "nome_cientifico": "Geotrigona fulvohirta",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -371,7 +406,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Geotrigona kwyrakai"
+    "nome_cientifico": "Geotrigona kwyrakai",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -381,7 +417,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Geotrigona mattogrossensis"
+    "nome_cientifico": "Geotrigona mattogrossensis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -398,7 +435,8 @@
       "TO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Geotrigona mombuca"
+    "nome_cientifico": "Geotrigona mombuca",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -406,7 +444,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Geotrigona subfulva"
+    "nome_cientifico": "Geotrigona subfulva",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -414,7 +453,8 @@
       "RR"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Geotrigona subgrisea"
+    "nome_cientifico": "Geotrigona subgrisea",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -424,7 +464,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Geotrigona subnigra"
+    "nome_cientifico": "Geotrigona subnigra",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -435,7 +476,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Geotrigona subterranea"
+    "nome_cientifico": "Geotrigona subterranea",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -444,7 +486,8 @@
       "PE"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Geotrigona xanthopoda"
+    "nome_cientifico": "Geotrigona xanthopoda",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -452,7 +495,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Lestrimelitta ciliata"
+    "nome_cientifico": "Lestrimelitta ciliata",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -466,7 +510,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Lestrimelitta ehrhardti"
+    "nome_cientifico": "Lestrimelitta ehrhardti",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -476,7 +521,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Lestrimelitta glaberrima"
+    "nome_cientifico": "Lestrimelitta glaberrima",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -487,7 +533,8 @@
       "RR"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Lestrimelitta glabrata"
+    "nome_cientifico": "Lestrimelitta glabrata",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "canudo, iraxim, limão",
@@ -502,7 +549,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Lestrimelitta limao"
+    "nome_cientifico": "Lestrimelitta limao",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -512,7 +560,8 @@
       "RR"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Lestrimelitta maracaia"
+    "nome_cientifico": "Lestrimelitta maracaia",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -523,7 +572,8 @@
       "RR"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Lestrimelitta monodonta"
+    "nome_cientifico": "Lestrimelitta monodonta",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -531,7 +581,8 @@
       "AP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Lestrimelitta nana"
+    "nome_cientifico": "Lestrimelitta nana",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -542,7 +593,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Lestrimelitta rufa"
+    "nome_cientifico": "Lestrimelitta rufa",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -566,7 +618,8 @@
       "TO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Lestrimelitta rufipes"
+    "nome_cientifico": "Lestrimelitta rufipes",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -574,7 +627,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Lestrimelitta similis"
+    "nome_cientifico": "Lestrimelitta similis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -582,7 +636,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Lestrimelitta spinosa"
+    "nome_cientifico": "Lestrimelitta spinosa",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -592,7 +647,8 @@
       "SC"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Lestrimelitta sulina"
+    "nome_cientifico": "Lestrimelitta sulina",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -602,7 +658,8 @@
       "RJ"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Lestrimelitta tropica"
+    "nome_cientifico": "Lestrimelitta tropica",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -612,7 +669,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Leurotrigona gracilis"
+    "nome_cientifico": "Leurotrigona gracilis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "lambe-olhos",
@@ -631,7 +689,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Leurotrigona muelleri"
+    "nome_cientifico": "Leurotrigona muelleri",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -641,7 +700,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Leurotrigona pusilla"
+    "nome_cientifico": "Leurotrigona pusilla",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -653,7 +713,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona amazonica"
+    "nome_cientifico": "Melipona amazonica",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -669,7 +730,8 @@
       "SE"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona asilvai"
+    "nome_cientifico": "Melipona asilvai",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "guaraipo",
@@ -684,7 +746,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona bicolor"
+    "nome_cientifico": "Melipona bicolor",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -697,7 +760,8 @@
       "RR"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona bradley"
+    "nome_cientifico": "Melipona bradley",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -706,7 +770,8 @@
       "MT"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona illustris"
+    "nome_cientifico": "Melipona illustris",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -720,7 +785,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona marginata"
+    "nome_cientifico": "Melipona marginata",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -731,7 +797,8 @@
       "TO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona ogilviei"
+    "nome_cientifico": "Melipona ogilviei",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -741,7 +808,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona puncticollis"
+    "nome_cientifico": "Melipona puncticollis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -753,7 +821,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona torrida"
+    "nome_cientifico": "Melipona torrida",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -761,7 +830,8 @@
       "AC"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona tumupasae"
+    "nome_cientifico": "Melipona tumupasae",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "tiúba",
@@ -771,7 +841,8 @@
       "RR"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona compressipes"
+    "nome_cientifico": "Melipona compressipes",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -783,7 +854,8 @@
       "TO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona fasciculata"
+    "nome_cientifico": "Melipona fasciculata",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -794,7 +866,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona grandis"
+    "nome_cientifico": "Melipona grandis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -804,7 +877,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona interrupta"
+    "nome_cientifico": "Melipona interrupta",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -824,7 +898,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona quinquefasciata"
+    "nome_cientifico": "Melipona quinquefasciata",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -832,7 +907,8 @@
       "RR"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona favosa"
+    "nome_cientifico": "Melipona favosa",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -847,7 +923,8 @@
       "SE"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona mandacaia"
+    "nome_cientifico": "Melipona mandaçaia",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -856,7 +933,8 @@
       "MS"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona orbignyi"
+    "nome_cientifico": "Melipona orbignyi",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -877,7 +955,8 @@
       "SE"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona quadrifasciata"
+    "nome_cientifico": "Melipona quadrifasciata",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -893,7 +972,8 @@
       "SE"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona subnitida"
+    "nome_cientifico": "Melipona subnitida",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -902,7 +982,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona brachychaeta"
+    "nome_cientifico": "Melipona brachychaeta",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -911,7 +992,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona captiosa"
+    "nome_cientifico": "Melipona captiosa",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -919,7 +1001,8 @@
       "ES"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona capixaba"
+    "nome_cientifico": "Melipona capixaba",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -927,7 +1010,8 @@
       "RR"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona cramptoni"
+    "nome_cientifico": "Melipona cramptoni",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -937,7 +1021,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona crinita"
+    "nome_cientifico": "Melipona crinita",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -947,7 +1032,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona dubia"
+    "nome_cientifico": "Melipona dubia",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -956,7 +1042,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona eburnea"
+    "nome_cientifico": "Melipona eburnea",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -967,7 +1054,8 @@
       "TO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona flavolineata"
+    "nome_cientifico": "Melipona flavolineata",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -982,7 +1070,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona fuliginosa"
+    "nome_cientifico": "Melipona fuliginosa",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -993,7 +1082,8 @@
       "RR"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona fulva"
+    "nome_cientifico": "Melipona fulva",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1002,7 +1092,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona fuscopilosa"
+    "nome_cientifico": "Melipona fuscopilosa",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1013,7 +1104,8 @@
       "RR"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona lateralis"
+    "nome_cientifico": "Melipona lateralis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1025,7 +1117,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona melanoventer"
+    "nome_cientifico": "Melipona melanoventer",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1040,7 +1133,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona mondury"
+    "nome_cientifico": "Melipona mondury",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1050,7 +1144,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona nebulosa"
+    "nome_cientifico": "Melipona nebulosa",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1060,7 +1155,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona paraensis"
+    "nome_cientifico": "Melipona paraensis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "tujuba",
@@ -1074,7 +1170,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona rufiventris"
+    "nome_cientifico": "Melipona rufiventris",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1088,7 +1185,8 @@
       "SE"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona scutellaris"
+    "nome_cientifico": "Melipona scutellaris",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1103,7 +1201,8 @@
       "TO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona seminigra"
+    "nome_cientifico": "Melipona seminigra",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1111,7 +1210,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Melipona titania"
+    "nome_cientifico": "Melipona titania",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1121,7 +1221,8 @@
       "SC"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Mourella caerulea"
+    "nome_cientifico": "Mourella caerulea",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1130,7 +1231,8 @@
       "MT"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Nannotrigona chapadana"
+    "nome_cientifico": "Nannotrigona chapadana",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1138,7 +1240,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Nannotrigona dutrae"
+    "nome_cientifico": "Nannotrigona dutrae",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1147,7 +1250,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Nannotrigona melanocera"
+    "nome_cientifico": "Nannotrigona melanocera",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1155,7 +1259,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Nannotrigona minuta"
+    "nome_cientifico": "Nannotrigona minuta",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1164,7 +1269,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Nannotrigona punctata"
+    "nome_cientifico": "Nannotrigona punctata",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1174,7 +1280,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Nannotrigona schultzei"
+    "nome_cientifico": "Nannotrigona schultzei",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1191,7 +1298,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Nannotrigona testaceicornis"
+    "nome_cientifico": "Nannotrigona testaceicornis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1199,7 +1307,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Nogueirapis butteli"
+    "nome_cientifico": "Nogueirapis butteli",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1208,7 +1317,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Nogueirapis minor"
+    "nome_cientifico": "Nogueirapis minor",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1216,7 +1326,8 @@
       "ES"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Oxytrigona flaveola"
+    "nome_cientifico": "Oxytrigona flaveola",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1226,7 +1337,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Oxytrigona ignis"
+    "nome_cientifico": "Oxytrigona ignis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1235,7 +1347,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Oxytrigona mulfordi"
+    "nome_cientifico": "Oxytrigona mulfordi",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1247,7 +1360,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Oxytrigona obscura"
+    "nome_cientifico": "Oxytrigona obscura",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "tataíra",
@@ -1262,7 +1376,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Oxytrigona tataira"
+    "nome_cientifico": "Oxytrigona tataira",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1270,7 +1385,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Paratrigona catabolonota"
+    "nome_cientifico": "Paratrigona catabolonota",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1278,7 +1394,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Paratrigona compsa"
+    "nome_cientifico": "Paratrigona compsa",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1286,7 +1403,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Paratrigona crassicornis"
+    "nome_cientifico": "Paratrigona crassicornis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1294,7 +1412,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Paratrigona euxanthospila"
+    "nome_cientifico": "Paratrigona euxanthospila",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1302,7 +1421,8 @@
       "AP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Paratrigona femoralis"
+    "nome_cientifico": "Paratrigona femoralis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1312,7 +1432,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Paratrigona haeckeli"
+    "nome_cientifico": "Paratrigona haeckeli",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1322,7 +1443,8 @@
       "PB"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Paratrigona incerta"
+    "nome_cientifico": "Paratrigona incerta",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1342,7 +1464,8 @@
       "TO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Paratrigona lineata"
+    "nome_cientifico": "Paratrigona lineata",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1351,7 +1474,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Paratrigona lineatifrons"
+    "nome_cientifico": "Paratrigona lineatifrons",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1359,7 +1483,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Paratrigona melanaspis"
+    "nome_cientifico": "Paratrigona melanaspis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1367,7 +1492,8 @@
       "AC"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Paratrigona nuda"
+    "nome_cientifico": "Paratrigona nuda",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1375,7 +1501,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Paratrigona myrmecophila"
+    "nome_cientifico": "Paratrigona myrmecophila",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1384,7 +1511,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Paratrigona pacifica"
+    "nome_cientifico": "Paratrigona pacifica",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1394,7 +1522,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Paratrigona pannosa"
+    "nome_cientifico": "Paratrigona pannosa",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1403,7 +1532,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Paratrigona peltata"
+    "nome_cientifico": "Paratrigona peltata",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1414,7 +1544,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Paratrigona prosopiformis"
+    "nome_cientifico": "Paratrigona prosopiformis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1429,7 +1560,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Paratrigona subnuda"
+    "nome_cientifico": "Paratrigona subnuda",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1449,7 +1581,8 @@
       "TO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Partamona ailyae"
+    "nome_cientifico": "Partamona ailyae",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1459,7 +1592,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Partamona auripennis"
+    "nome_cientifico": "Partamona auripennis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1468,7 +1602,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Partamona batesi"
+    "nome_cientifico": "Partamona batesi",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1480,7 +1615,8 @@
       "TO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Partamona chapadicola"
+    "nome_cientifico": "Partamona chapadicola",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1498,7 +1634,8 @@
       "TO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Partamona combinata"
+    "nome_cientifico": "Partamona combinata",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1509,7 +1646,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Partamona criptica"
+    "nome_cientifico": "Partamona criptica",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1521,7 +1659,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Partamona cupira"
+    "nome_cientifico": "Partamona cupira",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1530,7 +1669,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Partamona epiphytophila"
+    "nome_cientifico": "Partamona epiphytophila",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1541,7 +1681,8 @@
       "RR"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Partamona ferreirai"
+    "nome_cientifico": "Partamona ferreirai",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1550,7 +1691,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Partamona gregaria"
+    "nome_cientifico": "Partamona gregaria",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1564,7 +1706,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Partamona helleri"
+    "nome_cientifico": "Partamona helleri",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1573,7 +1716,8 @@
       "RN"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Partamona littoralis"
+    "nome_cientifico": "Partamona littoralis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1583,7 +1727,8 @@
       "RR"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Partamona mourei"
+    "nome_cientifico": "Partamona mourei",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1592,7 +1737,8 @@
       "MS"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Partamona mulata"
+    "nome_cientifico": "Partamona mulata",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1604,7 +1750,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Partamona nhambiquara"
+    "nome_cientifico": "Partamona nhambiquara",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1612,7 +1759,8 @@
       "RR"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Partamona nigrior"
+    "nome_cientifico": "Partamona nigrior",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1623,7 +1771,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Partamona pearsoni"
+    "nome_cientifico": "Partamona pearsoni",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1632,7 +1781,8 @@
       "MG"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Partamona rustica"
+    "nome_cientifico": "Partamona rustica",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1644,7 +1794,8 @@
       "RN"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Partamona seridoensis"
+    "nome_cientifico": "Partamona seridoensis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1653,7 +1804,8 @@
       "ES"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Partamona sooretamae"
+    "nome_cientifico": "Partamona sooretamae",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1661,7 +1813,8 @@
       "AC"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Partamona subtilis"
+    "nome_cientifico": "Partamona subtilis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1675,7 +1828,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Partamona testacea"
+    "nome_cientifico": "Partamona testacea",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1689,7 +1843,8 @@
       "RR"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Partamona vicina"
+    "nome_cientifico": "Partamona vicina",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1700,7 +1855,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Plebeia alvarengai"
+    "nome_cientifico": "Plebeia alvarengai",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1709,7 +1865,8 @@
       "RS"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Plebeia catamarcensis"
+    "nome_cientifico": "Plebeia catamarcensis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1725,7 +1882,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Plebeia droryana"
+    "nome_cientifico": "Plebeia droryana",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1736,7 +1894,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Plebeia emerina"
+    "nome_cientifico": "Plebeia emerina",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1747,7 +1906,8 @@
       "PI"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Plebeia flavocincta"
+    "nome_cientifico": "Plebeia flavocincta",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1755,7 +1915,8 @@
       "BA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Plebeia grapiuna"
+    "nome_cientifico": "Plebeia grapiuna",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1763,7 +1924,8 @@
       "PR"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Plebeia julianii"
+    "nome_cientifico": "Plebeia julianii",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1772,7 +1934,8 @@
       "MG"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Plebeia lucii"
+    "nome_cientifico": "Plebeia lucii",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1782,7 +1945,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Plebeia margaritae"
+    "nome_cientifico": "Plebeia margaritae",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1793,7 +1957,8 @@
       "RJ"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Plebeia meridionalis"
+    "nome_cientifico": "Plebeia meridionalis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1806,7 +1971,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Plebeia minima"
+    "nome_cientifico": "Plebeia minima",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1815,7 +1981,8 @@
       "RJ"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Plebeia mosquito"
+    "nome_cientifico": "Plebeia mosquito",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1826,7 +1993,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Plebeia nigriceps"
+    "nome_cientifico": "Plebeia nigriceps",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1835,7 +2003,8 @@
       "MG"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Plebeia phrynostoma"
+    "nome_cientifico": "Plebeia phrynostoma",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1844,7 +2013,8 @@
       "MG"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Plebeia poecilochroa"
+    "nome_cientifico": "Plebeia poecilochroa",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1857,7 +2027,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Plebeia remota"
+    "nome_cientifico": "Plebeia remota",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1869,7 +2040,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Plebeia saiqui"
+    "nome_cientifico": "Plebeia saiqui",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1879,7 +2051,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Plebeia variicolor"
+    "nome_cientifico": "Plebeia variicolor",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1887,7 +2060,8 @@
       "RS"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Plebeia wittmanni"
+    "nome_cientifico": "Plebeia wittmanni",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1902,7 +2076,8 @@
       "RR"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Ptilotrigona lurida"
+    "nome_cientifico": "Ptilotrigona lurida",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1911,7 +2086,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Ptilotrigona pereneae"
+    "nome_cientifico": "Ptilotrigona pereneae",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1920,7 +2096,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Scaptotrigona affabra"
+    "nome_cientifico": "Scaptotrigona affabra",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "tubuna",
@@ -1936,7 +2113,8 @@
       "SC"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Scaptotrigona bipunctata"
+    "nome_cientifico": "Scaptotrigona bipunctata",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1948,7 +2126,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Scaptotrigona depilis"
+    "nome_cientifico": "Scaptotrigona depilis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1957,7 +2136,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Scaptotrigona fulvicutis"
+    "nome_cientifico": "Scaptotrigona fulvicutis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "bijuí",
@@ -1974,7 +2154,8 @@
       "TO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Scaptotrigona polysticta"
+    "nome_cientifico": "Scaptotrigona polysticta",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "mandaguari",
@@ -1982,7 +2163,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Scaptotrigona postica"
+    "nome_cientifico": "Scaptotrigona postica",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -1992,7 +2174,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Scaptotrigona tricolorata"
+    "nome_cientifico": "Scaptotrigona tricolorata",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2003,7 +2186,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Scaptotrigona tubiba"
+    "nome_cientifico": "Scaptotrigona tubiba",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2017,7 +2201,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Scaptotrigona xanthotricha"
+    "nome_cientifico": "Scaptotrigona xanthotricha",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2027,7 +2212,8 @@
       "MG"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Scaura atlantica"
+    "nome_cientifico": "Scaura atlantica",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2043,7 +2229,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Scaura latitarsis"
+    "nome_cientifico": "Scaura latitarsis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2059,7 +2246,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Scaura longula"
+    "nome_cientifico": "Scaura longula",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2069,7 +2257,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Scaura tenuis"
+    "nome_cientifico": "Scaura tenuis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2080,7 +2269,8 @@
       "TO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Schwarziana mourei"
+    "nome_cientifico": "Schwarziana mourei",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "uruçu",
@@ -2096,7 +2286,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Schwarziana quadripunctata"
+    "nome_cientifico": "Schwarziana quadripunctata",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2106,7 +2297,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Schwarzula coccidophila"
+    "nome_cientifico": "Schwarzula coccidophila",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2121,7 +2313,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Schwarzula timida"
+    "nome_cientifico": "Schwarzula timida",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2130,7 +2323,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Tetragona beebei"
+    "nome_cientifico": "Tetragona beebei",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "borá",
@@ -2138,7 +2332,8 @@
       "RR"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Tetragona clavipes"
+    "nome_cientifico": "Tetragona clavipes",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2151,7 +2346,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Tetragona dorsalis"
+    "nome_cientifico": "Tetragona dorsalis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2160,7 +2356,8 @@
       "MG"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Tetragona elongata"
+    "nome_cientifico": "Tetragona elongata",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2169,7 +2366,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Tetragona essequiboensis"
+    "nome_cientifico": "Tetragona essequiboensis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2181,7 +2379,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Tetragona goettei"
+    "nome_cientifico": "Tetragona goettei",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2192,7 +2391,8 @@
       "RR"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Tetragona handlirschii"
+    "nome_cientifico": "Tetragona handlirschii",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2201,7 +2401,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Tetragona kaieteurensis"
+    "nome_cientifico": "Tetragona kaieteurensis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2215,7 +2416,8 @@
       "TO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Tetragona quadrangula"
+    "nome_cientifico": "Tetragona quadrangula",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2228,13 +2430,15 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Tetragona truncata"
+    "nome_cientifico": "Tetragona truncata",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "jataí, jatí",
     "ufs": [],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Tetragonisca angustula"
+    "nome_cientifico": "Tetragonisca angustula",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2246,7 +2450,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Tetragonisca fiebrigi"
+    "nome_cientifico": "Tetragonisca fiebrigi",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2256,7 +2461,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Tetragonisca weyrauchi"
+    "nome_cientifico": "Tetragonisca weyrauchi",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2264,7 +2470,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trichotrigona extranea"
+    "nome_cientifico": "Trichotrigona extranea",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2276,7 +2483,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigona albipennis"
+    "nome_cientifico": "Trigona albipennis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2286,7 +2494,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigona amalthea"
+    "nome_cientifico": "Trigona amalthea",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2299,7 +2508,8 @@
       "TO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigona amazonensis"
+    "nome_cientifico": "Trigona amazonensis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2313,7 +2523,8 @@
       "TO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigona branneri"
+    "nome_cientifico": "Trigona branneri",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2325,13 +2536,15 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigona braueri"
+    "nome_cientifico": "Trigona braueri",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
     "ufs": [],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigona chanchamayoensis"
+    "nome_cientifico": "Trigona chanchamayoensis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2348,7 +2561,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigona cilipes"
+    "nome_cientifico": "Trigona cilipes",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2359,7 +2573,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigona crassipes"
+    "nome_cientifico": "Trigona crassipes",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2373,7 +2588,8 @@
       "TO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigona dallatorreana"
+    "nome_cientifico": "Trigona dallatorreana",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2384,7 +2600,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigona dimidiata"
+    "nome_cientifico": "Trigona dimidiata",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2400,7 +2617,8 @@
       "TO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigona guianae"
+    "nome_cientifico": "Trigona guianae",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2418,7 +2636,8 @@
       "TO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigona hyalinata"
+    "nome_cientifico": "Trigona hyalinata",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2430,7 +2649,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigona hypogea"
+    "nome_cientifico": "Trigona hypogea",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2444,7 +2664,8 @@
       "RR"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigona lacteipennis"
+    "nome_cientifico": "Trigona lacteipennis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2460,7 +2681,8 @@
       "TO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigona pallens"
+    "nome_cientifico": "Trigona pallens",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2470,7 +2692,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigona pellucida"
+    "nome_cientifico": "Trigona pellucida",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2489,7 +2712,8 @@
       "TO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigona recursa"
+    "nome_cientifico": "Trigona recursa",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2497,7 +2721,8 @@
       "AP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigona sesquipedalis"
+    "nome_cientifico": "Trigona sesquipedalis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "irapuá, arapuá",
@@ -2525,7 +2750,8 @@
       "TO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigona spinipes"
+    "nome_cientifico": "Trigona spinipes",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2544,7 +2770,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigona truculenta"
+    "nome_cientifico": "Trigona truculenta",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2559,7 +2786,8 @@
       "RR"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigona williana"
+    "nome_cientifico": "Trigona williana",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2567,7 +2795,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigonisca bidentata"
+    "nome_cientifico": "Trigonisca bidentata",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2575,7 +2804,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigonisca ceophloei"
+    "nome_cientifico": "Trigonisca ceophloei",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2584,7 +2814,8 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigonisca dobzhanskyi"
+    "nome_cientifico": "Trigonisca dobzhanskyi",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2597,7 +2828,8 @@
       "RR"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigonisca duckei"
+    "nome_cientifico": "Trigonisca duckei",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2605,7 +2837,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigonisca extrema"
+    "nome_cientifico": "Trigonisca extrema",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2613,7 +2846,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigonisca flavicans"
+    "nome_cientifico": "Trigonisca flavicans",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2624,7 +2858,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigonisca fraissei"
+    "nome_cientifico": "Trigonisca fraissei",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2632,7 +2867,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigonisca graeffei"
+    "nome_cientifico": "Trigonisca graeffei",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2640,7 +2876,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigonisca hirticornis"
+    "nome_cientifico": "Trigonisca hirticornis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2652,7 +2889,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigonisca intermedia"
+    "nome_cientifico": "Trigonisca intermedia",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2664,7 +2902,8 @@
       "SP"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigonisca meridionalis"
+    "nome_cientifico": "Trigonisca meridionalis",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2675,7 +2914,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigonisca nataliae"
+    "nome_cientifico": "Trigonisca nataliae",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2686,7 +2926,8 @@
       "PB"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigonisca pediculana"
+    "nome_cientifico": "Trigonisca pediculana",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2694,7 +2935,8 @@
       "AM"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigonisca unidentata"
+    "nome_cientifico": "Trigonisca unidentata",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2704,7 +2946,8 @@
       "RO"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigonisca variegatifrons"
+    "nome_cientifico": "Trigonisca variegatifrons",
+    "caracteristicas": ""
   },
   {
     "nome_popular": "",
@@ -2713,6 +2956,7 @@
       "PA"
     ],
     "grupo": "sem_ferrao",
-    "nome_cientifico": "Trigonisca vitrifrons"
+    "nome_cientifico": "Trigonisca vitrifrons",
+    "caracteristicas": ""
   }
 ]
