@@ -94,7 +94,11 @@ class Command(BaseCommand):
                 )
                 continue
 
-            characteristics = (entry.get("caracteristicas") or "").strip()
+            raw_characteristics = entry.get("caracteristicas")
+            if raw_characteristics is None:
+                characteristics = ""
+            else:
+                characteristics = str(raw_characteristics).strip()
             default_temperament = entry.get("temperamento_padrao")
             if isinstance(default_temperament, str):
                 default_temperament = default_temperament.strip() or None
