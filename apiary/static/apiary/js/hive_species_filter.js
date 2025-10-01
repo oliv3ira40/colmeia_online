@@ -3,22 +3,39 @@
     return;
   }
 
-  function initializeSpeciesFilter() {
-    // Select do filtro de espécies na lista de colmeias -> Funcionou
-    $('.list-filter-dropdown').find('select').select2();
+  function getSelects(context) {
+    return $(context)
+      .find('select')
+      .filter(function() {
+        var $select = $(this);
+        return (
+          !$select.is('.select2-hidden-accessible') &&
+          !$select.data('select2-initialized') &&
+          !$select.prop('disabled')
+        );
+      });
+  }
 
-    // Select do formulário de colmeia -> Funcionou
-    $('#id_species').select2();
+  function initializeSelect2(context) {
+    getSelects(context).each(function() {
+      var $select = $(this);
+      $select.select2({
+        width: 'style'
+      });
+      $select.data('select2-initialized', true);
+    });
+  }
 
-    // Select do formulário de revisões de colmeia-> Não funcionou
-    $('#id_hive').select2();
-
-    // TODO: Seria bom que o Select2 estive funcionando em todos o admin do Django.
+  function onReady() {
+    initializeSelect2(document);
+    $(document).on('formset:added', function(_event, $row) {
+      initializeSelect2($row);
+    });
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeSpeciesFilter);
+    document.addEventListener('DOMContentLoaded', onReady);
   } else {
-    initializeSpeciesFilter();
+    onReady();
   }
 })(typeof django !== 'undefined' ? django.jQuery : window.jQuery);

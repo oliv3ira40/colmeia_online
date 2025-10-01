@@ -3,7 +3,20 @@ from django.contrib import admin
 from .models import Apiary, Hive, Revision, RevisionAttachment, Species
 
 
-class OwnerRestrictedAdmin(admin.ModelAdmin):
+class Select2AdminMixin:
+    class Media:
+        css = {
+            "all": (
+                "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css",
+            )
+        }
+        js = (
+            "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.full.min.js",
+            "apiary/js/hive_species_filter.js",
+        )
+
+
+class OwnerRestrictedAdmin(Select2AdminMixin, admin.ModelAdmin):
     owner_field_name = "owner"
 
     def get_queryset(self, request):
@@ -54,7 +67,7 @@ class OwnerRestrictedAdmin(admin.ModelAdmin):
 
 
 @admin.register(Species)
-class SpeciesAdmin(admin.ModelAdmin):
+class SpeciesAdmin(Select2AdminMixin, admin.ModelAdmin):
     list_display = ("popular_name", "scientific_name", "group")
     search_fields = ("popular_name", "scientific_name")
 
@@ -104,21 +117,8 @@ class HiveAdmin(OwnerRestrictedAdmin):
             kwargs["queryset"] = Apiary.objects.owned_by(request.user)
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
-    # TODO: colocar esse import em todo o django admin
-    class Media:
-        css = {
-            "all": (
-                "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css",
-            )
-        }
-        js = (
-            "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.full.min.js",
-            "apiary/js/hive_species_filter.js",
-        )
-
-
 @admin.register(Revision)
-class RevisionAdmin(admin.ModelAdmin):
+class RevisionAdmin(Select2AdminMixin, admin.ModelAdmin):
     list_display = (
         "hive",
         "review_date",
@@ -153,6 +153,6 @@ class RevisionAdmin(admin.ModelAdmin):
 
 
 @admin.register(RevisionAttachment)
-class RevisionAttachmentAdmin(admin.ModelAdmin):
+class RevisionAttachmentAdmin(Select2AdminMixin, admin.ModelAdmin):
     list_display = ("revision", "file")
     search_fields = ("revision__hive__identification_number",)
