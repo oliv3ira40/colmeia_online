@@ -12,10 +12,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Aparatrigona impunctata",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão pequena e discreta; costuma nidificar em cavidades de árvores usando cerume fino. Geralmente dócil, com voos curtos próximos ao ninho e potes de mel/pólen reduzidos."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AP",
       "AM"
@@ -47,16 +47,16 @@
     "caracteristicas": "Camargoia pilicornis é uma espécie de abelha sem ferrão endêmica do Brasil, descrita por Ducke em 1910. Mede em média 7,5 mm de comprimento e apresenta manchas amarelas na cabeça e no tórax, sobre um tegumento liso e brilhante. Suas asas são longas, ultrapassando o abdômen, e a pubescência é discreta, com cerdas visíveis no clípeo. É encontrada principalmente nas regiões de transição entre a Amazônia e o Cerrado, nos estados do Maranhão e Pará, sendo considerada de conservação incerta, classificada como espécie com dados insuficientes."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AC"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Celetrigona euclydiana",
-    "caracteristicas": "Celetrigona euclydiana é uma espécie de abelha sem ferrão descrita para a Amazônia (estado do Acre, Brasil). Pertence ao gênero Celetrigona, que reúne abelhas de porte pequeno, corpo densamente pontuado, antenas longas e membros posteriores delgados, características morfológicas usadas para distingui-la de espécies próximas. Essa espécie habita florestas tropicais e foi reconhecida em estudos taxonômicos modernos, embora o gênero Celetrigona tenha passado por reclassificações recentes dentro dos meliponíneos."
+    "caracteristicas": "Abelha sem ferrão de porte muito pequeno do gênero Celetrigona; corpo escuro, antenas relativamente longas e colônias discretas. Nidifica em ocos de árvores em floresta úmida e apresenta comportamento manso."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AC",
       "AM",
@@ -65,7 +65,7 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Celetrigona hirsuticornis",
-    "caracteristicas": "Celetrigona hirsuticornis é uma espécie de abelha sem ferrão descrita no bioma amazônico, especificamente em Rondônia. Ela se destaca por possuir pilosidade notável nos segmentos das antenas, característica usada em sua diferenciação taxonômica. A espécie pertence ao gênero Celetrigona, que reúne abelhas pequenas e discretas, e compartilha padrões morfológicos com outras espécies do gênero, como estrutura corporal compacta, antenas alongadas e uso de cerume na construção dos ninhos."
+    "caracteristicas": "Espécie amazônica pequena, reconhecida pela pilosidade evidente nas antenas. Faz ninhos pouco chamativos em cavidades estreitas e utiliza cerume fino; baixa agressividade."
   },
   {
     "nome_popular": "abelha-formiga",
@@ -110,7 +110,7 @@
     "caracteristicas": "Cephalotrigona capitata é uma abelha social sem ferrão amplamente difundida no Brasil, cuja operária mede cerca de 10 mm. O corpo é predominantemente negro e nidifica em ocos de árvores, usando entradas reduzidas e pouco visíveis. É conhecida por produzir mel em grande quantidade, com grandes potes de mel, e por sua colônia ser dócil e difícil de localizar em ambiente natural."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AP",
       "AM",
@@ -120,10 +120,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Cephalotrigona femorata",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão do gênero Cephalotrigona; porte médio, coloração escura e entradas de ninho discretas em troncos ocos. Produz potes de mel/pólen maiores e apresenta comportamento geralmente manso."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AC",
       "MT",
@@ -134,129 +134,190 @@
     "caracteristicas": "Dolichotrigona browni é uma espécie de pequena abelha sem ferrão do gênero Dolichotrigona descrita em 2005. A espécie ocorre nos estados brasileiros do Acre, Mato Grosso e Rondônia, estendendo-se também a países vizinhos como Peru, Equador e Bolívia. Em estudos taxonômicos, essa abelha é mencionada como parte da revisão do gênero Dolichotrigona, que agrupa abelhas muito pequenas frequentemente chamadas de “lambe-olhos” pela forma de comportamento agressivo frente a perturbantes."
   },
   {
-    "nome_popular": "sem nome popular",
-    "ufs": ["AC", "AM", "RO"],
+    "nome_popular": "",
+    "ufs": [
+      "AC",
+      "AM",
+      "RO"
+    ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Dolichotrigona clavicornis",
     "caracteristicas": "Espécie de abelha sem ferrão de porte muito pequeno, pertencente ao gênero Dolichotrigona. Nidifica em ocos de árvores e produz colônias discretas, geralmente com entrada reduzida. Conhecida pelo comportamento ativo de defesa usando resinas, apesar do pequeno tamanho."
   },
   {
-    "nome_popular": "sem nome popular",
-    "ufs": ["AC", "AM", "MA", "MT", "PA", "RO"],
+    "nome_popular": "",
+    "ufs": [
+      "AC",
+      "AM",
+      "MA",
+      "MT",
+      "PA",
+      "RO"
+    ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Dolichotrigona longitarsis",
     "caracteristicas": "Abelha sem ferrão do gênero Dolichotrigona, caracterizada por tarsos alongados e corpo muito pequeno, com coloração predominantemente escura. Vive em colônias reduzidas, nidificando em cavidades naturais de árvores, sendo difícil de localizar em campo."
   },
   {
-    "nome_popular": "sem nome popular",
-    "ufs": ["AC", "AM", "RO"],
+    "nome_popular": "",
+    "ufs": [
+      "AC",
+      "AM",
+      "RO"
+    ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Dolichotrigona mendersoni",
     "caracteristicas": "Espécie descrita recentemente dentro do gênero Dolichotrigona, encontrada na região amazônica. Apresenta corpo diminuto e coloração escura, com pilosidade discreta. Assim como outras espécies do grupo, constrói ninhos pouco evidentes em ocos de árvores."
   },
   {
-    "nome_popular": "sem nome popular",
-    "ufs": ["AC", "AM"],
+    "nome_popular": "",
+    "ufs": [
+      "AC",
+      "AM"
+    ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Dolichotrigona moratoi",
     "caracteristicas": "Abelha sem ferrão de distribuição restrita à Amazônia. É de porte pequeno, com antenas relativamente longas e asas estreitas. Nidifica em cavidades de árvores, formando colônias pequenas e pouco defensivas, e sua biologia ainda é pouco conhecida."
   },
   {
     "nome_popular": "abelha-lambe-olhos",
-    "ufs": ["RO"],
+    "ufs": [
+      "RO"
+    ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Dolichotrigona rondoni",
     "caracteristicas": "Espécie de abelha sem ferrão muito pequena, do gênero Dolichotrigona, encontrada em Rondônia. É discreta, com corpo escuro e comportamento típico das lambe-olhos, aproximando-se de animais e pessoas em busca de secreções. Nidifica em cavidades naturais de árvores."
   },
   {
     "nome_popular": "abelha-lambe-olhos",
-    "ufs": ["AC", "AM"],
+    "ufs": [
+      "AC",
+      "AM"
+    ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Dolichotrigona tavaresi",
     "caracteristicas": "Pequena abelha sem ferrão do gênero Dolichotrigona, registrada no Acre e Amazonas. Possui coloração escura, porte reduzido e hábito discreto. Assim como outras espécies do grupo, constrói ninhos pouco visíveis em ocos de árvores e apresenta comportamento de lamber secreções."
   },
   {
-    "nome_popular": "sem nome popular",
-    "ufs": ["AP", "AM", "MT", "PA", "RO"],
+    "nome_popular": "",
+    "ufs": [
+      "AP",
+      "AM",
+      "MT",
+      "PA",
+      "RO"
+    ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Duckeola ghiliani",
-    "caracteristicas": "Abelha sem ferrão do gênero Duckeola, encontrada em várias regiões da Amazônia. Apresenta corpo pequeno e coloração escura, formando colônias discretas. É uma das espécies mais estudadas do gênero, com registro de nidificação em cavidades de árvores."
+    "caracteristicas": "Abelha sem ferrão do gênero Duckeola, de pequeno porte e coloração escura. Forma colônias discretas em ocos de árvores de floresta úmida; comportamento geralmente manso e produção modesta de mel."
   },
   {
-    "nome_popular": "sem nome popular",
-    "ufs": ["AM"],
+    "nome_popular": "",
+    "ufs": [
+      "AM"
+    ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Duckeola pavani",
-    "caracteristicas": "Espécie pouco conhecida do gênero Duckeola, descrita na Amazônia. Tem porte pequeno e coloração escura, vivendo em colônias restritas e pouco abundantes. Sua biologia é pouco documentada, mas segue o padrão de nidificação em ocos de árvores."
+    "caracteristicas": "Espécie rara do gênero Duckeola, conhecida por colônias pequenas e entradas de ninho pouco visíveis em troncos. Biologia pouco documentada; tende a ser pouco agressiva."
   },
   {
     "nome_popular": "abelha-mirim-preguiça",
-    "ufs": ["ES", "MG", "PR", "SP"],
+    "ufs": [
+      "ES",
+      "MG",
+      "PR",
+      "SP"
+    ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Friesella schrottkyi",
     "caracteristicas": "Pequena abelha sem ferrão muito conhecida no Sudeste e Sul do Brasil. Mede cerca de 4 mm, tem corpo escuro e comportamento dócil. Nidifica em cavidades pequenas e é apreciada pela produção de mel em pequena escala, além de ser importante polinizadora."
   },
   {
     "nome_popular": "marmelada",
-    "ufs": ["BA", "ES", "MG", "PB"],
+    "ufs": [
+      "BA",
+      "ES",
+      "MG",
+      "PB"
+    ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Frieseomelitta dispar",
     "caracteristicas": "Espécie de abelha sem ferrão do gênero Frieseomelitta, popularmente chamada de marmelada em algumas regiões. Produz própolis em abundância e constrói ninhos em cavidades de árvores ou estruturas de taipa. Suas colônias são médias e apresentam comportamento manso."
   },
   {
-    "nome_popular": "sem nome popular",
-    "ufs": ["AP", "AM", "PA", "RR"],
+    "nome_popular": "",
+    "ufs": [
+      "AP",
+      "AM",
+      "PA",
+      "RR"
+    ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Frieseomelitta flavicornis",
-    "caracteristicas": "Abelha sem ferrão do gênero Frieseomelitta, de pequeno porte e corpo escuro com antenas amareladas, característica que a diferencia de espécies próximas. Nidifica em cavidades de árvores e apresenta comportamento manso, com colônias discretas e pequenas."
+    "caracteristicas": "Abelha sem ferrão de pequeno porte, com antenas amareladas que contrastam com o corpo escuro. Colônias discretas, produção de própolis e mel moderadas e comportamento geralmente dócil."
   },
   {
-    "nome_popular": "sem nome popular",
-    "ufs": ["BA", "ES", "PB", "PE", "SE"],
+    "nome_popular": "",
+    "ufs": [
+      "BA",
+      "ES",
+      "PB",
+      "PE",
+      "SE"
+    ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Frieseomelitta francoi",
-    "caracteristicas": "Espécie de abelha sem ferrão encontrada no Nordeste e Sudeste, associada a habitats de floresta e caatinga. É pequena, com coloração escura e detalhes amarelados no corpo. Suas colônias produzem própolis em quantidade e nidificam em cavidades naturais."
+    "caracteristicas": "Espécie pequena e escura do gênero Frieseomelitta, associada a ambientes de floresta e caatinga. Produz própolis em boa quantidade e nidifica em ocos de árvores; mansidão comum ao grupo."
   },
   {
-    "nome_popular": "sem nome popular",
-    "ufs": ["BA", "ES"],
+    "nome_popular": "",
+    "ufs": [
+      "BA",
+      "ES"
+    ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Frieseomelitta freiremaiai",
-    "caracteristicas": "Abelha sem ferrão descrita no gênero Frieseomelitta e registrada na Bahia e Espírito Santo. Tem porte pequeno e hábitos discretos, formando colônias reduzidas em cavidades de árvores. Sua biologia é pouco estudada, mas segue o padrão do gênero com produção de cerume e própolis."
+    "caracteristicas": "Abelha sem ferrão de porte reduzido, colônias pequenas e entradas discretas. Produz própolis e cerume para organização interna do ninho; comportamento manso."
   },
   {
-    "nome_popular": "sem nome popular",
-    "ufs": ["BA", "GO", "MG", "SP"],
+    "nome_popular": "",
+    "ufs": [
+      "BA",
+      "GO",
+      "MG",
+      "SP"
+    ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Frieseomelitta languida",
-    "caracteristicas": "Espécie de abelha sem ferrão de ampla distribuição no Brasil central e sudeste. Mede poucos milímetros, possui coloração predominantemente escura e comportamento dócil. Nidifica em ocos de árvores e é reconhecida pelo hábito de recobrir superfícies internas do ninho com própolis."
+    "caracteristicas": "De ampla distribuição no Brasil central/sudeste; corpo escuro, poucos milímetros de comprimento e comportamento dócil. Tendência a recobrir superfícies internas do ninho com própolis."
   },
   {
-    "nome_popular": "sem nome popular",
-    "ufs": ["PA"],
+    "nome_popular": "",
+    "ufs": [
+      "PA"
+    ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Frieseomelitta longipes",
-    "caracteristicas": "Abelha sem ferrão endêmica do Pará, de porte pequeno e pertencente ao gênero Frieseomelitta. Recebe o nome específico por apresentar pernas proporcionalmente longas em relação ao corpo. Nidifica em cavidades naturais e forma colônias discretas."
+    "caracteristicas": "Endêmica do Pará; pernas proporcionalmente longas, colônia pequena e discreta em ocos. Produção modesta de mel e própolis, com baixa agressividade."
   },
-  // PAREI AQUI
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Frieseomelitta meadewaldoi",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie pouco documentada do gênero Frieseomelitta; abelha pequena, coloração escura e colônias reduzidas. Nidifica em cavidades, com comportamento geralmente manso."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AM"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Frieseomelitta paranigra",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão de porte pequeno e coloração escura; registros na Amazônia. Forma colônias discretas e utiliza própolis/cerume na arquitetura do ninho."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AM",
       "MA",
@@ -264,19 +325,19 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Frieseomelitta portoi",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie amazônica do gênero Frieseomelitta; colônias pequenas em ocos de árvores, com produção de própolis e mel limitada. Comportamento predominantemente dócil."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "MT"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Frieseomelitta silvestrii",
-    "caracteristicas": ""
+    "caracteristicas": "Registro no Centro-Oeste; abelha pequena, escura e mansa. Constrói ninhos discretos em cavidades e recobre superfícies internas com própolis."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AP",
       "AM",
@@ -284,7 +345,7 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Frieseomelitta trichocerata",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão de pequeno porte com pilosidade perceptível em estruturas cefálicas. Nidifica em ocos de árvores e mantém colônias reduzidas e mansas."
   },
   {
     "nome_popular": "marmelada-amarela",
@@ -301,7 +362,7 @@
     "caracteristicas": "São abelhas sociais, defensivas num primeiro momento, que depositam própolis sobre a pessoa que as importuna, podendo mordiscar, mas logo depois se acalmam. Suas colônias racionais são cobertas com própolis pelas próprias abelhas. A entrada do ninho é pequena, não saliente e permite que apenas uma abelha passe por vez."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "CE",
       "MA",
@@ -309,30 +370,30 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Geotrigona aequinoctialis",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão do gênero Geotrigona; costuma nidificar em cavidades próximas ao solo ou em raízes expostas. Colônia pequena, discreta e pouco agressiva."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AC",
       "AM"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Geotrigona fulvohirta",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie amazônica de pequeno porte; coloração escura com pilosidade fina. Forma colônias reduzidas e nidifica em ocos de árvores, geralmente baixos."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "PA",
       "RO"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Geotrigona kwyrakai",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão rara em coleções; colônias pequenas em cavidades naturais. Tendência a entradas discretas e comportamento manso."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "MT",
       "PA",
@@ -340,10 +401,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Geotrigona mattogrossensis",
-    "caracteristicas": ""
+    "caracteristicas": "Registro no Centro-Oeste/Amazônia; abelha pequena e escura, pouco agressiva. Nidifica em ocos de árvores e usa cerume fino na arquitetura do ninho."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "mombuca",
     "ufs": [
       "BA",
       "GO",
@@ -358,28 +419,28 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Geotrigona mombuca",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie conhecida por colônias discretas e mel de sabor marcante. Nidifica em cavidades de troncos e apresenta comportamento geralmente dócil."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AM"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Geotrigona subfulva",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão amazônica de pequeno porte; coloração mais clara em partes do corpo. Colônias pequenas, pouco agressivas, com entrada reduzida."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "RR"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Geotrigona subgrisea",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie registrada em Roraima; abelha escura e discreta, com colônias pequenas. Nidifica em cavidades de madeira e usa própolis para vedação."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AP",
       "AM",
@@ -387,10 +448,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Geotrigona subnigra",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha do gênero Geotrigona com coloração escura; forma colônias pequenas e mansas. Entradas de ninho discretas e potes de mel/pólen reduzidos."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "abelha-de-chão",
     "ufs": [
       "BA",
       "MG",
@@ -399,29 +460,29 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Geotrigona subterranea",
-    "caracteristicas": ""
+    "caracteristicas": "Nidifica no solo (subterrânea), colônia discreta e pequena; mel raro, comportamento tímido."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "abelha-de-chão-amarela",
     "ufs": [
       "PB",
       "PE"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Geotrigona xanthopoda",
-    "caracteristicas": ""
+    "caracteristicas": "Ninhos subterrâneos; operárias pequenas, forrageiam próximas ao solo; mel escasso."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "abelha-ladrão",
     "ufs": [
       "PA"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Lestrimelitta ciliata",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie pilhadora: invade colônias de outras meliponíneas para roubar mel e pólen; não coleta flores."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "abelha-ladrão",
     "ufs": [
       "AL",
       "ES",
@@ -433,10 +494,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Lestrimelitta ehrhardti",
-    "caracteristicas": ""
+    "caracteristicas": "Comportamento saqueador; defesa química com odor forte; não recomendada para criação."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "abelha-ladrão",
     "ufs": [
       "AP",
       "AM",
@@ -444,10 +505,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Lestrimelitta glaberrima",
-    "caracteristicas": ""
+    "caracteristicas": "Especialista em pilhagem; visita colmeias vizinhas; mel incomum em manejo."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "abelha-ladrão",
     "ufs": [
       "AC",
       "AM",
@@ -456,7 +517,7 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Lestrimelitta glabrata",
-    "caracteristicas": ""
+    "caracteristicas": "Predadora de recursos de outras abelhas sem ferrão; colônias pequenas."
   },
   {
     "nome_popular": "canudo, iraxim, limão",
@@ -472,10 +533,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Lestrimelitta limao",
-    "caracteristicas": ""
+    "caracteristicas": "Conhecida pelo odor cítrico em alarme; pilhadora de mel e pólen; exige distanciamento de outros enxames."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "abelha-ladrão",
     "ufs": [
       "AM",
       "RO",
@@ -483,10 +544,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Lestrimelitta maracaia",
-    "caracteristicas": ""
+    "caracteristicas": "Saqueia ninhos de outras espécies; mel raro; voo furtivo."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "abelha-ladrão",
     "ufs": [
       "AM",
       "MA",
@@ -495,19 +556,19 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Lestrimelitta monodonta",
-    "caracteristicas": ""
+    "caracteristicas": "Pilhadora obrigatória; visita colmeias para roubo; manejo desaconselhado próximo a outras espécies."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "abelha-ladrão",
     "ufs": [
       "AP"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Lestrimelitta nana",
-    "caracteristicas": ""
+    "caracteristicas": "Operárias pequenas; pilhagem de recursos; discreta e pouco criada."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "abelha-ladrão",
     "ufs": [
       "AM",
       "MT",
@@ -516,10 +577,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Lestrimelitta rufa",
-    "caracteristicas": ""
+    "caracteristicas": "Comportamento saqueador; ataca colônias vizinhas; mel praticamente indisponível."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "abelha-ladrão",
     "ufs": [
       "AM",
       "BA",
@@ -541,28 +602,28 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Lestrimelitta rufipes",
-    "caracteristicas": ""
+    "caracteristicas": "Amplamente distribuída; pilhadora; difícil manejo em meliponários mistos."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "abelha-ladrão",
     "ufs": [
       "PA"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Lestrimelitta similis",
-    "caracteristicas": ""
+    "caracteristicas": "Saqueia mel e pólen; preferencialmente ataca colônias fracas; não indicada para criação."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "abelha-ladrão",
     "ufs": [
       "PA"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Lestrimelitta spinosa",
-    "caracteristicas": ""
+    "caracteristicas": "Pilhadora; presença detectada por odor característico; mel raro de se colher."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "abelha-ladrão-do-sul",
     "ufs": [
       "PR",
       "RS",
@@ -570,10 +631,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Lestrimelitta sulina",
-    "caracteristicas": ""
+    "caracteristicas": "Linha sulina das pilhadoras; ataca colônias; manejo exige isolamento."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "abelha-ladrão-tropicana",
     "ufs": [
       "BA",
       "CE",
@@ -581,10 +642,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Lestrimelitta tropica",
-    "caracteristicas": ""
+    "caracteristicas": "Pilhadora de ambientes quentes; comportamento oportunista; evita cultivo."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "lambe-olhos-miúda",
     "ufs": [
       "AC",
       "AM",
@@ -592,7 +653,7 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Leurotrigona gracilis",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha minúscula, frequentemente pousa no rosto para coletar suor/lágrimas; colônias pequenas."
   },
   {
     "nome_popular": "lambe-olhos",
@@ -612,10 +673,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Leurotrigona muelleri",
-    "caracteristicas": ""
+    "caracteristicas": "Muito pequena; atraída por suor/olhos; mel muito escasso; ninho em cavidades pequenas."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "lambe-olhos-amazônica",
     "ufs": [
       "AP",
       "AM",
@@ -623,10 +684,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Leurotrigona pusilla",
-    "caracteristicas": ""
+    "caracteristicas": "Microabelha; comporta-se como lambe-olhos; colônias discretas, mel raro."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu-amazônica",
     "ufs": [
       "AC",
       "AP",
@@ -636,10 +697,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona amazonica",
-    "caracteristicas": ""
+    "caracteristicas": "Melipona de grande porte; ninho em árvores ocadas; mel apreciado localmente."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu-do-sertão",
     "ufs": [
       "AL",
       "BA",
@@ -653,7 +714,7 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona asilvai",
-    "caracteristicas": ""
+    "caracteristicas": "Adaptada ao semiárido; boa produção de mel em floradas sazonais; defensiva moderada."
   },
   {
     "nome_popular": "guaraipo, guarupu, fura-terra, garapu, graipu, pé-de-pau, uruçu",
@@ -669,10 +730,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona bicolor",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie de grande porte; mel de sabor suave; ninho robusto em cavidades; manejo exige espaço."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu-da-amazônia",
     "ufs": [
       "AP",
       "AM",
@@ -683,17 +744,17 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona bradley",
-    "caracteristicas": ""
+    "caracteristicas": "Grande melipona amazônica; mel de boa aceitação; colônias vigorosas."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu-ilustris",
     "ufs": [
       "PA",
       "MT"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona illustris",
-    "caracteristicas": ""
+    "caracteristicas": "Melipona regional; ninho em árvores; produção moderada; mel aromático."
   },
   {
     "nome_popular": "manduri, manduri menor, minduri, gurupu do miúdo, taipeira",
@@ -708,10 +769,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona marginata",
-    "caracteristicas": ""
+    "caracteristicas": "Colônia de médio porte; mel apreciado; boa para manejo em áreas urbanas."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu-do-tocantins",
     "ufs": [
       "AP",
       "AM",
@@ -720,10 +781,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona ogilviei",
-    "caracteristicas": ""
+    "caracteristicas": "Melipona de porte médio; ninho em cavidades de árvores; mel de sabor suave."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu-pontilhada",
     "ufs": [
       "AM",
       "MA",
@@ -731,10 +792,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona puncticollis",
-    "caracteristicas": ""
+    "caracteristicas": "Regional amazônica; comportamento calmo; mel com notas florais."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu-do-sul",
     "ufs": [
       "MT",
       "PR",
@@ -744,16 +805,16 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona torrida",
-    "caracteristicas": ""
+    "caracteristicas": "Colônias robustas; mel moderado; prefere cavidades amplas; tolera clima mais ameno."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu-de-tumupasa",
     "ufs": [
       "AC"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona tumupasae",
-    "caracteristicas": ""
+    "caracteristicas": "Distribuição restrita; ninho em árvores; mel raro e valorizado localmente."
   },
   {
     "nome_popular": "tiúba",
@@ -764,10 +825,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona compressipes",
-    "caracteristicas": ""
+    "caracteristicas": "Clássica tiúba amazônica; boa produção de mel; colônia forte e produtiva."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "tiúba (Maranhão)",
     "ufs": [
       "MA",
       "MT",
@@ -777,10 +838,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona fasciculata",
-    "caracteristicas": ""
+    "caracteristicas": "Conhecida no MA como tiúba; alta produção de mel; ninho em ocos de árvores."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu-grande",
     "ufs": [
       "AC",
       "AM",
@@ -789,10 +850,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona grandis",
-    "caracteristicas": ""
+    "caracteristicas": "Porte grande; colônias vigorosas; mel de bom rendimento quando bem manejada."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "canudo-da-interrupta",
     "ufs": [
       "AP",
       "AM",
@@ -800,10 +861,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona interrupta",
-    "caracteristicas": ""
+    "caracteristicas": "Melipona amazônica; colmeias em cavidades naturais; mel de sabor marcante."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "melipona-quinquefasciata",
     "ufs": [
       "CE",
       "DF",
@@ -821,16 +882,16 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona quinquefasciata",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie de ampla distribuição; características de manejo semelhantes a outras Melipona; mel moderado."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu-de-Roraima",
     "ufs": [
       "RR"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona favosa",
-    "caracteristicas": ""
+    "caracteristicas": "Colônia regional; ninho em ocos; mel de sabor suave; pouco criada fora da área."
   },
   {
     "nome_popular": "Mandaçaia MQA ou MQQ",
@@ -846,17 +907,17 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona mandaçaia",
-    "caracteristicas": ""
+    "caracteristicas": "Linha MQA/MQQ; boa polinizadora; mel de sabor agradável; manejo difundido."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu-do-pantanal",
     "ufs": [
       "MT",
       "MS"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona orbignyi",
-    "caracteristicas": ""
+    "caracteristicas": "Associada a áreas alagáveis; ninho em árvores; mel regional, produção moderada."
   },
   {
     "nome_popular": "mandaçaia, amanaçaí, amanaçaia, manaçaia, mandaçaia-grande",
@@ -878,10 +939,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona quadrifasciata",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie muito criada; mel de alta aceitação; necessita bom manejo para evitar enxameação."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "jandaíra",
     "ufs": [
       "AL",
       "BA",
@@ -895,48 +956,48 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona subnitida",
-    "caracteristicas": ""
+    "caracteristicas": "Clássica do semiárido (Caatinga); mel valorizado; rústica e adaptada a secas."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu-de-ro",
     "ufs": [
       "MT",
       "RO"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona brachychaeta",
-    "caracteristicas": ""
+    "caracteristicas": "Distribuição regional; colônias médias; mel moderado; pouco difundida em criação."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu",
     "ufs": [
       "AP",
       "AM"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona captiosa",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão do gênero Melipona (uruçu); porte médio; ninho em ocos de árvore; mel de sabor suave; defensividade baixa a média; boa polinizadora em clima úmido amazônico."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu-capixaba",
     "ufs": [
       "ES"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona capixaba",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie endêmica e ameaçada do ES; manejo deve seguir autorizações; colmeias em ocos; mel aromático; comportamento geralmente manso; preferência por mata atlântica."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu",
     "ufs": [
       "RR"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona cramptoni",
-    "caracteristicas": ""
+    "caracteristicas": "Sem ferrão; amazônica; ninha em cavidades; boa adaptação a clima quente e úmido; mel claro e suave; colônia de tamanho médio."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu",
     "ufs": [
       "AC",
       "AM",
@@ -944,10 +1005,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona crinita",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão de porte médio; constrói potes de mel e pólen grandes; mel com notas florais; defensividade moderada; ninho geralmente em troncos ocos."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu",
     "ufs": [
       "AC",
       "AM",
@@ -955,20 +1016,20 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona dubia",
-    "caracteristicas": ""
+    "caracteristicas": "Amazônica; sem ferrão; mel de sabor suave; voo ativo em dias quentes; colmeias em cavidades; boa polinizadora."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu",
     "ufs": [
       "AC",
       "AM"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona eburnea",
-    "caracteristicas": ""
+    "caracteristicas": "Sem ferrão; porte médio; ninho em ocos; mel levemente cítrico; tolera bem alta umidade; manejo relativamente simples."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu",
     "ufs": [
       "CE",
       "MA",
@@ -977,10 +1038,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona flavolineata",
-    "caracteristicas": ""
+    "caracteristicas": "Sem ferrão; presente no Norte/Nordeste; mel aromático; colônias médias; defensividade baixa; ninha em cavidades naturais."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu-cinzenta",
     "ufs": [
       "AC",
       "AM",
@@ -993,10 +1054,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona fuliginosa",
-    "caracteristicas": ""
+    "caracteristicas": "Sem ferrão; conhecida como uruçu-cinzenta; mel de sabor marcante; boa produtividade em floradas intensas; colmeias robustas."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu",
     "ufs": [
       "AP",
       "AM",
@@ -1005,20 +1066,20 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona fulva",
-    "caracteristicas": ""
+    "caracteristicas": "Sem ferrão; amazônica; mel ambarado; comportamento dócil a moderado; ninho em árvores ocas."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu",
     "ufs": [
       "AC",
       "AM"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona fuscopilosa",
-    "caracteristicas": ""
+    "caracteristicas": "Sem ferrão; porte médio; mel leve; voo frequente em clima quente; colônias estáveis em ocos de árvores."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu",
     "ufs": [
       "AP",
       "AM",
@@ -1027,10 +1088,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona lateralis",
-    "caracteristicas": ""
+    "caracteristicas": "Sem ferrão; mel de notas florais; polinizadora eficiente; ninho em cavidades; defensividade baixa."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu",
     "ufs": [
       "AM",
       "MA",
@@ -1040,10 +1101,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona melanoventer",
-    "caracteristicas": ""
+    "caracteristicas": "Sem ferrão; amazônica; mel de sabor suave; colmeias médias; boa para polinização nativa."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu-amarela (monduri)",
     "ufs": [
       "BA",
       "ES",
@@ -1056,10 +1117,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona mondury",
-    "caracteristicas": ""
+    "caracteristicas": "Conhecida como monduri; mel perfumado e apreciado; comportamento manso; boa adaptação à Mata Atlântica; produção sazonal."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu",
     "ufs": [
       "AC",
       "AM",
@@ -1067,10 +1128,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona nebulosa",
-    "caracteristicas": ""
+    "caracteristicas": "Sem ferrão; mel claro; colmeias em ocos; adequada a florestas úmidas; boa polinizadora de nativas."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu",
     "ufs": [
       "AP",
       "AM",
@@ -1078,7 +1139,7 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona paraensis",
-    "caracteristicas": ""
+    "caracteristicas": "Sem ferrão; distribuição amazônica; mel aromático; defensividade baixa; ninho em cavidades de árvores."
   },
   {
     "nome_popular": "tujuba",
@@ -1093,10 +1154,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona rufiventris",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão conhecida como tujuba; mel bem aceito; colmeias vigorosas; boa produtividade em regiões quentes."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu-nordestina",
     "ufs": [
       "AL",
       "BA",
@@ -1108,10 +1169,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona scutellaris",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie emblemática do Nordeste; sem ferrão; mel de alta qualidade; comportamento geralmente manso; ninho em ocos; boa produtividade."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "jupará",
     "ufs": [
       "AC",
       "AM",
@@ -1124,19 +1185,19 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona seminigra",
-    "caracteristicas": ""
+    "caracteristicas": "Conhecida como jupará; amazônica; mel ambarado; defensividade baixa a média; ninha em cavidades de árvores."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "uruçu",
     "ufs": [
       "AM"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Melipona titania",
-    "caracteristicas": ""
+    "caracteristicas": "Sem ferrão; mel suave; colmeias médias; ocorrência no AM; ninho em ocos; boa polinizadora local."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "mourela",
     "ufs": [
       "PR",
       "RS",
@@ -1144,58 +1205,58 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Mourella caerulea",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão de regiões sulinas; tolera clima mais frio; porte pequeno a médio; mel delicado; ninha em cavidades."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "iraí",
     "ufs": [
       "GO",
       "MT"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Nannotrigona chapadana",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão muito pequena e mansa; ótima para áreas urbanas; mel cítrico e ralo; produção modesta; ninho em ocos/parede."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "iraí",
     "ufs": [
       "PA"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Nannotrigona dutrae",
-    "caracteristicas": ""
+    "caracteristicas": "Pequena, dócil; boa para polinização; mel leve; colmeias compactas; sem ferrão funcional."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "iraí",
     "ufs": [
       "AC",
       "AM"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Nannotrigona melanocera",
-    "caracteristicas": ""
+    "caracteristicas": "Muito pequena e mansa; mel diluído e aromático; ninho em cavidades; adequada a ambientes urbanos."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "iraí",
     "ufs": [
       "PA"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Nannotrigona minuta",
-    "caracteristicas": ""
+    "caracteristicas": "Sem ferrão; microabelha; mel suave; defensividade muito baixa; colmeias pequenas; boa polinizadora."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "iraí",
     "ufs": [
       "AP",
       "PA"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Nannotrigona punctata",
-    "caracteristicas": ""
+    "caracteristicas": "Pequena e dócil; mel leve; ninho em cavidades; adequada para manejo próximo a residências."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "iraí",
     "ufs": [
       "AP",
       "AM",
@@ -1203,10 +1264,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Nannotrigona schultzei",
-    "caracteristicas": ""
+    "caracteristicas": "Microabelha sem ferrão; comportamento manso; mel de sabor suave; ninho compacto; boa para polinização de hortas."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "iraí",
     "ufs": [
       "BA",
       "ES",
@@ -1221,38 +1282,38 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Nannotrigona testaceicornis",
-    "caracteristicas": ""
+    "caracteristicas": "Iraí clássica; muito mansa; excelente para áreas urbanas; mel suave e ralo; produção pequena; colmeia compacta."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "nogueirapis",
     "ufs": [
       "AM"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Nogueirapis butteli",
-    "caracteristicas": ""
+    "caracteristicas": "Sem ferrão; amazônica; abelha pequena; mel leve; ninho em cavidades; comportamento geralmente dócil."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "nogueirapis",
     "ufs": [
       "AP",
       "AM"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Nogueirapis minor",
-    "caracteristicas": ""
+    "caracteristicas": "Pequena e mansa; sem ferrão; mel suave; colmeias discretas; boa polinizadora de plantas nativas."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "abelha-limão",
     "ufs": [
       "ES"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Oxytrigona flaveola",
-    "caracteristicas": ""
+    "caracteristicas": "Conhecida como abelha-limão pelo odor ácido de defesa; sem ferrão funcional, mas mordedora; defensividade alta; mel pouco produzido."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "abelha-limão",
     "ufs": [
       "AM",
       "MA",
@@ -1260,20 +1321,20 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Oxytrigona ignis",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie mordedora com secreção ácida; defensiva; indicada apenas para criadores experientes; mel raro; ninho em cavidades."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "abelha-limão",
     "ufs": [
       "AC",
       "RO"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Oxytrigona mulfordi",
-    "caracteristicas": ""
+    "caracteristicas": "Sem ferrão funcional; defesa por mordida e secreção ácida; manejo desafiador; baixa produção de mel."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "abelha-limão",
     "ufs": [
       "AP",
       "AM",
@@ -1283,7 +1344,7 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Oxytrigona obscura",
-    "caracteristicas": ""
+    "caracteristicas": "Agressiva; libera odor ácido; recomendada apenas para manejo técnico; mel escasso; ninho em cavidades."
   },
   {
     "nome_popular": "tataíra",
@@ -1299,55 +1360,55 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Oxytrigona tataira",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha-limão conhecida como tataíra; muito defensiva; mel pouco coletado; útil para polinização, porém manejo exige cautela."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "paratrigona",
     "ufs": [
       "AM"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Paratrigona catabolonota",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão muito pequena; produção de mel baixa; comportamento manso; boa polinizadora de pequenas flores."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "paratrigona",
     "ufs": [
       "AM"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Paratrigona compsa",
-    "caracteristicas": ""
+    "caracteristicas": "Microabelha; mansa; ninho em cavidades pequenas; mel ralo e aromático; indicada para polinização."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "paratrigona",
     "ufs": [
       "PA"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Paratrigona crassicornis",
-    "caracteristicas": ""
+    "caracteristicas": "Sem ferrão; porte diminuto; mel leve; colmeias discretas; baixa defensividade; fácil de manejar."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "paratrigona",
     "ufs": [
       "AM"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Paratrigona euxanthospila",
-    "caracteristicas": ""
+    "caracteristicas": "Muito pequena; dócil; mel suave; ninho em ocos e fendas; boa para polinização fina."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "paratrigona",
     "ufs": [
       "AP"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Paratrigona femoralis",
-    "caracteristicas": ""
+    "caracteristicas": "Microabelha sem ferrão; produção de mel modesta; comportamento pacífico; ninho em cavidades naturais."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "paratrigona",
     "ufs": [
       "MT",
       "PA",
@@ -1355,10 +1416,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Paratrigona haeckeli",
-    "caracteristicas": ""
+    "caracteristicas": "Muito pequena; mansa; mel ralo; colmeias de baixa produção; útil para polinização de hortas e nativas."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Paratrigona incerta",
     "ufs": [
       "BA",
       "MG",
@@ -1366,10 +1427,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Paratrigona incerta",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão de pequeno porte (Meliponini), geralmente dócil. Nidifica em cavidades com entrada discreta; coleta néctar e pólen e auxilia na polinização."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Paratrigona lineata",
     "ufs": [
       "BA",
       "CE",
@@ -1387,57 +1448,57 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Paratrigona lineata",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão muito pequena e mansa. Costuma ocupar cavidades naturais; entrada pequena. Boa polinizadora de flora nativa e cultivada."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Paratrigona lineatifrons",
     "ufs": [
       "AM",
       "PA"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Paratrigona lineatifrons",
-    "caracteristicas": ""
+    "caracteristicas": "Meliponíneo de pequeno porte; voo discreto e colônias pouco populosas. Nidifica em cavidades; usa cerume fino no tubo de entrada."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Paratrigona melanaspis",
     "ufs": [
       "AM"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Paratrigona melanaspis",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie pequena, geralmente dócil. Preferência por cavidades de árvores; coleta resinas, néctar e pólen; importante para polinização local."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Paratrigona nuda",
     "ufs": [
       "AC"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Paratrigona nuda",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão discreta; ninho em cavidades com entrada estreita. Alimenta-se de néctar e pólen; comportamento não agressivo."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Paratrigona myrmecophila",
     "ufs": [
       "RO"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Paratrigona myrmecophila",
-    "caracteristicas": ""
+    "caracteristicas": "Pequeno meliponíneo de voo calmo. Usa cerume e resinas na construção; ninho protegido em cavidades; colabora na polinização."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Paratrigona pacifica",
     "ufs": [
       "AC",
       "RO"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Paratrigona pacifica",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie de tamanho reduzido, mansa. Nidificação em cavidades; entrada pequena. Recolhe néctar, pólen e resinas; boa polinizadora."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Paratrigona pannosa",
     "ufs": [
       "AP",
       "AM",
@@ -1445,20 +1506,20 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Paratrigona pannosa",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão pequena, colônias modestas. Constrói tubo de entrada de cerume; comportamento pacífico; contribui para polinização."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Paratrigona peltata",
     "ufs": [
       "MA",
       "PA"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Paratrigona peltata",
-    "caracteristicas": ""
+    "caracteristicas": "Meliponíneo pequeno e discreto; ninho em cavidades, com entrada reduzida. Coleta pólen/néctar e resina; dócil."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Paratrigona prosopiformis",
     "ufs": [
       "AC",
       "AM",
@@ -1467,10 +1528,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Paratrigona prosopiformis",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão de pequeno porte; tubo de entrada estreito de cerume; colônias pequenas e tranquilas; polinizadora eficiente."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Paratrigona subnuda",
     "ufs": [
       "BA",
       "MG",
@@ -1483,10 +1544,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Paratrigona subnuda",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie pequena e mansa; nidifica em cavidades de troncos e paredes. Usa resinas e cerume; forrageia néctar e pólen."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Partamona ailyae",
     "ufs": [
       "AC",
       "AM",
@@ -1504,10 +1565,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Partamona ailyae",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão de Partamona (médio porte). Costuma fazer ninhos externos de barro/cerume (tipo “cupinzeiro”). Social e resistente; boa polinizadora."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Partamona auripennis",
     "ufs": [
       "AP",
       "AM",
@@ -1515,20 +1576,20 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Partamona auripennis",
-    "caracteristicas": ""
+    "caracteristicas": "Meliponíneo de médio porte; ninhos externos de barro/cerume em árvores ou estruturas. Forrageia intensamente; comportamento geralmente calmo."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Partamona batesi",
     "ufs": [
       "AC",
       "AM"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Partamona batesi",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão com ninho externo robusto (barro/cerume). Colônias ativas; boa adaptação a ambientes de floresta; polinizadora."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Partamona chapadicola",
     "ufs": [
       "MA",
       "PA",
@@ -1538,10 +1599,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Partamona chapadicola",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie de Partamona; constrói ninhos externos aparentes. Coleta néctar, pólen e resina; colônias defensivas moderadas."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Partamona combinata",
     "ufs": [
       "AC",
       "DF",
@@ -1557,10 +1618,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Partamona combinata",
-    "caracteristicas": ""
+    "caracteristicas": "Meliponíneo de médio porte; ninho externo de barro/cerume, muitas vezes em árvores. Trabalhadoras ativas; boa polinizadora."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Partamona criptica",
     "ufs": [
       "ES",
       "MG",
@@ -1569,10 +1630,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Partamona criptica",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão; ninhos externos conspícuos. Social, coleta intensamente recursos florais e resinas; participa da polinização regional."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Partamona cupira",
     "ufs": [
       "DF",
       "GO",
@@ -1582,20 +1643,20 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Partamona cupira",
-    "caracteristicas": ""
+    "caracteristicas": "Conhecida por ninhos externos de barro (aspecto de cupinzeiro). Colônias vigorosas; boa polinizadora; comportamento de defesa moderado."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Partamona epiphytophila",
     "ufs": [
       "AC",
       "AM"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Partamona epiphytophila",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie de Partamona; ninho externo em árvores/epífitas. Usa cerume e barro; coleta néctar e pólen; útil à polinização."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Partamona ferreirai",
     "ufs": [
       "AP",
       "AM",
@@ -1604,20 +1665,20 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Partamona ferreirai",
-    "caracteristicas": ""
+    "caracteristicas": "Meliponíneo de médio porte; constrói grandes ninhos externos. Social e ativo; visita diversas flores; importante polinizadora."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Partamona gregaria",
     "ufs": [
       "AM",
       "PA"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Partamona gregaria",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão; ninho externo típico de Partamona. Colônias sociais com muitas operárias; boa adaptação e polinização."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Partamona helleri",
     "ufs": [
       "BA",
       "ES",
@@ -1629,20 +1690,20 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Partamona helleri",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie de Partamona; ninhos externos aparentes em árvores ou construções. Forrageio intenso; resistência a variações ambientais."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Partamona littoralis",
     "ufs": [
       "PB",
       "RN"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Partamona littoralis",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão de áreas costeiras; ninho externo de barro/cerume. Social e ativa; coleta recursos florais locais."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Partamona mourei",
     "ufs": [
       "AM",
       "PA",
@@ -1650,20 +1711,20 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Partamona mourei",
-    "caracteristicas": ""
+    "caracteristicas": "Meliponíneo; ninhos externos volumosos. Operárias defensivas moderadas; boa polinizadora em ambientes de floresta."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Partamona mulata",
     "ufs": [
       "MT",
       "MS"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Partamona mulata",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão de médio porte; ninho externo. Social; coleta néctar, pólen e resinas; auxilia na polinização de culturas."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Partamona nhambiquara",
     "ufs": [
       "GO",
       "MT",
@@ -1673,19 +1734,19 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Partamona nhambiquara",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie de Partamona com ninhos externos de barro. Colônias numerosas; bom desempenho como polinizadora."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Partamona nigrior",
     "ufs": [
       "RR"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Partamona nigrior",
-    "caracteristicas": ""
+    "caracteristicas": "Meliponíneo; ninho externo saliente. Trabalha intensamente na coleta de recursos; comportamento geralmente calmo."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Partamona pearsoni",
     "ufs": [
       "AP",
       "AM",
@@ -1694,20 +1755,20 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Partamona pearsoni",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão; ninhos externos conspícuos. Resistente e social; visita ampla variedade de flores; boa polinizadora."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Partamona rustica",
     "ufs": [
       "BA",
       "MG"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Partamona rustica",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie de Partamona com ninhos externos de barro/cerume. Colônias ativas; apta a ambientes variados; polinização eficiente."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Partamona seridoensis",
     "ufs": [
       "CE",
       "MA",
@@ -1717,29 +1778,29 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Partamona seridoensis",
-    "caracteristicas": ""
+    "caracteristicas": "Meliponíneo; ninho externo típico do gênero. Adapta-se a ambientes mais secos; forrageio constante; polinizadora."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Partamona sooretamae",
     "ufs": [
       "BA",
       "ES"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Partamona sooretamae",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão; ninhos externos de barro em árvores. Social e relativamente dócil; contribui para polinização local."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Partamona subtilis",
     "ufs": [
       "AC"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Partamona subtilis",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie de Partamona de médio porte; ninho externo. Coleta resinas para o cerume; polinizadora de vegetação nativa."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Partamona testacea",
     "ufs": [
       "AC",
       "AP",
@@ -1751,10 +1812,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Partamona testacea",
-    "caracteristicas": ""
+    "caracteristicas": "Meliponíneo; ninhos externos em forma de massa de barro. Colônias numerosas; boa polinizadora e relativamente rústica."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Partamona vicina",
     "ufs": [
       "AC",
       "AP",
@@ -1766,10 +1827,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Partamona vicina",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão de médio porte; ninho externo de barro/cerume. Social; coleta intensa de recursos; útil na polinização."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Plebeia alvarengai",
     "ufs": [
       "AM",
       "MT",
@@ -1778,20 +1839,20 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Plebeia alvarengai",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão muito pequena, conhecida genericamente como “mirim”. Nidifica em cavidades com tubo de entrada estreito; extremamente dócil; ótima polinizadora."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Plebeia catamarcensis",
     "ufs": [
       "MS",
       "RS"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Plebeia catamarcensis",
-    "caracteristicas": ""
+    "caracteristicas": "Mirim (Plebeia) de porte diminuto e comportamento dócil. Ninhos em cavidades; boa para áreas urbanas; polinização eficiente."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Plebeia droryana",
     "ufs": [
       "BA",
       "ES",
@@ -1805,10 +1866,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Plebeia droryana",
-    "caracteristicas": ""
+    "caracteristicas": "Popularmente chamada de mirim-droryana. Muito dócil, pequena; ninho em cavidades com entrada de cerume; excelente polinizadora."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Plebeia emerina",
     "ufs": [
       "PR",
       "RS",
@@ -1817,10 +1878,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Plebeia emerina",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha mirim de pequeno porte, mansidão acentuada. Nidifica em cavidades; tubo de entrada estreito; útil na polinização de jardins e pomares."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Plebeia flavocincta",
     "ufs": [
       "BA",
       "PB",
@@ -1829,38 +1890,39 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Plebeia flavocincta",
-    "caracteristicas": ""
+    "caracteristicas": "Mirim (Plebeia) muito pequena e dócil. Constrói entradas finas de cerume; boa para polinização em ambientes urbanos e rurais."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "Plebeia grapiuna",
     "ufs": [
       "BA"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Plebeia grapiuna",
-    "caracteristicas": ""
-  },
+    "caracteristicas": "Abelha mirim endêmica da Mata Atlântica baiana; muito pequena e pacífica. Ninhos em cavidades; contribui para a polinização local."
+  }
+
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "PR"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Plebeia julianii",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão do gênero Plebeia; porte pequeno; costuma nidificar em cavidades de troncos/paredes; produz mel em potes de cerume; comportamento geralmente dócil a moderado."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "ES",
       "MG"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Plebeia lucii",
-    "caracteristicas": ""
+    "caracteristicas": "Plebeia de pequeno porte; vive em colônias sociais; ninho em cavidades; mel leve e aromático; adequada à criação com manejo local."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AM",
       "MT",
@@ -1868,10 +1930,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Plebeia margaritae",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha Plebeia pequena; comportamento manso; constrói potes de mel e pólen de cerume; adapta-se a cavidades naturais."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "ES",
       "MG",
@@ -1880,10 +1942,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Plebeia meridionalis",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie de Plebeia; colônias populosas; ninho em oco de árvore/estruturas; mel de sabor suave; defesa discreta."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "mirim-mínima",
     "ufs": [
       "AC",
       "AP",
@@ -1894,20 +1956,20 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Plebeia minima",
-    "caracteristicas": ""
+    "caracteristicas": "Plebeia de porte muito pequeno; dócil; forma potes de cerume; mel cítrico e ralo; boa polinizadora de flores pequenas."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "MG",
       "RJ"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Plebeia mosquito",
-    "caracteristicas": ""
+    "caracteristicas": "Plebeia pequena e discreta; voo rápido; ninho em cavidades; mel armazenado em pequenos potes; baixa agressividade."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "PR",
       "RS",
@@ -1916,30 +1978,30 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Plebeia nigriceps",
-    "caracteristicas": ""
+    "caracteristicas": "Plebeia de regiões subtropicais; social e dócil; constrói ninho em ocos; produção modesta de mel; boa para polinização."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "ES",
       "MG"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Plebeia phrynostoma",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha Plebeia; colônias pequenas a médias; potes de cerume esféricos; comportamento manso; mel claro."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "ES",
       "MG"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Plebeia poecilochroa",
-    "caracteristicas": ""
+    "caracteristicas": "Plebeia de pequeno porte; nidificação em cavidades protegidas; baixa defensividade; mel suave e aromático."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "mirim (remota)",
     "ufs": [
       "ES",
       "MG",
@@ -1950,10 +2012,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Plebeia remota",
-    "caracteristicas": ""
+    "caracteristicas": "Plebeia bastante criada no Sul/Sudeste; colônia dócil; potes de mel bem definidos; boa polinizadora; mel leve."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "MG",
       "PR",
@@ -1963,10 +2025,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Plebeia saiqui",
-    "caracteristicas": ""
+    "caracteristicas": "Plebeia social; comportamento calmo; ninho em ocos; mel de sabor suave; adequada a manejo em áreas urbanas."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AM",
       "PA",
@@ -1974,19 +2036,19 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Plebeia variicolor",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie amazônica do gênero Plebeia; pequena; baixa agressividade; potes de cerume; mel de notas florais."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "RS"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Plebeia wittmanni",
-    "caracteristicas": ""
+    "caracteristicas": "Plebeia de clima mais frio; colônias compactas; ninho em cavidades; produção discreta de mel; dócil."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "irapuá-grande (lúrida)",
     "ufs": [
       "AC",
       "AP",
@@ -1999,27 +2061,27 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Ptilotrigona lurida",
-    "caracteristicas": ""
+    "caracteristicas": "Gênero Ptilotrigona; maior porte dentro das sem ferrão; pode ser mais defensiva; usa muita própolis; mel pouco produzido."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AC",
       "AM"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Ptilotrigona pereneae",
-    "caracteristicas": ""
+    "caracteristicas": "Ptilotrigona de porte médio; constrói entradas robustas com própolis; comportamento de defesa moderado; pouca produção de mel."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "PA",
       "RO"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Scaptotrigona affabra",
-    "caracteristicas": ""
+    "caracteristicas": "Scaptotrigona social; uso intenso de própolis; pode ser vigilante no ninho; mel de sabor mais ácido; boa produtora de geoprópolis."
   },
   {
     "nome_popular": "tubuna",
@@ -2049,17 +2111,17 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Scaptotrigona depilis",
-    "caracteristicas": ""
+    "caracteristicas": "Scaptotrigona conhecida pelos pitos de entrada alongados (“canudos”); boa produtora de geoprópolis; defesa moderada; mel com notas ácidas; ninho em cavidades."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AP",
       "AM"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Scaptotrigona fulvicutis",
-    "caracteristicas": ""
+    "caracteristicas": "Scaptotrigona amazônica; uso intenso de própolis; colônias vigorosas; comportamento de guarda ativo; mel pouco abundante."
   },
   {
     "nome_popular": "bijuí",
@@ -2077,7 +2139,7 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Scaptotrigona polysticta",
-    "caracteristicas": ""
+    "caracteristicas": "Colônia social e ativa; própolis abundante; pode ser mais defensiva; mel de sabor marcante; boa polinizadora."
   },
   {
     "nome_popular": "mandaguari preta",
@@ -2086,10 +2148,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Scaptotrigona postica",
-    "caracteristicas": ""
+    "caracteristicas": "Scaptotrigona de guarda ativa; costuma usar muita própolis nas entradas; mel ácido-agradável; pode ser defensiva no ninho."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AM",
       "MT",
@@ -2097,10 +2159,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Scaptotrigona tricolorata",
-    "caracteristicas": ""
+    "caracteristicas": "Scaptotrigona de porte médio; defesa moderada; ninho em cavidades; mel em potes de cerume; boa produtora de própolis."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "ES",
       "MG",
@@ -2109,10 +2171,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Scaptotrigona tubiba",
-    "caracteristicas": ""
+    "caracteristicas": "Scaptotrigona sudestina; colônia robusta; entradas com própolis; mel com leve acidez; manejo requer cuidado na inspeção."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "xanthotricha (scapto-sudestina)",
     "ufs": [
       "BA",
       "ES",
@@ -2124,7 +2186,7 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Scaptotrigona xanthotricha",
-    "caracteristicas": ""
+    "caracteristicas": "Scaptotrigona comum no Sudeste/Sul; uso de própolis em abundância; pode ser vigilante; mel ácido-sutil; boa para produção de geoprópolis."
   },
   {
     "nome_popular": "benjoí",
@@ -2145,10 +2207,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Scaptotrigona polysticta",
-    "caracteristicas": ""
+    "caracteristicas": "Scaptotrigona de ampla distribuição; utiliza própolis aromática; pode ser defensiva; mel de sabor marcante; bom potencial para geoprópolis."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "BA",
       "ES",
@@ -2156,10 +2218,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Scaura atlantica",
-    "caracteristicas": ""
+    "caracteristicas": "Gênero Scaura; corpo pequeno e escuro; forte uso de própolis; colônia discreta; mel em pequena quantidade; boa polinizadora."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AC",
       "AP",
@@ -2173,10 +2235,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Scaura latitarsis",
-    "caracteristicas": ""
+    "caracteristicas": "Scaura de pequeno porte; entradas com própolis; comportamento calmo a moderado; mel claro; ninho em cavidades."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AP",
       "AM",
@@ -2190,10 +2252,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Scaura longula",
-    "caracteristicas": ""
+    "caracteristicas": "Scaura social; potes de mel/pólen pequenos; baixa agressividade; boa em ambientes urbanos; mel suave."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AM",
       "MT",
@@ -2201,10 +2263,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Scaura tenuis",
-    "caracteristicas": ""
+    "caracteristicas": "Scaura amazônica; colônia compacta; uso de própolis no ninho; mel pouco abundante; defesa discreta."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "GO",
       "MS",
@@ -2213,10 +2275,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Schwarziana mourei",
-    "caracteristicas": ""
+    "caracteristicas": "Gênero Schwarziana; abelha mansa; ninho em cavidades; potes de mel organizados; boa polinizadora; produção modesta."
   },
   {
-    "nome_popular": "uruçu",
+    "nome_popular": "Guiruçu",
     "ufs": [
       "BA",
       "ES",
@@ -2230,10 +2292,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Schwarziana quadripunctata",
-    "caracteristicas": ""
+    "caracteristicas": "Guiruçu (Schwarziana quadripunctata) é uma abelha social sem ferrão (Meliponini), de coloração negra com abdome frequentemente avermelhado e ~17 mm de comprimento. Ocorre amplamente no Brasil (ex.: Goiás, Minas Gerais) e também no Paraguai e na Argentina (Misiones). Nidifica no solo e produz mel saboroso, porém em pequena quantidade; também é conhecida como abelha-mulata, uruçu-mineiro, abelha-do-chão, entre outros nomes."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AC",
       "AM",
@@ -2241,10 +2303,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Schwarzula coccidophila",
-    "caracteristicas": ""
+    "caracteristicas": "Gênero Schwarzula; espécie discreta; usa própolis no ninho; colônia pequena; mel de sabor suave; baixa defensividade."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AC",
       "AM",
@@ -2257,17 +2319,17 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Schwarzula timida",
-    "caracteristicas": ""
+    "caracteristicas": "Schwarzula de pequeno porte; comportamento manso; ninho em cavidades; produção de mel pequena; boa para polinização local."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AM",
       "PA"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Tetragona beebei",
-    "caracteristicas": ""
+    "caracteristicas": "Gênero Tetragona; colônia ativa; entradas com cerume; mel leve; defesa moderada; ninho em cavidades."
   },
   {
     "nome_popular": "borá",
@@ -2276,10 +2338,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Tetragona clavipes",
-    "caracteristicas": ""
+    "caracteristicas": "Vorá (Tetragona clavipes) é uma abelha sem ferrão, de porte pequeno a médio, corpo marrom-escuro e cerca de 10 mm de comprimento. Também chamada de borá, jataizão ou cola-cola, é semelhante à jataí, mas mais robusta. Forma colônias grandes, em média com 7 mil indivíduos, que constroem ninhos em ocos de árvores vivas. É bastante defensiva, podendo se prender em cabelos e tentar entrar em narinas e ouvidos ao defender a colônia. O mel é apreciado, de sabor doce com notas levemente salgadas ou ácidas."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AP",
       "AM",
@@ -2290,30 +2352,30 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Tetragona dorsalis",
-    "caracteristicas": ""
+    "caracteristicas": "Tetragona amazônica/nordestina; colônias vigorosas; própolis evidente no pito; mel com leve acidez; comportamento vigilante."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "SP",
       "MG"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Tetragona elongata",
-    "caracteristicas": ""
+    "caracteristicas": "Tetragona de porte médio; ninho em cavidades; potes de cerume; mel claro; defesa moderada."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AM",
       "RO"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Tetragona essequiboensis",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie amazônica do gênero Tetragona; uso de própolis nas entradas; mel de sabor suave; colônia atenta à defesa."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AC",
       "AM",
@@ -2323,10 +2385,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Tetragona goettei",
-    "caracteristicas": ""
+    "caracteristicas": "Tetragona de floresta; colônias médias; própolis abundante; mel leve; comportamento de guarda moderado."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AP",
       "AM",
@@ -2335,20 +2397,20 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Tetragona handlirschii",
-    "caracteristicas": ""
+    "caracteristicas": "Tetragona; ninho em cavidades naturais; potes de cerume; mel com notas florais; pode ser vigilante no alvado."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AM",
       "PA"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Tetragona kaieteurensis",
-    "caracteristicas": ""
+    "caracteristicas": "Meliponina de pequeno porte, geralmente nidifica em cavidades de árvores. Voo ágil, coleta néctar e pólen; colônias discretas e pouco agressivas."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "GO",
       "MA",
@@ -2360,10 +2422,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Tetragona quadrangula",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha sem ferrão de hábito generalista; forma potes de alimento com cerume e própolis. Comportamento pouco defensivo."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AM",
       "GO",
@@ -2374,17 +2436,17 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Tetragona truncata",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie florestal; colônias médias, entrada simples com cerume. Forrageia em horários quentes e é tolerante à proximidade humana."
   },
   {
-    "nome_popular": "jataí-amarela, abelha-ouro, jataí, abelha-mirim, mosquitinha-verdadeira, sete-portas, três-portas, abelha de botas, minguinho",
+    "nome_popular": "jataí-amarela, abelha-ouro, jataí",
     "ufs": [],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Tetragonisca angustula",
-    "caracteristicas": ""
+    "caracteristicas": "Muito mansa e amplamente criada; produz mel aromático em pequenos volumes. Ninhos em cavidades, com entrada tubular de cerume."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "jataí-do-sul (uso regional), sem nome padronizado",
     "ufs": [
       "MT",
       "MS",
@@ -2394,10 +2456,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Tetragonisca fiebrigi",
-    "caracteristicas": ""
+    "caracteristicas": "Parente da jataí, comum no Centro-Sul; colônias pequenas a médias, docilidade alta e boa aptidão para polinização em áreas urbanas."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AC",
       "MT",
@@ -2405,19 +2467,19 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Tetragonisca weyrauchi",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie amazônica discreta; constrói entradas estreitas de cerume e usa bastante própolis. Produção modesta de mel."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AM"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trichotrigona extranea",
-    "caracteristicas": ""
+    "caracteristicas": "Meliponina rara e pouco estudada; colônias pequenas em ocos de árvores. Forrageio predominantemente em sub-bosque."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AC",
       "AM",
@@ -2427,10 +2489,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigona albipennis",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha negra robusta; pode ser defensiva nas proximidades do ninho. Usa muita resina e própolis na arquitetura interna."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AM",
       "MT",
@@ -2438,10 +2500,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigona amalthea",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie amazônica com voo rápido; forma colônias médias e é oportunista na coleta de recursos florais e resinas."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AC",
       "AM",
@@ -2452,10 +2514,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigona amazonensis",
-    "caracteristicas": ""
+    "caracteristicas": "Típica da Amazônia; entrada do ninho recoberta por cerume escuro. Pode apresentar comportamento vigilante ao redor do ninho."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AM",
       "GO",
@@ -2467,10 +2529,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigona branneri",
-    "caracteristicas": ""
+    "caracteristicas": "Colônias vigorosas e adaptáveis; coleta pólen de ampla variedade de plantas. Estruturas internas com potes de alimento bem definidos."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "BA",
       "ES",
@@ -2480,17 +2542,17 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigona braueri",
-    "caracteristicas": ""
+    "caracteristicas": "Ocorre em formações florestais do Sudeste e Sul; ninho com forte uso de própolis e entrada discreta. Defensividade moderada."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigona chanchamayoensis",
-    "caracteristicas": ""
+    "caracteristicas": "Pouco documentada no Brasil; hábitos presumidos semelhantes a outras Trigona: colônias médias e uso intenso de resinas."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "abelha-bota (uso regional), sem nome padronizado",
     "ufs": [
       "AC",
       "AP",
@@ -2505,10 +2567,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigona cilipes",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha ativa e resistente; pode morder cabelos e pele ao defender o ninho. Boa polinizadora em ambientes quentes."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AP",
       "AM",
@@ -2517,10 +2579,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigona crassipes",
-    "caracteristicas": ""
+    "caracteristicas": "De porte médio e cor escura; constrói potes de alimento volumosos. Coleta resinas pegajosas para selar frestas do ninho."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AP",
       "AM",
@@ -2532,10 +2594,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigona dallatorreana",
-    "caracteristicas": ""
+    "caracteristicas": "Oportunista e bem distribuída na Amazônia oriental; colônias densas com entradas reforçadas por cerume escuro."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AM",
       "MT",
@@ -2544,10 +2606,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigona dimidiata",
-    "caracteristicas": ""
+    "caracteristicas": "Ativa o ano todo em clima úmido; patrulha forte ao redor do ninho. Estruturas internas com favos horizontais compactos."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AC",
       "AP",
@@ -2561,10 +2623,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigona guianae",
-    "caracteristicas": ""
+    "caracteristicas": "Generalista na forragem; usa lama, resina e própolis na entrada. Pode apresentar comportamento de alarme intenso."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "BA",
       "DF",
@@ -2580,10 +2642,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigona hyalinata",
-    "caracteristicas": ""
+    "caracteristicas": "Abelha de ampla distribuição; colônias médias e estáveis. Forrageia em diferentes estratos da vegetação e tolera ambientes abertos."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "abelha-necrófaga (Trigona), "abelha-vulture" (uso técnico)",
     "ufs": [
       "AM",
       "MA",
@@ -2593,10 +2655,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigona hypogea",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie necrófaga: utiliza carcaças como fonte de proteínas em vez de pólen. Ninhos em cavidades; comportamento vigilante."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AC",
       "AM",
@@ -2608,10 +2670,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigona lacteipennis",
-    "caracteristicas": ""
+    "caracteristicas": "Meliponina robusta; entra em flores com corolas estreitas e coleta resinas pegajosas. Pode morder ao defender o ninho."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AC",
       "AP",
@@ -2625,10 +2687,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigona pallens",
-    "caracteristicas": ""
+    "caracteristicas": "De coloração escura e asas claras; colônias com bom contingente de operárias. Usa própolis para vedar e modelar a entrada."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "MT",
       "PA",
@@ -2636,10 +2698,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigona pellucida",
-    "caracteristicas": ""
+    "caracteristicas": "Colônias médias em cavidades; voo persistente e patrulha intensa. Potes de alimento alinhados e de paredes espessas."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AC",
       "AM",
@@ -2656,16 +2718,16 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigona recursa",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie versátil em ambientes abertos e florestais; utiliza diversas resinas. Defensividade moderada a alta próximo ao ninho."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AP"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigona sesquipedalis",
-    "caracteristicas": ""
+    "caracteristicas": "Registros pontuais no extremo norte; morfologia e hábitos próximos a outras Trigona. Provável ninho em ocos arbóreos."
   },
   {
     "nome_popular": "irapuá, arapuá",
@@ -2694,10 +2756,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigona spinipes",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie muito comum e defensiva; constrói ninhos externos grandes com barro, resina e fibras. Excelente polinizadora, mas pode danificar flores ao coletar."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AC",
       "AP",
@@ -2714,10 +2776,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigona truculenta",
-    "caracteristicas": ""
+    "caracteristicas": "Nome reflete comportamento firme na defesa do ninho. Usa muita resina na entrada e tem forrageio intenso em dias quentes."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AC",
       "AP",
@@ -2730,38 +2792,38 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigona williana",
-    "caracteristicas": ""
+    "caracteristicas": "Colônias com muitas operárias; arquitetura interna organizada em favos horizontais. Boa resiliência a perturbações moderadas."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "RO"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigonisca bidentata",
-    "caracteristicas": ""
+    "caracteristicas": "Espécie de pequeno porte; ninhos discretos em cavidades estreitas. Comportamento geralmente dócil."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AM"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigonisca ceophloei",
-    "caracteristicas": ""
+    "caracteristicas": "Rara em coleções; morfologia típica de Trigonisca. Provável preferência por cavidades naturais pequenas."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AM",
       "PA"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigonisca dobzhanskyi",
-    "caracteristicas": ""
+    "caracteristicas": "De ocorrência amazônica; colônias pequenas e de baixa produção de mel. Entrada do ninho simples, com pouco cerume externo."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AM",
       "CE",
@@ -2772,28 +2834,28 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigonisca duckei",
-    "caracteristicas": ""
+    "caracteristicas": "Pequena e discreta; voa perto do sub-bosque e utiliza resinas claras. Em geral pouco agressiva."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AM"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigonisca extrema",
-    "caracteristicas": ""
+    "caracteristicas": "Pouco estudada; provavelmente forma colônias reduzidas. Hábitos semelhantes a outras Trigonisca amazônicas."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AM"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigonisca flavicans",
-    "caracteristicas": ""
+    "caracteristicas": "Operárias pequenas e ágeis; coleta finos grãos de pólen. Uso contido de cerume na entrada do ninho."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AM",
       "MT",
@@ -2802,28 +2864,28 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigonisca fraissei",
-    "caracteristicas": ""
+    "caracteristicas": "Amazônica, de colônias discretas; potes de alimento pequenos e próximos aos favos. Defensividade baixa."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AM"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigonisca graeffei",
-    "caracteristicas": ""
+    "caracteristicas": "Rara em áreas amostradas; comportamento tímido. Provável nidificação em cavidades de galhos ocos."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "RO"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigonisca hirticornis",
-    "caracteristicas": ""
+    "caracteristicas": "Muito pequena e rápida; usa resinas para selar o ninho contra formigas. Não costuma ferroar por ser meliponina."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "BA",
       "ES",
@@ -2833,10 +2895,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigonisca intermedia",
-    "caracteristicas": ""
+    "caracteristicas": "Colônias com poucas centenas de operárias; favorece microcavidades. Produção reduzida de mel, mais importante como polinizadora."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "MA",
       "MT",
@@ -2846,10 +2908,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigonisca meridionalis",
-    "caracteristicas": ""
+    "caracteristicas": "Distribuição no Norte/Centro-Sul oriental; hábitos crípticos. Entrada do ninho pouco evidente, com fino anel de cerume."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "MA",
       "MT",
@@ -2858,10 +2920,10 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigonisca nataliae",
-    "caracteristicas": ""
+    "caracteristicas": "Pequena e pouco agressiva; coleta pólen fino e néctar diluído. Estruturas internas delicadas e compactas."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "BA",
       "CE",
@@ -2870,19 +2932,19 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigonisca pediculana",
-    "caracteristicas": ""
+    "caracteristicas": "Registros no Nordeste; provável preferência por cavidades estreitas. Colônias pequenas e de baixa produção de mel."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AM"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigonisca unidentata",
-    "caracteristicas": ""
+    "caracteristicas": "Muito pouco documentada; padrões de nidificação presumidos semelhantes a congêneres. Operárias diminutas."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "MT",
       "PA",
@@ -2890,17 +2952,17 @@
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigonisca variegatifrons",
-    "caracteristicas": ""
+    "caracteristicas": "Amazônica ocidental/oriental; usa resina clara na entrada do ninho. Docilidade geralmente alta."
   },
   {
-    "nome_popular": "sem nome popular",
+    "nome_popular": "",
     "ufs": [
       "AM",
       "PA"
     ],
     "grupo": "sem_ferrao",
     "nome_cientifico": "Trigonisca vitrifrons",
-    "caracteristicas": ""
+    "caracteristicas": "Operárias pequenas de cabeça brilhante; voo curto entre flores próximas. Produção de mel baixa e predominantemente para consumo da colônia."
   },
   {
     "nome_popular": "abelha europeia, abelha doméstica, abelha melífera",
