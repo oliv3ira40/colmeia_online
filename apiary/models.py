@@ -188,6 +188,12 @@ class Hive(models.Model):
         choices=HiveStatus.choices,
         default=HiveStatus.PRODUCTIVE,
     )
+    next_division_date = models.DateField(
+        "Data da próxima divisão",
+        null=True,
+        blank=True,
+        help_text="Data planejada para a próxima divisão da colmeia.",
+    )
     apiary = models.ForeignKey(
         Apiary,
         on_delete=models.SET_NULL,

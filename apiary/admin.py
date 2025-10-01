@@ -12,6 +12,30 @@ class OwnerRestrictedAdmin(admin.ModelAdmin):
             return queryset
         return queryset.filter(**{self.owner_field_name: request.user})
 
+    def get_list_display(self, request):
+        list_display = list(super().get_list_display(request))
+        if request.user.is_superuser:
+            return tuple(list_display)
+        return tuple(
+            field for field in list_display if field != self.owner_field_name
+        )
+
+    def get_list_filter(self, request):
+        list_filter = list(super().get_list_filter(request))
+        if request.user.is_superuser:
+            return tuple(list_filter)
+        return tuple(
+            item
+            for item in list_filter
+            if item != self.owner_field_name
+        )
+
+    def get_exclude(self, request, obj=None):
+        exclude = list(super().get_exclude(request, obj) or [])
+        if not request.user.is_superuser and self.owner_field_name not in exclude:
+            exclude.append(self.owner_field_name)
+        return tuple(exclude)
+
     def save_model(self, request, obj, form, change):
         if not request.user.is_superuser:
             setattr(obj, self.owner_field_name, request.user)
@@ -60,6 +84,7 @@ class HiveAdmin(OwnerRestrictedAdmin):
         "popular_name",
         "species",
         "status",
+        "next_division_date",
         "owner",
         "apiary",
         "acquisition_date",
