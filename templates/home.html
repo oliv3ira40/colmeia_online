@@ -126,46 +126,69 @@
             <section id="criadores">
                 <div class="d-flex flex-column flex-md-row align-items-md-center mb-3">
                     <h2 class="h3 fw-semibold text-primary mb-0">Criadores por região</h2>
-                    <p class="text-muted ms-md-3 mb-0">Tabela demonstrativa que será expandida com dados reais em breve.</p>
+                    <p class="text-muted ms-md-3 mb-0">Rede colaborativa para quem deseja compartilhar experiências e contatos.</p>
+                </div>
+                <div class="alert alert-info" role="alert">
+                    <strong>Regras da lista pública:</strong>
+                    <ul class="mb-0 mt-2 ps-3">
+                        <li>Inscrição é opcional: cadastre-se no painel admin em <em>Criadores inscritos</em> para aparecer na lista.</li>
+                        <li>Somente usuários inscritos podem visualizar todos os demais participantes.</li>
+                        <li>Você pode editar ou remover apenas os seus próprios dados quando desejar.</li>
+                    </ul>
                 </div>
                 <div class="table-responsive shadow-sm">
                     <table class="table table-hover table-striped mb-0">
                         <thead class="table-primary">
                             <tr>
                                 <th scope="col">Nome</th>
-                                <th scope="col">Telefone</th>
-                                <th scope="col">Região</th>
+                                <th scope="col">Localização</th>
+                                <th scope="col">Espécies criadas</th>
+                                <th scope="col">Telefone (WhatsApp)</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Teste</td>
-                                <td>(11) 11111-1111</td>
-                                <td>Sudeste</td>
-                            </tr>
-                            <tr>
-                                <td>Teste</td>
-                                <td>(71) 11111-1111</td>
-                                <td>Nordeste</td>
-                            </tr>
-                            <tr>
-                                <td>Teste</td>
-                                <td>(51) 11111-1111</td>
-                                <td>Sul</td>
-                            </tr>
-                            <tr>
-                                <td>Teste</td>
-                                <td>(62) 11111-1111</td>
-                                <td>Centro-Oeste</td>
-                            </tr>
-                            <tr>
-                                <td>Teste</td>
-                                <td>(92) 11111-1111</td>
-                                <td>Norte</td>
-                            </tr>
+                            {% if can_view_creator_entries %}
+                                {% if creator_entries %}
+                                    {% for entry in creator_entries %}
+                                        <tr>
+                                            <td class="fw-semibold">{{ entry.name }}</td>
+                                            <td>{{ entry.city.name }}</td>
+                                            <td>
+                                                {% with species_list=entry.species.all %}
+                                                    {% if species_list %}
+                                                        {% for species in species_list %}
+                                                            <span class="badge text-bg-primary-subtle text-primary-emphasis me-1 mb-1">{{ species.popular_name }}</span>
+                                                        {% endfor %}
+                                                    {% else %}
+                                                        <span class="text-muted">Não informado</span>
+                                                    {% endif %}
+                                                {% endwith %}
+                                            </td>
+                                            <td>{{ entry.phone }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                {% else %}
+                                    <tr>
+                                        <td colspan="4" class="text-center text-muted py-4">Ainda não há criadores cadastrados. Seja o primeiro a compartilhar seus contatos!</td>
+                                    </tr>
+                                {% endif %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="4" class="text-center text-muted py-4">
+                                        Entre com a sua conta e cadastre-se na lista para visualizar os demais criadores participantes.
+                                    </td>
+                                </tr>
+                            {% endif %}
                         </tbody>
                     </table>
                 </div>
+                {% if can_view_creator_entries %}
+                    <p class="text-muted mt-3">A lista conta com <strong>{{ total_creator_entries }}</strong> {{ total_creator_entries|pluralize:"participante,participantes" }}.</p>
+                {% else %}
+                    <p class="text-muted mt-3">
+                        O cadastro pode ser feito no painel admin, menu <strong>Criadores inscritos</strong>, informando seu contato e a cidade onde atua.
+                    </p>
+                {% endif %}
             </section>
         </div>
     </main>

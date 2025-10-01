@@ -165,6 +165,31 @@ class HiveQuerySet(models.QuerySet):
         return self.filter(owner=user)
 
 
+class BoxModel(models.Model):
+    name = models.CharField("Nome", max_length=255, unique=True)
+    description = models.TextField("Descrição", blank=True)
+
+    class Meta:
+        verbose_name = "Modelo de caixa"
+        verbose_name_plural = "Modelos de caixas"
+        ordering = ["name"]
+
+    def __str__(self) -> str:
+        return self.name
+
+
+class City(models.Model):
+    name = models.CharField("Nome", max_length=255, unique=True)
+
+    class Meta:
+        verbose_name = "Cidade"
+        verbose_name_plural = "Cidades"
+        ordering = ["name"]
+
+    def __str__(self) -> str:
+        return self.name
+
+
 class Hive(models.Model):
     class AcquisitionMethod(models.TextChoices):
         PURCHASE = "compra", "Compra"
@@ -194,7 +219,15 @@ class Hive(models.Model):
         choices=AcquisitionMethod.choices,
     )
     origin = models.CharField("Origem da colmeia", max_length=255, blank=True)
-    acquisition_date = models.DateField("Data de aquisição")
+    acquisition_date = models.DateField(
+        "No caso de compra, qual a data de aquisição"
+    )
+    transfer_date = models.DateField(
+        "Data de transferência para a caixa",
+        null=True,
+        blank=True,
+        help_text="Informe quando a colmeia capturada foi transferida para a caixa.",
+    )
     species = models.ForeignKey(
         Species,
         on_delete=models.PROTECT,
@@ -221,6 +254,23 @@ class Hive(models.Model):
         blank=True,
         related_name="hives",
         verbose_name="Meliponário/Apiário",
+    )
+    origin_hive = models.ForeignKey(
+        "self",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="derived_hives",
+        verbose_name="Colmeia de origem",
+        help_text="No caso de divisão, selecione a colmeia de origem.",
+    )
+    box_model = models.ForeignKey(
+        BoxModel,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="hives",
+        verbose_name="Modelo de caixa",
     )
     last_review_date = models.DateTimeField(
         "Data da última revisão", null=True, blank=True, editable=False
@@ -251,14 +301,47 @@ class Hive(models.Model):
 
     def clean(self) -> None:
         super().clean()
+        errors = {}
+
         if self.apiary_id and self.owner_id:
             apiary_owner_id = self.apiary.owner_id if self.apiary else None
             if apiary_owner_id != self.owner_id:
-                raise ValidationError(
-                    {
-                        "apiary": "A colmeia só pode ser vinculada a meliponários/apiários do mesmo usuário."
-                    }
+                errors["apiary"] = (
+                    "A colmeia só pode ser vinculada a meliponários/apiários do mesmo usuário."
                 )
+
+        if self.acquisition_method == Hive.AcquisitionMethod.CAPTURE:
+            if not self.transfer_date:
+                errors["transfer_date"] = (
+                    "Informe a data de transferência quando a colmeia é capturada."
+                )
+        elif self.transfer_date:
+            errors["transfer_date"] = (
+                "A data de transferência só deve ser preenchida quando a colmeia é capturada."
+            )
+
+        if self.acquisition_method == Hive.AcquisitionMethod.DIVISION:
+            if not self.origin_hive:
+                errors["origin_hive"] = (
+                    "Informe a colmeia de origem quando o método de aquisição for divisão."
+                )
+            elif self.origin_hive_id == self.pk:
+                errors["origin_hive"] = "A colmeia de origem não pode ser a própria colmeia."
+            elif (
+                self.origin_hive
+                and self.owner_id
+                and self.origin_hive.owner_id != self.owner_id
+            ):
+                errors["origin_hive"] = (
+                    "Escolha uma colmeia de origem pertencente ao mesmo usuário."
+                )
+        elif self.origin_hive:
+            errors["origin_hive"] = (
+                "A colmeia de origem só deve ser preenchida quando o método for divisão."
+            )
+
+        if errors:
+            raise ValidationError(errors)
 
     def save(self, *args, **kwargs):
         previous_apiary_id = None
@@ -296,12 +379,30 @@ class RevisionQuerySet(models.QuerySet):
 
 
 class Revision(models.Model):
+    class ReviewType(models.TextChoices):
+        ROUTINE = "rotina", "Revisão de rotina"
+        DIVISION = "divisao", "Divisão"
+        TREATMENT = "tratamento", "Tratamento"
+        FEEDING = "alimentacao", "Alimentação"
+        HARVEST = "colheita", "Colheita"
+
     class TemperamentChoices(models.TextChoices):
         VERY_CALM = "muito_mansa", "Muito mansa"
         CALM = "mansa", "Mansa"
         MEDIUM = "media", "Média"
         SKITTISH = "arisca", "Arisca"
         AGGRESSIVE = "agressiva", "Agressiva"
+
+    class FeedingEnergyType(models.TextChoices):
+        SYRUP = "xarope", "Xarope"
+        APIS_HONEY = "mel_apis", "Mel de Apis"
+        ASF_HONEY = "mel_asf", "Mel de ASF"
+
+    class FeedingProteinType(models.TextChoices):
+        POLLEN_BOMB = "bombom_polen", "Bombom de Pólen"
+        SOY_BOMB = "bombom_soja", "Bombom Soja"
+        POLLEN_PASTE = "pasta_polen", "Pasta de Pólen"
+        SOY_PASTE = "pasta_soja", "Pasta de Soja"
 
     class BroodLevel(models.TextChoices):
         NONE = "nenhuma", "Nenhuma"
@@ -327,6 +428,12 @@ class Revision(models.Model):
         verbose_name="Colmeia",
     )
     review_date = models.DateTimeField("Data da revisão")
+    review_type = models.CharField(
+        "Tipo de revisão",
+        max_length=20,
+        choices=ReviewType.choices,
+        default=ReviewType.ROUTINE,
+    )
     queen_seen = models.BooleanField("Rainha vista", default=False)
     brood_level = models.CharField(
         "Cria",
@@ -370,6 +477,68 @@ class Revision(models.Model):
         "Descreva manejo(s) realizado(s)",
         blank=True,
     )
+    honey_harvest_quantity = models.DecimalField(
+        "Quantidade de mel colhida (ml)",
+        max_digits=8,
+        decimal_places=2,
+        null=True,
+        blank=True,
+    )
+    propolis_harvest_quantity = models.DecimalField(
+        "Quantidade de própolis colhida (g)",
+        max_digits=8,
+        decimal_places=2,
+        null=True,
+        blank=True,
+    )
+    wax_harvest_quantity = models.DecimalField(
+        "Quantidade de cera colhida (g)",
+        max_digits=8,
+        decimal_places=2,
+        null=True,
+        blank=True,
+    )
+    pollen_harvest_quantity = models.DecimalField(
+        "Quantidade de pólen colhida (g)",
+        max_digits=8,
+        decimal_places=2,
+        null=True,
+        blank=True,
+    )
+    harvest_notes = models.TextField(
+        "Observações específicas sobre a colheita",
+        blank=True,
+    )
+    feeding_energy_type = models.CharField(
+        "Tipo de alimento energético fornecido",
+        max_length=20,
+        choices=FeedingEnergyType.choices,
+        blank=True,
+    )
+    feeding_energy_quantity = models.DecimalField(
+        "Quantidade de alimento energético fornecido (ml ou g)",
+        max_digits=8,
+        decimal_places=2,
+        null=True,
+        blank=True,
+    )
+    feeding_protein_type = models.CharField(
+        "Tipo de alimento proteico fornecido",
+        max_length=20,
+        choices=FeedingProteinType.choices,
+        blank=True,
+    )
+    feeding_protein_quantity = models.DecimalField(
+        "Quantidade de suplemento proteico fornecido (g)",
+        max_digits=8,
+        decimal_places=2,
+        null=True,
+        blank=True,
+    )
+    feeding_notes = models.TextField(
+        "Observações específicas sobre a alimentação",
+        blank=True,
+    )
 
     objects = RevisionQuerySet.as_manager()
 
@@ -383,7 +552,60 @@ class Revision(models.Model):
 
     def clean(self) -> None:
         super().clean()
-        return None
+        errors = {}
+
+        harvest_fields = [
+            "honey_harvest_quantity",
+            "propolis_harvest_quantity",
+            "wax_harvest_quantity",
+            "pollen_harvest_quantity",
+            "harvest_notes",
+        ]
+
+        feeding_fields = [
+            "feeding_energy_type",
+            "feeding_energy_quantity",
+            "feeding_protein_type",
+            "feeding_protein_quantity",
+            "feeding_notes",
+        ]
+
+        if self.review_type != Revision.ReviewType.HARVEST:
+            for field_name in harvest_fields:
+                value = getattr(self, field_name)
+                if value not in (None, ""):
+                    errors[field_name] = (
+                        "Essas informações são exibidas apenas quando o tipo de revisão é Colheita."
+                    )
+
+        if self.review_type != Revision.ReviewType.FEEDING:
+            for field_name in feeding_fields:
+                value = getattr(self, field_name)
+                if value not in (None, ""):
+                    errors[field_name] = (
+                        "Essas informações são exibidas apenas quando o tipo de revisão é Alimentação."
+                    )
+
+        if (
+            self.review_type == Revision.ReviewType.FEEDING
+            and self.feeding_energy_quantity
+            and not self.feeding_energy_type
+        ):
+            errors["feeding_energy_type"] = (
+                "Informe o tipo do alimento energético para registrar a quantidade."
+            )
+
+        if (
+            self.review_type == Revision.ReviewType.FEEDING
+            and self.feeding_protein_quantity
+            and not self.feeding_protein_type
+        ):
+            errors["feeding_protein_type"] = (
+                "Informe o tipo do alimento proteico para registrar a quantidade."
+            )
+
+        if errors:
+            raise ValidationError(errors)
 
     def save(self, *args, **kwargs):
         self.full_clean()
@@ -397,6 +619,39 @@ class Revision(models.Model):
         Hive.objects.filter(pk=hive_id).update(
             last_review_date=latest_review.review_date if latest_review else None
         )
+
+
+class CreatorProfile(models.Model):
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="creator_profile",
+        verbose_name="Usuário",
+    )
+    name = models.CharField("Nome do criador", max_length=255)
+    city = models.ForeignKey(
+        City,
+        on_delete=models.PROTECT,
+        related_name="creator_profiles",
+        verbose_name="Localização (cidade/estado)",
+    )
+    species = models.ManyToManyField(
+        Species,
+        related_name="creator_profiles",
+        verbose_name="Espécies criadas",
+        blank=True,
+    )
+    phone = models.CharField("Telefone (WhatsApp)", max_length=20)
+    created_at = models.DateTimeField("Criado em", auto_now_add=True)
+    updated_at = models.DateTimeField("Atualizado em", auto_now=True)
+
+    class Meta:
+        verbose_name = "Criador inscrito"
+        verbose_name_plural = "Criadores inscritos"
+        ordering = ["name"]
+
+    def __str__(self) -> str:
+        return self.name
 
 
 class RevisionAttachment(models.Model):

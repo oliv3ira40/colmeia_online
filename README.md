@@ -88,16 +88,40 @@ python manage.py collectstatic --noinput
 sudo systemctl restart colmeia_online
 ```
 
-### Carregar espécies padrão
+### Seeds de dados
 
-Para importar ou atualizar as espécies padrão de abelhas sem ferrão use o comando de management `seed_species`.
+Os arquivos de seed ficam em `apiary/management/commands/` e podem ser executados via `python manage.py <comando>`. Todos os comandos são idempotentes: rodá-los novamente atualiza os registros existentes sem gerar duplicações.
+
+#### Espécies
+
+Para importar ou atualizar as espécies padrão de abelhas sem ferrão use o comando `seed_species`.
 
 ```bash
 # Carrega espécies a partir de docs/especies.json
 python manage.py seed_species
 ```
 
-O comando lê o arquivo JSON indicado, cria novas espécies e atualiza registros existentes com o mesmo `nome_cientifico`. Cada item da lista deve informar o campo `grupo`; quando o valor estiver ausente ou inválido, o grupo padrão `sem_ferrao` é utilizado automaticamente.
+O comando lê o arquivo JSON indicado (`docs/especies.json`), cria novas espécies e atualiza registros existentes com o mesmo `nome_cientifico`. Cada item da lista deve informar o campo `grupo`; quando o valor estiver ausente ou inválido, o grupo padrão `sem_ferrao` é utilizado automaticamente.
+
+#### Modelos de caixas
+
+Use o comando `seed_box_models` para carregar a lista de modelos de caixas de criação.
+
+```bash
+python manage.py seed_box_models
+```
+
+O seed cria/atualiza os modelos com os respectivos nomes e descrições padronizadas (INPA, PNN, SH, Moreira (USP), JCW, AF, Novy, Didática, Cacuí, Kerr, Capel, Baiano, Isis, Maria e Juliane).
+
+#### Cidades do Brasil
+
+Para popular o cadastro de cidades utilize o comando `seed_cities`, que consome o arquivo `docs/estados-cidades.json`.
+
+```bash
+python manage.py seed_cities
+```
+
+Cada registro do JSON contém uma sigla de estado e a lista de cidades correspondentes. O comando gera entradas no formato `Cidade - UF`, mantendo o cadastro atualizado sem criar duplicatas.
 
 ### Tema utilizado no admin
 As páginas criadas devem seguir o tema bootstrap do django-admin-interface, que oferece uma interface mais amigável e moderna para o administrador do Django.
@@ -115,7 +139,10 @@ Clique [aqui](docs/padroes.md) para ver os padrões de desenvolvimento adotados 
     - N. de identificação → somente leitura, gerado automaticamente, único
     - Método de aquisição → escolha entre: Compra, Troca, Divisão, Captura, Doação
     - Origem da colmeia → texto (opcional)
-    - Data de aquisição → data
+    - No caso de compra, qual a data de aquisição → data
+    - Data de transferência para a caixa → data (obrigatória somente para capturas)
+    - Colmeia de origem → referência a outra colmeia (obrigatória somente para divisões)
+    - Modelo de caixa → referência opcional à lista de Modelos de caixas
     - Espécie → referência ao modelo Espécies
     - Nome Popular → texto
     - Situação → escolha entre:
@@ -133,6 +160,7 @@ Clique [aqui](docs/padroes.md) para ver os padrões de desenvolvimento adotados 
     **Revisões**
     - Colmeia → referência à colmeia
     - Data da revisão → data/hora
+    - Tipo de revisão → Revisão de rotina, Divisão, Tratamento, Alimentação ou Colheita
     - Rainha vista → booleano
     - Cria → escolher entre: Nenhuma, Pouca, Moderada, Abundante
     - Alimento/Reservas → escolher entre: Nenhum, Pouco, Moderado, Abundante
@@ -141,9 +169,10 @@ Clique [aqui](docs/padroes.md) para ver os padrões de desenvolvimento adotados 
     - Temperamento → escolha entre: Muito mansa, Mansa, Média, Arisca, Agressiva
     - Peso da colmeia (opcional) → número
     - Observações → texto livre
-    - Arquivos/Fotos → múltiplos anexos relacionados
-    - Houve manejo? → booleano (Excluir campo, não é mais necessário)
     - Descreva manejo(s) realizado(s) -> texto livre
+    - Informações de colheita (opcionais, exibidas quando o tipo é Colheita): quantidades de mel, própolis, cera e pólen colhidos + observações específicas
+    - Informações de alimentação (opcionais, exibidas quando o tipo é Alimentação): tipos e quantidades de alimentos energéticos/proteicos fornecidos + observações
+    - Arquivos/Fotos → múltiplos anexos relacionados
 
     **Espécies**
     - Grupo → Apis mellifera ou Sem ferrão

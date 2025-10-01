@@ -1,6 +1,15 @@
 from django.contrib import admin
 
-from .models import Apiary, Hive, Revision, RevisionAttachment, Species
+from .models import (
+    Apiary,
+    BoxModel,
+    City,
+    CreatorProfile,
+    Hive,
+    Revision,
+    RevisionAttachment,
+    Species,
+)
 
 
 class Select2AdminMixin:
@@ -115,6 +124,8 @@ class HiveAdmin(OwnerRestrictedAdmin):
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == "apiary" and not request.user.is_superuser:
             kwargs["queryset"] = Apiary.objects.owned_by(request.user)
+        if db_field.name == "origin_hive" and not request.user.is_superuser:
+            kwargs["queryset"] = Hive.objects.owned_by(request.user)
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 @admin.register(Revision)
@@ -122,6 +133,7 @@ class RevisionAdmin(Select2AdminMixin, admin.ModelAdmin):
     list_display = (
         "hive",
         "review_date",
+        "review_type",
         "queen_seen",
         "temperament",
         "brood_level",
@@ -130,6 +142,7 @@ class RevisionAdmin(Select2AdminMixin, admin.ModelAdmin):
         "colony_strength",
     )
     list_filter = (
+        "review_type",
         "queen_seen",
         "temperament",
         "brood_level",
@@ -139,6 +152,53 @@ class RevisionAdmin(Select2AdminMixin, admin.ModelAdmin):
     )
     search_fields = ("hive__identification_number", "hive__popular_name")
     inlines = [RevisionAttachmentInline]
+    fieldsets = (
+        (
+            None,
+            {
+                "fields": (
+                    "hive",
+                    "review_date",
+                    "review_type",
+                    "queen_seen",
+                    "temperament",
+                    "brood_level",
+                    "food_level",
+                    "pollen_level",
+                    "colony_strength",
+                    "hive_weight",
+                    "management_description",
+                    "notes",
+                )
+            },
+        ),
+        (
+            "Informações de colheita",
+            {
+                "fields": (
+                    "honey_harvest_quantity",
+                    "propolis_harvest_quantity",
+                    "wax_harvest_quantity",
+                    "pollen_harvest_quantity",
+                    "harvest_notes",
+                ),
+                "classes": ("revision-harvest-group",),
+            },
+        ),
+        (
+            "Informações de alimentação",
+            {
+                "fields": (
+                    "feeding_energy_type",
+                    "feeding_energy_quantity",
+                    "feeding_protein_type",
+                    "feeding_protein_quantity",
+                    "feeding_notes",
+                ),
+                "classes": ("revision-feeding-group",),
+            },
+        ),
+    )
 
     def get_queryset(self, request):
         queryset = super().get_queryset(request)
@@ -156,3 +216,64 @@ class RevisionAdmin(Select2AdminMixin, admin.ModelAdmin):
 class RevisionAttachmentAdmin(Select2AdminMixin, admin.ModelAdmin):
     list_display = ("revision", "file")
     search_fields = ("revision__hive__identification_number",)
+
+
+@admin.register(BoxModel)
+class BoxModelAdmin(admin.ModelAdmin):
+    list_display = ("name",)
+    search_fields = ("name", "description")
+
+
+@admin.register(City)
+class CityAdmin(admin.ModelAdmin):
+    list_display = ("name",)
+    search_fields = ("name",)
+
+
+@admin.register(CreatorProfile)
+class CreatorProfileAdmin(Select2AdminMixin, admin.ModelAdmin):
+    list_display = ("name", "city", "phone", "user")
+    search_fields = ("name", "phone", "city__name", "user__username")
+    list_filter = ("city",)
+    filter_horizontal = ("species",)
+
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request).select_related("user", "city")
+        if request.user.is_superuser:
+            return queryset
+        has_profile = CreatorProfile.objects.filter(user=request.user).exists()
+        if has_profile:
+            return queryset
+        return queryset.filter(user=request.user)
+
+    def has_add_permission(self, request):
+        if request.user.is_superuser:
+            return True
+        return not CreatorProfile.objects.filter(user=request.user).exists()
+
+    def has_change_permission(self, request, obj=None):
+        if request.user.is_superuser:
+            return True
+        if obj is None:
+            return True
+        return obj.user_id == request.user.id
+
+    def has_delete_permission(self, request, obj=None):
+        if request.user.is_superuser:
+            return True
+        if obj is None:
+            return CreatorProfile.objects.filter(user=request.user).exists()
+        return obj.user_id == request.user.id
+
+    def save_model(self, request, obj, form, change):
+        if not request.user.is_superuser:
+            obj.user = request.user
+        super().save_model(request, obj, form, change)
+
+    def get_form(self, request, obj=None, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+        if not request.user.is_superuser and "user" in form.base_fields:
+            field = form.base_fields["user"]
+            field.initial = request.user
+            field.disabled = True
+        return form

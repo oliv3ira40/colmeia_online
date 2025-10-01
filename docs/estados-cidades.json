@@ -1,0 +1,137 @@
+[
+  {
+    "sigla": "AC",
+    "nome": "Acre",
+    "cidades": ["Rio Branco", "Cruzeiro do Sul", "Sena Madureira"]
+  },
+  {
+    "sigla": "AL",
+    "nome": "Alagoas",
+    "cidades": ["Maceió", "Arapiraca", "Palmeira dos Índios"]
+  },
+  {
+    "sigla": "AP",
+    "nome": "Amapá",
+    "cidades": ["Macapá", "Santana", "Laranjal do Jari"]
+  },
+  {
+    "sigla": "AM",
+    "nome": "Amazonas",
+    "cidades": ["Manaus", "Parintins", "Itacoatiara"]
+  },
+  {
+    "sigla": "BA",
+    "nome": "Bahia",
+    "cidades": ["Salvador", "Feira de Santana", "Vitória da Conquista"]
+  },
+  {
+    "sigla": "CE",
+    "nome": "Ceará",
+    "cidades": ["Fortaleza", "Juazeiro do Norte", "Sobral"]
+  },
+  {
+    "sigla": "DF",
+    "nome": "Distrito Federal",
+    "cidades": ["Brasília"]
+  },
+  {
+    "sigla": "ES",
+    "nome": "Espírito Santo",
+    "cidades": ["Vitória", "Vila Velha", "Linhares"]
+  },
+  {
+    "sigla": "GO",
+    "nome": "Goiás",
+    "cidades": ["Goiânia", "Anápolis", "Rio Verde"]
+  },
+  {
+    "sigla": "MA",
+    "nome": "Maranhão",
+    "cidades": ["São Luís", "Imperatriz", "Caxias"]
+  },
+  {
+    "sigla": "MT",
+    "nome": "Mato Grosso",
+    "cidades": ["Cuiabá", "Rondonópolis", "Sinop"]
+  },
+  {
+    "sigla": "MS",
+    "nome": "Mato Grosso do Sul",
+    "cidades": ["Campo Grande", "Dourados", "Três Lagoas"]
+  },
+  {
+    "sigla": "MG",
+    "nome": "Minas Gerais",
+    "cidades": ["Belo Horizonte", "Uberlândia", "Juiz de Fora"]
+  },
+  {
+    "sigla": "PA",
+    "nome": "Pará",
+    "cidades": ["Belém", "Santarém", "Marabá"]
+  },
+  {
+    "sigla": "PB",
+    "nome": "Paraíba",
+    "cidades": ["João Pessoa", "Campina Grande", "Patos"]
+  },
+  {
+    "sigla": "PR",
+    "nome": "Paraná",
+    "cidades": ["Curitiba", "Londrina", "Maringá"]
+  },
+  {
+    "sigla": "PE",
+    "nome": "Pernambuco",
+    "cidades": ["Recife", "Caruaru", "Petrolina"]
+  },
+  {
+    "sigla": "PI",
+    "nome": "Piauí",
+    "cidades": ["Teresina", "Parnaíba", "Picos"]
+  },
+  {
+    "sigla": "RJ",
+    "nome": "Rio de Janeiro",
+    "cidades": ["Rio de Janeiro", "Niterói", "Campos dos Goytacazes"]
+  },
+  {
+    "sigla": "RN",
+    "nome": "Rio Grande do Norte",
+    "cidades": ["Natal", "Mossoró", "Caicó"]
+  },
+  {
+    "sigla": "RS",
+    "nome": "Rio Grande do Sul",
+    "cidades": ["Porto Alegre", "Caxias do Sul", "Pelotas"]
+  },
+  {
+    "sigla": "RO",
+    "nome": "Rondônia",
+    "cidades": ["Porto Velho", "Ji-Paraná", "Cacoal"]
+  },
+  {
+    "sigla": "RR",
+    "nome": "Roraima",
+    "cidades": ["Boa Vista", "Rorainópolis", "Caracaraí"]
+  },
+  {
+    "sigla": "SC",
+    "nome": "Santa Catarina",
+    "cidades": ["Florianópolis", "Joinville", "Blumenau"]
+  },
+  {
+    "sigla": "SP",
+    "nome": "São Paulo",
+    "cidades": ["São Paulo", "Campinas", "São José dos Campos"]
+  },
+  {
+    "sigla": "SE",
+    "nome": "Sergipe",
+    "cidades": ["Aracaju", "Nossa Senhora do Socorro", "Itabaiana"]
+  },
+  {
+    "sigla": "TO",
+    "nome": "Tocantins",
+    "cidades": ["Palmas", "Araguaína", "Gurupi"]
+  }
+]
