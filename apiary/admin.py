@@ -90,7 +90,12 @@ class HiveAdmin(OwnerRestrictedAdmin):
         "acquisition_date",
         "last_review_date",
     )
-    list_filter = ("status", "acquisition_method", "species", "owner")
+    list_filter = (
+        "status",
+        "acquisition_method",
+        "species",
+        "owner",
+    )
     search_fields = ("identification_number", "popular_name", "origin")
     inlines = [RevisionInline]
 
@@ -98,6 +103,17 @@ class HiveAdmin(OwnerRestrictedAdmin):
         if db_field.name == "apiary" and not request.user.is_superuser:
             kwargs["queryset"] = Apiary.objects.owned_by(request.user)
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+    class Media:
+        css = {
+            "all": (
+                "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css",
+            )
+        }
+        js = (
+            "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.full.min.js",
+            "apiary/js/hive_species_filter.js",
+        )
 
 
 @admin.register(Revision)
