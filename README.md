@@ -29,15 +29,49 @@ Sistema web para controle de colmeias de abelhas, com suporte a múltiplos usuá
 ### Colmeias
 - Número de identificação automático e único
 - Método de aquisição (Compra, Troca, Divisão, Captura ou Doação)
-- Origem (opcional) e data de aquisição
-- Espécie e nome popular
+  - No caso de compra, qual a data de aquisição
+  - No caso de divisão, de qual colmeia foi originada
+  - No caso de captura, em qual data fez a transferência para a caixa
+- Origem (opcional)
+- Data de aquisição
+- Espécie
+- Nome popular
 - Situação da colmeia (produção, observação, órfã, morta, doada/vendida ou perdida)
 - Relacionamento opcional com meliponário/apiário do mesmo usuário
 - Data da última revisão (atualizada automaticamente)
 - Observações
+- Foto da colmeia (opcional)
+- Modelo de caixa (opcional), referência a lista (Modelos de caixas abaixo)
+
+### Modelos de caixas (Abaixo temos nome e descrição)
+    - INPA: (Fernando Oliveira) – Modular vertical (ninho, sobreninho, melgueiras). É o padrão mais difundido no Brasil pela facilidade de manejo, divisão e coleta de mel. Dimensões variam por espécie (ex.: jataí, mandaçaia, uruçu etc.).
+    - PNN: (Paulo Nogueira-Neto) – Horizontal com “gavetas”; muito usado para jataí e mandaçaias. Facilita acessar crias, mas não é o melhor para extrair mel em grande volume.
+    - SH: Pensada para espécies que fazem crias em “cachos” (Frieseomelitta, Leurotrigona/“lambe-olhos” etc.) e para facilitar divisões, com compartimentos horizontais e visores.
+    - Moreira (USP): Muito usada para Frieseomelitta varia (“marmelada”), focada em eficiência de divisão e manejo dessas espécies de crias em cachos.
+    - JCW: Variação modular com melgueiras laterais (existe versão em “T”). Útil em cenários específicos, mas exige mais tampas/isolamentos.
+    - AF: (Ailton Fontana) – Módulos “encaixados” num gabinete externo (tipo gaveteiro). Bom isolamento, porém construção/manutenção mais complexas e propolização pode atrapalhar.
+    - Novy: (circular, concreto celular/argamassa) – Alta inércia térmica/acústica; pavimentos circulares com alturas adequadas aos potes de alimento. Interessante para controle térmico.
+    - Didática (com visores) – Foco educativo/observação; pode servir para manejo leve.
+    - Cacuí (família Schwade) – Adaptação vertical inspirada no INPA, criada na Amazônia (reservas Amanã/Mamirauá).
+    - Kerr, Capel (horizontal/vertical), Baiano, Isis, Maria, Juliane – Modelos menos comuns ou variações regionais com usos mais nichados.
 
 ### Revisões
-- Colmeia, data/hora da revisão e indicador se a rainha foi vista
+- Colmeia (referência obrigatória)
+- Tipo de revisão (Revisão de rotina, Divisão, Tratamento, Alimentação, Colheita)
+  - Em caso de colheita (Todos os campos são opcionais) isso não é um campo e sim uma condição para exibir os campos abaixo
+    - Quantidade de mel colhida (em ml)
+    - Quantidade de própolis colhida (em gramas)
+    - Quantidade de cera colhida (em gramas)
+    - Quantidade de pólen colhida (em gramas)
+    - Observações específicas sobre a colheita
+  - Em caso de alimentação (Todos os campos são opcionais) isso não é um campo e sim uma condição para exibir os campos abaixo
+    - Tipo de alimento energético fornecido (Xarope, Mel de Apis, Mel de ASF)
+    - Quantidade de alimento energético fornecido (em ml ou gramas)
+    - Tipo de alimento proteico fornecido (Bombom de Pólen, Bombom Soja, Pasta de Pólen, Pasta de Soja)
+    - Quantidade de suplemento proteico fornecido (em gramas)
+    - Observações específicas sobre a alimentação
+- Data/hora da revisão
+- Indicador se a rainha foi vista
 - Cria (Nenhuma, Pouca, Moderada ou Abundante)
 - Alimento/Reservas (Nenhum, Pouco, Moderado ou Abundante)
 - Pólen (Nenhum, Pouco, Moderado ou Abundante)
@@ -46,6 +80,17 @@ Sistema web para controle de colmeias de abelhas, com suporte a múltiplos usuá
 - Peso da colmeia (opcional)
 - Observações e descrição livre de manejos realizados
 - Anexos de arquivos/fotos
+
+### Cidades do Brasil
+# Utilizar arquivo estados-cidades.json presente na pasta docs, vou precisar de uma seed para ele tbm
+- Nome (deve ser concatenação de cidade - estado, ex.: "Goiânia - GO")
+
+### Lista de criadores por região (opcional)
+# A ideia dessa tabela é promover networking entre criadores, facilitando contato e troca de experiências. Cada usuário pode optar por se registrar ou não nessa lista pública, e pode editar ou remover seus dados a qualquer momento. quando ele se inscrever, ele terá acesso aos outros inscritos, mas só pode editar os próprios dados. esses regras precisam estar claras na tabela presente na home do site.
+- Nome do criador -> obrigatório
+- Localização (cidade/estado) -> escolha entre as cidades cadastradas no sistema -> obrigatório
+- Espécies criadas -> escolha múltipla entre espécies cadastradas no sistema -> opcional
+- Telefone (WhatsApp) -> obrigatório
 
 ## Configuração do projeto
 
