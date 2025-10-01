@@ -225,10 +225,14 @@ class Hive(models.Model):
 
     def clean(self) -> None:
         super().clean()
-        if self.apiary and self.owner and self.apiary.owner_id != self.owner_id:
-            raise ValidationError(
-                {"apiary": "A colmeia só pode ser vinculada a meliponários/apiários do mesmo usuário."}
-            )
+        if self.apiary_id and self.owner_id:
+            apiary_owner_id = self.apiary.owner_id if self.apiary else None
+            if apiary_owner_id != self.owner_id:
+                raise ValidationError(
+                    {
+                        "apiary": "A colmeia só pode ser vinculada a meliponários/apiários do mesmo usuário."
+                    }
+                )
 
     def save(self, *args, **kwargs):
         previous_apiary_id = None
