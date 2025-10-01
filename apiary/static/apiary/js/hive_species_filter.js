@@ -4,16 +4,14 @@
   }
 
   function initializeSpeciesFilter() {
-    // Select do filtro de espécies na lista de colmeias -> Funcionou
+    // Select do filtro de espécies na lista de colmeias
     $('.list-filter-dropdown').find('select').select2();
 
-    // Select do formulário de colmeia -> Funcionou
+    // Select do formulário de colmeia
     $('#id_species').select2();
 
-    // Select do formulário de revisões de colmeia-> Não funcionou
+    // Select do formulário de revisões de colmeia
     $('#id_hive').select2();
-
-    // TODO: Seria bom que o Select2 estive funcionando em todos o admin do Django.
   }
 
   if (document.readyState === 'loading') {
