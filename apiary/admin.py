@@ -1,5 +1,6 @@
 from django.contrib import admin
 
+from .forms import ColmeiaForm, RevisaoForm
 from .models import (
     Apiary,
     BoxModel,
@@ -25,7 +26,17 @@ class Select2AdminMixin:
         )
 
 
-class OwnerRestrictedAdmin(Select2AdminMixin, admin.ModelAdmin):
+class BaseAdmin(Select2AdminMixin, admin.ModelAdmin):
+    class Media(Select2AdminMixin.Media):
+        js = Select2AdminMixin.Media.js + ("admin/conditional-fields.js",)
+
+
+class BaseInline(admin.TabularInline):
+    class Media:
+        js = ("admin/conditional-fields.js",)
+
+
+class OwnerRestrictedAdmin(BaseAdmin):
     owner_field_name = "owner"
 
     def get_queryset(self, request):
@@ -76,19 +87,19 @@ class OwnerRestrictedAdmin(Select2AdminMixin, admin.ModelAdmin):
 
 
 @admin.register(Species)
-class SpeciesAdmin(Select2AdminMixin, admin.ModelAdmin):
+class SpeciesAdmin(BaseAdmin):
     list_display = ("popular_name", "scientific_name", "group")
     search_fields = ("popular_name", "scientific_name")
 
 
 @admin.register(BoxModel)
-class BoxModelAdmin(admin.ModelAdmin):
+class BoxModelAdmin(BaseAdmin):
     list_display = ("name", "description")
     search_fields = ("name", "description")
 
 
 @admin.register(City)
-class CityAdmin(admin.ModelAdmin):
+class CityAdmin(BaseAdmin):
     list_display = ("name",)
     search_fields = ("name",)
 
@@ -100,19 +111,13 @@ class ApiaryAdmin(OwnerRestrictedAdmin):
     list_filter = ("owner",)
 
 
-class RevisionAttachmentInline(admin.TabularInline):
+class RevisionAttachmentInline(BaseInline):
     model = RevisionAttachment
     extra = 0
 
 
-class RevisionInline(admin.TabularInline):
-    model = Revision
-    extra = 0
-    show_change_link = True
-
-
 @admin.register(Hive)
-class HiveAdmin(OwnerRestrictedAdmin):
+class ColmeiaAdmin(OwnerRestrictedAdmin):
     list_display = (
         "identification_number",
         "popular_name",
@@ -131,7 +136,7 @@ class HiveAdmin(OwnerRestrictedAdmin):
         "owner",
     )
     search_fields = ("identification_number", "popular_name", "origin")
-    inlines = [RevisionInline]
+    form = ColmeiaForm
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == "apiary" and not request.user.is_superuser:
@@ -141,7 +146,7 @@ class HiveAdmin(OwnerRestrictedAdmin):
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 @admin.register(Revision)
-class RevisionAdmin(Select2AdminMixin, admin.ModelAdmin):
+class RevisaoAdmin(BaseAdmin):
     list_display = (
         "hive",
         "review_date",
@@ -164,6 +169,7 @@ class RevisionAdmin(Select2AdminMixin, admin.ModelAdmin):
     )
     search_fields = ("hive__identification_number", "hive__popular_name")
     inlines = [RevisionAttachmentInline]
+    form = RevisaoForm
 
     def get_queryset(self, request):
         queryset = super().get_queryset(request)
@@ -178,7 +184,7 @@ class RevisionAdmin(Select2AdminMixin, admin.ModelAdmin):
 
 
 @admin.register(RevisionAttachment)
-class RevisionAttachmentAdmin(Select2AdminMixin, admin.ModelAdmin):
+class RevisionAttachmentAdmin(BaseAdmin):
     list_display = ("revision", "file")
     search_fields = ("revision__hive__identification_number",)
 

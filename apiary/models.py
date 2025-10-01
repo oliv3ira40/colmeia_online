@@ -220,7 +220,9 @@ class Hive(models.Model):
     )
     origin = models.CharField("Origem da colmeia", max_length=255, blank=True)
     acquisition_date = models.DateField(
-        "No caso de compra, qual a data de aquisição"
+        "No caso de compra, qual a data de aquisição",
+        null=True,
+        blank=True,
     )
     species = models.ForeignKey(
         Species,
