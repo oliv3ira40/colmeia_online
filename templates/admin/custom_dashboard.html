@@ -109,6 +109,10 @@
         width: 100%;
     }
 
+    .w-50 {
+        flex: 1 1 50%;
+    }
+
     .dashboard-panel {
         background: var(--dashboard-surface);
         border-radius: 1rem;
@@ -213,6 +217,73 @@
         font-size: 0.95rem;
         color: var(--dashboard-muted);
         margin: 0;
+    }
+
+    .dashboard-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+    }
+
+    .dashboard-table thead {
+        background: rgba(15, 23, 42, 0.04);
+    }
+
+    .dashboard-table th,
+    .dashboard-table td {
+        padding: 0.75rem 0.9rem;
+        text-align: left;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .dashboard-table th {
+        font-weight: 600;
+        color: #0f172a;
+    }
+
+    .dashboard-table__link {
+        color: inherit;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .dashboard-table__link:focus-visible,
+    .dashboard-table__link:hover {
+        color: var(--dashboard-accent);
+        text-decoration: underline;
+    }
+
+    .dashboard-table__row--observation {
+        background: rgba(34, 197, 94, 0.08);
+        border-left: 4px solid #16a34a;
+    }
+
+    .dashboard-table__meta {
+        color: var(--dashboard-muted);
+        font-size: 0.85rem;
+        display: block;
+        margin-top: 0.25rem;
+    }
+
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 0.2rem 0.6rem;
+    }
+
+    .badge--observation {
+        background: rgba(16, 185, 129, 0.18);
+        color: #047857;
+    }
+
+    .badge--overdue {
+        background: rgba(239, 68, 68, 0.16);
+        color: #b91c1c;
     }
 
     .dashboard-sidebar-panel {
@@ -324,6 +395,15 @@
         .w-100 {
             width: auto;
         }
+
+        .w-50 {
+            width: auto;
+        }
+
+        .dashboard-table th,
+        .dashboard-table td {
+            padding: 0.6rem 0.4rem;
+        }
     }
 </style>
 {% endblock %}
@@ -378,7 +458,7 @@
                     <p class="dashboard-empty">Nenhuma revisão registrada.</p>
                 {% endif %}
             </section>
-    
+
             <section class="dashboard-panel w-100" aria-labelledby="overdue-hives-heading">
                 <div class="dashboard-panel__header">
                     <h2 class="dashboard-panel__title" id="overdue-hives-heading">Colmeias sem revisão há 7+ dias</h2>
@@ -401,6 +481,90 @@
                     </ul>
                 {% else %}
                     <p class="dashboard-empty">Nenhuma colmeia está sem revisão há 7 dias ou mais.</p>
+                {% endif %}
+            </section>
+        </div>
+
+        <div class="row">
+            <section class="dashboard-panel w-50" aria-labelledby="observation-hives-heading">
+                <div class="dashboard-panel__header">
+                    <h2 class="dashboard-panel__title" id="observation-hives-heading">Colmeias em observação</h2>
+                    <p class="dashboard-panel__subtitle">Situação monitorada pelo status da colmeia</p>
+                </div>
+                {% if observation_hives %}
+                    <table class="dashboard-table" role="table">
+                        <thead>
+                            <tr role="row">
+                                <th scope="col">Colmeia</th>
+                                <th scope="col">Espécie</th>
+                                <th scope="col">Meliponário</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for hive in observation_hives %}
+                                <tr class="dashboard-table__row dashboard-table__row--observation" role="row">
+                                    <td>
+                                        <a class="dashboard-table__link" href="{{ hive.change_url }}">{{ hive.name }}</a>
+                                        <span class="badge badge--observation">{{ hive.status_display }}</span>
+                                        <span class="dashboard-table__meta">{{ hive.last_review_display }}</span>
+                                    </td>
+                                    <td>{{ hive.species_name }}</td>
+                                    <td>
+                                        {% if hive.apiary_url %}
+                                            <a class="dashboard-table__link" href="{{ hive.apiary_url }}">{{ hive.apiary_name }}</a>
+                                        {% else %}
+                                            —
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p class="dashboard-empty">Nenhuma colmeia marcada como “Em observação”.</p>
+                {% endif %}
+            </section>
+
+            <section class="dashboard-panel w-50" aria-labelledby="upcoming-divisions-heading">
+                <div class="dashboard-panel__header">
+                    <h2 class="dashboard-panel__title" id="upcoming-divisions-heading">Próximas divisões</h2>
+                    <p class="dashboard-panel__subtitle">Ordenado pela data planejada</p>
+                </div>
+                {% if upcoming_divisions %}
+                    <table class="dashboard-table" role="table">
+                        <thead>
+                            <tr role="row">
+                                <th scope="col">Colmeia</th>
+                                <th scope="col">Data</th>
+                                <th scope="col">Meliponário</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for hive in upcoming_divisions %}
+                                <tr role="row">
+                                    <td>
+                                        <a class="dashboard-table__link" href="{{ hive.change_url }}">{{ hive.name }}</a>
+                                        <span class="dashboard-table__meta">{{ hive.species_name }}</span>
+                                    </td>
+                                    <td>
+                                        <time datetime="{{ hive.next_division_iso }}">{{ hive.next_division_display }}</time>
+                                        {% if hive.is_overdue %}
+                                            <span class="badge badge--overdue">VENCIDO</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if hive.apiary_url %}
+                                            <a class="dashboard-table__link" href="{{ hive.apiary_url }}">{{ hive.apiary_name }}</a>
+                                        {% else %}
+                                            —
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p class="dashboard-empty">Nenhuma colmeia possui data de divisão planejada.</p>
                 {% endif %}
             </section>
         </div>

@@ -40,6 +40,29 @@ class HiveEntry:
     add_revision_url: str
 
 
+@dataclass(frozen=True)
+class ObservationHiveEntry:
+    change_url: str
+    name: str
+    species_name: str
+    apiary_name: str | None
+    apiary_url: str | None
+    status_display: str
+    last_review_display: str
+
+
+@dataclass(frozen=True)
+class UpcomingDivisionEntry:
+    change_url: str
+    name: str
+    species_name: str
+    apiary_name: str | None
+    apiary_url: str | None
+    next_division_display: str
+    next_division_iso: str
+    is_overdue: bool
+
+
 _original_admin_index = admin.site.index
 
 
@@ -108,6 +131,64 @@ def _build_overdue_hives(user) -> List[HiveEntry]:
     return entries
 
 
+def _build_observation_hives(user) -> List[ObservationHiveEntry]:
+    hives = (
+        Hive.objects.owned_by(user)
+        .filter(status=Hive.HiveStatus.OBSERVATION)
+        .select_related("species", "apiary")
+        .order_by("popular_name", "identification_number")
+    )
+    entries: List[ObservationHiveEntry] = []
+    for hive in hives:
+        if hive.last_review_date:
+            last_review_display, _ = _format_datetime(hive.last_review_date)
+            last_review = f"Última revisão em {last_review_display}"
+        else:
+            last_review = "Nunca revisada"
+        apiary = hive.apiary
+        entries.append(
+            ObservationHiveEntry(
+                change_url=reverse("admin:apiary_hive_change", args=[hive.pk]),
+                name=str(hive),
+                species_name=hive.species.popular_name,
+                apiary_name=apiary.name if apiary else None,
+                apiary_url=reverse("admin:apiary_apiary_change", args=[apiary.pk]) if apiary else None,
+                status_display=hive.get_status_display(),
+                last_review_display=last_review,
+            )
+        )
+    return entries
+
+
+def _build_upcoming_divisions(user) -> List[UpcomingDivisionEntry]:
+    today = timezone.localdate()
+    hives = (
+        Hive.objects.owned_by(user)
+        .filter(next_division_date__isnull=False)
+        .select_related("species", "apiary")
+        .order_by("next_division_date", "identification_number")
+    )
+    entries: List[UpcomingDivisionEntry] = []
+    for hive in hives:
+        next_date = hive.next_division_date
+        if not next_date:
+            continue
+        apiary = hive.apiary
+        entries.append(
+            UpcomingDivisionEntry(
+                change_url=reverse("admin:apiary_hive_change", args=[hive.pk]),
+                name=str(hive),
+                species_name=hive.species.popular_name,
+                apiary_name=apiary.name if apiary else None,
+                apiary_url=reverse("admin:apiary_apiary_change", args=[apiary.pk]) if apiary else None,
+                next_division_display=next_date.strftime("%d/%m/%Y"),
+                next_division_iso=next_date.isoformat(),
+                is_overdue=next_date < today,
+            )
+        )
+    return entries
+
+
 def _build_cards(user) -> Dict[str, Dict[str, int | str]]:
     apiaries = Apiary.objects.owned_by(user)
     hives = Hive.objects.owned_by(user)
@@ -133,6 +214,8 @@ def _build_dashboard_context(user) -> Dict[str, object]:
         "cards": _build_cards(user),
         "recent_revisions": _build_recent_revisions(user),
         "overdue_hives": _build_overdue_hives(user),
+        "observation_hives": _build_observation_hives(user),
+        "upcoming_divisions": _build_upcoming_divisions(user),
         "create_revision_url": reverse("admin:apiary_revision_add"),
     }
 
