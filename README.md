@@ -83,6 +83,9 @@ pip freeze > requirements.txt
 
 # Coletar arquivos estáticos (produção)
 python manage.py collectstatic --noinput
+
+# Reiniciar o serviço (produção)
+sudo systemctl restart colmeia_online
 ```
 
 ### Carregar espécies padrão
@@ -103,6 +106,8 @@ As páginas criadas devem seguir o tema bootstrap do django-admin-interface, que
 - Para customizar templates do admin, é necessário consultar a documentação/arquivos do template, por exemplo: https://github.com/fabiocaccamo/django-admin-interface/blob/main/admin_interface/templates/admin/base_site.html
 
 Clique [aqui](docs/padroes.md) para ver os padrões de desenvolvimento adotados no projeto.
+
+- **Boas práticas de migrations (Django)**: consulte o guia em [`docs/boas-praticas-migrations.md`](docs/boas-praticas-migrations.md).
 
 ### Modelos
 
