@@ -4,31 +4,16 @@
   }
 
   function initializeSpeciesFilter() {
-    var filterSelect = document.querySelector(
-      '#changelist-filter select[name="species__id__exact"]'
-    );
+    // Select do filtro de espécies na lista de colmeias -> Funcionou
+    $('.list-filter-dropdown').find('select').select2();
 
-    if (!filterSelect) {
-      return;
-    }
+    // Select do formulário de colmeia -> Funcionou
+    $('#id_species').select2();
 
-    var $filterSelect = $(filterSelect);
+    // Select do formulário de revisões de colmeia-> Não funcionou
+    $('#id_hive').select2();
 
-    if ($filterSelect.hasClass('select2-hidden-accessible')) {
-      return;
-    }
-
-    var placeholderOption = filterSelect.querySelector('option[value=""]');
-    var placeholderText = placeholderOption
-      ? placeholderOption.textContent.trim()
-      : filterSelect.getAttribute('data-placeholder') || '';
-
-    $filterSelect.select2({
-      width: '100%',
-      allowClear: true,
-      placeholder: placeholderText,
-      dropdownAutoWidth: true
-    });
+    // TODO: Seria bom que o Select2 estive funcionando em todos o admin do Django.
   }
 
   if (document.readyState === 'loading') {
