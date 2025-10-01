@@ -124,6 +124,31 @@ class ApiaryQuerySet(models.QuerySet):
         return self.filter(owner=user)
 
 
+class BoxModel(models.Model):
+    name = models.CharField("Nome", max_length=255, unique=True)
+    description = models.TextField("Descrição", blank=True)
+
+    class Meta:
+        verbose_name = "Modelo de caixa"
+        verbose_name_plural = "Modelos de caixas"
+        ordering = ["name"]
+
+    def __str__(self) -> str:
+        return self.name
+
+
+class City(models.Model):
+    name = models.CharField("Nome", max_length=255, unique=True)
+
+    class Meta:
+        verbose_name = "Cidade"
+        verbose_name_plural = "Cidades"
+        ordering = ["name"]
+
+    def __str__(self) -> str:
+        return self.name
+
+
 class Apiary(models.Model):
     name = models.CharField("Nome", max_length=255)
     location = models.CharField("Localização (cidade/estado)", max_length=255)
@@ -194,7 +219,9 @@ class Hive(models.Model):
         choices=AcquisitionMethod.choices,
     )
     origin = models.CharField("Origem da colmeia", max_length=255, blank=True)
-    acquisition_date = models.DateField("Data de aquisição")
+    acquisition_date = models.DateField(
+        "No caso de compra, qual a data de aquisição"
+    )
     species = models.ForeignKey(
         Species,
         on_delete=models.PROTECT,
@@ -232,6 +259,30 @@ class Hive(models.Model):
     photo = models.ImageField(
         "Foto da colmeia", upload_to="hive_photos/", blank=True, null=True
     )
+    transfer_box_date = models.DateField(
+        "Data de transferência para a caixa",
+        null=True,
+        blank=True,
+        help_text="Informe quando a colmeia capturada foi transferida para a caixa.",
+    )
+    origin_hive = models.ForeignKey(
+        "self",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="derived_hives",
+        verbose_name="Colmeia de origem",
+        help_text="Informe a colmeia original em caso de divisão.",
+    )
+    box_model = models.ForeignKey(
+        BoxModel,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="hives",
+        verbose_name="Modelo de caixa",
+        help_text="Selecione o modelo da caixa utilizada, se aplicável.",
+    )
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -257,6 +308,20 @@ class Hive(models.Model):
                 raise ValidationError(
                     {
                         "apiary": "A colmeia só pode ser vinculada a meliponários/apiários do mesmo usuário."
+                    }
+                )
+        if self.origin_hive_id:
+            if self.origin_hive_id == self.pk:
+                raise ValidationError(
+                    {"origin_hive": "A colmeia de origem não pode ser a própria colmeia."}
+                )
+            origin_owner_id = (
+                self.origin_hive.owner_id if self.origin_hive else None
+            )
+            if origin_owner_id and self.owner_id and origin_owner_id != self.owner_id:
+                raise ValidationError(
+                    {
+                        "origin_hive": "A colmeia de origem deve pertencer ao mesmo proprietário.",
                     }
                 )
 
@@ -296,6 +361,13 @@ class RevisionQuerySet(models.QuerySet):
 
 
 class Revision(models.Model):
+    class RevisionType(models.TextChoices):
+        ROUTINE = "rotina", "Revisão de rotina"
+        DIVISION = "divisao", "Divisão"
+        TREATMENT = "tratamento", "Tratamento"
+        FEEDING = "alimentacao", "Alimentação"
+        HARVEST = "colheita", "Colheita"
+
     class TemperamentChoices(models.TextChoices):
         VERY_CALM = "muito_mansa", "Muito mansa"
         CALM = "mansa", "Mansa"
@@ -327,6 +399,12 @@ class Revision(models.Model):
         verbose_name="Colmeia",
     )
     review_date = models.DateTimeField("Data da revisão")
+    review_type = models.CharField(
+        "Tipo de revisão",
+        max_length=20,
+        choices=RevisionType.choices,
+        default=RevisionType.ROUTINE,
+    )
     queen_seen = models.BooleanField("Rainha vista", default=False)
     brood_level = models.CharField(
         "Cria",
@@ -368,6 +446,77 @@ class Revision(models.Model):
     notes = models.TextField("Observações", blank=True)
     management_description = models.TextField(
         "Descreva manejo(s) realizado(s)",
+        blank=True,
+    )
+    honey_harvest_amount = models.DecimalField(
+        "Quantidade de mel colhida (ml)",
+        max_digits=10,
+        decimal_places=2,
+        null=True,
+        blank=True,
+    )
+    propolis_harvest_amount = models.DecimalField(
+        "Quantidade de própolis colhida (g)",
+        max_digits=10,
+        decimal_places=2,
+        null=True,
+        blank=True,
+    )
+    wax_harvest_amount = models.DecimalField(
+        "Quantidade de cera colhida (g)",
+        max_digits=10,
+        decimal_places=2,
+        null=True,
+        blank=True,
+    )
+    pollen_harvest_amount = models.DecimalField(
+        "Quantidade de pólen colhida (g)",
+        max_digits=10,
+        decimal_places=2,
+        null=True,
+        blank=True,
+    )
+    harvest_notes = models.TextField(
+        "Observações específicas sobre a colheita",
+        blank=True,
+    )
+    energetic_food_type = models.CharField(
+        "Tipo de alimento energético fornecido",
+        max_length=50,
+        blank=True,
+        choices=(
+            ("xarope", "Xarope"),
+            ("mel_apis", "Mel de Apis"),
+            ("mel_asf", "Mel de ASF"),
+        ),
+    )
+    energetic_food_amount = models.DecimalField(
+        "Quantidade de alimento energético fornecido (ml ou g)",
+        max_digits=10,
+        decimal_places=2,
+        null=True,
+        blank=True,
+    )
+    protein_food_type = models.CharField(
+        "Tipo de alimento proteico fornecido",
+        max_length=50,
+        blank=True,
+        choices=(
+            ("bombom_polen", "Bombom de Pólen"),
+            ("bombom_soja", "Bombom Soja"),
+            ("pasta_polen", "Pasta de Pólen"),
+            ("pasta_soja", "Pasta de Soja"),
+        ),
+    )
+    protein_food_amount = models.DecimalField(
+        "Quantidade de suplemento proteico fornecido (g)",
+        max_digits=10,
+        decimal_places=2,
+        null=True,
+        blank=True,
+    )
+    feeding_notes = models.TextField(
+        "Observações específicas sobre a alimentação",
         blank=True,
     )
 
@@ -420,3 +569,41 @@ class RevisionAttachment(models.Model):
         if self.file:
             _convert_image_field_to_webp(self.file, field_name="file")
         return super().save(*args, **kwargs)
+
+
+class CreatorNetworkEntry(models.Model):
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="creator_network_entry",
+        verbose_name="Usuário",
+    )
+    name = models.CharField("Nome do criador", max_length=255)
+    city = models.ForeignKey(
+        City,
+        on_delete=models.PROTECT,
+        related_name="creators",
+        verbose_name="Localização (cidade/estado)",
+    )
+    species = models.ManyToManyField(
+        Species,
+        blank=True,
+        related_name="creator_network_entries",
+        verbose_name="Espécies criadas",
+    )
+    phone = models.CharField("Telefone (WhatsApp)", max_length=20)
+    is_opt_in = models.BooleanField(
+        "Participa da lista pública",
+        default=True,
+        help_text="Usuários opt-in conseguem visualizar os demais inscritos.",
+    )
+    created_at = models.DateTimeField("Criado em", auto_now_add=True)
+    updated_at = models.DateTimeField("Atualizado em", auto_now=True)
+
+    class Meta:
+        verbose_name = "Criador inscrito"
+        verbose_name_plural = "Criadores inscritos"
+        ordering = ["name"]
+
+    def __str__(self) -> str:
+        return self.name

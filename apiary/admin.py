@@ -1,6 +1,15 @@
 from django.contrib import admin
 
-from .models import Apiary, Hive, Revision, RevisionAttachment, Species
+from .models import (
+    Apiary,
+    BoxModel,
+    City,
+    CreatorNetworkEntry,
+    Hive,
+    Revision,
+    RevisionAttachment,
+    Species,
+)
 
 
 class Select2AdminMixin:
@@ -72,6 +81,18 @@ class SpeciesAdmin(Select2AdminMixin, admin.ModelAdmin):
     search_fields = ("popular_name", "scientific_name")
 
 
+@admin.register(BoxModel)
+class BoxModelAdmin(admin.ModelAdmin):
+    list_display = ("name", "description")
+    search_fields = ("name", "description")
+
+
+@admin.register(City)
+class CityAdmin(admin.ModelAdmin):
+    list_display = ("name",)
+    search_fields = ("name",)
+
+
 @admin.register(Apiary)
 class ApiaryAdmin(OwnerRestrictedAdmin):
     list_display = ("name", "location", "owner", "hive_count")
@@ -115,6 +136,8 @@ class HiveAdmin(OwnerRestrictedAdmin):
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == "apiary" and not request.user.is_superuser:
             kwargs["queryset"] = Apiary.objects.owned_by(request.user)
+        if db_field.name == "origin_hive" and not request.user.is_superuser:
+            kwargs["queryset"] = Hive.objects.owned_by(request.user)
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 @admin.register(Revision)
@@ -122,6 +145,7 @@ class RevisionAdmin(Select2AdminMixin, admin.ModelAdmin):
     list_display = (
         "hive",
         "review_date",
+        "review_type",
         "queen_seen",
         "temperament",
         "brood_level",
@@ -131,6 +155,7 @@ class RevisionAdmin(Select2AdminMixin, admin.ModelAdmin):
     )
     list_filter = (
         "queen_seen",
+        "review_type",
         "temperament",
         "brood_level",
         "food_level",
@@ -156,3 +181,12 @@ class RevisionAdmin(Select2AdminMixin, admin.ModelAdmin):
 class RevisionAttachmentAdmin(Select2AdminMixin, admin.ModelAdmin):
     list_display = ("revision", "file")
     search_fields = ("revision__hive__identification_number",)
+
+
+@admin.register(CreatorNetworkEntry)
+class CreatorNetworkEntryAdmin(OwnerRestrictedAdmin):
+    owner_field_name = "user"
+    list_display = ("name", "city", "phone", "is_opt_in")
+    list_filter = ("is_opt_in",)
+    search_fields = ("name", "phone", "city__name", "user__username")
+    filter_horizontal = ("species",)

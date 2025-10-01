@@ -33,7 +33,7 @@ Sistema web para controle de colmeias de abelhas, com suporte a múltiplos usuá
   - No caso de divisão, de qual colmeia foi originada
   - No caso de captura, em qual data fez a transferência para a caixa
 - Origem (opcional)
-- Data de aquisição
+- No caso de compra, qual a data de aquisição
 - Espécie
 - Nome popular
 - Situação da colmeia (produção, observação, órfã, morta, doada/vendida ou perdida)
@@ -133,7 +133,11 @@ python manage.py collectstatic --noinput
 sudo systemctl restart colmeia_online
 ```
 
-### Carregar espécies padrão
+### Seeds disponíveis
+
+Os comandos de seed ficam na pasta `apiary/management/commands/` e podem ser executados quantas vezes forem necessários: as operações usam `update_or_create`, evitando duplicidades.
+
+#### Carregar espécies padrão
 
 Para importar ou atualizar as espécies padrão de abelhas sem ferrão use o comando de management `seed_species`.
 
@@ -143,6 +147,29 @@ python manage.py seed_species
 ```
 
 O comando lê o arquivo JSON indicado, cria novas espécies e atualiza registros existentes com o mesmo `nome_cientifico`. Cada item da lista deve informar o campo `grupo`; quando o valor estiver ausente ou inválido, o grupo padrão `sem_ferrao` é utilizado automaticamente.
+
+#### Seed dos Modelos de caixas
+
+O comando `seed_box_models` popula a tabela de modelos de caixas com nome e descrição conforme o catálogo base.
+
+```bash
+python manage.py seed_box_models
+```
+
+Cada execução garante que os registros existam e estejam atualizados, sem gerar duplicatas.
+
+#### Seed de Cidades do Brasil
+
+Para carregar as cidades no formato `"Cidade - UF"`, utilize o comando `seed_cities`, que consome o arquivo `docs/estados-cidades.json`.
+
+```bash
+python manage.py seed_cities
+
+# Opcionalmente, informe um arquivo alternativo
+python manage.py seed_cities --file docs/minhas-cidades.json
+```
+
+O arquivo JSON deve seguir a estrutura `{ "estados": [{ "sigla": "UF", "cidades": ["Nome da Cidade", ...] }] }`. O comando é idempotente e pode ser executado novamente para atualizar nomes ou incluir novas cidades.
 
 ### Tema utilizado no admin
 As páginas criadas devem seguir o tema bootstrap do django-admin-interface, que oferece uma interface mais amigável e moderna para o administrador do Django.
