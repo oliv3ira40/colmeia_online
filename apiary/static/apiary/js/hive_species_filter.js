@@ -3,39 +3,20 @@
     return;
   }
 
-  function getSelects(context) {
-    return $(context)
-      .find('select')
-      .filter(function() {
-        var $select = $(this);
-        return (
-          !$select.is('.select2-hidden-accessible') &&
-          !$select.data('select2-initialized') &&
-          !$select.prop('disabled')
-        );
-      });
-  }
+  function initializeSpeciesFilter() {
+    // Select do filtro de espécies na lista de colmeias
+    $('.list-filter-dropdown').find('select').select2();
 
-  function initializeSelect2(context) {
-    getSelects(context).each(function() {
-      var $select = $(this);
-      $select.select2({
-        width: 'style'
-      });
-      $select.data('select2-initialized', true);
-    });
-  }
+    // Select do formulário de colmeia
+    $('#id_species').select2();
 
-  function onReady() {
-    initializeSelect2(document);
-    $(document).on('formset:added', function(_event, $row) {
-      initializeSelect2($row);
-    });
+    // Select do formulário de revisões de colmeia
+    $('#id_hive').select2();
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', onReady);
+    document.addEventListener('DOMContentLoaded', initializeSpeciesFilter);
   } else {
-    onReady();
+    initializeSpeciesFilter();
   }
 })(typeof django !== 'undefined' ? django.jQuery : window.jQuery);
