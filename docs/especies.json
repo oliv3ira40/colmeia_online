@@ -1900,8 +1900,7 @@
     "grupo": "sem_ferrao",
     "nome_cientifico": "Plebeia grapiuna",
     "caracteristicas": "Abelha mirim endêmica da Mata Atlântica baiana; muito pequena e pacífica. Ninhos em cavidades; contribui para a polinização local."
-  }
-
+  },
   {
     "nome_popular": "",
     "ufs": [
@@ -2645,7 +2644,7 @@
     "caracteristicas": "Abelha de ampla distribuição; colônias médias e estáveis. Forrageia em diferentes estratos da vegetação e tolera ambientes abertos."
   },
   {
-    "nome_popular": "abelha-necrófaga (Trigona), "abelha-vulture" (uso técnico)",
+    "nome_popular": "abelha-necrófaga (Trigona), 'abelha-vulture' (uso técnico)",
     "ufs": [
       "AM",
       "MA",
