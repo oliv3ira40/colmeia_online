@@ -104,6 +104,7 @@ class HiveAdmin(OwnerRestrictedAdmin):
             kwargs["queryset"] = Apiary.objects.owned_by(request.user)
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
+    # TODO: colocar esse import em todo o django admin
     class Media:
         css = {
             "all": (
