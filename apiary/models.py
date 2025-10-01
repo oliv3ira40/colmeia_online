@@ -1,9 +1,12 @@
 from __future__ import annotations
 
 import uuid
+
 from django.conf import settings
 from django.core.exceptions import ValidationError
+from django.core.files.uploadedfile import UploadedFile
 from django.db import models
+from PIL import UnidentifiedImageError
 
 
 def generate_hive_identifier() -> str:
@@ -13,6 +16,23 @@ def generate_hive_identifier() -> str:
         identifier = f"{prefix}-{uuid.uuid4().hex[:8].upper()}"
         if not Hive.objects.filter(identification_number=identifier).exists():
             return identifier
+
+
+from .utils.images import convert_image_to_webp
+
+
+def _convert_image_field_to_webp(field_file, *, field_name: str) -> None:
+    file_obj = getattr(field_file, "file", None)
+    if not file_obj or not isinstance(file_obj, UploadedFile):
+        return
+
+    original_name = getattr(file_obj, "name", field_file.name)
+    try:
+        converted = convert_image_to_webp(file_obj, original_name=original_name)
+    except UnidentifiedImageError as exc:
+        raise ValidationError({field_name: "Envie uma imagem válida."}) from exc
+
+    field_file.save(converted.name, converted, save=False)
 
 
 class Species(models.Model):
@@ -206,6 +226,12 @@ class Hive(models.Model):
         "Data da última revisão", null=True, blank=True, editable=False
     )
     notes = models.TextField("Observações", blank=True)
+    position = models.CharField(
+        "Posição no meliponário", max_length=255, blank=True
+    )
+    photo = models.ImageField(
+        "Foto da colmeia", upload_to="hive_photos/", blank=True, null=True
+    )
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -239,6 +265,8 @@ class Hive(models.Model):
                 .first()
             )
         self.full_clean()
+        if self.photo:
+            _convert_image_field_to_webp(self.photo, field_name="photo")
         super().save(*args, **kwargs)
         if previous_apiary_id and previous_apiary_id != self.apiary_id:
             previous_apiary = Apiary.objects.filter(pk=previous_apiary_id).first()
@@ -374,7 +402,7 @@ class RevisionAttachment(models.Model):
         related_name="attachments",
         verbose_name="Revisão",
     )
-    file = models.FileField("Arquivo", upload_to="revision_attachments/")
+    file = models.ImageField("Imagem", upload_to="revision_attachments/")
 
     class Meta:
         verbose_name = "Anexo da Revisão"
@@ -385,4 +413,6 @@ class RevisionAttachment(models.Model):
 
     def save(self, *args, **kwargs):
         self.full_clean()
+        if self.file:
+            _convert_image_field_to_webp(self.file, field_name="file")
         return super().save(*args, **kwargs)

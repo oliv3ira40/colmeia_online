@@ -1,0 +1,99 @@
+{% load i18n %}
+<details data-filter-title="{{ title }}" open class="select-search-filter">
+  <summary>
+    {% blocktranslate with filter_title=title %}By {{ filter_title }}{% endblocktranslate %}
+  </summary>
+  <div class="select-search-filter__body" data-select-search-filter>
+    <label class="select-search-filter__label" for="{{ spec.id_for_label }}">
+      {% blocktranslate with filter_title=title %}Filter {{ filter_title }}{% endblocktranslate %}
+    </label>
+    <input
+      type="search"
+      class="select-search-filter__input"
+      placeholder="{% trans 'Digite para buscar' %}"
+      aria-controls="{{ spec.id_for_label }}"
+      data-select-search-input
+    >
+    <select
+      id="{{ spec.id_for_label }}"
+      name="{{ spec.parameter_name }}"
+      class="select-search-filter__select"
+      data-select-search-target
+    >
+      {% for choice in choices %}
+        <option value="{{ choice.query_string|iriencode }}"{% if choice.selected %} selected{% endif %}>
+          {{ choice.display }}
+        </option>
+      {% endfor %}
+    </select>
+  </div>
+</details>
+<script>
+(function() {
+  if (window.__adminSelectSearchInitialized) {
+    return;
+  }
+  window.__adminSelectSearchInitialized = true;
+
+  function setupSelectSearch(container) {
+    if (!container) {
+      return;
+    }
+    var select = container.querySelector('[data-select-search-target]');
+    var input = container.querySelector('[data-select-search-input]');
+    if (!select || !input) {
+      return;
+    }
+
+    var options = Array.prototype.map.call(select.options, function(option) {
+      return {
+        element: option,
+        text: option.textContent.toLowerCase(),
+      };
+    });
+
+    input.addEventListener('input', function() {
+      var term = input.value.trim().toLowerCase();
+      options.forEach(function(item) {
+        var shouldShow = !term || item.text.indexOf(term) !== -1;
+        item.element.hidden = !shouldShow;
+      });
+    });
+
+    input.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        var targetOption = null;
+        for (var i = 0; i < options.length; i += 1) {
+          if (!options[i].element.hidden) {
+            targetOption = options[i].element;
+            break;
+          }
+        }
+        if (targetOption) {
+          event.preventDefault();
+          window.location.href = targetOption.value;
+        }
+      }
+    });
+
+    select.addEventListener('change', function() {
+      var value = select.value;
+      if (value) {
+        window.location.href = value;
+      } else if (options.length) {
+        window.location.href = options[0].element.value;
+      }
+    });
+  }
+
+  function initializeAll() {
+    document.querySelectorAll('[data-select-search-filter]').forEach(setupSelectSearch);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeAll);
+  } else {
+    initializeAll();
+  }
+})();
+</script>

@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.admin.filters import RelatedFieldListFilter
 
 from .models import Apiary, Hive, Revision, RevisionAttachment, Species
 
@@ -77,6 +78,10 @@ class RevisionInline(admin.TabularInline):
     show_change_link = True
 
 
+class SpeciesSelectFilter(RelatedFieldListFilter):
+    template = "admin/filters/select_search_filter.html"
+
+
 @admin.register(Hive)
 class HiveAdmin(OwnerRestrictedAdmin):
     list_display = (
@@ -90,7 +95,12 @@ class HiveAdmin(OwnerRestrictedAdmin):
         "acquisition_date",
         "last_review_date",
     )
-    list_filter = ("status", "acquisition_method", "species", "owner")
+    list_filter = (
+        "status",
+        "acquisition_method",
+        ("species", SpeciesSelectFilter),
+        "owner",
+    )
     search_fields = ("identification_number", "popular_name", "origin")
     inlines = [RevisionInline]
 
