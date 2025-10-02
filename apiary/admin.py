@@ -109,9 +109,9 @@ class CityAdmin(BaseAdmin):
 
 @admin.register(Apiary)
 class ApiaryAdmin(OwnerRestrictedAdmin):
-    list_display = ("name", "location", "owner", "hive_count")
-    search_fields = ("name", "location", "owner__username")
-    list_filter = ("owner",)
+    list_display = ("name", "city", "owner", "hive_count")
+    search_fields = ("name", "city__name", "owner__username")
+    list_filter = ("owner", "city")
 
 
 class RevisionAttachmentInline(BaseInline):

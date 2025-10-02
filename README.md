@@ -227,7 +227,7 @@ Clique [aqui](docs/padroes.md) para ver os padrões de desenvolvimento adotados 
 
     **Meliponários/Apiários**
     - Nome → texto
-    - Localização (cidade/estado) → texto
+    - Localização (cidade/estado) → escolha entre as cidades cadastradas no sistema
     - Responsável/Proprietário -> usuário que cadastrou o meliponário/apiário
     - QTD de colmeias vinculadas → número, preenchido automaticamente com a contagem de colmeias associadas
     - Observações → texto livre
