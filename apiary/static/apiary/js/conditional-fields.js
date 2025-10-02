@@ -22,7 +22,15 @@ const RULES = [
   },
   {
     when: { nameEndsWith: "acquisition_method", equals: "compra" },
-    then: [{ nameEndsWith: "acquisition_date", required: true }],
+    then: [
+      { nameEndsWith: "acquisition_date", required: true },
+      { nameEndsWith: "origin", required: true }
+    ],
+  },
+  // Não vazio ou seja, qualquer valor que não seja "---"
+  {
+    when: { nameEndsWith: "apiary", notEmpty: true },
+    then: [{ nameEndsWith: "position", required: true }],
   },
   {
     when: { nameEndsWith: "acquisition_method", equals: "divisao" },
@@ -51,6 +59,8 @@ const RULES = [
   const targetState = new WeakMap();
   const ruleTrackedTargets = new Map();
   const controllerBindings = new WeakMap();
+
+  // console.log("Conditional fields script loaded");
 
   function cssEscape(value) {
     if (typeof value !== "string") {
@@ -228,26 +238,42 @@ const RULES = [
   }
 
   function evaluateCondition(controller, when) {
-    if (!when) {
-      return true;
-    }
+    if (!when) return true;
+
+    // Começa assumindo que tudo passa; cada checagem vai fazendo AND
+    let ok = true;
+    const val = getControllerValue(controller);
+
+    // 1) checkbox/radio marcado ou não
     if (Object.prototype.hasOwnProperty.call(when, "isChecked")) {
-      if (isControllerChecked(controller) !== Boolean(when.isChecked)) {
-        return false;
-      }
+      ok = ok && (isControllerChecked(controller) === Boolean(when.isChecked));
     }
+
+    // 2) igualdade exata
     if (Object.prototype.hasOwnProperty.call(when, "equals")) {
-      if (getControllerValue(controller) !== when.equals) {
-        return false;
-      }
+      ok = ok && (val === when.equals);
     }
+
+    // 3) valor dentro de um conjunto
     if (Object.prototype.hasOwnProperty.call(when, "valueIn")) {
       const values = toArray(when.valueIn);
-      if (!values.includes(getControllerValue(controller))) {
-        return false;
-      }
+      ok = ok && values.includes(val);
     }
-    return true;
+
+    // 4) açúcar sintático: "não vazio" (ignora null/undefined/"" após trim)
+    //    Útil para selects do Django Admin cujo vazio tem value "".
+    if (when.notEmpty === true) {
+      const s = (val == null) ? "" : String(val).trim();
+      ok = ok && (s !== "");
+    }
+
+    // 5) inversor genérico: se when.not === true, inverte o resultado.
+    //    Ex.: { equals: "", not: true }  => "diferente de vazio"
+    if (when.not === true) {
+      ok = !ok;
+    }
+
+    return ok;
   }
 
   function findFieldContainer(element) {

@@ -23,17 +23,20 @@ class Select2AdminMixin:
         js = (
             "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.full.min.js",
             "apiary/js/hive_species_filter.js",
+            "apiary/js/conditional-fields.js"
         )
 
 
 class BaseAdmin(Select2AdminMixin, admin.ModelAdmin):
     class Media(Select2AdminMixin.Media):
-        js = Select2AdminMixin.Media.js + ("admin/conditional-fields.js",)
+        pass
+        # js = ("apiary/js/conditional-fields.js",)
 
 
 class BaseInline(admin.TabularInline):
     class Media:
-        js = ("admin/conditional-fields.js",)
+        pass
+        # js = ("apiary/js/conditional-fields.js",)
 
 
 class OwnerRestrictedAdmin(BaseAdmin):
