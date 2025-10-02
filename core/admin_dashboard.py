@@ -8,12 +8,17 @@ from typing import Dict, List
 
 from django.contrib import admin
 from django.contrib.admin.sites import AdminSite
+from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth import logout
+from django.db import transaction
+from django.http import HttpRequest, HttpResponse
+from django.shortcuts import redirect
 from django.db.models import F, Q
 from django.template.response import TemplateResponse
-from django.urls import reverse
+from django.urls import path, reverse
 from django.utils import timezone
 
-from apiary.models import Apiary, Hive, Revision
+from apiary.models import Apiary, CreatorNetworkEntry, Hive, Revision
 
 
 @dataclass(frozen=True)
@@ -220,6 +225,27 @@ def _build_dashboard_context(user) -> Dict[str, object]:
     }
 
 
+@staff_member_required
+def delete_personal_data_view(request: HttpRequest) -> HttpResponse:
+    if request.method == "POST":
+        user_model = type(request.user)
+        user_pk = request.user.pk
+        with transaction.atomic():
+            user_model.objects.filter(pk=user_pk).delete()
+        logout(request)
+        return redirect(f"{reverse('admin:login')}?deleted=1")
+
+    context = {
+        **admin.site.each_context(request),
+        "title": "Excluir meus dados",
+        "apiaries_count": Apiary.objects.filter(owner=request.user).count(),
+        "hives_count": Hive.objects.filter(owner=request.user).count(),
+        "revisions_count": Revision.objects.filter(hive__owner=request.user).count(),
+        "has_creator_network_entry": CreatorNetworkEntry.objects.filter(user=request.user).exists(),
+    }
+    return TemplateResponse(request, "admin/delete_personal_data.html", context)
+
+
 def _custom_admin_index(self: AdminSite, request, extra_context=None):
     if request.user.is_superuser:
         return _original_admin_index(request, extra_context=extra_context)
@@ -239,3 +265,21 @@ def _custom_admin_index(self: AdminSite, request, extra_context=None):
 if not getattr(admin.site, "_colmeia_custom_index", False):
     admin.site.index = _custom_admin_index.__get__(admin.site, admin.sites.AdminSite)
     admin.site._colmeia_custom_index = True
+
+
+if not getattr(admin.site, "_colmeia_delete_data_url", False):
+    original_get_urls = admin.site.get_urls
+
+    def get_urls():
+        urls = original_get_urls()
+        custom_urls = [
+            path(
+                "excluir-meus-dados/",
+                admin.site.admin_view(delete_personal_data_view),
+                name="delete_personal_data",
+            )
+        ]
+        return custom_urls + urls
+
+    admin.site.get_urls = get_urls
+    admin.site._colmeia_delete_data_url = True

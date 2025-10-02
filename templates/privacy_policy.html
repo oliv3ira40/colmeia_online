@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidade - Colmeia Online</title>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous"
+    >
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-semibold" href="/">Colmeia Online</a>
+        </div>
+    </nav>
+
+    <main class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-body p-4 p-lg-5">
+                            <h1 class="h3 fw-bold text-primary mb-4">Política de Privacidade</h1>
+                            <p class="text-muted">
+                                Levamos a proteção dos seus dados a sério. As informações inseridas na plataforma são de uso
+                                exclusivo do próprio usuário, com o objetivo de apoiar a gestão dos meliponários registrados.
+                            </p>
+                            <p class="text-muted">
+                                Não compartilhamos, vendemos ou cedemos os seus dados pessoais a terceiros. Todo o conteúdo
+                                cadastrado permanece restrito à sua conta e acessível apenas mediante autenticação.
+                            </p>
+                            <p class="text-muted mb-4">
+                                Você pode solicitar a exclusão permanente das suas informações a qualquer momento. O processo
+                                remove sua conta, meliponários, colmeias, revisões e quaisquer registros vinculados ao seu login.
+                            </p>
+                            <div class="alert alert-warning" role="alert">
+                                <strong>Atenção:</strong> a exclusão de dados é definitiva e não pode ser desfeita.
+                            </div>
+                            <div class="d-flex flex-column flex-sm-row gap-3 mt-4">
+                                <a class="btn btn-danger btn-lg" href="{{ delete_data_entry_url }}">Excluir meus dados</a>
+                                <a class="btn btn-outline-secondary btn-lg" href="{{ admin_login_url }}">Ir para o login do admin</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <a class="text-muted" href="/">Voltar para a página inicial</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-4 bg-white border-top">
+        <div class="container text-center">
+            <p class="text-muted mb-1">&copy; {% now "Y" %} Colmeia Online. Todos os direitos reservados.</p>
+            <small class="text-muted">Conectando criadores de abelhas sem ferrão em todo o Brasil.</small>
+        </div>
+    </footer>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"
+    ></script>
+</body>
+</html>

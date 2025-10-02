@@ -38,6 +38,9 @@ below.{% endblocktranslate %}
     <p class="{% if 'success' in message.tags %}successnote{% else %}{{ message.tags|default:'info' }}note{% endif %}">{{ message }}</p>
   {% endfor %}
 {% endif %}
+{% if request.GET.deleted == '1' %}
+  <p class="successnote">Todos os seus dados foram excluídos com sucesso.</p>
+{% endif %}
 
 <div id="content-main">
 
