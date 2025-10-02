@@ -213,33 +213,21 @@ class Hive(models.Model):
         editable=False,
         default=generate_hive_identifier,
     )
-    acquisition_method = models.CharField(
-        "Método de aquisição",
-        max_length=20,
-        choices=AcquisitionMethod.choices,
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="hives",
+        verbose_name="Proprietário",
     )
-    origin = models.CharField("Origem da colmeia", max_length=255, blank=True)
-    acquisition_date = models.DateField(
-        "No caso de compra, qual a data de aquisição"
-    )
+    popular_name = models.CharField("Nome popular", max_length=255)
     species = models.ForeignKey(
         Species,
         on_delete=models.PROTECT,
         related_name="hives",
         verbose_name="Espécie",
     )
-    popular_name = models.CharField("Nome popular", max_length=255)
-    status = models.CharField(
-        "Situação",
-        max_length=20,
-        choices=HiveStatus.choices,
-        default=HiveStatus.PRODUCTIVE,
-    )
-    next_division_date = models.DateField(
-        "Data da próxima divisão",
-        null=True,
-        blank=True,
-        help_text="Data planejada para a próxima divisão da colmeia.",
+    photo = models.ImageField(
+        "Foto da colmeia", upload_to="hive_photos/", blank=True, null=True
     )
     apiary = models.ForeignKey(
         Apiary,
@@ -249,21 +237,19 @@ class Hive(models.Model):
         related_name="hives",
         verbose_name="Meliponário/Apiário",
     )
-    last_review_date = models.DateTimeField(
-        "Data da última revisão", null=True, blank=True, editable=False
-    )
-    notes = models.TextField("Observações", blank=True)
     position = models.CharField(
         "Posição no meliponário", max_length=255, blank=True
     )
-    photo = models.ImageField(
-        "Foto da colmeia", upload_to="hive_photos/", blank=True, null=True
+    status = models.CharField(
+        "Situação",
+        max_length=20,
+        choices=HiveStatus.choices,
+        default=HiveStatus.PRODUCTIVE,
     )
-    transfer_box_date = models.DateField(
-        "Data de transferência para a caixa",
-        null=True,
-        blank=True,
-        help_text="Informe quando a colmeia capturada foi transferida para a caixa.",
+    acquisition_method = models.CharField(
+        "Método de aquisição",
+        max_length=20,
+        choices=AcquisitionMethod.choices,
     )
     origin_hive = models.ForeignKey(
         "self",
@@ -274,6 +260,18 @@ class Hive(models.Model):
         verbose_name="Colmeia de origem",
         help_text="Informe a colmeia original em caso de divisão.",
     )
+    transfer_box_date = models.DateField(
+        "Data de transferência para a caixa",
+        null=True,
+        blank=True,
+        help_text="Informe quando a colmeia capturada foi transferida para a caixa.",
+    )
+    origin = models.CharField("Origem da colmeia", max_length=255, blank=True)
+    acquisition_date = models.DateField(
+        "No caso de compra, qual a data de aquisição",
+        null=True,
+        blank=True,
+    )
     box_model = models.ForeignKey(
         BoxModel,
         on_delete=models.SET_NULL,
@@ -283,13 +281,16 @@ class Hive(models.Model):
         verbose_name="Modelo de caixa",
         help_text="Selecione o modelo da caixa utilizada, se aplicável.",
     )
-    owner = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        related_name="hives",
-        verbose_name="Proprietário",
+    last_review_date = models.DateTimeField(
+        "Data da última revisão", null=True, blank=True, editable=False
     )
-
+    notes = models.TextField("Observações", blank=True)
+    next_division_date = models.DateField(
+        "Data da próxima divisão",
+        null=True,
+        blank=True,
+        help_text="Data planejada para a próxima divisão da colmeia.",
+    )
     objects = HiveQuerySet.as_manager()
 
     class Meta:
@@ -399,12 +400,6 @@ class Revision(models.Model):
         verbose_name="Colmeia",
     )
     review_date = models.DateTimeField("Data da revisão")
-    review_type = models.CharField(
-        "Tipo de revisão",
-        max_length=20,
-        choices=RevisionType.choices,
-        default=RevisionType.ROUTINE,
-    )
     queen_seen = models.BooleanField("Rainha vista", default=False)
     brood_level = models.CharField(
         "Cria",
@@ -447,6 +442,12 @@ class Revision(models.Model):
     management_description = models.TextField(
         "Descreva manejo(s) realizado(s)",
         blank=True,
+    )
+    review_type = models.CharField(
+        "Tipo de revisão",
+        max_length=20,
+        choices=RevisionType.choices,
+        default=RevisionType.ROUTINE,
     )
     honey_harvest_amount = models.DecimalField(
         "Quantidade de mel colhida (ml)",
