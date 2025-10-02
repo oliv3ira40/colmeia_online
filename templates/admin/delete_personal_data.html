@@ -1,0 +1,62 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+    <a href="{% url 'admin:index' %}">{% translate 'Home' %}</a>
+    &rsaquo;
+    Excluir meus dados
+</div>
+{% endblock %}
+
+{% block content_title %}Excluir meus dados{% endblock %}
+
+{% block content %}
+
+<style>
+    .delete-link {
+        padding: 5px 10px !important;
+        background-color: red !important;
+        margin-right: 10px !important;
+    }
+
+    .cancel-link {
+        padding: 5px 10px !important;
+        background-color: gray !important;
+        color: white !important;
+        text-decoration: none !important;
+    }
+</style>
+
+<div class="module aligned">
+    <div class="module-content">
+        <p>
+            Esta página permite solicitar a exclusão completa e permanente de todos os dados associados ao seu usuário autenticado.
+        </p>
+        <div class="messagelist">
+            <div class="errornote">
+                <strong>Atenção:</strong> após confirmar a exclusão, não será possível recuperar sua conta nem qualquer informação removida.
+            </div>
+        </div>
+        <h2>O que será excluído</h2>
+        <ul>
+            <li>Sua conta de usuário.</li>
+            <li>Todos os meliponários registrados ({{ apiaries_count }}).</li>
+            <li>Todas as colmeias cadastradas ({{ hives_count }}).</li>
+            <li>Todas as revisões registradas ({{ revisions_count }}).</li>
+            <li>Arquivos anexados às revisões e demais dados que você inseriu no sistema.</li>
+        </ul>
+        {% if has_creator_network_entry %}
+        <p>Os seus dados publicados na lista de criadores também serão removidos.</p>
+        {% endif %}
+        <p>
+            O procedimento é irreversível e removerá todas as informações relacionadas à sua conta. Confirme apenas se tiver certeza.
+        </p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="button default delete-link">Excluir meus dados agora</button>
+            <a href="{% url 'admin:index' %}" class="button cancel-link">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
