@@ -151,7 +151,20 @@ class City(models.Model):
 
 class Apiary(models.Model):
     name = models.CharField("Nome", max_length=255)
-    location = models.CharField("Localização (cidade/estado)", max_length=255)
+    location = models.CharField(
+        "Localização (cidade/estado)",
+        max_length=255,
+        blank=True,
+        editable=False,
+    )
+    city = models.ForeignKey(
+        City,
+        on_delete=models.PROTECT,
+        related_name="creators",
+        verbose_name="Localização (cidade/estado)",
+        null=True,
+        blank=True,
+    )
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -583,7 +596,7 @@ class CreatorNetworkEntry(models.Model):
     city = models.ForeignKey(
         City,
         on_delete=models.PROTECT,
-        related_name="creators",
+        related_name="creator_network_entries",
         verbose_name="Localização (cidade/estado)",
     )
     species = models.ManyToManyField(
