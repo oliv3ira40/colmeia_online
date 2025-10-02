@@ -1,0 +1,681 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block extrastyle %}
+{{ block.super }}
+<style>
+    :root {
+        --pd-gap: 1.5rem;
+        --pd-card-bg: #ffffff;
+        --pd-muted: #475569;
+        --pd-border: rgba(148, 163, 184, 0.35);
+        --pd-accent: #047857;
+        --pd-accent-soft: rgba(5, 150, 105, 0.14);
+    }
+
+    .production-dashboard {
+        display: flex;
+        flex-direction: column;
+        gap: var(--pd-gap);
+    }
+
+    .production-dashboard__header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 0.75rem;
+    }
+
+    .production-dashboard__header h1 {
+        margin: 0;
+        font-size: 1.8rem;
+    }
+
+    .production-dashboard__period {
+        font-size: 0.95rem;
+        color: var(--pd-muted);
+    }
+
+    .production-dashboard__filters {
+        background: var(--pd-card-bg);
+        border-radius: 1rem;
+        border: 1px solid var(--pd-border);
+        padding: 1.25rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        box-shadow: 0 10px 35px rgba(15, 23, 42, 0.08);
+    }
+
+    .production-dashboard__filters fieldset {
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .production-dashboard__filters legend {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    .filters-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+    }
+
+    .filters-grid label {
+        display: flex;
+        flex-direction: column;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--pd-muted);
+        gap: 0.35rem;
+    }
+
+    .filters-grid select,
+    .filters-grid input,
+    .filters-grid button {
+        border-radius: 0.75rem;
+        border: 1px solid var(--pd-border);
+        padding: 0.55rem 0.75rem;
+        font-size: 0.95rem;
+    }
+
+    .filters-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        justify-content: flex-end;
+    }
+
+    .filters-actions button,
+    .filters-actions a {
+        border-radius: 999px;
+        padding: 0.55rem 1.35rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .btn-apply {
+        background: linear-gradient(135deg, #16a34a, #047857);
+        color: #ffffff;
+    }
+
+    .btn-apply:hover,
+    .btn-apply:focus-visible {
+        background: linear-gradient(135deg, #0f9f74, #036348);
+        color: #ffffff;
+    }
+
+    .btn-reset {
+        background: rgba(15, 23, 42, 0.04);
+        color: #0f172a;
+        border: 1px solid rgba(148, 163, 184, 0.45);
+    }
+
+    .kpi-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: var(--pd-gap);
+    }
+
+    .kpi-card {
+        background: var(--pd-card-bg);
+        border-radius: 1rem;
+        padding: 1.35rem;
+        border: 1px solid var(--pd-border);
+        box-shadow: 0 12px 40px rgba(15, 23, 42, 0.12);
+        display: flex;
+        flex-direction: column;
+        gap: 0.55rem;
+    }
+
+    .kpi-card__label {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--pd-muted);
+        font-weight: 600;
+    }
+
+    .kpi-card__value {
+        font-size: clamp(1.35rem, 2.8vw, 2.3rem);
+        font-weight: 700;
+        color: #0f172a;
+    }
+
+    .kpi-card__description {
+        font-size: 0.85rem;
+        color: var(--pd-muted);
+    }
+
+    .layout-main {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        gap: var(--pd-gap);
+        align-items: flex-start;
+    }
+
+    .panel {
+        background: var(--pd-card-bg);
+        border-radius: 1rem;
+        border: 1px solid var(--pd-border);
+        padding: 1.35rem 1.5rem;
+        box-shadow: 0 12px 40px rgba(15, 23, 42, 0.12);
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .panel__header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+    }
+
+    .panel__title {
+        margin: 0;
+        font-size: 1.3rem;
+        font-weight: 700;
+    }
+
+    .panel__subtitle {
+        margin: 0;
+        color: var(--pd-muted);
+        font-size: 0.9rem;
+    }
+
+    .season-card {
+        background: linear-gradient(145deg, rgba(16, 185, 129, 0.14), rgba(5, 150, 105, 0.08));
+        border-radius: 1rem;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        border: 1px solid rgba(5, 150, 105, 0.3);
+    }
+
+    .season-card__title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin: 0;
+        color: #064e3b;
+    }
+
+    .season-card ul {
+        margin: 0;
+        padding-left: 1rem;
+        color: #064e3b;
+    }
+
+    .rank-table,
+    .monthly-table,
+    .complementary-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+    }
+
+    .rank-table thead,
+    .monthly-table thead,
+    .complementary-table thead {
+        background: rgba(15, 23, 42, 0.05);
+    }
+
+    .rank-table th,
+    .rank-table td,
+    .monthly-table th,
+    .monthly-table td,
+    .complementary-table th,
+    .complementary-table td {
+        padding: 0.75rem 0.85rem;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+        text-align: left;
+    }
+
+    .rank-table__link {
+        color: #0f172a;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .rank-table__link:hover,
+    .rank-table__link:focus-visible {
+        color: var(--pd-accent);
+        text-decoration: underline;
+    }
+
+    .table-actions {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .btn-export {
+        background: var(--pd-accent-soft);
+        color: var(--pd-accent);
+        border-radius: 999px;
+        padding: 0.45rem 1.2rem;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .btn-export:hover,
+    .btn-export:focus-visible {
+        text-decoration: underline;
+    }
+
+    .complementary-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: var(--pd-gap);
+    }
+
+    .empty-state {
+        font-size: 0.95rem;
+        color: var(--pd-muted);
+        margin: 0;
+    }
+
+    @media (max-width: 1100px) {
+        .layout-main {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .filters-actions {
+            justify-content: stretch;
+        }
+
+        .filters-actions button,
+        .filters-actions a {
+            width: 100%;
+            text-align: center;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block extrahead %}
+{{ block.super }}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js" integrity="sha384-drv6HVReGMk71l9jiZ3At5MQTq5zk8RuFms6bG3cyxgRPK4PUDJd31wa9u0edPFd" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block content %}
+<div class="production-dashboard">
+    <div class="production-dashboard__header">
+        <div>
+            <h1>{% trans "Dashboard de Produção e Saúde" %}</h1>
+            <p class="production-dashboard__period">{% blocktrans %}Período analisado: {{ period_label }}{% endblocktrans %}</p>
+        </div>
+    </div>
+
+    {{ chart|json_script:"chart-data" }}
+
+    {% if filter_errors %}
+    <ul class="messagelist">
+        {% for message in filter_errors %}
+        <li class="warning">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <form method="get" class="production-dashboard__filters" aria-label="Filtros do dashboard">
+        <fieldset>
+            <legend>{% trans "Filtros globais" %}</legend>
+            <div class="filters-grid">
+                <label>
+                    {% trans "Ano" %}
+                    <select name="ano">
+                        {% for year in available_filters.years %}
+                            <option value="{{ year }}" {% if selected_year == year %}selected{% endif %}>{{ year }}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+                <label>
+                    {% trans "Início (intervalo customizado)" %}
+                    <input type="date" name="inicio" value="{{ filters.start_date|date:'Y-m-d' }}">
+                </label>
+                <label>
+                    {% trans "Fim (intervalo customizado)" %}
+                    <input type="date" name="fim" value="{{ filters.end_date|date:'Y-m-d' }}">
+                </label>
+                <label>
+                    {% trans "Meliponários/Apiários" %}
+                    <select name="apiarios" multiple size="4">
+                        {% for option in available_filters.apiaries %}
+                            <option value="{{ option.id }}" {% if option.id in filters.apiary_ids %}selected{% endif %}>{{ option.name }}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+                <label>
+                    {% trans "Espécies" %}
+                    <select name="especies" multiple size="4">
+                        {% for option in available_filters.species %}
+                            <option value="{{ option.species_id }}" {% if option.species_id in filters.species_ids %}selected{% endif %}>{{ option.species__popular_name }}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+                <label>
+                    {% trans "Situação" %}
+                    <select name="situacoes" multiple size="4">
+                        {% for option in available_filters.statuses %}
+                            <option value="{{ option.value }}" {% if option.value in filters.statuses %}selected{% endif %}>{{ option.label }}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+                <label>
+                    {% trans "Métrica do ranking" %}
+                    <select name="rank_metric">
+                        {% for key, meta in rank_metrics.items %}
+                            <option value="{{ key }}" {% if filters.rank_metric == key %}selected{% endif %}>{{ meta.label }}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+                <label>
+                    {% trans "Top N" %}
+                    <input type="number" min="1" max="50" name="top" value="{{ filters.rank_limit }}">
+                </label>
+            </div>
+        </fieldset>
+        <div class="filters-actions">
+            <button type="submit" class="btn-apply">{% trans "Aplicar filtros" %}</button>
+            <a class="btn-reset" href="{% url 'production-dashboard' %}">{% trans "Limpar" %}</a>
+        </div>
+    </form>
+
+    <div class="kpi-grid" role="list">
+        <div class="kpi-card" role="listitem">
+            <span class="kpi-card__label">{% trans "Mel produzido" %}</span>
+            <span class="kpi-card__value">{{ cards.production.honey|floatformat:2 }} <small>ml</small></span>
+        </div>
+        <div class="kpi-card" role="listitem">
+            <span class="kpi-card__label">{% trans "Própolis" %}</span>
+            <span class="kpi-card__value">{{ cards.production.propolis|floatformat:2 }} <small>g</small></span>
+        </div>
+        <div class="kpi-card" role="listitem">
+            <span class="kpi-card__label">{% trans "Cera" %}</span>
+            <span class="kpi-card__value">{{ cards.production.wax|floatformat:2 }} <small>g</small></span>
+        </div>
+        <div class="kpi-card" role="listitem">
+            <span class="kpi-card__label">{% trans "Pólen" %}</span>
+            <span class="kpi-card__value">{{ cards.production.pollen|floatformat:2 }} <small>g</small></span>
+        </div>
+        <div class="kpi-card" role="listitem">
+            <span class="kpi-card__label">{% trans "Colmeias ativas" %}</span>
+            <span class="kpi-card__value">{{ cards.active_hives }}</span>
+            <p class="kpi-card__description">{% trans "Exclui colmeias marcadas como mortas ou perdidas." %}</p>
+        </div>
+        <div class="kpi-card" role="listitem">
+            <span class="kpi-card__label">{% trans "Revisões de colheita" %}</span>
+            <span class="kpi-card__value">{{ cards.revision_count }}</span>
+            <p class="kpi-card__description">{% trans "Quantidade de revisões de colheita registradas no período." %}</p>
+        </div>
+        <div class="kpi-card" role="listitem">
+            <span class="kpi-card__label">{% trans "Última revisão" %}</span>
+            <span class="kpi-card__value">{{ cards.last_review|default:_("Sem registros") }}</span>
+        </div>
+        <div class="kpi-card" role="listitem">
+            <span class="kpi-card__label">{% trans "Sem revisão há 60+ dias" %}</span>
+            <span class="kpi-card__value">{{ cards.overdue_percentage|floatformat:1 }}%</span>
+            <p class="kpi-card__description">{% blocktrans %}{{ cards.overdue_total }} colmeias dentro do filtro.{% endblocktrans %}</p>
+        </div>
+    </div>
+
+    <div class="layout-main">
+        <section class="panel" aria-labelledby="chart-monthly-title">
+            <div class="panel__header">
+                <h2 class="panel__title" id="chart-monthly-title">{% trans "Produção mensal" %}</h2>
+                <p class="panel__subtitle">{% trans "Valores acumulados por mês (mel, própolis, cera e pólen)." %}</p>
+            </div>
+            <canvas id="productionChart" height="280" role="img" aria-label="{% trans 'Gráfico de produção mensal' %}"></canvas>
+            {% if not chart.series.honey|length %}
+                <p class="empty-state">{% trans "Sem dados de produção no período." %}</p>
+            {% endif %}
+        </section>
+        <aside class="season-card" aria-labelledby="season-title">
+            <h2 class="season-card__title" id="season-title">{% trans "Estação atual" %}: {{ season.title }}</h2>
+            <p>{{ season.description }}</p>
+            <ul>
+                {% for tip in season.tips %}
+                <li>{{ tip }}</li>
+                {% endfor %}
+            </ul>
+        </aside>
+    </div>
+
+    <section class="panel" aria-labelledby="rank-title">
+        <div class="panel__header">
+            <h2 class="panel__title" id="rank-title">{% trans "Colmeias mais produtivas" %}</h2>
+            <p class="panel__subtitle">{% blocktrans with metric=rank.metric_label %}Ranking por {{ metric }}.{% endblocktrans %}</p>
+        </div>
+        {% if rank.items %}
+        <div class="table-responsive">
+            <table class="rank-table">
+                <thead>
+                    <tr>
+                        <th scope="col">{% trans "Colmeia" %}</th>
+                        <th scope="col">{% trans "Espécie" %}</th>
+                        <th scope="col">{% trans "Apiário" %}</th>
+                        <th scope="col">{% trans "Mel (ml)" %}</th>
+                        <th scope="col">{% trans "Própolis (g)" %}</th>
+                        <th scope="col">{% trans "Cera (g)" %}</th>
+                        <th scope="col">{% trans "Pólen (g)" %}</th>
+                        <th scope="col">{% trans "Revisões" %}</th>
+                        <th scope="col">{% trans "Última colheita" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in rank.items %}
+                    <tr>
+                        <td><a class="rank-table__link" href="{{ item.detail_url }}">{{ item.name }}</a></td>
+                        <td>{{ item.species }}</td>
+                        <td>{{ item.apiary }}</td>
+                        <td>{{ item.honey|floatformat:2 }}</td>
+                        <td>{{ item.propolis|floatformat:2 }}</td>
+                        <td>{{ item.wax|floatformat:2 }}</td>
+                        <td>{{ item.pollen|floatformat:2 }}</td>
+                        <td>{{ item.harvests }}</td>
+                        <td>{{ item.last_harvest }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="empty-state">{% trans "Sem revisões de colheita no período selecionado." %}</p>
+        {% endif %}
+    </section>
+
+    <section class="panel" aria-labelledby="monthly-table-title">
+        <div class="panel__header">
+            <h2 class="panel__title" id="monthly-table-title">{% trans "Produção por mês" %}</h2>
+            <p class="panel__subtitle">{% trans "Tabela fixa com 12 meses. Meses sem dados aparecem com zero." %}</p>
+        </div>
+        <div class="table-actions">
+            {% if query_string %}
+                <a class="btn-export" href="?{{ query_string }}&amp;export=meses">{% trans "Exportar CSV" %}</a>
+            {% else %}
+                <a class="btn-export" href="?export=meses">{% trans "Exportar CSV" %}</a>
+            {% endif %}
+        </div>
+        <div class="table-responsive">
+            <table class="monthly-table">
+                <thead>
+                    <tr>
+                        <th scope="col">{% trans "Mês" %}</th>
+                        <th scope="col">{% trans "Mel (ml)" %}</th>
+                        <th scope="col">{% trans "Própolis (g)" %}</th>
+                        <th scope="col">{% trans "Cera (g)" %}</th>
+                        <th scope="col">{% trans "Pólen (g)" %}</th>
+                        <th scope="col">{% trans "# Colheitas" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in monthly_table.rows %}
+                    <tr>
+                        <td>{{ row.label }}</td>
+                        <td>{{ row.honey|floatformat:2 }}</td>
+                        <td>{{ row.propolis|floatformat:2 }}</td>
+                        <td>{{ row.wax|floatformat:2 }}</td>
+                        <td>{{ row.pollen|floatformat:2 }}</td>
+                        <td>{{ row.harvests }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th scope="row">{% trans "Total" %}</th>
+                        <th>{{ monthly_table.totals.honey|floatformat:2 }}</th>
+                        <th>{{ monthly_table.totals.propolis|floatformat:2 }}</th>
+                        <th>{{ monthly_table.totals.wax|floatformat:2 }}</th>
+                        <th>{{ monthly_table.totals.pollen|floatformat:2 }}</th>
+                        <th>{{ monthly_table.totals.harvests }}</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </section>
+
+    <section class="panel" aria-labelledby="complementary-title">
+        <div class="panel__header">
+            <h2 class="panel__title" id="complementary-title">{% trans "Visões complementares" %}</h2>
+            <p class="panel__subtitle">{% trans "Produção total de mel agrupada por apiário e por espécie." %}</p>
+        </div>
+        <div class="complementary-grid">
+            <div>
+                <h3 class="panel__title" style="font-size:1.05rem;">{% trans "Produção por apiário" %}</h3>
+                {% if production_by_apiary %}
+                    <table class="complementary-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">{% trans "Apiário" %}</th>
+                                <th scope="col">{% trans "Mel (ml)" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in production_by_apiary %}
+                            <tr>
+                                <td>{{ row.name }}</td>
+                                <td>{{ row.total|floatformat:2 }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p class="empty-state">{% trans "Sem dados de produção por apiário." %}</p>
+                {% endif %}
+            </div>
+            <div>
+                <h3 class="panel__title" style="font-size:1.05rem;">{% trans "Produção por espécie" %}</h3>
+                {% if production_by_species %}
+                    <table class="complementary-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">{% trans "Espécie" %}</th>
+                                <th scope="col">{% trans "Mel (ml)" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in production_by_species %}
+                            <tr>
+                                <td>{{ row.name }}</td>
+                                <td>{{ row.total|floatformat:2 }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p class="empty-state">{% trans "Sem dados de produção por espécie." %}</p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    (function() {
+        const ctx = document.getElementById('productionChart');
+        if (!ctx) {
+            return;
+        }
+        const dataElement = document.getElementById('chart-data');
+        if (!dataElement) {
+            return;
+        }
+        const chartData = JSON.parse(dataElement.textContent);
+        const datasets = [
+            {
+                label: 'Mel (ml)',
+                data: chartData.series.honey,
+                backgroundColor: 'rgba(250, 204, 21, 0.75)',
+                borderColor: 'rgba(202, 138, 4, 1)',
+                borderWidth: 1,
+            },
+            {
+                label: 'Própolis (g)',
+                data: chartData.series.propolis,
+                backgroundColor: 'rgba(249, 115, 22, 0.75)',
+                borderColor: 'rgba(194, 65, 12, 1)',
+                borderWidth: 1,
+            },
+            {
+                label: 'Cera (g)',
+                data: chartData.series.wax,
+                backgroundColor: 'rgba(125, 211, 252, 0.75)',
+                borderColor: 'rgba(14, 165, 233, 1)',
+                borderWidth: 1,
+            },
+            {
+                label: 'Pólen (g)',
+                data: chartData.series.pollen,
+                backgroundColor: 'rgba(134, 239, 172, 0.75)',
+                borderColor: 'rgba(34, 197, 94, 1)',
+                borderWidth: 1,
+            }
+        ];
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: chartData.labels,
+                datasets: datasets,
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        stacked: true,
+                    },
+                    y: {
+                        stacked: true,
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Produção',
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                    }
+                }
+            },
+        });
+    })();
+</script>
+{% endblock %}

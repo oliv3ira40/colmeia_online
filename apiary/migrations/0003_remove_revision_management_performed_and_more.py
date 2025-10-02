@@ -10,10 +10,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='revision',
-            name='management_performed',
-        ),
         migrations.AlterField(
             model_name='revision',
             name='brood_level',

@@ -127,11 +127,6 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='revision',
-            name='management_performed',
-            field=models.BooleanField(default=False, verbose_name='Houve manejo?'),
-        ),
-        migrations.AlterField(
-            model_name='revision',
             name='notes',
             field=models.TextField(blank=True, verbose_name='Observações'),
         ),

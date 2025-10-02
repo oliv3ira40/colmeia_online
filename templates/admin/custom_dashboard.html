@@ -31,6 +31,40 @@
         gap: var(--dashboard-gap);
     }
 
+    .dashboard-banner {
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.18), rgba(5, 150, 105, 0.12));
+        border-radius: 1rem;
+        padding: 1rem 1.5rem;
+        border: 1px solid rgba(5, 150, 105, 0.35);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .dashboard-banner__title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 0;
+        color: #064e3b;
+    }
+
+    .dashboard-banner__link {
+        border-radius: 999px;
+        padding: 0.6rem 1.35rem;
+        font-weight: 600;
+        background: #047857;
+        color: #ecfdf5;
+        text-decoration: none;
+    }
+
+    .dashboard-banner__link:focus-visible,
+    .dashboard-banner__link:hover {
+        background: #036349;
+        color: #ffffff;
+    }
+
     .colmeia-dashboard__sidebar {
         flex: 0 0 20%;
         max-width: 20%;
@@ -410,6 +444,10 @@
 {% block content %}
 <div class="colmeia-dashboard" role="main">
     <div class="colmeia-dashboard__main">
+        <div class="dashboard-banner" role="region" aria-label="{% trans 'Acesso rápido ao dashboard analítico' %}">
+            <p class="dashboard-banner__title">{% trans "Acompanhe indicadores avançados de produção" %}</p>
+            <a class="dashboard-banner__link" href="{% url 'production-dashboard' %}">{% trans "Abrir dashboard de produção" %}</a>
+        </div>
         <div class="dashboard-cards" role="list" aria-label="Resumo geral">
             <a class="dashboard-card card-mobile" role="listitem" href="{{ cards.apiaries.url }}">
                 <span class="dashboard-card__title">Meus Meliponários</span>
