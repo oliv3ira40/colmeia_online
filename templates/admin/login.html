@@ -39,7 +39,9 @@ below.{% endblocktranslate %}
   {% endfor %}
 {% endif %}
 {% if request.GET.deleted == '1' %}
-  <p class="successnote">Todos os seus dados foram excluídos com sucesso.</p>
+  <p class="successnote" style="font-weight: bold; color: green;">
+    Todos os seus dados foram excluídos com sucesso.
+  </p>
 {% endif %}
 
 <div id="content-main">
@@ -76,6 +78,9 @@ below.{% endblocktranslate %}
 
 <div class="password-reset-link register-link" style="margin-top: 10px;">
   <a href="{% url 'accounts:register' %}">Não tem uma conta? Registre-se aqui.</a>
+  <a href="{% url 'home' %}" style="margin-top: 10px; display: inline-block;">
+    Retornar ao site
+  </a>
 </div>
 
 </div>
