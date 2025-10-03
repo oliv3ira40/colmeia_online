@@ -1,6 +1,10 @@
 /* global window, document */
 const RULES = [
   {
+    when: { nameEndsWith: "management_performed", notEmpty: true },
+    then: [{ nameEndsWith: "management_description", required: true }],
+  },
+  {
     when: { nameEndsWith: "review_type", equals: "colheita" },
     then: [
       { nameEndsWith: "honey_harvest_amount" },

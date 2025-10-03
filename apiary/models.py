@@ -451,9 +451,9 @@ class Revision(models.Model):
         null=True,
         blank=True,
     )
-    notes = models.TextField("Observações", blank=True)
+    management_performed = models.BooleanField(default=False, verbose_name="Houve manejo? Ou observações específicas?")
     management_description = models.TextField(
-        "Descreva manejo(s) realizado(s)",
+        "Descreva manejo(s) realizado(s) ou observações específicas",
         blank=True,
     )
     review_type = models.CharField(
@@ -533,6 +533,7 @@ class Revision(models.Model):
         "Observações específicas sobre a alimentação",
         blank=True,
     )
+    # notes = models.TextField("Observações", blank=True)
 
     objects = RevisionQuerySet.as_manager()
 

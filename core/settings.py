@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 # ===== Ambiente / Segurança =====
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY', 'insecure-test-secret-key')
 DEBUG      = strtobool(os.getenv('DEBUG', 'False'))
 PRODUCTION = strtobool(os.getenv('PRODUCTION', 'False'))
 

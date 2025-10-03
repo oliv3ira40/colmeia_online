@@ -1,0 +1,249 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block extrastyle %}
+{{ block.super }}
+<style>
+    :root {
+        --detail-gap: 1.5rem;
+        --detail-muted: #475569;
+        --detail-border: rgba(148, 163, 184, 0.35);
+    }
+
+    .detail-container {
+        display: flex;
+        flex-direction: column;
+        gap: var(--detail-gap);
+    }
+
+    .detail-header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: baseline;
+    }
+
+    .detail-header h1 {
+        margin: 0;
+        font-size: 1.7rem;
+    }
+
+    .detail-meta {
+        font-size: 0.95rem;
+        color: var(--detail-muted);
+        margin: 0;
+    }
+
+    .detail-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .detail-actions a {
+        border-radius: 999px;
+        padding: 0.55rem 1.35rem;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .btn-secondary {
+        background: rgba(15, 23, 42, 0.05);
+        color: #0f172a;
+        border: 1px solid rgba(148, 163, 184, 0.45);
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #16a34a, #047857);
+        color: #ffffff;
+    }
+
+    .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+        gap: var(--detail-gap);
+    }
+
+    .detail-card {
+        background: #ffffff;
+        border-radius: 1rem;
+        border: 1px solid var(--detail-border);
+        padding: 1.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+    }
+
+    .detail-card__label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--detail-muted);
+        font-weight: 600;
+    }
+
+    .detail-card__value {
+        font-size: clamp(1.25rem, 2.6vw, 2.1rem);
+        font-weight: 700;
+        color: #0f172a;
+    }
+
+    .detail-panel {
+        background: #ffffff;
+        border: 1px solid var(--detail-border);
+        border-radius: 1rem;
+        padding: 1.35rem 1.5rem;
+        box-shadow: 0 12px 35px rgba(15, 23, 42, 0.12);
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .detail-panel__title {
+        font-size: 1.2rem;
+        margin: 0;
+    }
+
+    table.detail-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+    }
+
+    table.detail-table thead {
+        background: rgba(15, 23, 42, 0.05);
+    }
+
+    table.detail-table th,
+    table.detail-table td {
+        padding: 0.75rem 0.85rem;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+        text-align: left;
+    }
+
+    .empty-state {
+        font-size: 0.95rem;
+        color: var(--detail-muted);
+        margin: 0;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="detail-container">
+    <div class="detail-header">
+        <div>
+            <h1>{{ hive.identification_number }} · {{ hive.popular_name }}</h1>
+            <p class="detail-meta">
+                {% if hive.apiary %}
+                    {{ hive.apiary.name }} ·
+                {% else %}
+                    {% trans "Sem meliponário vinculado" %} ·
+                {% endif %}
+                {{ hive.species.popular_name }} · {% blocktrans %}Período: {{ period_label }}{% endblocktrans %}
+            </p>
+        </div>
+        <div class="detail-actions">
+            <a class="btn-secondary" href="{{ back_url }}">{% trans "Voltar ao dashboard" %}</a>
+            <a class="btn-secondary" href="{% url 'admin:apiary_hive_change' hive.pk %}">{% trans "Editar colmeia" %}</a>
+            <a class="btn-primary" href="{{ create_revision_url }}">{% trans "Nova revisão" %}</a>
+            <a class="btn-primary" href="{{ create_harvest_url }}">{% trans "Nova colheita" %}</a>
+        </div>
+    </div>
+
+    {% if filter_errors %}
+    <ul class="messagelist">
+        {% for message in filter_errors %}
+        <li class="warning">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <div class="card-grid" role="list">
+        <div class="detail-card" role="listitem">
+            <span class="detail-card__label">{% trans "Mel" %}</span>
+            <span class="detail-card__value">{{ aggregates.honey|floatformat:2 }} <small>ml</small></span>
+        </div>
+        <div class="detail-card" role="listitem">
+            <span class="detail-card__label">{% trans "Própolis" %}</span>
+            <span class="detail-card__value">{{ aggregates.propolis|floatformat:2 }} <small>g</small></span>
+        </div>
+        <div class="detail-card" role="listitem">
+            <span class="detail-card__label">{% trans "Cera" %}</span>
+            <span class="detail-card__value">{{ aggregates.wax|floatformat:2 }} <small>g</small></span>
+        </div>
+        <div class="detail-card" role="listitem">
+            <span class="detail-card__label">{% trans "Pólen" %}</span>
+            <span class="detail-card__value">{{ aggregates.pollen|floatformat:2 }} <small>g</small></span>
+        </div>
+        <div class="detail-card" role="listitem">
+            <span class="detail-card__label">{% trans "Revisões de colheita" %}</span>
+            <span class="detail-card__value">{{ aggregates.harvests }}</span>
+        </div>
+    </div>
+
+    <section class="detail-panel" aria-labelledby="monthly-overview-title">
+        <h2 class="detail-panel__title" id="monthly-overview-title">{% trans "Produção mensal da colmeia" %}</h2>
+        {% if monthly %}
+        <table class="detail-table">
+            <thead>
+                <tr>
+                    <th scope="col">{% trans "Mês" %}</th>
+                    <th scope="col">{% trans "Mel (ml)" %}</th>
+                    <th scope="col">{% trans "Própolis (g)" %}</th>
+                    <th scope="col">{% trans "Cera (g)" %}</th>
+                    <th scope="col">{% trans "Pólen (g)" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in monthly %}
+                <tr>
+                    <td>{{ row.label }}</td>
+                    <td>{{ row.honey|floatformat:2 }}</td>
+                    <td>{{ row.propolis|floatformat:2 }}</td>
+                    <td>{{ row.wax|floatformat:2 }}</td>
+                    <td>{{ row.pollen|floatformat:2 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p class="empty-state">{% trans "Sem colheitas registradas para esta colmeia no período." %}</p>
+        {% endif %}
+    </section>
+
+    <section class="detail-panel" aria-labelledby="harvest-history-title">
+        <h2 class="detail-panel__title" id="harvest-history-title">{% trans "Histórico de colheitas" %}</h2>
+        {% if revisions %}
+        <table class="detail-table">
+            <thead>
+                <tr>
+                    <th scope="col">{% trans "Data" %}</th>
+                    <th scope="col">{% trans "Mel (ml)" %}</th>
+                    <th scope="col">{% trans "Própolis (g)" %}</th>
+                    <th scope="col">{% trans "Cera (g)" %}</th>
+                    <th scope="col">{% trans "Pólen (g)" %}</th>
+                    <th scope="col">{% trans "Ações" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for revision in revisions %}
+                <tr>
+                    <td><a href="{% url 'admin:apiary_revision_change' revision.pk %}">{{ revision.review_date|date:"d/m/Y H:i" }}</a></td>
+                    <td>{{ revision.honey_harvest_amount|default_if_none:0|floatformat:2 }}</td>
+                    <td>{{ revision.propolis_harvest_amount|default_if_none:0|floatformat:2 }}</td>
+                    <td>{{ revision.wax_harvest_amount|default_if_none:0|floatformat:2 }}</td>
+                    <td>{{ revision.pollen_harvest_amount|default_if_none:0|floatformat:2 }}</td>
+                    <td><a href="{% url 'admin:apiary_revision_change' revision.pk %}">{% trans "Ver revisão" %}</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p class="empty-state">{% trans "Nenhuma colheita cadastrada até o momento." %}</p>
+        {% endif %}
+    </section>
+</div>
+{% endblock %}
