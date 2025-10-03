@@ -8,12 +8,23 @@ from typing import Dict, List
 
 from django.contrib import admin
 from django.contrib.admin.sites import AdminSite
+from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth import logout
+from django.db import transaction
+from django.http import HttpRequest, HttpResponse
+from django.shortcuts import redirect
 from django.db.models import F, Q
 from django.template.response import TemplateResponse
-from django.urls import reverse
+from django.urls import path, reverse
 from django.utils import timezone
 
-from apiary.models import Apiary, Hive, Revision
+from apiary.models import (
+    Apiary,
+    CreatorNetworkEntry,
+    Hive,
+    Revision,
+    RevisionAttachment,
+)
 
 
 @dataclass(frozen=True)
@@ -220,6 +231,56 @@ def _build_dashboard_context(user) -> Dict[str, object]:
     }
 
 
+def _delete_user_owned_data(user) -> None:
+    attachments_qs = RevisionAttachment.objects.filter(
+        revision__hive__owner=user
+    )
+    for attachment in attachments_qs.iterator(chunk_size=100):
+        if attachment.file:
+            attachment.file.delete(save=False)
+        attachment.delete()
+
+    revisions_qs = Revision.objects.filter(hive__owner=user)
+    for revision in revisions_qs.iterator(chunk_size=100):
+        revision.delete()
+
+    hives_qs = Hive.objects.filter(owner=user)
+    for hive in hives_qs.iterator(chunk_size=50):
+        if hive.photo:
+            hive.photo.delete(save=False)
+        hive.delete()
+
+    Apiary.objects.filter(owner=user).delete()
+    CreatorNetworkEntry.objects.filter(user=user).delete()
+
+
+@staff_member_required
+def delete_personal_data_view(request: HttpRequest) -> HttpResponse:
+    if request.method == "POST":
+        user = request.user
+        with transaction.atomic():
+            _delete_user_owned_data(user)
+            user.delete()
+        logout(request)
+        return redirect(f"{reverse('admin:login')}?deleted=1")
+
+    context = {
+        **admin.site.each_context(request),
+        "title": "Excluir meus dados",
+        "apiaries_count": Apiary.objects.filter(owner=request.user).count(),
+        "hives_count": Hive.objects.filter(owner=request.user).count(),
+        "revisions_count": Revision.objects.filter(hive__owner=request.user).count(),
+        "attachments_count": RevisionAttachment.objects.filter(
+            revision__hive__owner=request.user
+        ).count(),
+        "hive_photos_count": Hive.objects.filter(
+            owner=request.user, photo__isnull=False
+        ).exclude(photo="").count(),
+        "has_creator_network_entry": CreatorNetworkEntry.objects.filter(user=request.user).exists(),
+    }
+    return TemplateResponse(request, "admin/delete_personal_data.html", context)
+
+
 def _custom_admin_index(self: AdminSite, request, extra_context=None):
     if request.user.is_superuser:
         return _original_admin_index(request, extra_context=extra_context)
@@ -239,3 +300,21 @@ def _custom_admin_index(self: AdminSite, request, extra_context=None):
 if not getattr(admin.site, "_colmeia_custom_index", False):
     admin.site.index = _custom_admin_index.__get__(admin.site, admin.sites.AdminSite)
     admin.site._colmeia_custom_index = True
+
+
+if not getattr(admin.site, "_colmeia_delete_data_url", False):
+    original_get_urls = admin.site.get_urls
+
+    def get_urls():
+        urls = original_get_urls()
+        custom_urls = [
+            path(
+                "excluir-meus-dados/",
+                admin.site.admin_view(delete_personal_data_view),
+                name="delete_personal_data",
+            )
+        ]
+        return custom_urls + urls
+
+    admin.site.get_urls = get_urls
+    admin.site._colmeia_delete_data_url = True
