@@ -210,6 +210,12 @@ class Season(models.Model):
 
 
 class Apiary(models.Model):
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="apiaries",
+        verbose_name="Responsável/Proprietário",
+    )
     name = models.CharField("Nome", max_length=255)
     location = models.CharField(
         "Localização (cidade/estado)",
@@ -225,19 +231,13 @@ class Apiary(models.Model):
         null=True,
         blank=True,
     )
-    owner = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        related_name="apiaries",
-        verbose_name="Responsável/Proprietário",
+    photo = models.ImageField(
+        "Foto do meliponário", upload_to="apiary_photos/", blank=True, null=True
     )
     hive_count = models.PositiveIntegerField(
         "Qtd. de colmeias vinculadas", default=0, editable=False
     )
     notes = models.TextField("Observações", blank=True)
-    photo = models.ImageField(
-        "Foto do meliponário", upload_to="apiary_photos/", blank=True, null=True
-    )
 
     objects = ApiaryQuerySet.as_manager()
 
