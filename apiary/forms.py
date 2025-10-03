@@ -28,6 +28,7 @@ class ColmeiaForm(forms.ModelForm):
         self.fields["transfer_box_date"].required = False
         self.fields["origin_hive"].required = False
 
+
     def clean(self):
         cleaned_data = super().clean()
         acquisition_method = cleaned_data.get("acquisition_method")
