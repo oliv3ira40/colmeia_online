@@ -2,8 +2,11 @@
 
 from __future__ import annotations
 
-from django.contrib import admin
+from django.contrib import admin, messages
 from django.utils.translation import gettext_lazy as _
+from django.db import DatabaseError
+from django.shortcuts import redirect
+from django.urls import reverse
 
 from .admin_site import site
 from .models import MenuConfig, MenuItem
@@ -26,8 +29,45 @@ class MenuItemInline(admin.TabularInline):
     ordering = ("order", "id")
 
 
+class _DatabaseSafeAdminMixin:
+    """Mixin that prevents admin crashes when the menu tables are missing."""
+
+    database_error_message = _(
+        "As tabelas do menu personalizado ainda não foram geradas. "
+        "Execute as migrations correspondentes (makemigrations/migrate)."
+    )
+
+    def _handle_database_error(self, request):
+        messages.error(request, self.database_error_message)
+        return redirect(reverse(f"{self.admin_site.name}:index"))
+
+    def changelist_view(self, request, extra_context=None):  # type: ignore[override]
+        try:
+            return super().changelist_view(request, extra_context)
+        except DatabaseError:
+            return self._handle_database_error(request)
+
+    def add_view(self, request, form_url="", extra_context=None):  # type: ignore[override]
+        try:
+            return super().add_view(request, form_url, extra_context)
+        except DatabaseError:
+            return self._handle_database_error(request)
+
+    def change_view(self, request, object_id, form_url="", extra_context=None):  # type: ignore[override]
+        try:
+            return super().change_view(request, object_id, form_url, extra_context)
+        except DatabaseError:
+            return self._handle_database_error(request)
+
+    def delete_view(self, request, object_id, extra_context=None):  # type: ignore[override]
+        try:
+            return super().delete_view(request, object_id, extra_context)
+        except DatabaseError:
+            return self._handle_database_error(request)
+
+
 @admin.register(MenuConfig, site=site)
-class MenuConfigAdmin(admin.ModelAdmin):
+class MenuConfigAdmin(_DatabaseSafeAdminMixin, admin.ModelAdmin):
     list_display = ("name", "scope", "active", "include_unlisted", "updated_at")
     list_filter = ("scope", "active")
     search_fields = ("name",)
@@ -55,7 +95,7 @@ class MenuConfigAdmin(admin.ModelAdmin):
 
 
 @admin.register(MenuItem, site=site)
-class MenuItemAdmin(admin.ModelAdmin):
+class MenuItemAdmin(_DatabaseSafeAdminMixin, admin.ModelAdmin):
     list_display = (
         "display_label",
         "config",
