@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
 from core import admin_dashboard  # noqa: F401  # Importa para aplicar o dashboard customizado
-from apiary.views import hive_production_detail, production_dashboard
+from apiary.views import hive_history, hive_production_detail, production_dashboard
 from core.views import PrivacyPolicyView, DeleteDataRedirectView
 
 
@@ -19,6 +19,11 @@ urlpatterns = [
         "admin/dashboard/producao/colmeias/<int:pk>/",
         hive_production_detail,
         name="production-dashboard-hive-detail",
+    ),
+    path(
+        "admin/dashboard/colmeias/historia/",
+        hive_history,
+        name="hive-history",
     ),
     path(
         "politica-de-privacidade/",

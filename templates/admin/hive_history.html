@@ -1,0 +1,667 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "História da Colmeia" %}{% endblock %}
+
+{% block extrastyle %}
+{{ block.super }}
+<style>
+    :root {
+        --hh-gap: 1.75rem;
+        --hh-card-bg: #ffffff;
+        --hh-muted: #475569;
+        --hh-border: rgba(148, 163, 184, 0.35);
+        --hh-accent: #2563eb;
+        --hh-accent-soft: rgba(37, 99, 235, 0.12);
+        --hh-radius: 1rem;
+    }
+
+    .hive-history {
+        display: flex;
+        flex-direction: column;
+        gap: var(--hh-gap);
+    }
+
+    .hive-history__header {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    .hive-history__title {
+        margin: 0;
+        font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+    }
+
+    .hive-history__intro {
+        margin: 0.35rem 0 0;
+        color: var(--hh-muted);
+        font-size: 0.95rem;
+        max-width: 52ch;
+    }
+
+    .hive-history__print-button {
+        border: none;
+        border-radius: 999px;
+        padding: 0.6rem 1.4rem;
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        color: #ffffff;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 10px 25px rgba(37, 99, 235, 0.24);
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .hive-history__print-button:hover,
+    .hive-history__print-button:focus-visible {
+        transform: translateY(-1px);
+        box-shadow: 0 12px 30px rgba(37, 99, 235, 0.28);
+    }
+
+    .hive-history__filters {
+        background: var(--hh-card-bg);
+        border-radius: var(--hh-radius);
+        border: 1px solid var(--hh-border);
+        padding: 1.35rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.65rem;
+        box-shadow: 0 12px 34px rgba(15, 23, 42, 0.08);
+    }
+
+    .hive-history__filters label {
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: var(--hh-muted);
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+    }
+
+    .hive-history__filters select {
+        border-radius: 0.75rem;
+        border: 1px solid var(--hh-border);
+        padding: 0.65rem 0.75rem;
+        font-size: 1rem;
+        max-width: 360px;
+    }
+
+    .hive-history__helper {
+        margin: 0;
+        font-size: 0.85rem;
+        color: var(--hh-muted);
+    }
+
+    .hive-history__summary {
+        background: var(--hh-card-bg);
+        border-radius: var(--hh-radius);
+        border: 1px solid var(--hh-border);
+        padding: 1.75rem 1.9rem;
+        box-shadow: 0 12px 38px rgba(15, 23, 42, 0.08);
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .summary__header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 0.75rem;
+        justify-content: space-between;
+    }
+
+    .summary__title {
+        margin: 0;
+        font-size: 1.35rem;
+    }
+
+    .summary__hive-name {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--hh-muted);
+    }
+
+    .summary__context {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+        color: var(--hh-muted);
+        font-size: 0.9rem;
+    }
+
+    .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.25rem;
+    }
+
+    .summary-card {
+        border: 1px solid var(--hh-border);
+        border-radius: calc(var(--hh-radius) - 0.25rem);
+        padding: 1.1rem 1.25rem;
+        background: rgba(248, 250, 252, 0.75);
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .summary-card__title {
+        margin: 0;
+        font-size: 1.05rem;
+        font-weight: 700;
+    }
+
+    .summary-card ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .summary-card li {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        font-size: 0.95rem;
+        color: var(--hh-muted);
+    }
+
+    .summary-card li strong {
+        font-size: 1rem;
+        color: #0f172a;
+    }
+
+    .hive-history__timeline {
+        background: var(--hh-card-bg);
+        border-radius: var(--hh-radius);
+        border: 1px solid var(--hh-border);
+        padding: 1.75rem 1.9rem;
+        box-shadow: 0 12px 38px rgba(15, 23, 42, 0.08);
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .timeline__header {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    .timeline__title {
+        margin: 0;
+        font-size: 1.35rem;
+    }
+
+    .timeline__meta {
+        margin: 0;
+        color: var(--hh-muted);
+        font-size: 0.9rem;
+    }
+
+    .timeline-list {
+        position: relative;
+        margin: 0;
+        padding: 0 0 0 1.5rem;
+        list-style: none;
+    }
+
+    .timeline-list::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto 0 0.45rem;
+        width: 2px;
+        background: linear-gradient(180deg, rgba(37, 99, 235, 0.35), rgba(15, 23, 42, 0.15));
+    }
+
+    .timeline-item {
+        position: relative;
+        display: flex;
+        gap: 1rem;
+        padding-bottom: 1.8rem;
+    }
+
+    .timeline-item:last-child {
+        padding-bottom: 0;
+    }
+
+    .timeline-item__marker {
+        position: absolute;
+        left: -1.05rem;
+        top: 0.2rem;
+        width: 0.75rem;
+        height: 0.75rem;
+        border-radius: 50%;
+        background: #1d4ed8;
+        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+    }
+
+    .timeline-item--observation .timeline-item__marker {
+        background: #0f766e;
+        box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.15);
+    }
+
+    .timeline-item__body {
+        background: rgba(248, 250, 252, 0.75);
+        border-radius: calc(var(--hh-radius) - 0.35rem);
+        border: 1px solid rgba(148, 163, 184, 0.28);
+        padding: 1.25rem 1.4rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .timeline-item__meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: center;
+        font-size: 0.85rem;
+        color: var(--hh-muted);
+    }
+
+    .timeline-item__meta time span {
+        font-size: 0.8rem;
+        margin-left: 0.35rem;
+        color: rgba(15, 23, 42, 0.45);
+    }
+
+    .timeline-item__badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.2rem 0.65rem;
+        border-radius: 999px;
+        background: var(--hh-accent-soft);
+        color: var(--hh-accent);
+        font-weight: 600;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .timeline-item__title-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    .timeline-item__title-row h3 {
+        margin: 0;
+        font-size: 1.15rem;
+    }
+
+    .timeline-item__admin-link {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--hh-accent);
+        text-decoration: none;
+    }
+
+    .timeline-item__admin-link:hover,
+    .timeline-item__admin-link:focus-visible {
+        text-decoration: underline;
+    }
+
+    .timeline-item__preview,
+    .timeline-item__full-text {
+        margin: 0;
+        font-size: 0.95rem;
+        color: #0f172a;
+        line-height: 1.6;
+        white-space: pre-wrap;
+    }
+
+    .timeline-item__no-notes {
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--hh-muted);
+    }
+
+    .timeline-item__sections {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 0.85rem;
+    }
+
+    .timeline-section {
+        border: 1px solid rgba(148, 163, 184, 0.28);
+        border-radius: 0.75rem;
+        padding: 0.75rem 0.9rem;
+        background: #ffffff;
+    }
+
+    .timeline-section h4 {
+        margin: 0 0 0.55rem;
+        font-size: 0.95rem;
+        color: #0f172a;
+    }
+
+    .timeline-section ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+        font-size: 0.9rem;
+        color: var(--hh-muted);
+    }
+
+    .timeline-section li {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    .timeline-section li strong {
+        color: #0f172a;
+        font-size: 0.95rem;
+    }
+
+    .timeline-item__details summary {
+        cursor: pointer;
+        font-weight: 600;
+        color: var(--hh-accent);
+    }
+
+    .timeline-item__details[open] summary {
+        margin-bottom: 0.65rem;
+    }
+
+    .timeline-item__media {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+    }
+
+    .timeline-item__media figure {
+        margin: 0;
+        width: 150px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+    }
+
+    .timeline-item__media img {
+        width: 150px;
+        height: auto;
+        border-radius: 0.65rem;
+        object-fit: cover;
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    }
+
+    .timeline-item__media figcaption {
+        font-size: 0.75rem;
+        color: var(--hh-muted);
+        text-align: center;
+    }
+
+    .history-pagination {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+    }
+
+    .history-pagination__link {
+        padding: 0.45rem 1.05rem;
+        border-radius: 999px;
+        border: 1px solid var(--hh-border);
+        color: var(--hh-accent);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        background: rgba(37, 99, 235, 0.08);
+    }
+
+    .history-pagination__link:hover,
+    .history-pagination__link:focus-visible {
+        border-color: rgba(37, 99, 235, 0.45);
+    }
+
+    .history-pagination__info {
+        font-size: 0.9rem;
+        color: var(--hh-muted);
+    }
+
+    .hive-history__placeholder,
+    .hive-history__empty {
+        margin: 0;
+        font-size: 0.95rem;
+        color: var(--hh-muted);
+    }
+
+    @media (max-width: 680px) {
+        .timeline-list {
+            padding-left: 1.05rem;
+        }
+
+        .timeline-item__body {
+            padding: 1rem;
+        }
+    }
+
+    @media print {
+        body {
+            background: #ffffff !important;
+        }
+
+        .hive-history__filters,
+        .hive-history__print-button,
+        .history-pagination,
+        .timeline-item__details summary {
+            display: none !important;
+        }
+
+        .timeline-item__details[open] summary {
+            display: none;
+        }
+
+        .timeline-item__details {
+            display: block;
+        }
+
+        .timeline-item__details > * {
+            display: block !important;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="hive-history">
+    <div class="hive-history__header">
+        <div>
+            <h1 class="hive-history__title">{% trans "História da Colmeia" %}</h1>
+            <p class="hive-history__intro">
+                {% trans "Selecione uma colmeia para visualizar revisões e observações rápidas em ordem cronológica, com os dados de colheita e alimentação consolidados." %}
+            </p>
+        </div>
+        {% if selected_hive %}
+            <button type="button" class="hive-history__print-button" onclick="window.print()">
+                {% trans "Exportar/Imprimir" %}
+            </button>
+        {% endif %}
+    </div>
+
+    <form method="get" class="hive-history__filters">
+        <label for="id_hive">
+            {% trans "Colmeia" %}
+            <select id="id_hive" name="hive" required onchange="this.form.submit()" {% if not available_hives %}disabled{% endif %}>
+                <option value="">{% trans "Selecione uma colmeia" %}</option>
+                {% for hive in available_hives %}
+                    <option value="{{ hive.pk }}" {% if selected_hive and hive.pk == selected_hive.pk %}selected{% endif %}>
+                        {{ hive.popular_name }}{% if hive.apiary %} · {{ hive.apiary.name }}{% endif %}
+                    </option>
+                {% endfor %}
+            </select>
+        </label>
+        <p class="hive-history__helper">
+            {% trans "A linha do tempo é carregada automaticamente após selecionar uma colmeia." %}
+        </p>
+    </form>
+
+    {% if not available_hives %}
+        <p class="hive-history__empty">
+            {% trans "Não há colmeias disponíveis para o seu usuário." %}
+        </p>
+    {% endif %}
+
+    {% if selected_hive and summary %}
+        <section class="hive-history__summary">
+            <div class="summary__header">
+                <h2 class="summary__title">{% trans "Apanhado geral" %}</h2>
+                <span class="summary__hive-name">{{ selected_hive.popular_name }}</span>
+            </div>
+            <div class="summary__context">
+                {% if selected_hive.apiary %}
+                    <span>{% trans "Apiário" %}: {{ selected_hive.apiary.name }}</span>
+                {% endif %}
+                {% if selected_hive.species %}
+                    <span>{% trans "Espécie" %}: {{ selected_hive.species.popular_name }}</span>
+                {% endif %}
+            </div>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <h3 class="summary-card__title">{% trans "Gerados (colheita)" %}</h3>
+                    <ul>
+                        <li><span>{% trans "Mel (ml)" %}</span><strong>{{ summary.produced.honey|floatformat:2 }}</strong></li>
+                        <li><span>{% trans "Própolis (g)" %}</span><strong>{{ summary.produced.propolis|floatformat:2 }}</strong></li>
+                        <li><span>{% trans "Cera (g)" %}</span><strong>{{ summary.produced.wax|floatformat:2 }}</strong></li>
+                        <li><span>{% trans "Pólen (g)" %}</span><strong>{{ summary.produced.pollen|floatformat:2 }}</strong></li>
+                    </ul>
+                </div>
+                <div class="summary-card">
+                    <h3 class="summary-card__title">{% trans "Consumidos (alimentação)" %}</h3>
+                    <ul>
+                        <li><span>{% trans "Alimento energético (ml/g)" %}</span><strong>{{ summary.consumed.energetic|floatformat:2 }}</strong></li>
+                        <li><span>{% trans "Suplemento proteico (g)" %}</span><strong>{{ summary.consumed.protein|floatformat:2 }}</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    {% if selected_hive %}
+        <section class="hive-history__timeline">
+            <div class="timeline__header">
+                <h2 class="timeline__title">{% trans "Linha do tempo" %}</h2>
+                {% if timeline_total %}
+                    <p class="timeline__meta">
+                        {% blocktrans count total=timeline_total %}{{ total }} registro encontrado{% plural %}{{ total }} registros encontrados{% endblocktrans %}
+                    </p>
+                {% endif %}
+            </div>
+
+            {% if timeline_page and timeline_page.object_list %}
+                <ol class="timeline-list">
+                    {% for item in timeline_page.object_list %}
+                        <li class="timeline-item timeline-item--{{ item.type }}">
+                            <span class="timeline-item__marker"></span>
+                            <div class="timeline-item__body">
+                                <div class="timeline-item__meta">
+                                    <time datetime="{{ item.date|date:'c' }}">{{ item.date|date:"d/m/Y" }}<span>{{ item.date|date:"H:i" }}</span></time>
+                                    {% if item.badge_label %}
+                                        <span class="timeline-item__badge">{{ item.badge_label }}</span>
+                                    {% endif %}
+                                </div>
+                                <div class="timeline-item__title-row">
+                                    <h3>{{ item.title }}</h3>
+                                    {% if item.admin_url %}
+                                        <a class="timeline-item__admin-link" href="{{ item.admin_url }}" target="_blank" rel="noopener">
+                                            {% trans "Abrir no admin" %}
+                                        </a>
+                                    {% endif %}
+                                </div>
+                                {% if item.preview %}
+                                    <p class="timeline-item__preview">{{ item.preview|linebreaksbr }}</p>
+                                {% elif not item.has_more and not item.sections %}
+                                    <p class="timeline-item__no-notes">{% trans "Sem observações adicionais." %}</p>
+                                {% endif %}
+                                {% if item.sections %}
+                                    <div class="timeline-item__sections">
+                                        {% for section in item.sections %}
+                                            <div class="timeline-section">
+                                                <h4>{{ section.title }}</h4>
+                                                <ul>
+                                                    {% for metric in section.items %}
+                                                        <li><span>{{ metric.label }}</span><strong>{{ metric.value|floatformat:2 }}</strong></li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                                {% if item.has_more %}
+                                    <details class="timeline-item__details">
+                                        <summary>{% trans "Ver mais" %}</summary>
+                                        {% if item.full_text %}
+                                            <div class="timeline-item__full-text">{{ item.full_text|linebreaksbr }}</div>
+                                        {% endif %}
+                                        {% if item.attachments %}
+                                            <div class="timeline-item__media">
+                                                {% for attachment in item.attachments %}
+                                                    <figure>
+                                                        <img src="{{ attachment.url }}" alt="{{ attachment.alt }}" loading="lazy">
+                                                        <figcaption>{{ attachment.caption }}</figcaption>
+                                                    </figure>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </details>
+                                {% elif item.attachments %}
+                                    <div class="timeline-item__media">
+                                        {% for attachment in item.attachments %}
+                                            <figure>
+                                                <img src="{{ attachment.url }}" alt="{{ attachment.alt }}" loading="lazy">
+                                                <figcaption>{{ attachment.caption }}</figcaption>
+                                            </figure>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ol>
+
+                {% if timeline_page.has_other_pages %}
+                    <nav class="history-pagination" aria-label="{% trans 'Paginação da linha do tempo' %}">
+                        {% if timeline_page.has_previous %}
+                            <a class="history-pagination__link" href="?{% if pagination_query %}{{ pagination_query }}&{% endif %}page={{ timeline_page.previous_page_number }}">
+                                {% trans "Anterior" %}
+                            </a>
+                        {% endif %}
+                        <span class="history-pagination__info">
+                            {% blocktrans with current=timeline_page.number total=timeline_page.paginator.num_pages %}Página {{ current }} de {{ total }}{% endblocktrans %}
+                        </span>
+                        {% if timeline_page.has_next %}
+                            <a class="history-pagination__link" href="?{% if pagination_query %}{{ pagination_query }}&{% endif %}page={{ timeline_page.next_page_number }}">
+                                {% trans "Próxima" %}
+                            </a>
+                        {% endif %}
+                    </nav>
+                {% endif %}
+            {% else %}
+                <p class="hive-history__empty">{% trans "Ainda não há revisões ou observações para esta colmeia." %}</p>
+            {% endif %}
+        </section>
+    {% elif available_hives %}
+        <div class="hive-history__placeholder">
+            {% trans "Escolha uma colmeia no filtro acima para visualizar a história completa." %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

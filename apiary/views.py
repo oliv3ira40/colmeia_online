@@ -11,6 +11,7 @@ from urllib.parse import urlencode
 
 from django.contrib import admin
 from django.contrib.admin.views.decorators import staff_member_required
+from django.core.paginator import Paginator
 from django.db.models import Count, DecimalField, Max, Q, Sum, Value
 from django.db.models.functions import Coalesce, TruncMonth
 from django.http import Http404, HttpRequest, HttpResponse
@@ -21,7 +22,7 @@ from django.utils.functional import cached_property
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import TemplateView
 
-from .models import Apiary, Hive, Revision
+from .models import Apiary, Hive, QuickObservation, Revision
 
 
 MONTH_LABELS = [
@@ -646,6 +647,294 @@ class ProductionDashboardView(TemplateView):
         }
 
 
+class HiveHistoryView(TemplateView):
+    template_name = "admin/hive_history.html"
+    paginate_by = 20
+
+    @method_decorator(staff_member_required)
+    def dispatch(self, request: HttpRequest, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update(admin.site.each_context(self.request))
+
+        available_hives = list(
+            Hive.objects.owned_by(self.request.user)
+            .select_related("apiary", "species")
+            .order_by("popular_name")
+        )
+        selected_hive = self._get_selected_hive(available_hives)
+
+        timeline_page = None
+        timeline_items: List[Dict[str, object]] = []
+        summary: Dict[str, Dict[str, Decimal]] | None = None
+        timeline_total = 0
+
+        if selected_hive:
+            revisions_qs = (
+                Revision.objects.filter(hive=selected_hive)
+                .select_related("hive")
+                .prefetch_related("attachments")
+                .order_by("-review_date")
+            )
+            observations_qs = QuickObservation.objects.filter(hive=selected_hive).order_by(
+                "-date", "-pk"
+            )
+            summary = self._build_summary(revisions_qs)
+            revisions = list(revisions_qs)
+            observations = list(observations_qs)
+            timeline_items = self._build_timeline(revisions, observations)
+            paginator = Paginator(timeline_items, self.paginate_by)
+            page_number = self.request.GET.get("page") or 1
+            timeline_page = paginator.get_page(page_number)
+            timeline_total = paginator.count
+
+        context.update(
+            {
+                "available_hives": available_hives,
+                "selected_hive": selected_hive,
+                "timeline_page": timeline_page,
+                "timeline_total": timeline_total,
+                "timeline_items": timeline_items,
+                "summary": summary,
+                "pagination_query": self._build_query_string(exclude=["page"]),
+            }
+        )
+        return context
+
+    def _get_selected_hive(self, available_hives: List[Hive]) -> Hive | None:
+        hive_id = self.request.GET.get("hive")
+        if not hive_id:
+            return None
+        try:
+            hive_id_int = int(hive_id)
+        except (TypeError, ValueError) as exc:
+            raise Http404("Colmeia não disponível para este usuário") from exc
+        for hive in available_hives:
+            if hive.pk == hive_id_int:
+                return hive
+        raise Http404("Colmeia não disponível para este usuário")
+
+    def _build_summary(self, revisions_qs):
+        aggregates = revisions_qs.aggregate(
+            honey=Coalesce(
+                Sum("honey_harvest_amount"), Value(0), output_field=DecimalField()
+            ),
+            propolis=Coalesce(
+                Sum("propolis_harvest_amount"), Value(0), output_field=DecimalField()
+            ),
+            wax=Coalesce(
+                Sum("wax_harvest_amount"), Value(0), output_field=DecimalField()
+            ),
+            pollen=Coalesce(
+                Sum("pollen_harvest_amount"), Value(0), output_field=DecimalField()
+            ),
+            energetic=Coalesce(
+                Sum("energetic_food_amount"), Value(0), output_field=DecimalField()
+            ),
+            protein=Coalesce(
+                Sum("protein_food_amount"), Value(0), output_field=DecimalField()
+            ),
+        )
+        return {
+            "produced": {
+                "honey": _decimal_or_zero(aggregates["honey"]),
+                "propolis": _decimal_or_zero(aggregates["propolis"]),
+                "wax": _decimal_or_zero(aggregates["wax"]),
+                "pollen": _decimal_or_zero(aggregates["pollen"]),
+            },
+            "consumed": {
+                "energetic": _decimal_or_zero(aggregates["energetic"]),
+                "protein": _decimal_or_zero(aggregates["protein"]),
+            },
+        }
+
+    def _build_timeline(
+        self,
+        revisions: List[Revision],
+        observations: List[QuickObservation],
+    ) -> List[Dict[str, object]]:
+        items: List[Dict[str, object]] = []
+        current_tz = timezone.get_current_timezone()
+
+        for revision in revisions:
+            timestamp = timezone.localtime(revision.review_date)
+            attachments = self._build_revision_attachments(revision)
+            text_sections = [
+                revision.management_description,
+                revision.harvest_notes,
+                revision.feeding_notes,
+                revision.notes,
+            ]
+            cleaned_sections: List[str] = []
+            for section in text_sections:
+                value = (section or "").strip()
+                if value:
+                    cleaned_sections.append(value)
+            full_text = "\n\n".join(cleaned_sections)
+            preview, full_text_clean, has_more = self._prepare_preview(
+                full_text, bool(attachments)
+            )
+            sections = self._build_revision_sections(revision)
+            items.append(
+                {
+                    "id": f"revision-{revision.pk}",
+                    "type": "revision",
+                    "title": _("Revisão"),
+                    "badge_label": revision.get_review_type_display(),
+                    "date": timestamp,
+                    "preview": preview,
+                    "full_text": full_text_clean,
+                    "has_more": has_more,
+                    "attachments": attachments,
+                    "sections": sections,
+                    "admin_url": reverse("admin:apiary_revision_change", args=[revision.pk]),
+                    "_sort_timestamp": timestamp,
+                    "_sort_priority": 1,
+                    "_sort_id": revision.pk,
+                }
+            )
+
+        for observation in observations:
+            timestamp = datetime.combine(observation.date, time.max)
+            if timezone.is_naive(timestamp):
+                timestamp = timezone.make_aware(timestamp, current_tz)
+            timestamp = timezone.localtime(timestamp)
+            attachments = self._build_observation_attachments(observation)
+            notes = (observation.notes or "").strip()
+            preview, full_text_clean, has_more = self._prepare_preview(
+                notes, bool(attachments)
+            )
+            items.append(
+                {
+                    "id": f"observation-{observation.pk}",
+                    "type": "observation",
+                    "title": _("Observação rápida"),
+                    "badge_label": None,
+                    "date": timestamp,
+                    "preview": preview,
+                    "full_text": full_text_clean,
+                    "has_more": has_more,
+                    "attachments": attachments,
+                    "sections": [],
+                    "admin_url": reverse(
+                        "admin:apiary_quickobservation_change", args=[observation.pk]
+                    ),
+                    "_sort_timestamp": timestamp,
+                    "_sort_priority": 0,
+                    "_sort_id": observation.pk,
+                }
+            )
+
+        items.sort(
+            key=lambda item: (item["_sort_timestamp"], item["_sort_priority"], item["_sort_id"]),
+            reverse=True,
+        )
+        for item in items:
+            item.pop("_sort_timestamp", None)
+            item.pop("_sort_priority", None)
+            item.pop("_sort_id", None)
+        return items
+
+    def _build_revision_attachments(self, revision: Revision) -> List[Dict[str, str]]:
+        attachments: List[Dict[str, str]] = []
+        for index, attachment in enumerate(revision.attachments.all(), start=1):
+            file = getattr(attachment, "file", None)
+            if not file:
+                continue
+            try:
+                url = file.url
+            except ValueError:  # pragma: no cover - defensive for missing files
+                continue
+            attachments.append(
+                {
+                    "url": url,
+                    "alt": _("Anexo da revisão"),
+                    "caption": _("Anexo %(number)s") % {"number": index},
+                }
+            )
+        return attachments
+
+    def _build_observation_attachments(
+        self, observation: QuickObservation
+    ) -> List[Dict[str, str]]:
+        attachments: List[Dict[str, str]] = []
+        photos = [
+            (observation.internal_photo, _("Foto interna")),
+            (observation.external_photo, _("Foto externa")),
+        ]
+        for photo, caption in photos:
+            if not photo:
+                continue
+            try:
+                url = photo.url
+            except ValueError:  # pragma: no cover - defensive for missing files
+                continue
+            attachments.append(
+                {
+                    "url": url,
+                    "alt": caption,
+                    "caption": caption,
+                }
+            )
+        return attachments
+
+    def _build_revision_sections(self, revision: Revision) -> List[Dict[str, object]]:
+        sections: List[Dict[str, object]] = []
+        harvest_items = []
+        if revision.honey_harvest_amount:
+            harvest_items.append({"label": _("Mel (ml)"), "value": revision.honey_harvest_amount})
+        if revision.propolis_harvest_amount:
+            harvest_items.append(
+                {"label": _("Própolis (g)"), "value": revision.propolis_harvest_amount}
+            )
+        if revision.wax_harvest_amount:
+            harvest_items.append({"label": _("Cera (g)"), "value": revision.wax_harvest_amount})
+        if revision.pollen_harvest_amount:
+            harvest_items.append({"label": _("Pólen (g)"), "value": revision.pollen_harvest_amount})
+        if harvest_items:
+            sections.append({"title": _("Colheita"), "items": harvest_items})
+
+        feeding_items = []
+        if revision.energetic_food_amount:
+            feeding_items.append(
+                {
+                    "label": _("Alimento energético (ml/g)"),
+                    "value": revision.energetic_food_amount,
+                }
+            )
+        if revision.protein_food_amount:
+            feeding_items.append(
+                {
+                    "label": _("Suplemento proteico (g)"),
+                    "value": revision.protein_food_amount,
+                }
+            )
+        if feeding_items:
+            sections.append({"title": _("Alimentação"), "items": feeding_items})
+        return sections
+
+    def _prepare_preview(self, full_text: str, has_extra: bool) -> tuple[str, str, bool]:
+        text = (full_text or "").strip()
+        if not text:
+            return "", "", has_extra
+        max_length = 280
+        preview = text
+        has_more = has_extra
+        if len(text) > max_length:
+            cutoff = text[:max_length].rsplit(" ", 1)[0].strip()
+            preview = f"{cutoff}…" if cutoff else f"{text[:max_length]}…"
+            has_more = True
+        return preview, text, has_more
+
+    def _build_query_string(self, exclude: Iterable[str] | None = None) -> str:
+        data = self.request.GET.copy()
+        for key in exclude or []:
+            data.pop(key, None)
+        return data.urlencode()
+
+
 class HiveProductionDetailView(TemplateView):
     template_name = "admin/production_dashboard_hive_detail.html"
 
@@ -732,4 +1021,5 @@ class HiveProductionDetailView(TemplateView):
 
 
 production_dashboard = ProductionDashboardView.as_view()
+hive_history = HiveHistoryView.as_view()
 hive_production_detail = HiveProductionDetailView.as_view()
