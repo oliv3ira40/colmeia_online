@@ -6,8 +6,7 @@ from dataclasses import dataclass
 from datetime import timedelta
 from typing import Dict, List
 
-from django.contrib import admin
-from django.contrib.admin.sites import AdminSite
+from django.contrib.admin import AdminSite
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth import logout
 from django.db import transaction
@@ -72,9 +71,6 @@ class UpcomingDivisionEntry:
     next_division_display: str
     next_division_iso: str
     is_overdue: bool
-
-
-_original_admin_index = admin.site.index
 
 
 def _format_datetime(value) -> tuple[str, str]:
@@ -254,67 +250,74 @@ def _delete_user_owned_data(user) -> None:
     CreatorNetworkEntry.objects.filter(user=user).delete()
 
 
-@staff_member_required
-def delete_personal_data_view(request: HttpRequest) -> HttpResponse:
-    if request.method == "POST":
-        user = request.user
-        with transaction.atomic():
-            _delete_user_owned_data(user)
-            user.delete()
-        logout(request)
-        return redirect(f"{reverse('admin:login')}?deleted=1")
+def _build_delete_personal_data_view(admin_site: AdminSite):
+    @staff_member_required
+    def view(request: HttpRequest) -> HttpResponse:
+        if request.method == "POST":
+            user = request.user
+            with transaction.atomic():
+                _delete_user_owned_data(user)
+                user.delete()
+            logout(request)
+            return redirect(f"{reverse('admin:login')}?deleted=1")
 
-    context = {
-        **admin.site.each_context(request),
-        "title": "Excluir meus dados",
-        "apiaries_count": Apiary.objects.filter(owner=request.user).count(),
-        "hives_count": Hive.objects.filter(owner=request.user).count(),
-        "revisions_count": Revision.objects.filter(hive__owner=request.user).count(),
-        "attachments_count": RevisionAttachment.objects.filter(
-            revision__hive__owner=request.user
-        ).count(),
-        "hive_photos_count": Hive.objects.filter(
-            owner=request.user, photo__isnull=False
-        ).exclude(photo="").count(),
-        "has_creator_network_entry": CreatorNetworkEntry.objects.filter(user=request.user).exists(),
-    }
-    return TemplateResponse(request, "admin/delete_personal_data.html", context)
+        context = {
+            **admin_site.each_context(request),
+            "title": "Excluir meus dados",
+            "apiaries_count": Apiary.objects.filter(owner=request.user).count(),
+            "hives_count": Hive.objects.filter(owner=request.user).count(),
+            "revisions_count": Revision.objects.filter(hive__owner=request.user).count(),
+            "attachments_count": RevisionAttachment.objects.filter(
+                revision__hive__owner=request.user
+            ).count(),
+            "hive_photos_count": Hive.objects.filter(
+                owner=request.user, photo__isnull=False
+            ).exclude(photo="").count(),
+            "has_creator_network_entry": CreatorNetworkEntry.objects.filter(
+                user=request.user
+            ).exists(),
+        }
+        return TemplateResponse(request, "admin/delete_personal_data.html", context)
 
-
-def _custom_admin_index(self: AdminSite, request, extra_context=None):
-    if request.user.is_superuser:
-        return _original_admin_index(request, extra_context=extra_context)
-
-    context = {
-        **self.each_context(request),
-        "title": self.index_title,
-        "app_list": self.get_app_list(request),
-    }
-    if extra_context:
-        context.update(extra_context)
-    context.update(_build_dashboard_context(request.user))
-
-    return TemplateResponse(request, "admin/custom_dashboard.html", context)
+    return view
 
 
-if not getattr(admin.site, "_colmeia_custom_index", False):
-    admin.site.index = _custom_admin_index.__get__(admin.site, admin.sites.AdminSite)
-    admin.site._colmeia_custom_index = True
+def apply_admin_customizations(admin_site: AdminSite) -> None:
+    if not getattr(admin_site, "_colmeia_custom_index", False):
+        original_admin_index = admin_site.index
 
+        def custom_admin_index(self: AdminSite, request, extra_context=None):
+            if request.user.is_superuser:
+                return original_admin_index(request, extra_context=extra_context)
 
-if not getattr(admin.site, "_colmeia_delete_data_url", False):
-    original_get_urls = admin.site.get_urls
+            context = {
+                **self.each_context(request),
+                "title": self.index_title,
+                "app_list": self.get_app_list(request),
+            }
+            if extra_context:
+                context.update(extra_context)
+            context.update(_build_dashboard_context(request.user))
 
-    def get_urls():
-        urls = original_get_urls()
-        custom_urls = [
-            path(
-                "excluir-meus-dados/",
-                admin.site.admin_view(delete_personal_data_view),
-                name="delete_personal_data",
-            )
-        ]
-        return custom_urls + urls
+            return TemplateResponse(request, "admin/custom_dashboard.html", context)
 
-    admin.site.get_urls = get_urls
-    admin.site._colmeia_delete_data_url = True
+        admin_site.index = custom_admin_index.__get__(admin_site, AdminSite)
+        admin_site._colmeia_custom_index = True
+
+    if not getattr(admin_site, "_colmeia_delete_data_url", False):
+        original_get_urls = admin_site.get_urls
+        delete_view = _build_delete_personal_data_view(admin_site)
+
+        def get_urls():
+            urls = original_get_urls()
+            custom_urls = [
+                path(
+                    "excluir-meus-dados/",
+                    admin_site.admin_view(delete_view),
+                    name="delete_personal_data",
+                )
+            ]
+            return custom_urls + urls
+
+        admin_site.get_urls = get_urls
+        admin_site._colmeia_delete_data_url = True

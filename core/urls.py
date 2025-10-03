@@ -1,9 +1,8 @@
-from django.contrib import admin
 from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
-from core import admin_dashboard  # noqa: F401  # Importa para aplicar o dashboard customizado
+from core.admin_site import site as admin_site
 from apiary.views import hive_production_detail, production_dashboard
 from core.views import PrivacyPolicyView, DeleteDataRedirectView
 
@@ -30,7 +29,7 @@ urlpatterns = [
         DeleteDataRedirectView.as_view(),
         name="privacy-delete-entry",
     ),
-    path('admin/', admin.site.urls),
+    path("admin/", admin_site.urls),
     path('accounts/', include('accounts.urls', namespace='accounts')),
 ]
 

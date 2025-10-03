@@ -60,12 +60,13 @@ else:
 
 # Application definition
 INSTALLED_APPS = [
+    "core.apps.CoreConfig",
     "admin_interface",
     "colorfield",
     "accounts",
     "apiary",
 
-    'django.contrib.admin',
+    'core.admin_config.ControlledAdminConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

@@ -177,6 +177,18 @@ As páginas criadas devem seguir o tema bootstrap do django-admin-interface, que
 - Intalação do tema bootstrap do django-admin-interface: python manage.py loaddata admin_interface_theme_bootstrap.json
 - Para customizar templates do admin, é necessário consultar a documentação/arquivos do template, por exemplo: https://github.com/fabiocaccamo/django-admin-interface/blob/main/admin_interface/templates/admin/base_site.html
 
+### Menu personalizado para o Django Admin
+
+O menu lateral exibido para usuários sem privilégio de superusuário pode ser configurado diretamente pelo próprio admin:
+
+1. Acesse **Configuração de menu** no admin (disponível apenas para superusuários) e crie um registro do tipo "Usuários sem privilégio de superusuário". Marque **Ativo** para habilitar a configuração e, opcionalmente, **Incluir itens não configurados** para que os modelos não listados sejam adicionados ao final do menu.
+2. Cadastre os **Itens de menu** relacionados, definindo a ordem manualmente. Itens do tipo **Modelo** esperam `app_label` e `modelo` conforme registrados no admin (ex.: `apiary` + `Hive`). Itens do tipo **Link** aceitam um `nome da URL` (para `reverse`) ou uma `URL absoluta`.
+3. Informe um rótulo customizado quando desejar alterar o texto exibido. Use o campo **Seção** para agrupar itens em um bloco com título próprio (ex.: "Operações").
+4. Para expor o dashboard de produção já existente, utilize um item do tipo Link com `nome da URL = "production-dashboard"`. Outros links customizados devem apontar para o nome de URL correspondente.
+5. Opcionalmente, defina **permissão necessária** (`app_label.codename`) para que o item apareça apenas quando o usuário possuir a permissão especificada.
+
+> **Nota:** esta feature introduz novos modelos (`MenuConfig` e `MenuItem`). Após atualizar o código, gere e aplique as migrations correspondentes manualmente (`python manage.py makemigrations && python manage.py migrate`).
+
 Clique [aqui](docs/padroes.md) para ver os padrões de desenvolvimento adotados no projeto.
 
 - **Boas práticas de migrations (Django)**: consulte o guia em [`docs/boas-praticas-migrations.md`](docs/boas-praticas-migrations.md).
