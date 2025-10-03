@@ -9,7 +9,11 @@
   const FIELDS = [
     {
       when: { nameEndsWith: "photo" },
-      previewLabel: "Prévia",
+      previewLabel: "Prévia da imagem"
+    },
+    {
+      when: { nameEndsWith: "file" },
+      previewLabel: "Prévia da imagem"
     },
   ];
 
@@ -198,11 +202,11 @@
 
     const image = document.createElement("img");
     image.className = options.thumbnailClass || "thumb-150";
-    image.alt = options.previewLabel || "Prévia";
+    image.alt = options.previewLabel || "Prévia"
     image.hidden = true;
 
     const label = document.createElement("small");
-    label.textContent = options.previewLabel || "Prévia";
+    // label.textContent = options.previewLabel || "";
 
     wrapper.appendChild(label);
     wrapper.appendChild(image);
