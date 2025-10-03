@@ -13,6 +13,11 @@
         --pd-accent-soft: rgba(5, 150, 105, 0.14);
     }
 
+    select {
+        height: 40px;
+        font-size: 14px;
+    }
+
     .production-dashboard {
         display: flex;
         flex-direction: column;
@@ -134,6 +139,8 @@
         display: flex;
         flex-direction: column;
         gap: 0.55rem;
+        justify-content: center;
+        align-items: center;
     }
 
     .kpi-card__label {
@@ -145,7 +152,7 @@
     }
 
     .kpi-card__value {
-        font-size: clamp(1.35rem, 2.8vw, 2.3rem);
+        font-size: clamp(1rem, 2vw, 1.5rem);
         font-weight: 700;
         color: #0f172a;
     }
@@ -331,7 +338,7 @@
     <form method="get" class="production-dashboard__filters" aria-label="Filtros do dashboard">
         <fieldset>
             <legend>{% trans "Filtros globais" %}</legend>
-            <div class="filters-grid">
+            <div class="filters-grid" style="margin-top: 15px;">
                 <label>
                     {% trans "Ano" %}
                     <select name="ano">
@@ -348,6 +355,20 @@
                     {% trans "Fim (intervalo customizado)" %}
                     <input type="date" name="fim" value="{{ filters.end_date|date:'Y-m-d' }}">
                 </label>
+                <label>
+                    {% trans "Métrica do ranking" %}
+                    <select name="rank_metric">
+                        {% for key, meta in rank_metrics.items %}
+                            <option value="{{ key }}" {% if filters.rank_metric == key %}selected{% endif %}>{{ meta.label }}</option>
+                        {% endfor %}
+                    </select>
+                </label>
+                <label>
+                    {% trans "Top N" %}
+                    <input type="number" min="1" max="50" name="top" value="{{ filters.rank_limit }}">
+                </label>
+            </div>
+            <div class="filters-grid" style="margin-top: 15px;">
                 <label>
                     {% trans "Meliponários/Apiários" %}
                     <select name="apiarios" multiple size="4">
@@ -371,18 +392,6 @@
                             <option value="{{ option.value }}" {% if option.value in filters.statuses %}selected{% endif %}>{{ option.label }}</option>
                         {% endfor %}
                     </select>
-                </label>
-                <label>
-                    {% trans "Métrica do ranking" %}
-                    <select name="rank_metric">
-                        {% for key, meta in rank_metrics.items %}
-                            <option value="{{ key }}" {% if filters.rank_metric == key %}selected{% endif %}>{{ meta.label }}</option>
-                        {% endfor %}
-                    </select>
-                </label>
-                <label>
-                    {% trans "Top N" %}
-                    <input type="number" min="1" max="50" name="top" value="{{ filters.rank_limit }}">
                 </label>
             </div>
         </fieldset>
@@ -409,6 +418,8 @@
             <span class="kpi-card__label">{% trans "Pólen" %}</span>
             <span class="kpi-card__value">{{ cards.production.pollen|floatformat:2 }} <small>g</small></span>
         </div>
+    </div>
+    <div class="kpi-grid" role="list">
         <div class="kpi-card" role="listitem">
             <span class="kpi-card__label">{% trans "Colmeias ativas" %}</span>
             <span class="kpi-card__value">{{ cards.active_hives }}</span>
