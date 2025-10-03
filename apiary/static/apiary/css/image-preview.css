@@ -13,6 +13,12 @@
   gap: 0.35rem;
 }
 
+.image-preview-field-container {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .image-preview-wrapper small {
   font-weight: 600;
   color: #444;

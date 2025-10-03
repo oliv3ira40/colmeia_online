@@ -232,28 +232,32 @@
     return "";
   }
 
-  function findWidgetContainer(input) {
-    if (!input) {
+  function ensureFieldContainer(input, previewWrapper) {
+    if (!input || !previewWrapper) {
       return null;
     }
 
-    if (input.closest) {
-      const formRow = input.closest(".form-row");
-      if (formRow) {
-        return formRow;
-      }
-
-      const clearable = input.closest(".clearable-file-input");
-      if (clearable) {
-        return clearable;
-      }
+    if (!input.closest) {
+      return null;
     }
 
-    if (input.parentElement) {
-      return input.parentElement;
+    const fileUpload = input.closest("p.file-upload");
+    if (!fileUpload || !fileUpload.parentElement) {
+      return null;
     }
 
-    return input;
+    const parent = fileUpload.parentElement;
+    let container = parent;
+
+    if (!parent.classList.contains("image-preview-field-container")) {
+      container = document.createElement("div");
+      container.className = "image-preview-field-container";
+      parent.insertBefore(container, fileUpload);
+      container.appendChild(fileUpload);
+    }
+
+    container.appendChild(previewWrapper);
+    return container;
   }
 
   function updatePreviewVisibility(elements, context) {
@@ -344,14 +348,14 @@
     const options = Object.assign({}, configOptions, datasetOptions);
 
     const elements = buildPreviewElements(options);
-    const widgetContainer = findWidgetContainer(input);
+    const container = ensureFieldContainer(input, elements.wrapper);
 
-    if (widgetContainer && widgetContainer.appendChild) {
-      widgetContainer.appendChild(elements.wrapper);
-    } else if (input.parentElement) {
-      input.parentElement.appendChild(elements.wrapper);
-    } else {
-      input.insertAdjacentElement("afterend", elements.wrapper);
+    if (!container) {
+      if (input.parentElement && input.parentElement.appendChild) {
+        input.parentElement.appendChild(elements.wrapper);
+      } else {
+        input.insertAdjacentElement("afterend", elements.wrapper);
+      }
     }
 
     const state = {
