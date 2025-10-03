@@ -9,6 +9,7 @@ from decimal import Decimal
 from typing import Dict, Iterable, List, Sequence
 from urllib.parse import urlencode
 
+from django.contrib import admin
 from django.contrib.admin.views.decorators import staff_member_required
 from django.db.models import Count, DecimalField, Max, Q, Sum, Value
 from django.db.models.functions import Coalesce, TruncMonth
@@ -382,6 +383,7 @@ class ProductionDashboardView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context.update(admin.site.each_context(self.request))
         filters = self.filters
         revisions = self.filtered_revisions
 
@@ -668,6 +670,7 @@ class HiveProductionDetailView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context.update(admin.site.each_context(self.request))
         filters = self.filters
         revisions_qs = filters.apply_revision_filters(
             self.hive.revisions.filter(review_type=Revision.RevisionType.HARVEST)
