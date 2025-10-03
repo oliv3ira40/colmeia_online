@@ -1,203 +1,179 @@
-# AGENTS.md — Regras e Fluxo para Agentes (IA) neste Repositório Django
+# AGENTS.md — Regras e Fluxo para Agentes (Codex) no Repositório Django — v2
+> **Objetivo:** remover o bloqueio rígido de migrations que estava travando o agente, **liberando a criação/edição de migrations com guarda‑corpos de segurança**, revisão humana e checks automatizados.
 
-> **Objetivo:** evitar problemas de **venv errado**, **migrations divergentes**, código inseguro e PRs difíceis de revisar quando um agente (IA) gera trechos de código para este projeto.
+---
+
+## 0) O que mudou nesta versão
+- ✅ **Migrations estão liberadas para o agente (Codex)**, com regras e checklist de segurança.
+- ✅ Mantemos **proibição de segredos/credenciais**, comandos destrutivos e mudanças de infra sem task explícita.
+- ✅ Incluímos **fluxo de PR com plano de migração/rollback**, **pré‑commit** e **CI** com verificações simples.
+- ✅ Criamos um **“kill switch”** opcional para reativar o bloqueio de migrations quando necessário: o arquivo `.codex-no-migrations` na raiz do repo.
 
 ---
 
 ## 1) Escopo e Princípios
-
-- Este repositório é um **projeto Django** com banco de dados versionado por **migrations**.
-- **As migrations são versionadas no Git**. Elas **não** devem ser criadas/alteradas por agentes.
-- O agente **não executa comandos**: nada de `pip install`, `makemigrations`, `migrate`, `collectstatic`, etc.
-- O agente gera **apenas código-fonte** (Python/JS/CSS/HTML/Docs) sob as regras deste arquivo.
-
----
-
-## 2) Convenções do Repositório
-
-- Um **venv por projeto**, chamado `.venv` na raiz. O agente **não** cria/edita venv.
-- Python suportado: definido no `pyproject.toml`/`runtime.txt`/`Dockerfile` (quando existirem).
-- **Migrations SEMPRE versionadas.** Não usar `.gitignore` para ignorá-las.
-- Secretos/variáveis de ambiente nunca em repositório: **não** tocar `.env`, `settings_secrets.py`, etc.
+- Este repo é um **projeto Django** com banco versionado via **migrations** (Django ORM).
+- O agente **pode** criar/editar arquivos em `*/migrations/*.py` e alterar modelos, admin, serializers, views, urls e docs.
+- O agente **não executa comandos** (ex.: `makemigrations`, `migrate`, `collectstatic`, `pip install`, etc.). Esses comandos são responsabilidade humana/local/CI.
+- Evitar downtime: seguir **padrão em duas fases** e **migrações reversíveis**.
+- Toda mudança com impacto em dados/esquema precisa de **descrição clara de riscos** e **plano de rollback**.
 
 ---
 
-## 3) O que o AGENTE **NÃO PODE** fazer
+## 2) O que o agente **PODE** fazer
+- Alterar **modelos** em `models.py` e gerar as **migrations correspondentes** (schema e, quando necessário, data migrations com `RunPython`).
+- Escrever **testes** (unit/integration) e documentação (`README`, `docs/`), além de **scripts** em `management/commands` (sem executá‑los).
+- Refatorar código, adicionar tipagem, docstrings, i18n, validações, otimizações com `select_related/prefetch_related`.
+- Sugerir pipelines de CI/hooks, anotando que a habilitação é feita por humano.
 
-1. **Migrations**
-   - Criar, editar, apagar qualquer arquivo em `*/migrations/*.py`.
-   - Sugerir rodar `makemigrations`, `migrate`, `--fake`, `sqlmigrate`.
-   - Alterar `MIGRATION_MODULES` em `settings.py`.
-
-2. **Ambiente/Infra**
-   - Criar/alterar `.venv/`, `requirements*.txt`, `poetry.lock`, `Pipfile.lock` sem pedido explícito humano.
-   - Rodar comandos de sistema, gerenciar pacotes ou tocar em Docker/Nginx/Gunicorn sem task clara.
-
-3. **Segurança/Config**
-   - Comitar chaves, tokens, credenciais, `.env`.
-   - Modificar autenticação/autorização sensível sem análise de impacto.
-
-4. **Banco/Prod Data**
-   - Fornecer comandos que **apaguem dados** ou executem SQL destrutivo sem *feature flag* e plano de rollback.
+## 3) O que o agente **NÃO PODE** fazer
+- **Segurança/Segredos:** jamais commitar chaves, tokens, `.env`, dumps de banco ou dados pessoais sensíveis.
+- **Infra/Ambiente:** não criar/alterar `.venv/`, Docker, Nginx, Gunicorn, `requirements*.txt`/`poetry.lock` sem task explícita.
+- **Dados de produção:** não propor comandos que apaguem dados ou SQL destrutivo. Operações destrutivas devem seguir o padrão em duas fases e passar por revisão explícita.
+- **Execução de comandos:** o agente gera arquivos; a execução (`makemigrations`, `migrate`, etc.) cabe ao humano/CI.
 
 ---
 
-## 4) O que o AGENTE **PODE** fazer
-
-- Alterar **modelos** em `models.py` e camadas relacionadas (`admin.py`, `forms.py`, `serializers.py`, `views.py`, `urls.py`), **sem** tocar nas migrations.
-- Escrever/adaptar **tests** (unitários/integrados) e documentações (`README.md`, `docs/`).
-- Refatorar código, adicionar **tipagem**, docstrings, `help_text`, `verbose_name`, mensagens de validação.
-- Propor **scripts de manutenção** (ex.: `management/commands`) – sem rodá-los.
-- Sugerir **snippets de CI/hooks** (pre-commit/Actions), marcando claramente que precisam de habilitação humana.
+## 4) Convenções para Migrations (guarda‑corpos)
+1. **Reversibilidade**: toda `RunPython` deve ter `reverse_code` (evitar `noop` salvo justificativa). Prefira ORM ao invés de `RunSQL`. Se usar `RunSQL`, inclua `reverse_sql`.
+2. **Padrão em duas fases** (evitar downtime/locks prolongados):
+   - **Fase A (compat)**: adicionar campos com `null=True`/`default` seguro; criar tabelas/índices; duplicar/renomear via add+copy (sem remover ainda).
+   - **Backfill**: `RunPython` para preencher valores; criar comandos de manutenção se necessário.
+   - **Fase B (restritiva)**: tornar `null=False`/constraints depois do backfill; remover campo antigo **apenas** quando não mais lido. Em PR separado, se possível.
+3. **Destrutivo** (`RemoveField`, `DeleteModel`, `AlterField` para mais restrito) só quando:
+   - Houver **plano de rollback** claro e **janela** definida; preferir **PR separado**.
+   - Houver **confirmação** no PR (label `destructive-ok` ou aprovação humana).
+4. **Ordem e dependências**: migrations devem depender da **última** migration do app; evite reordenar históricos.
+5. **Dados volumosos**: para tabelas grandes, considerar batch (paginação) e evitar longos locks; documentar estratégia.
+6. **Índices**: criar índices em migrations de schema; **não** deixar para “fazer manualmente” sem rationale.
+7. **Naming**: use nome/descrição de operações nos commits e PRs (ex.: `migrations(app): add field is_active to Client`).
 
 ---
 
-## 5) Fluxo quando houver alterações de MODELOS (schema)
-
+## 5) Fluxo de PR com Migrations (recomendado)
 **Pelo agente:**
-1. Ajustar apenas os **arquivos de código** (ex.: `app/models.py`, `admin.py`), mantendo **compatibilidade reversa** quando possível:
-   - Campos novos com `null=True` e/ou `default=` quando necessário.
-   - Migrações de dados sensíveis **apenas como TODO** em comentários.
+1. Implementar mudança em `models.py` e gerar as **migrations** necessárias (schema/data).  
+2. Abrir PR contendo:
+   - **Resumo da mudança** (tabelas/campos afetados, leituras/escritas, performance esperada).
+   - **Plano de migração** (Fase A/B se aplicável, passos de backfill, feature flags se houver).
+   - **Plano de rollback** (como desfazer; `reverse_code`; impacto).
+   - **Checklist de Migrations** (abaixo).
 
-2. Abrir PR com **descrição clara**:
-   - “Este PR altera modelos. **Não** inclui migrations por política do repositório.”
-   - Lista de arquivos alterados e impacto esperado (leitura/escrita/performance).
+**Checklist de Migrations (copie no PR):**
+- [ ] Todas as `RunPython` possuem `reverse_code` significativo.
+- [ ] Operações potencialmente destrutivas foram isoladas (fase B) ou possuem label `destructive-ok`.
+- [ ] Mudanças restritivas (ex.: `null=False`) ocorrem **após** backfill/comprovação de dados.
+- [ ] Índices/constraints foram avaliados e criados quando necessário.
+- [ ] Para tabelas grandes, o backfill está em batch (ou documentado por quê não).
+- [ ] Testes e admin ajustados (se UI/validações dependem do novo campo).
+- [ ] Plano de rollback descrito.
 
-**Pelo humano (pós-merge/rebase do PR do agente):**
+**Pelo humano/CI (exemplo de sequência local):**
 ```bash
 source .venv/bin/activate
-python manage.py makemigrations
-python manage.py migrate
-pytest -q      # se aplicável
-git add */migrations/*.py
-git commit -m "chore(migrations): gera migrations após alterações do agente"
+python manage.py makemigrations --check --dry-run   # sanity check
+python manage.py migrate --plan                    # visualizar plano
+pytest -q                                          # se aplicável
+# Em staging: python manage.py migrate
 ```
 
-**Se houver conflitos entre branches:**
-```bash
-python manage.py makemigrations --merge
-python manage.py migrate
-git add */migrations/*.py
-git commit -m "chore(migrations): merge migration"
-```
-
-> **Nota:** `--fake` só em DEV e com plena certeza de que o estado do banco reflete aquela migração. Evitar em produção.
-
 ---
 
-## 6) Mensagem padrão para o agente anexar quando mexer em modelos
-
-> **Nota de migrações:** Conforme política do repositório, **não** gere/edite arquivos em `migrations/`. As alterações de modelo serão migradas manualmente por um desenvolvedor humano com `python manage.py makemigrations && python manage.py migrate` (e *merge migrations* após merges/rebases).
-
----
-
-## 7) Padrões de Código e Qualidade
-
-- **Tipagem**: use `from __future__ import annotations` quando aplicável; adicione tipos em funções/métodos.
-- **Docstrings**: breve descrição, parâmetros, retorno e exceções relevantes.
-- **i18n**: strings para UI com `gettext_lazy` (`from django.utils.translation import gettext_lazy as _`).
-- **Django Admin**: inclua `list_display`, `search_fields`, `list_filter`, `ordering`, ícones/booleans padronizados.
-- **Validações**: use `clean()`/validators; mensagens amigáveis; `help_text`/`verbose_name` adequados.
-- **Testes**: se criar lógica não-trivial, inclua testes. Use `pytest`/`unittest` conforme padrão do repo.
-- **Performance**: prefira `select_related/prefetch_related` quando necessário; evite N+1; índices em migrations **devem ser sinalizados como TODO** na descrição para o humano gerar.
-
----
-
-## 8) Branch/Commit/PR — Convenções
-
-- **Branch name** (pelo agente): `codex/<breve-descricao-kebab>`
-- **Commits** (pelo agente): `feat(app): <mensagem>` / `fix(app):` / `refactor(app):` / `docs:` / `test:` / `chore:`
-- **PR template** deve incluir (o agente preenche):
-  - Escopo e impacto.
-  - “Sem migrations” (se houver mudança em modelos).
-  - Checklist (abaixo).
-
-**Checklist do PR do agente:**
-- [ ] Nenhum arquivo em `*/migrations/` foi criado/modificado/removido.
-- [ ] Alterações limitadas a código-fonte e/ou docs/tests.
-- [ ] Compatibilidade reversa razoável (quando envolve modelos/DB).
-- [ ] Docstrings, `help_text`, `verbose_name` e mensagens de erro revisadas.
-- [ ] TODOs claros onde o humano deverá gerar migrations de dados/índices.
-
----
-
-## 9) Snippets úteis (uso a critério do humano)
-
-### 9.1 Hook de pre-commit (bloqueia migrations por agente; alerta sobre migrações faltantes)
-Crie `.git/hooks/pre-commit` e dê permissão `chmod +x .git/hooks/pre-commit`:
+## 6) Pré‑commit (guarda‑corpo leve + “kill switch”)
+Crie `.git/hooks/pre-commit` e torne executável (`chmod +x .git/hooks/pre-commit`):
 ```bash
 #!/usr/bin/env bash
-# Bloqueia commits do agente que mexam em migrations (ajuste a detecção do ator se necessário)
-if git config user.name | grep -qi "agent\|bot\|codex"; then
+set -euo pipefail
+
+# Kill switch global para bloquear migrations (reativa o comportamento antigo se necessário)
+if [ -f ".codex-no-migrations" ]; then
   if git diff --cached --name-only | grep -E "^.+/migrations/.+\.py$" >/dev/null; then
-    echo "❌ Política: o agente não pode commitar migrations."
+    echo "❌ Migrations bloqueadas por '.codex-no-migrations'. Remova o arquivo para liberar."
     exit 1
   fi
 fi
 
-# (Opcional) Garanta venv ativo
-which python | grep -q "/.venv/" || { echo "❌ Ative o venv (.venv)."; exit 1; }
-
-# (Opcional) Alerta se mudanças de modelos exigem migrations
-python manage.py makemigrations --check --dry-run >/dev/null 2>&1 ||   echo "⚠️ Há alterações de modelo que exigem migrations (gerar manualmente)."
-```
-
-### 9.2 CODEOWNERS (revisão humana obrigatória em migrations)
-Crie `CODEOWNERS` na raiz:
-```
-**/migrations/*.py  @seu-usuario-ou-time
-```
-
-### 9.3 GitHub Actions (bloquear migrations do agente)
-Job de verificação simples (ajuste `seu-bot`):
-```yaml
-- name: Block agent migrations
-  run: |
-    if [ "${{ github.actor }}" = "seu-bot" ]; then
-      if git diff --name-only origin/${{ github.base_ref }}... | grep -E '^.+/migrations/.+\.py$'; then
-        echo "❌ O agente não pode alterar migrations."; exit 1;
-      fi
+# Alerta de operações destrutivas (soft‑block; CI reforça)
+if git diff --cached --name-only | grep -E "^.+/migrations/.+\.py$" >/dev/null; then
+  if git diff --cached | grep -E "migrations\.(RemoveField|DeleteModel)"; then
+    echo "⚠️  Detectado RemoveField/DeleteModel. Garanta fase B, label 'destructive-ok' e plano de rollback."
+  fi
+  if git diff --cached | grep -E "RunSQL\("; then
+    if ! git diff --cached | grep -E "reverse_sql\s*=" >/dev/null; then
+      echo "⚠️  RunSQL sem reverse_sql detectado. Adicione reverse_sql ou justifique no PR."
     fi
-```
-
-### 9.4 Verificações de consistência (opcional no CI)
-```bash
-python manage.py check
-python manage.py makemigrations --check --dry-run
-pytest -q  # se aplicável
+  fi
+fi
 ```
 
 ---
 
-## 10) Como o revisor humano valida um PR do agente
-
-1. Conferir **se não há migrations no diff**.
-2. Rodar localmente:
-   ```bash
-   source .venv/bin/activate
-   python manage.py makemigrations --check --dry-run
-   pytest -q  # se aplicável
-   ```
-3. Se houver modelos alterados: **gerar migrations localmente**, aplicar e commitar em PR separado ou após merge.
-4. Confirmar padrões (docstrings/i18n/ajustes no admin/validadores).
-5. Aprovar o PR.
+## 7) GitHub Actions (checks sugeridos)
+Adicione um job simples de verificação (ajuste conforme seu pipeline):
+```yaml
+name: migrations-checks
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  safe-migrations:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Detect migrations in PR
+        id: mig
+        run: |
+          set -e
+          FILES="$(git diff --name-only origin/${{ github.base_ref }}... | grep -E '^.+/migrations/.+\.py$' || true)"
+          echo "files<<EOF" >> $GITHUB_OUTPUT
+          echo "${FILES}" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+      - name: Block destructive ops unless labeled
+        if: steps.mig.outputs.files != ''
+        run: |
+          set -e
+          # bloqueia operações destrutivas se não houver label 'destructive-ok'
+          HAS_LABEL=$(echo '${{ toJson(github.event.pull_request.labels) }}' | grep -ci 'destructive-ok' || true)
+          if git diff origin/${{ github.base_ref }}... | grep -E 'migrations\.(RemoveField|DeleteModel)'; then
+            if [ "$HAS_LABEL" -eq 0 ]; then
+              echo "❌ RemoveField/DeleteModel sem label 'destructive-ok'."; exit 1;
+            fi
+          fi
+          # alerta para RunSQL sem reverse_sql
+          if git diff origin/${{ github.base_ref }}... | grep -E 'RunSQL\('; then
+            if ! git diff origin/${{ github.base_ref }}... | grep -E 'reverse_sql\s*='; then
+              echo '⚠️ RunSQL sem reverse_sql detectado. Considere adicionar ou justificar no PR.'
+            fi
+          fi
+```
 
 ---
 
-## 11) FAQ Rápido
-
-**1. Devemos ignorar migrations no Git?**  
-Não. Migrations são versionadas para garantir reprodutibilidade e deploy confiável.
-
-**2. O agente pode propor migrations?**  
-Pode sugerir *em texto* o que a migration faria (ex.: “índice em campo X”), mas **não** criar o arquivo.
-
-**3. E *--fake*?**  
-Apenas em **desenvolvimento** e com total certeza do estado real do banco. Evitar em produção.
-
-**4. E se outro branch também alterou modelos?**  
-Após merge/rebase, o **humano** roda `makemigrations --merge` e commita a *merge migration*.
+## 8) Padrões de Código/Qualidade (resumo)
+- **Tipagem** (quando aplicável) e docstrings claras.
+- **i18n**: UI com `gettext_lazy`.
+- **Admin**: `list_display`, `search_fields`, `list_filter`, `ordering` e booleans/ícones padronizados.
+- **Validações**: `clean()`/validators; `help_text` e `verbose_name` amigáveis.
+- **Performance**: atenção a N+1; crie índices quando necessário (em migrations).
 
 ---
 
-> **Resumo:** O agente **não cria migrations**, não executa comandos, e mantém alterações restritas ao código-fonte com boa documentação. O humano gera/aplica/commita migrations no momento certo. Assim evitamos divergências e histórico inconsistente.
+## 9) Conflitos de migrations (branchs concorrentes)
+- Após merges/rebases, o agente **pode** criar uma *merge migration* (ou o humano executa `makemigrations --merge`).  
+- Descrever no PR o motivo da *merge migration* e validar importabilidade (CI/local).
+
+---
+
+## 10) FAQ Rápido
+**Posso apagar campo direto?** Prefira **duas fases**: parar de ler o campo → backfill/cópia → remover em PR/migração separada com label `destructive-ok` e rollback claro.  
+**Posso usar `RunSQL`?** Sim, **desde que** traga `reverse_sql` e justificativa. Prefira ORM.  
+**E se der conflito de numeração?** Regerar localmente ou criar *merge migration*. Documente no PR.  
+**Quem roda `migrate`?** Humano/CI, não o agente.
+
+---
+
+## 11) TL;DR
+- Codex **pode** criar/editar migrations, **desde que** siga: **reversível**, **duas fases**, **destrutivo isolado**, **PR com plano/rollback**.  
+- Pré‑commit dá avisos e `.codex-no-migrations` desliga tudo se precisar.  
+- CI reforça regras mínimas e exige label para destrutivo.
+
