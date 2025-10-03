@@ -10,7 +10,6 @@
     {
       when: { nameEndsWith: "photo" },
       previewLabel: "Prévia",
-      openLabel: "Abrir em nova aba",
     },
   ];
 
@@ -150,9 +149,6 @@
     if (dataset.previewLabel) {
       options.previewLabel = dataset.previewLabel;
     }
-    if (dataset.previewOpenLabel) {
-      options.openLabel = dataset.previewOpenLabel;
-    }
     if (dataset.initialPreviewUrl) {
       options.initialUrl = dataset.initialPreviewUrl;
     }
@@ -200,30 +196,18 @@
     const wrapper = document.createElement("div");
     wrapper.className = "image-preview-wrapper";
 
-    const header = document.createElement("div");
-    header.className = "image-preview-header";
-
-    const label = document.createElement("small");
-    label.textContent = options.previewLabel || "Prévia";
-    header.appendChild(label);
-
-    const link = document.createElement("a");
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-    link.textContent = options.openLabel || "Abrir em nova aba";
-    link.className = "image-preview-link";
-    link.hidden = true;
-    header.appendChild(link);
-
     const image = document.createElement("img");
     image.className = options.thumbnailClass || "thumb-150";
     image.alt = options.previewLabel || "Prévia";
     image.hidden = true;
 
-    wrapper.appendChild(header);
+    const label = document.createElement("small");
+    label.textContent = options.previewLabel || "Prévia";
+
+    wrapper.appendChild(label);
     wrapper.appendChild(image);
 
-    return { wrapper, image, link };
+    return { wrapper, image };
   }
 
   function findInitialPreviewUrl(input, options) {
@@ -249,17 +233,31 @@
   }
 
   function findWidgetContainer(input) {
-    return (
-      (input && input.closest && input.closest(".clearable-file-input")) ||
-      (input && input.closest && input.closest(".form-row")) ||
-      (input && input.parentElement) ||
-      input
-    );
+    if (!input) {
+      return null;
+    }
+
+    if (input.closest) {
+      const formRow = input.closest(".form-row");
+      if (formRow) {
+        return formRow;
+      }
+
+      const clearable = input.closest(".clearable-file-input");
+      if (clearable) {
+        return clearable;
+      }
+    }
+
+    if (input.parentElement) {
+      return input.parentElement;
+    }
+
+    return input;
   }
 
   function updatePreviewVisibility(elements, context) {
     const imageUrl = context && context.imageUrl;
-    const linkUrl = context && context.linkUrl;
 
     if (imageUrl) {
       elements.image.src = imageUrl;
@@ -270,14 +268,6 @@
       elements.image.hidden = true;
       elements.wrapper.hidden = true;
     }
-
-    if (linkUrl) {
-      elements.link.href = linkUrl;
-      elements.link.hidden = false;
-    } else {
-      elements.link.removeAttribute("href");
-      elements.link.hidden = true;
-    }
   }
 
   function handleChange(input, elements, state) {
@@ -286,23 +276,22 @@
 
     if (!input.files || input.files.length === 0) {
       if (clearCheckbox && clearCheckbox.checked) {
-        updatePreviewVisibility(elements, { imageUrl: "", linkUrl: "" });
+        updatePreviewVisibility(elements, { imageUrl: "" });
         return;
       }
       if (initialUrl) {
         updatePreviewVisibility(elements, {
           imageUrl: initialUrl,
-          linkUrl: initialUrl,
         });
       } else {
-        updatePreviewVisibility(elements, { imageUrl: "", linkUrl: "" });
+        updatePreviewVisibility(elements, { imageUrl: "" });
       }
       return;
     }
 
     const file = input.files[0];
     if (!window.FileReader) {
-      updatePreviewVisibility(elements, { imageUrl: "", linkUrl: "" });
+      updatePreviewVisibility(elements, { imageUrl: "" });
       return;
     }
 
@@ -310,14 +299,13 @@
     reader.addEventListener("load", function (event) {
       updatePreviewVisibility(elements, {
         imageUrl: event.target && event.target.result,
-        linkUrl: "",
       });
       if (clearCheckbox) {
         clearCheckbox.checked = false;
       }
     });
     reader.addEventListener("error", function () {
-      updatePreviewVisibility(elements, { imageUrl: "", linkUrl: "" });
+      updatePreviewVisibility(elements, { imageUrl: "" });
     });
     reader.readAsDataURL(file);
   }
@@ -329,7 +317,7 @@
 
     clearCheckbox.addEventListener("change", function () {
       if (clearCheckbox.checked) {
-        updatePreviewVisibility(elements, { imageUrl: "", linkUrl: "" });
+        updatePreviewVisibility(elements, { imageUrl: "" });
         if (input.value) {
           input.value = "";
         }
@@ -337,10 +325,9 @@
         if (state.initialUrl) {
           updatePreviewVisibility(elements, {
             imageUrl: state.initialUrl,
-            linkUrl: state.initialUrl,
           });
         } else {
-          updatePreviewVisibility(elements, { imageUrl: "", linkUrl: "" });
+          updatePreviewVisibility(elements, { imageUrl: "" });
         }
       }
     });
@@ -359,10 +346,10 @@
     const elements = buildPreviewElements(options);
     const widgetContainer = findWidgetContainer(input);
 
-    if (widgetContainer && widgetContainer !== input) {
-      widgetContainer.insertAdjacentElement("afterend", elements.wrapper);
+    if (widgetContainer && widgetContainer.appendChild) {
+      widgetContainer.appendChild(elements.wrapper);
     } else if (input.parentElement) {
-      input.parentElement.insertBefore(elements.wrapper, input.nextSibling);
+      input.parentElement.appendChild(elements.wrapper);
     } else {
       input.insertAdjacentElement("afterend", elements.wrapper);
     }
