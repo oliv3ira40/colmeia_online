@@ -60,12 +60,13 @@ else:
 
 # Application definition
 INSTALLED_APPS = [
+    "admin_menu.apps.AdminMenuConfig",
     "admin_interface",
     "colorfield",
     "accounts",
     "apiary",
 
-    'django.contrib.admin',
+    'admin_menu.apps.ColmeiaAdminConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

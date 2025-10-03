@@ -181,6 +181,19 @@ Clique [aqui](docs/padroes.md) para ver os padrões de desenvolvimento adotados 
 
 - **Boas práticas de migrations (Django)**: consulte o guia em [`docs/boas-praticas-migrations.md`](docs/boas-praticas-migrations.md).
 
+### Menu customizado para não superusuários
+
+- As configurações ficam em **Admin → Configurações de menu** (visível apenas para superusuários).
+- Cada registro representa um conjunto de itens para um escopo. Atualmente existe o escopo `Usuários sem superusuário`.
+- Marque a caixa **Ativa** (ou use a ação “Ativar configuração selecionada”) para que o conjunto seja aplicado aos usuários do escopo.
+- Adicione itens usando o inline "Itens de menu" obedecendo os campos:
+  - **Tipo de item** = `Modelo do admin` → informe `App label` (ex.: `apiary`) e `Nome do modelo` (ex.: `Hive`). O sistema usa as permissões do próprio `ModelAdmin` para decidir se o item é exibido.
+  - **Tipo de item** = `Link personalizado` → preencha `Nome da URL` (ex.: `production-dashboard`) ou uma `URL absoluta`. Use `Permissão extra` (opcional) para exigir `app_label.codename` adicional antes de exibir o link.
+  - **Grupo** permite definir manualmente o cabeçalho da seção (por exemplo “Operações”). Deixe em branco para usar o nome do app ou “Links”.
+  - **Rótulo** substitui o texto padrão exibido na lista.
+- A ordenação respeita o campo **Ordem** (valores menores aparecem primeiro).
+- Quando não existir configuração ativa ou houver erro de resolução dos itens, o menu padrão do Django Admin é usado automaticamente.
+
 ### Modelos
 
     **Colmeias**
