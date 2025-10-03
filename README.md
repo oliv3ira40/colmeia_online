@@ -11,6 +11,10 @@ Sistema web para controle de colmeias de abelhas, com suporte a múltiplos usuá
 - Upload de anexos (fotos/documentos) relacionados às revisões.
 - Separação de dados por usuário (multi-tenant). Usuários comuns visualizam apenas seus próprios cadastros; superusuários têm visão global.
 
+## Tratamento de imagens
+
+Todos os campos de upload de imagens passam por conversão e compressão automática para o formato WebP antes de serem salvos. Isso vale para fotos de colmeias, meliponários, anexos de revisões e observações rápidas, garantindo arquivos menores e padronizados sem necessidade de intervenção manual.
+
 ## Modelos principais
 
 ### Espécies
@@ -170,6 +174,16 @@ python manage.py seed_cities --file docs/minhas-cidades.json
 ```
 
 O arquivo JSON deve seguir a estrutura `{ "estados": [{ "sigla": "UF", "cidades": ["Nome da Cidade", ...] }] }`. O comando é idempotente e pode ser executado novamente para atualizar nomes ou incluir novas cidades.
+
+#### Seed de Estações do ano
+
+Execute `seed_seasons` para criar ou atualizar as estações cadastradas (Outono, Inverno, Primavera e Verão) com seus respectivos intervalos padrão.
+
+```bash
+python manage.py seed_seasons
+```
+
+O comando utiliza `update_or_create`, permitindo rodadas repetidas sem gerar duplicidades e mantendo as datas alinhadas ao intervalo configurado.
 
 ### Tema utilizado no admin
 As páginas criadas devem seguir o tema bootstrap do django-admin-interface, que oferece uma interface mais amigável e moderna para o administrador do Django.

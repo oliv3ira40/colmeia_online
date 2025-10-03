@@ -7,8 +7,11 @@ from .models import (
     City,
     CreatorNetworkEntry,
     Hive,
+    MellitophilousPlant,
+    QuickObservation,
     Revision,
     RevisionAttachment,
+    Season,
     Species,
 )
 
@@ -109,6 +112,30 @@ class CityAdmin(BaseAdmin):
     search_fields = ("name",)
 
 
+@admin.register(Season)
+class SeasonAdmin(BaseAdmin):
+    list_display = (
+        "name",
+        "start_month",
+        "start_day",
+        "end_month",
+        "end_day",
+    )
+    search_fields = ("name",)
+
+
+@admin.register(MellitophilousPlant)
+class MellitophilousPlantAdmin(BaseAdmin):
+    list_display = (
+        "popular_name",
+        "scientific_name",
+        "pollen_supply",
+        "nectar_supply",
+    )
+    search_fields = ("popular_name", "scientific_name")
+    filter_horizontal = ("flowering_seasons",)
+
+
 @admin.register(Apiary)
 class ApiaryAdmin(OwnerRestrictedAdmin):
     list_display = ("name", "city", "owner", "hive_count")
@@ -192,6 +219,24 @@ class RevisaoAdmin(BaseAdmin):
 class RevisionAttachmentAdmin(BaseAdmin):
     list_display = ("revision", "file")
     search_fields = ("revision__hive__identification_number",)
+
+
+@admin.register(QuickObservation)
+class QuickObservationAdmin(BaseAdmin):
+    list_display = ("hive", "date", "internal_photo", "external_photo")
+    list_filter = ("date",)
+    search_fields = ("hive__identification_number", "hive__popular_name")
+
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request)
+        if request.user.is_superuser:
+            return queryset
+        return queryset.filter(hive__owner=request.user)
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "hive" and not request.user.is_superuser:
+            kwargs["queryset"] = Hive.objects.owned_by(request.user)
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
 @admin.register(CreatorNetworkEntry)

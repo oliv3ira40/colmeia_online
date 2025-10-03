@@ -177,3 +177,5 @@ jobs:
 - Pré‑commit dá avisos e `.codex-no-migrations` desliga tudo se precisar.  
 - CI reforça regras mínimas e exige label para destrutivo.
 
+## 10) Padrões de merge requests
+- Destacar mudanças feitas em pt-br
