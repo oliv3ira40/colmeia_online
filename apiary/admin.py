@@ -91,25 +91,25 @@ class OwnerRestrictedAdmin(BaseAdmin):
         return form
 
 
-@admin_site.register(Species)
+@admin.register(Species, site=admin_site)
 class SpeciesAdmin(BaseAdmin):
     list_display = ("popular_name", "scientific_name", "group")
     search_fields = ("popular_name", "scientific_name")
 
 
-@admin_site.register(BoxModel)
+@admin.register(BoxModel, site=admin_site)
 class BoxModelAdmin(BaseAdmin):
     list_display = ("name", "description")
     search_fields = ("name", "description")
 
 
-@admin_site.register(City)
+@admin.register(City, site=admin_site)
 class CityAdmin(BaseAdmin):
     list_display = ("name",)
     search_fields = ("name",)
 
 
-@admin_site.register(Apiary)
+@admin.register(Apiary, site=admin_site)
 class ApiaryAdmin(OwnerRestrictedAdmin):
     list_display = ("name", "city", "owner", "hive_count")
     search_fields = ("name", "city__name", "owner__username")
@@ -121,7 +121,7 @@ class RevisionAttachmentInline(BaseInline):
     extra = 0
 
 
-@admin_site.register(Hive)
+@admin.register(Hive, site=admin_site)
 class ColmeiaAdmin(OwnerRestrictedAdmin):
     list_display = (
         "identification_number",
@@ -150,7 +150,7 @@ class ColmeiaAdmin(OwnerRestrictedAdmin):
             kwargs["queryset"] = Hive.objects.owned_by(request.user)
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
-@admin_site.register(Revision)
+@admin.register(Revision, site=admin_site)
 class RevisaoAdmin(BaseAdmin):
     list_display = (
         "hive",
@@ -188,13 +188,13 @@ class RevisaoAdmin(BaseAdmin):
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
-@admin_site.register(RevisionAttachment)
+@admin.register(RevisionAttachment, site=admin_site)
 class RevisionAttachmentAdmin(BaseAdmin):
     list_display = ("revision", "file")
     search_fields = ("revision__hive__identification_number",)
 
 
-@admin_site.register(CreatorNetworkEntry)
+@admin.register(CreatorNetworkEntry, site=admin_site)
 class CreatorNetworkEntryAdmin(OwnerRestrictedAdmin):
     owner_field_name = "user"
     list_display = ("name", "city", "phone", "is_opt_in")
