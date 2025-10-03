@@ -1,241 +1,203 @@
-# AGENTS.md — Colmeia Online
+# AGENTS.md — Regras e Fluxo para Agentes (IA) neste Repositório Django
 
-Guia para **agentes/contêineres** (ex.: Codex) prepararem, validarem e executarem o projeto **Colmeia Online** automaticamente.
-
-> **Resumo:** criar venv, instalar dependências, aplicar migrações, coletar estáticos, expor `/static/` e `/media/`, rodar checks e comandos utilitários (ex.: `seed_species`).
+> **Objetivo:** evitar problemas de **venv errado**, **migrations divergentes**, código inseguro e PRs difíceis de revisar quando um agente (IA) gera trechos de código para este projeto.
 
 ---
 
-## 🆕 Convenções do código em vigor
-- A **home pública** fica em `templates/home.html` e é entregue pela `TemplateView` registrada em `core/urls.py`. Ela precisa permanecer disponível na raiz `/` exibindo somente o `<h1>Comeias Online` centralizado.
-- O **dashboard do admin** é configurado em `core/admin_dashboard.py`. O módulo injeta um índice customizado para usuários que não são superusuários e prepara o contexto para `templates/admin/custom_dashboard.html`.
-  - Cards obrigatórios: “Meus Meliponários”, “Minhas Colmeias”, “Espécies criadas” e o botão “Nova Revisão”.
-  - Listas obrigatórias: “Revisões Recentes” (10 itens) e “Colmeias sem revisão há 7+ dias” (até 50 itens, incluindo nunca revisadas).
-  - A coluna de “Ações recentes” ocupa 20% do grid e usa o log padrão do Django Admin.
-  - Todas as consultas do dashboard filtram os dados pelo usuário autenticado e respeitam o fuso `America/Sao_Paulo`.
-- Layouts customizados do admin ficam em `templates/admin/` e precisam manter compatibilidade com o tema `django-admin-interface`.
----
+## 1) Escopo e Princípios
 
-## ✅ Objetivo
-Padronizar o _setup_ do ambiente de execução (com internet habilitada) e os comandos de verificação para que `python manage.py check` e o servidor funcionem sem erros.
+- Este repositório é um **projeto Django** com banco de dados versionado por **migrations**.
+- **As migrations são versionadas no Git**. Elas **não** devem ser criadas/alteradas por agentes.
+- O agente **não executa comandos**: nada de `pip install`, `makemigrations`, `migrate`, `collectstatic`, etc.
+- O agente gera **apenas código-fonte** (Python/JS/CSS/HTML/Docs) sob as regras deste arquivo.
 
 ---
 
-## 🔧 Pré‑requisitos do Agente
-- **Acesso à internet do agente: habilitado** (para instalar `pip` packages).  
-- **Shell Bash** disponível.
-- Python 3.10+ (recomendado 3.12).
+## 2) Convenções do Repositório
 
-> Se o agente não tiver internet, use _wheels offline_ e ajuste o script para `pip install --no-index --find-links=./wheels -r requirements.txt`.
-
----
-
-## 🔑 Variáveis de Ambiente
-Configure no painel do agente (ou `.env`), conforme o ambiente.
-
-### Obrigatórias (dev)
-- `DJANGO_SETTINGS_MODULE=colmeia_online.settings`
-- `SECRET_KEY=<gera_com_o_Django>`
-- `DEBUG=True`
-- `ALLOWED_HOSTS=*`
-
-### Opcionais
-- `DATABASE_URL=postgres://...` (se você **não** usar SQLite)
-- `LANG=pt_BR.UTF-8`
-- `PYTHONDONTWRITEBYTECODE=1`
-- `PYTHONUNBUFFERED=1`
-
-> Se usar `.env`, garanta que o projeto lê via `python-dotenv` ou código equivalente.
+- Um **venv por projeto**, chamado `.venv` na raiz. O agente **não** cria/edita venv.
+- Python suportado: definido no `pyproject.toml`/`runtime.txt`/`Dockerfile` (quando existirem).
+- **Migrations SEMPRE versionadas.** Não usar `.gitignore` para ignorá-las.
+- Secretos/variáveis de ambiente nunca em repositório: **não** tocar `.env`, `settings_secrets.py`, etc.
 
 ---
 
-## 📦 Dependências relevantes
-- `Django` (4.2.x recomendado)
-- `django-admin-interface` (tema do admin)
-- `django-colorfield` (dependência do tema)
-- `Pillow` (imagens)
-- `python-dotenv` (opcional, para `.env`)
+## 3) O que o AGENTE **NÃO PODE** fazer
 
-> Mantenha o arquivo `requirements.txt` atualizado: `pip freeze > requirements.txt`
+1. **Migrations**
+   - Criar, editar, apagar qualquer arquivo em `*/migrations/*.py`.
+   - Sugerir rodar `makemigrations`, `migrate`, `--fake`, `sqlmigrate`.
+   - Alterar `MIGRATION_MODULES` em `settings.py`.
 
----
+2. **Ambiente/Infra**
+   - Criar/alterar `.venv/`, `requirements*.txt`, `poetry.lock`, `Pipfile.lock` sem pedido explícito humano.
+   - Rodar comandos de sistema, gerenciar pacotes ou tocar em Docker/Nginx/Gunicorn sem task clara.
 
-## 🗂️ Estrutura de arquivos esperada (trecho)
-```
-colmeia_online/
-├─ manage.py
-├─ colmeia_online/
-│  ├─ settings.py
-│  ├─ urls.py
-│  └─ ...
-├─ apps/...
-├─ static/                 # opcional em dev (arquivos do projeto)
-├─ staticfiles/            # destino do collectstatic (produção)
-├─ media/                  # uploads (logos/anexos)
-├─ docs/especies.json      # usado por seed_species
-└─ requirements.txt
-```
+3. **Segurança/Config**
+   - Comitar chaves, tokens, credenciais, `.env`.
+   - Modificar autenticação/autorização sensível sem análise de impacto.
+
+4. **Banco/Prod Data**
+   - Fornecer comandos que **apaguem dados** ou executem SQL destrutivo sem *feature flag* e plano de rollback.
 
 ---
 
-## 📜 Script de Configuração (automático)
-Use este bloco **como script único** do agente (Codex). Ele configura e valida tudo de ponta a ponta.
+## 4) O que o AGENTE **PODE** fazer
 
+- Alterar **modelos** em `models.py` e camadas relacionadas (`admin.py`, `forms.py`, `serializers.py`, `views.py`, `urls.py`), **sem** tocar nas migrations.
+- Escrever/adaptar **tests** (unitários/integrados) e documentações (`README.md`, `docs/`).
+- Refatorar código, adicionar **tipagem**, docstrings, `help_text`, `verbose_name`, mensagens de validação.
+- Propor **scripts de manutenção** (ex.: `management/commands`) – sem rodá-los.
+- Sugerir **snippets de CI/hooks** (pre-commit/Actions), marcando claramente que precisam de habilitação humana.
+
+---
+
+## 5) Fluxo quando houver alterações de MODELOS (schema)
+
+**Pelo agente:**
+1. Ajustar apenas os **arquivos de código** (ex.: `app/models.py`, `admin.py`), mantendo **compatibilidade reversa** quando possível:
+   - Campos novos com `null=True` e/ou `default=` quando necessário.
+   - Migrações de dados sensíveis **apenas como TODO** em comentários.
+
+2. Abrir PR com **descrição clara**:
+   - “Este PR altera modelos. **Não** inclui migrations por política do repositório.”
+   - Lista de arquivos alterados e impacto esperado (leitura/escrita/performance).
+
+**Pelo humano (pós-merge/rebase do PR do agente):**
 ```bash
-set -euo pipefail
-
-# 1) Virtualenv
-if [ ! -d ".venv" ]; then
-  python -m venv .venv
-fi
-# shellcheck disable=SC1091
-. .venv/bin/activate
-
-# 2) Pip upgrade + dependências
-python -m pip install --upgrade pip
-if [ -f "requirements.txt" ]; then
-  pip install -r requirements.txt
-else
-  echo "requirements.txt não encontrado!"
-  exit 1
-fi
-
-# 3) Migrações
-python manage.py migrate --noinput
-
-# 4) Coleta de estáticos (não quebra em dev)
-python manage.py collectstatic --noinput || true
-
-# 5) Checks
-python manage.py check
-
-# 6) Compila mensagens (ignora se não houver locale)
-python manage.py compilemessages || true
-
-# 7) Comando utilitário (opcional): popular espécies
-if [ -f "docs/especies.json" ]; then
-  python manage.py seed_species || true
-fi
-
-# 8) Exibe onde o tema foi instalado (debug)
-python - <<'PY'
-try:
-    import admin_interface, pkgutil, sys
-    print("admin_interface:", admin_interface.__file__)
-except Exception as e:
-    print("Aviso: admin_interface não importou ->", e, file=sys.stderr)
-PY
-
-echo "Setup finalizado com sucesso."
+source .venv/bin/activate
+python manage.py makemigrations
+python manage.py migrate
+pytest -q      # se aplicável
+git add */migrations/*.py
+git commit -m "chore(migrations): gera migrations após alterações do agente"
 ```
 
----
-
-## 🔁 Rotina de Validação
-1. **Checar apps e config:**  
-   ```bash
-   python manage.py check
-   ```
-2. **Rodar servidor dev:**  
-   ```bash
-   python manage.py runserver 0.0.0.0:8000
-   ```
-3. **Criar superusuário (se necessário):**  
-   ```bash
-   python manage.py createsuperuser
-   ```
-4. **Popular espécies padrão (opcional):**  
-   ```bash
-   python manage.py seed_species
-   ```
-
----
-
-## 🌐 Static e Media (importante)
-Em **desenvolvimento** (`DEBUG=True`), certifique-se de que `settings.py` tenha:
-```python
-STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
-# optional:
-# STATICFILES_DIRS = [BASE_DIR / "static"]
-
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
-```
-
-E em `urls.py` (somente com `DEBUG=True`):
-```python
-from django.conf import settings
-from django.conf.urls.static import static
-
-urlpatterns = [
-    # ...
-]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-```
-
-Em **produção**, sirva `/static/` (de `STATIC_ROOT`) e `/media/` (de `MEDIA_ROOT`) via Nginx/Apache.
-
----
-
-## 🧪 Matriz de Comandos Úteis
+**Se houver conflitos entre branches:**
 ```bash
-# Setup
-python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
+python manage.py makemigrations --merge
+python manage.py migrate
+git add */migrations/*.py
+git commit -m "chore(migrations): merge migration"
+```
 
-# Banco e estáticos
-python manage.py migrate --noinput
-python manage.py collectstatic --noinput
+> **Nota:** `--fake` só em DEV e com plena certeza de que o estado do banco reflete aquela migração. Evitar em produção.
 
-# Verificações
+---
+
+## 6) Mensagem padrão para o agente anexar quando mexer em modelos
+
+> **Nota de migrações:** Conforme política do repositório, **não** gere/edite arquivos em `migrations/`. As alterações de modelo serão migradas manualmente por um desenvolvedor humano com `python manage.py makemigrations && python manage.py migrate` (e *merge migrations* após merges/rebases).
+
+---
+
+## 7) Padrões de Código e Qualidade
+
+- **Tipagem**: use `from __future__ import annotations` quando aplicável; adicione tipos em funções/métodos.
+- **Docstrings**: breve descrição, parâmetros, retorno e exceções relevantes.
+- **i18n**: strings para UI com `gettext_lazy` (`from django.utils.translation import gettext_lazy as _`).
+- **Django Admin**: inclua `list_display`, `search_fields`, `list_filter`, `ordering`, ícones/booleans padronizados.
+- **Validações**: use `clean()`/validators; mensagens amigáveis; `help_text`/`verbose_name` adequados.
+- **Testes**: se criar lógica não-trivial, inclua testes. Use `pytest`/`unittest` conforme padrão do repo.
+- **Performance**: prefira `select_related/prefetch_related` quando necessário; evite N+1; índices em migrations **devem ser sinalizados como TODO** na descrição para o humano gerar.
+
+---
+
+## 8) Branch/Commit/PR — Convenções
+
+- **Branch name** (pelo agente): `codex/<breve-descricao-kebab>`
+- **Commits** (pelo agente): `feat(app): <mensagem>` / `fix(app):` / `refactor(app):` / `docs:` / `test:` / `chore:`
+- **PR template** deve incluir (o agente preenche):
+  - Escopo e impacto.
+  - “Sem migrations” (se houver mudança em modelos).
+  - Checklist (abaixo).
+
+**Checklist do PR do agente:**
+- [ ] Nenhum arquivo em `*/migrations/` foi criado/modificado/removido.
+- [ ] Alterações limitadas a código-fonte e/ou docs/tests.
+- [ ] Compatibilidade reversa razoável (quando envolve modelos/DB).
+- [ ] Docstrings, `help_text`, `verbose_name` e mensagens de erro revisadas.
+- [ ] TODOs claros onde o humano deverá gerar migrations de dados/índices.
+
+---
+
+## 9) Snippets úteis (uso a critério do humano)
+
+### 9.1 Hook de pre-commit (bloqueia migrations por agente; alerta sobre migrações faltantes)
+Crie `.git/hooks/pre-commit` e dê permissão `chmod +x .git/hooks/pre-commit`:
+```bash
+#!/usr/bin/env bash
+# Bloqueia commits do agente que mexam em migrations (ajuste a detecção do ator se necessário)
+if git config user.name | grep -qi "agent\|bot\|codex"; then
+  if git diff --cached --name-only | grep -E "^.+/migrations/.+\.py$" >/dev/null; then
+    echo "❌ Política: o agente não pode commitar migrations."
+    exit 1
+  fi
+fi
+
+# (Opcional) Garanta venv ativo
+which python | grep -q "/.venv/" || { echo "❌ Ative o venv (.venv)."; exit 1; }
+
+# (Opcional) Alerta se mudanças de modelos exigem migrations
+python manage.py makemigrations --check --dry-run >/dev/null 2>&1 ||   echo "⚠️ Há alterações de modelo que exigem migrations (gerar manualmente)."
+```
+
+### 9.2 CODEOWNERS (revisão humana obrigatória em migrations)
+Crie `CODEOWNERS` na raiz:
+```
+**/migrations/*.py  @seu-usuario-ou-time
+```
+
+### 9.3 GitHub Actions (bloquear migrations do agente)
+Job de verificação simples (ajuste `seu-bot`):
+```yaml
+- name: Block agent migrations
+  run: |
+    if [ "${{ github.actor }}" = "seu-bot" ]; then
+      if git diff --name-only origin/${{ github.base_ref }}... | grep -E '^.+/migrations/.+\.py$'; then
+        echo "❌ O agente não pode alterar migrations."; exit 1;
+      fi
+    fi
+```
+
+### 9.4 Verificações de consistência (opcional no CI)
+```bash
 python manage.py check
-python manage.py compilemessages
-
-# Administração
-python manage.py createsuperuser
-
-# Dados auxiliares
-python manage.py seed_species
+python manage.py makemigrations --check --dry-run
+pytest -q  # se aplicável
 ```
 
 ---
 
-## ❗ Troubleshooting Rápido
+## 10) Como o revisor humano valida um PR do agente
 
-### ModuleNotFoundError: No module named 'admin_interface'
-- Dependências não instaladas ou agente sem internet.  
-- Solução: habilite internet do agente **ou** use wheels offline e rode `pip install -r requirements.txt` antes dos comandos do Django.  
-- Confira se `INSTALLED_APPS` está assim (ordem importa):
-  ```python
-  INSTALLED_APPS = [
-      "admin_interface",
-      "colorfield",
-      "django.contrib.admin",
-      "django.contrib.auth",
-      "django.contrib.contenttypes",
-      "django.contrib.sessions",
-      "django.contrib.messages",
-      "django.contrib.staticfiles",
-      # suas apps...
-  ]
-  ```
-
-### Logo/anexos não aparecem
-- Garanta `MEDIA_ROOT`/`MEDIA_URL` e rotas em `urls.py` no dev.  
-- Em prod, sirva `/media/` no Nginx/Apache.  
-- Verifique permissões de escrita na pasta `media/`.
-
-### CSS do admin não carrega em produção
-- Faltou `collectstatic` ou `/static/` não está servido pelo servidor web.  
-- Rode `python manage.py collectstatic --noinput` e ajuste Nginx/Apache para apontar `STATIC_ROOT`.
+1. Conferir **se não há migrations no diff**.
+2. Rodar localmente:
+   ```bash
+   source .venv/bin/activate
+   python manage.py makemigrations --check --dry-run
+   pytest -q  # se aplicável
+   ```
+3. Se houver modelos alterados: **gerar migrations localmente**, aplicar e commitar em PR separado ou após merge.
+4. Confirmar padrões (docstrings/i18n/ajustes no admin/validadores).
+5. Aprovar o PR.
 
 ---
 
-## ✅ Boas práticas
-- Mantenha `requirements.txt` atualizado.  
-- Não coloque segredos no repositório; use variáveis de ambiente/segredos do agente.  
-- Use `ALLOWED_HOSTS` adequado ao host do contêiner.  
-- Para Docker/devcontainer, rode o script acima em `postCreateCommand`/`postStartCommand`.
+## 11) FAQ Rápido
+
+**1. Devemos ignorar migrations no Git?**  
+Não. Migrations são versionadas para garantir reprodutibilidade e deploy confiável.
+
+**2. O agente pode propor migrations?**  
+Pode sugerir *em texto* o que a migration faria (ex.: “índice em campo X”), mas **não** criar o arquivo.
+
+**3. E *--fake*?**  
+Apenas em **desenvolvimento** e com total certeza do estado real do banco. Evitar em produção.
+
+**4. E se outro branch também alterou modelos?**  
+Após merge/rebase, o **humano** roda `makemigrations --merge` e commita a *merge migration*.
+
+---
+
+> **Resumo:** O agente **não cria migrations**, não executa comandos, e mantém alterações restritas ao código-fonte com boa documentação. O humano gera/aplica/commita migrations no momento certo. Assim evitamos divergências e histórico inconsistente.
