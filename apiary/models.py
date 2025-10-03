@@ -1,10 +1,12 @@
 from __future__ import annotations
 
+import calendar
 import uuid
 
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.core.files.uploadedfile import UploadedFile
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from PIL import UnidentifiedImageError
 
@@ -149,6 +151,64 @@ class City(models.Model):
         return self.name
 
 
+class Season(models.Model):
+    name = models.CharField("Nome", max_length=50, unique=True)
+    start_month = models.PositiveSmallIntegerField(
+        "Mês de início",
+        validators=[MinValueValidator(1), MaxValueValidator(12)],
+    )
+    start_day = models.PositiveSmallIntegerField(
+        "Dia de início",
+        validators=[MinValueValidator(1), MaxValueValidator(31)],
+    )
+    end_month = models.PositiveSmallIntegerField(
+        "Mês de término",
+        validators=[MinValueValidator(1), MaxValueValidator(12)],
+    )
+    end_day = models.PositiveSmallIntegerField(
+        "Dia de término",
+        validators=[MinValueValidator(1), MaxValueValidator(31)],
+    )
+
+    class Meta:
+        verbose_name = "Estação do ano"
+        verbose_name_plural = "Estações do ano"
+        ordering = ["start_month", "start_day"]
+
+    def __str__(self) -> str:
+        return self.name
+
+    def clean(self) -> None:
+        super().clean()
+        errors: dict[str, list[str]] = {}
+
+        for prefix in ("start", "end"):
+            month_field = f"{prefix}_month"
+            day_field = f"{prefix}_day"
+            month = getattr(self, month_field)
+            day = getattr(self, day_field)
+
+            if month and day:
+                try:
+                    _, month_max_day = calendar.monthrange(2000, month)
+                except calendar.IllegalMonthError:
+                    errors.setdefault(month_field, []).append(
+                        "Informe um mês válido (1 a 12)."
+                    )
+                    continue
+                if day > month_max_day:
+                    errors.setdefault(day_field, []).append(
+                        f"Informe um dia entre 1 e {month_max_day} para o mês selecionado."
+                    )
+
+        if errors:
+            raise ValidationError(errors)
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        return super().save(*args, **kwargs)
+
+
 class Apiary(models.Model):
     name = models.CharField("Nome", max_length=255)
     location = models.CharField(
@@ -175,6 +235,9 @@ class Apiary(models.Model):
         "Qtd. de colmeias vinculadas", default=0, editable=False
     )
     notes = models.TextField("Observações", blank=True)
+    photo = models.ImageField(
+        "Foto do meliponário", upload_to="apiary_photos/", blank=True, null=True
+    )
 
     objects = ApiaryQuerySet.as_manager()
 
@@ -193,6 +256,8 @@ class Apiary(models.Model):
 
     def save(self, *args, **kwargs):
         self.full_clean()
+        if self.photo:
+            _convert_image_field_to_webp(self.photo, field_name="photo")
         return super().save(*args, **kwargs)
 
 
@@ -582,6 +647,93 @@ class RevisionAttachment(models.Model):
         self.full_clean()
         if self.file:
             _convert_image_field_to_webp(self.file, field_name="file")
+        return super().save(*args, **kwargs)
+
+
+class MellitophilousPlant(models.Model):
+    class ResourceSupplyLevel(models.TextChoices):
+        LOW = "baixo", "Baixo"
+        MEDIUM = "medio", "Médio"
+        HIGH = "alto", "Alta"
+
+    popular_name = models.CharField("Nome popular", max_length=255)
+    scientific_name = models.CharField("Nome científico", max_length=255)
+    flowering_seasons = models.ManyToManyField(
+        Season,
+        related_name="mellitophilous_plants",
+        verbose_name="Estações em que floresce",
+        blank=True,
+    )
+    pollen_supply = models.CharField(
+        "Qtd. de pólen fornecido",
+        max_length=10,
+        choices=ResourceSupplyLevel.choices,
+        default=ResourceSupplyLevel.MEDIUM,
+    )
+    nectar_supply = models.CharField(
+        "Qtd. de néctar fornecido",
+        max_length=10,
+        choices=ResourceSupplyLevel.choices,
+        default=ResourceSupplyLevel.MEDIUM,
+    )
+
+    class Meta:
+        verbose_name = "Planta melitofílica"
+        verbose_name_plural = "Plantas melitofílicas"
+        ordering = ["popular_name", "scientific_name"]
+        unique_together = ("popular_name", "scientific_name")
+
+    def __str__(self) -> str:
+        return f"{self.popular_name} ({self.scientific_name})"
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        return super().save(*args, **kwargs)
+
+
+class QuickObservation(models.Model):
+    hive = models.ForeignKey(
+        Hive,
+        on_delete=models.CASCADE,
+        related_name="quick_observations",
+        verbose_name="Colmeia",
+    )
+    date = models.DateField(
+        "Data",
+        help_text="Informe no formato dd-mm-aaaa.",
+    )
+    internal_photo = models.ImageField(
+        "Foto interna",
+        upload_to="quick_observations/internal/",
+        blank=True,
+        null=True,
+    )
+    external_photo = models.ImageField(
+        "Foto externa",
+        upload_to="quick_observations/external/",
+        blank=True,
+        null=True,
+    )
+    notes = models.TextField("Observações", blank=True)
+
+    class Meta:
+        verbose_name = "Observação rápida"
+        verbose_name_plural = "Observações rápidas"
+        ordering = ["-date", "-pk"]
+
+    def __str__(self) -> str:
+        return f"Observação de {self.hive} em {self.date:%d/%m/%Y}"
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        if self.internal_photo:
+            _convert_image_field_to_webp(
+                self.internal_photo, field_name="internal_photo"
+            )
+        if self.external_photo:
+            _convert_image_field_to_webp(
+                self.external_photo, field_name="external_photo"
+            )
         return super().save(*args, **kwargs)
 
 
