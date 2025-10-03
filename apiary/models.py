@@ -533,8 +533,7 @@ class Revision(models.Model):
         "Observações específicas sobre a alimentação",
         blank=True,
     )
-    # notes = models.TextField("Observações", blank=True)
-
+    notes = models.TextField("Observações", blank=True, editable=False)
     objects = RevisionQuerySet.as_manager()
 
     class Meta:
