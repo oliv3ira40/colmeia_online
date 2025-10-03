@@ -38,6 +38,14 @@ class RevisionEntry:
     apiary_url: str | None
     review_date_display: str
     review_time_iso: str
+    review_type: str | None
+    review_type_display: str | None
+
+
+@dataclass(frozen=True)
+class RevisionTypeFilterOption:
+    value: str
+    label: str
 
 
 @dataclass(frozen=True)
@@ -93,6 +101,7 @@ def _build_recent_revisions(user) -> List[RevisionEntry]:
         formatted_datetime, iso_datetime = _format_datetime(revision.review_date)
         hive = revision.hive
         apiary = hive.apiary
+        review_type = revision.review_type or None
         entries.append(
             RevisionEntry(
                 change_url=reverse("admin:apiary_revision_change", args=[revision.pk]),
@@ -104,9 +113,18 @@ def _build_recent_revisions(user) -> List[RevisionEntry]:
                 apiary_url=reverse("admin:apiary_apiary_change", args=[apiary.pk]) if apiary else None,
                 review_date_display=formatted_datetime,
                 review_time_iso=iso_datetime,
+                review_type=review_type,
+                review_type_display=revision.get_review_type_display() if review_type else None,
             )
         )
     return entries
+
+
+def _build_revision_type_filters() -> List[RevisionTypeFilterOption]:
+    return [
+        RevisionTypeFilterOption(value=value, label=label)
+        for value, label in Revision.RevisionType.choices
+    ]
 
 
 def _build_overdue_hives(user) -> List[HiveEntry]:
@@ -224,6 +242,7 @@ def _build_dashboard_context(user) -> Dict[str, object]:
     return {
         "cards": _build_cards(user),
         "recent_revisions": _build_recent_revisions(user),
+        "revision_type_filters": _build_revision_type_filters(),
         "overdue_hives": _build_overdue_hives(user),
         "observation_hives": _build_observation_hives(user),
         "upcoming_divisions": _build_upcoming_divisions(user),

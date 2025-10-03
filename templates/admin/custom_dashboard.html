@@ -211,10 +211,61 @@
         gap: 0.35rem;
     }
 
+    .dashboard-item__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
     .dashboard-item__title {
         font-weight: 600;
         font-size: 1rem;
         color: #0f172a;
+    }
+
+    .dashboard-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 0.25rem 0.6rem;
+        border-radius: 999px;
+        background: rgba(148, 163, 184, 0.25);
+        color: #334155;
+        white-space: nowrap;
+    }
+
+    .dashboard-badge--rotina {
+        background: rgba(148, 163, 184, 0.3);
+        color: #334155;
+    }
+
+    .dashboard-badge--divisao {
+        background: rgba(59, 130, 246, 0.18);
+        color: #1d4ed8;
+    }
+
+    .dashboard-badge--tratamento {
+        background: rgba(168, 85, 247, 0.18);
+        color: #6b21a8;
+    }
+
+    .dashboard-badge--alimentacao {
+        background: rgba(16, 185, 129, 0.18);
+        color: #047857;
+    }
+
+    .dashboard-badge--colheita {
+        background: rgba(251, 191, 36, 0.2);
+        color: #92400e;
+    }
+
+    .dashboard-item__type-fallback {
+        font-size: 0.75rem;
+        color: var(--dashboard-muted);
     }
 
     .dashboard-item__subtitle,
@@ -244,6 +295,57 @@
     .dashboard-action-link:hover {
         color: var(--dashboard-accent-hover);
         text-decoration: underline;
+    }
+
+    .dashboard-filter {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .dashboard-filter__chip {
+        appearance: none;
+        border: 1px solid rgba(148, 163, 184, 0.6);
+        background: rgba(248, 250, 252, 0.9);
+        border-radius: 999px;
+        padding: 0.35rem 0.85rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #475569;
+        cursor: pointer;
+        transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .dashboard-filter__chip:focus-visible {
+        outline: 2px solid var(--dashboard-accent);
+        outline-offset: 2px;
+    }
+
+    .dashboard-filter__chip:hover {
+        border-color: rgba(4, 120, 87, 0.45);
+        color: #036349;
+    }
+
+    .dashboard-filter__chip.is-active {
+        background: rgba(4, 120, 87, 0.16);
+        border-color: rgba(4, 120, 87, 0.5);
+        color: #065f46;
+    }
+
+    .dashboard-list__item.is-hidden {
+        display: none;
+    }
+
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
     }
 
     .dashboard-empty {
@@ -475,11 +577,43 @@
                     <p class="dashboard-panel__subtitle">Últimas 10 revisões cadastradas</p>
                 </div>
                 {% if recent_revisions %}
+                    <div class="dashboard-filter" role="toolbar" aria-label="Filtrar revisões por tipo">
+                        <button
+                            type="button"
+                            class="dashboard-filter__chip is-active"
+                            data-filter-chip
+                            data-filter-value="all"
+                            aria-pressed="true"
+                        >Todos</button>
+                        {% for filter_option in revision_type_filters %}
+                            <button
+                                type="button"
+                                class="dashboard-filter__chip"
+                                data-filter-chip
+                                data-filter-value="{{ filter_option.value }}"
+                                aria-pressed="false"
+                            >{{ filter_option.label }}</button>
+                        {% endfor %}
+                    </div>
                     <ul class="dashboard-list">
                         {% for revision in recent_revisions %}
-                            <li class="dashboard-list__item">
+                            <li
+                                class="dashboard-list__item"
+                                data-review-type="{{ revision.review_type|default:'sem-tipo' }}"
+                            >
                                 <a class="dashboard-item__primary" href="{{ revision.change_url }}">
-                                    <span class="dashboard-item__title"><time datetime="{{ revision.review_time_iso }}">{{ revision.review_date_display }}</time></span>
+                                    <div class="dashboard-item__header">
+                                        <span class="dashboard-item__title"><time datetime="{{ revision.review_time_iso }}">{{ revision.review_date_display }}</time></span>
+                                        {% if revision.review_type_display %}
+                                            <span
+                                                class="dashboard-badge dashboard-badge--{{ revision.review_type }}"
+                                                title="{{ revision.review_type_display }}"
+                                            >{{ revision.review_type_display }}</span>
+                                        {% else %}
+                                            <span class="dashboard-item__type-fallback" aria-hidden="true">-</span>
+                                            <span class="sr-only">Tipo de revisão não informado</span>
+                                        {% endif %}
+                                    </div>
                                     <span class="dashboard-item__subtitle">
                                         {{ revision.hive_name }} · {{ revision.species_name }}
                                         {% if revision.species_scientific_name %}
@@ -634,4 +768,33 @@
         </section>
     </aside>
 </div>
+<script>
+    (function () {
+        const dashboard = document.querySelector(".colmeia-dashboard");
+        if (!dashboard) {
+            return;
+        }
+        const filterChips = dashboard.querySelectorAll("[data-filter-chip]");
+        if (!filterChips.length) {
+            return;
+        }
+        const items = dashboard.querySelectorAll(".dashboard-list__item[data-review-type]");
+        filterChips.forEach((chip) => {
+            chip.addEventListener("click", () => {
+                const value = chip.getAttribute("data-filter-value");
+                filterChips.forEach((button) => {
+                    const isActive = button === chip;
+                    button.classList.toggle("is-active", isActive);
+                    button.setAttribute("aria-pressed", String(isActive));
+                });
+                items.forEach((item) => {
+                    const itemType = item.getAttribute("data-review-type");
+                    const shouldShow = value === "all" || itemType === value;
+                    item.classList.toggle("is-hidden", !shouldShow);
+                    item.setAttribute("aria-hidden", String(!shouldShow));
+                });
+            });
+        });
+    })();
+</script>
 {% endblock %}
