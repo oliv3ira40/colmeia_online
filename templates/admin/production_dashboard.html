@@ -436,10 +436,10 @@
                 <h2 class="panel__title" id="chart-monthly-title">{% trans "Produção mensal" %}</h2>
                 <p class="panel__subtitle">{% trans "Valores acumulados por mês (mel, própolis, cera e pólen)." %}</p>
             </div>
-            <canvas id="productionChart" height="280" role="img" aria-label="{% trans 'Gráfico de produção mensal' %}"></canvas>
+            <!-- <canvas id="productionChart" height="280" role="img" aria-label="{% trans 'Gráfico de produção mensal' %}"></canvas>
             {% if not chart.series.honey|length %}
                 <p class="empty-state">{% trans "Sem dados de produção no período." %}</p>
-            {% endif %}
+            {% endif %} -->
         </section>
         <aside class="season-card" aria-labelledby="season-title">
             <h2 class="season-card__title" id="season-title">{% trans "Estação atual" %}: {{ season.title }}</h2>

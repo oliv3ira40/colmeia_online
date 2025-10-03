@@ -446,7 +446,9 @@
     <div class="colmeia-dashboard__main">
         <div class="dashboard-banner" role="region" aria-label="{% trans 'Acesso rápido ao dashboard analítico' %}">
             <p class="dashboard-banner__title">{% trans "Acompanhe indicadores avançados de produção" %}</p>
-            <a class="dashboard-banner__link" href="{% url 'production-dashboard' %}">{% trans "Abrir dashboard de produção" %}</a>
+            <a class="dashboard-banner__link" href="{% url 'production-dashboard' %}" style="background: white">
+                {% trans "Abrir dashboard de produção" %}
+            </a>
         </div>
         <div class="dashboard-cards" role="list" aria-label="Resumo geral">
             <a class="dashboard-card card-mobile" role="listitem" href="{{ cards.apiaries.url }}">
