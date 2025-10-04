@@ -843,7 +843,7 @@
                                                                         <img src="{{ attachment.url }}" alt="{{ attachment.alt }}" loading="lazy">
                                                                         <figcaption>
                                                                             <a href="{{ attachment.url }}" target="_blank" rel="noopener">
-                                                                                {{ attachment.name|default:attachment.caption }}
+                                                                                {{ attachment.name|default:attachment.caption|truncatechars:20 }}
                                                                             </a>
                                                                         </figcaption>
                                                                     </figure>
