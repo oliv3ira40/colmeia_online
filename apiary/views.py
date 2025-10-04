@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import csv
+import os
 from dataclasses import dataclass
 from datetime import date, datetime, time, timedelta
 from decimal import Decimal
@@ -16,7 +17,7 @@ from django.db.models import Count, DecimalField, Max, Q, Sum, Value
 from django.db.models.functions import Coalesce, TruncMonth
 from django.http import Http404, HttpRequest, HttpResponse
 from django.urls import reverse
-from django.utils import timezone
+from django.utils import formats, timezone
 from django.utils.decorators import method_decorator
 from django.utils.functional import cached_property
 from django.utils.translation import gettext_lazy as _
@@ -761,22 +762,13 @@ class HiveHistoryView(TemplateView):
         for revision in revisions:
             timestamp = timezone.localtime(revision.review_date)
             attachments = self._build_revision_attachments(revision)
-            text_sections = [
-                revision.management_description,
-                revision.harvest_notes,
-                revision.feeding_notes,
-                revision.notes,
-            ]
-            cleaned_sections: List[str] = []
-            for section in text_sections:
-                value = (section or "").strip()
-                if value:
-                    cleaned_sections.append(value)
-            full_text = "\n\n".join(cleaned_sections)
-            preview, full_text_clean, has_more = self._prepare_preview(
-                full_text, bool(attachments)
-            )
+            common_fields = self._build_revision_common_fields(revision)
             sections = self._build_revision_sections(revision)
+            notes_sections = self._build_revision_notes(revision)
+            full_text_clean = "\n\n".join(
+                note["content"] for note in notes_sections if note["content"]
+            )
+            has_more = bool(sections or notes_sections or attachments is not None)
             items.append(
                 {
                     "id": f"revision-{revision.pk}",
@@ -784,11 +776,13 @@ class HiveHistoryView(TemplateView):
                     "title": _("Revisão"),
                     "badge_label": revision.get_review_type_display(),
                     "date": timestamp,
-                    "preview": preview,
+                    "preview": "",
                     "full_text": full_text_clean,
                     "has_more": has_more,
                     "attachments": attachments,
                     "sections": sections,
+                    "notes_sections": notes_sections,
+                    "common_fields": common_fields,
                     "admin_url": reverse("admin:apiary_revision_change", args=[revision.pk]),
                     "_sort_timestamp": timestamp,
                     "_sort_priority": 1,
@@ -847,11 +841,15 @@ class HiveHistoryView(TemplateView):
                 url = file.url
             except ValueError:  # pragma: no cover - defensive for missing files
                 continue
+            file_name = getattr(file, "name", "") or ""
+            base_name = os.path.basename(file_name) if file_name else ""
+            caption = _("Anexo %(number)s") % {"number": index}
             attachments.append(
                 {
                     "url": url,
                     "alt": _("Anexo da revisão"),
-                    "caption": _("Anexo %(number)s") % {"number": index},
+                    "caption": caption,
+                    "name": base_name or caption,
                 }
             )
         return attachments
@@ -880,40 +878,148 @@ class HiveHistoryView(TemplateView):
             )
         return attachments
 
+    def _build_revision_common_fields(self, revision: Revision) -> List[Dict[str, str]]:
+        return [
+            {
+                "label": _("Rainha vista"),
+                "value": _("Sim") if revision.queen_seen else _("Não"),
+            },
+            {
+                "label": _("Cria"),
+                "value": self._format_revision_choice(
+                    revision.brood_level, revision.get_brood_level_display
+                ),
+            },
+            {
+                "label": _("Alimento/Reservas"),
+                "value": self._format_revision_choice(
+                    revision.food_level, revision.get_food_level_display
+                ),
+            },
+            {
+                "label": _("Pólen"),
+                "value": self._format_revision_choice(
+                    revision.pollen_level, revision.get_pollen_level_display
+                ),
+            },
+            {
+                "label": _("Força da colônia"),
+                "value": self._format_revision_choice(
+                    revision.colony_strength, revision.get_colony_strength_display
+                ),
+            },
+            {
+                "label": _("Temperamento"),
+                "value": self._format_revision_choice(
+                    revision.temperament, revision.get_temperament_display
+                ),
+            },
+            {
+                "label": _("Peso da colmeia"),
+                "value": self._format_revision_weight(revision.hive_weight),
+            },
+        ]
+
+    def _format_revision_choice(self, value: str, display_func) -> str:
+        if not value:
+            return "—"
+        display = display_func()
+        return display or "—"
+
+    def _format_revision_decimal(self, value: Decimal | None) -> str:
+        if value is None:
+            return "—"
+        return formats.number_format(value, decimal_pos=2, use_l10n=True)
+
+    def _format_revision_weight(self, value: Decimal | None) -> str:
+        if value is None:
+            return "—"
+        formatted = formats.number_format(value, decimal_pos=2, use_l10n=True)
+        return _("%(weight)s kg") % {"weight": formatted}
+
     def _build_revision_sections(self, revision: Revision) -> List[Dict[str, object]]:
         sections: List[Dict[str, object]] = []
-        harvest_items = []
-        if revision.honey_harvest_amount:
-            harvest_items.append({"label": _("Mel (ml)"), "value": revision.honey_harvest_amount})
-        if revision.propolis_harvest_amount:
-            harvest_items.append(
-                {"label": _("Própolis (g)"), "value": revision.propolis_harvest_amount}
-            )
-        if revision.wax_harvest_amount:
-            harvest_items.append({"label": _("Cera (g)"), "value": revision.wax_harvest_amount})
-        if revision.pollen_harvest_amount:
-            harvest_items.append({"label": _("Pólen (g)"), "value": revision.pollen_harvest_amount})
-        if harvest_items:
-            sections.append({"title": _("Colheita"), "items": harvest_items})
-
-        feeding_items = []
-        if revision.energetic_food_amount:
-            feeding_items.append(
+        if revision.review_type == Revision.RevisionType.HARVEST:
+            sections.append(
                 {
-                    "label": _("Alimento energético (ml/g)"),
-                    "value": revision.energetic_food_amount,
+                    "title": _("Colheita"),
+                    "items": [
+                        {
+                            "label": _("Quantidade de mel (ml)"),
+                            "value": self._format_revision_decimal(
+                                revision.honey_harvest_amount
+                            ),
+                        },
+                        {
+                            "label": _("Quantidade de própolis (g)"),
+                            "value": self._format_revision_decimal(
+                                revision.propolis_harvest_amount
+                            ),
+                        },
+                        {
+                            "label": _("Quantidade de cera (g)"),
+                            "value": self._format_revision_decimal(
+                                revision.wax_harvest_amount
+                            ),
+                        },
+                        {
+                            "label": _("Quantidade de pólen (g)"),
+                            "value": self._format_revision_decimal(
+                                revision.pollen_harvest_amount
+                            ),
+                        },
+                    ],
                 }
             )
-        if revision.protein_food_amount:
-            feeding_items.append(
+        elif revision.review_type == Revision.RevisionType.FEEDING:
+            sections.append(
                 {
-                    "label": _("Suplemento proteico (g)"),
-                    "value": revision.protein_food_amount,
+                    "title": _("Alimentação"),
+                    "items": [
+                        {
+                            "label": _("Tipo de alimento energético"),
+                            "value": self._format_revision_choice(
+                                revision.energetic_food_type,
+                                revision.get_energetic_food_type_display,
+                            ),
+                        },
+                        {
+                            "label": _("Quantidade de alimento energético (ml ou g)"),
+                            "value": self._format_revision_decimal(
+                                revision.energetic_food_amount
+                            ),
+                        },
+                        {
+                            "label": _("Tipo de alimento proteico"),
+                            "value": self._format_revision_choice(
+                                revision.protein_food_type,
+                                revision.get_protein_food_type_display,
+                            ),
+                        },
+                        {
+                            "label": _("Quantidade de suplemento proteico (g)"),
+                            "value": self._format_revision_decimal(
+                                revision.protein_food_amount
+                            ),
+                        },
+                    ],
                 }
             )
-        if feeding_items:
-            sections.append({"title": _("Alimentação"), "items": feeding_items})
         return sections
+
+    def _build_revision_notes(self, revision: Revision) -> List[Dict[str, str]]:
+        notes: List[Dict[str, str]] = []
+        note_fields = [
+            (revision.management_description, _("Manejo e observações específicas")),
+            (revision.harvest_notes, _("Observações de colheita")),
+            (revision.feeding_notes, _("Observações de alimentação")),
+            (revision.notes, _("Observações gerais")),
+        ]
+        for content, label in note_fields:
+            value = (content or "").strip()
+            if value:
+                notes.append({"label": label, "content": value})
+        return notes
 
     def _prepare_preview(self, full_text: str, has_extra: bool) -> tuple[str, str, bool]:
         text = (full_text or "").strip()
